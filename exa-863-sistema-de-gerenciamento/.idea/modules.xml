@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/exa-863-sistema-de-gerenciamento.iml" filepath="$PROJECT_DIR$/.idea/exa-863-sistema-de-gerenciamento.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sistema-de-gerenciamento/sistema de gerenciamento/sistemadegerenciamento.iml" filepath="$PROJECT_DIR$/sistema-de-gerenciamento/sistema de gerenciamento/sistemadegerenciamento.iml" />
+    </modules>
+  </component>
+</project>
