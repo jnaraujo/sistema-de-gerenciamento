@@ -21,7 +21,7 @@ O objetivo do projeto é desenvolver um sistema de gerenciamento de ordens de se
 
 ## 🔗 Diagrama de Casos de Uso
 
-![Diagrama de Casos de Uso](./casos%20de%20uso%20ideias.png)
+![Diagrama de Casos de Uso](./casos%20de%20uso.png)
 
 ## 🚀 Como rodar o projeto
 
