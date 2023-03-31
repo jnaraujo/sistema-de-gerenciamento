@@ -1,9 +1,9 @@
 <div align="center" >
   <h1>🖥️ Sistema de Gerenciamento de Ordens de Serviço</h1>
 
-![Most used language](https://img.shields.io/github/languages/top/jnaraujo/exa-863-sistema-de-gerenciamento?style=flat-square)
-![GitHub last commit](https://img.shields.io/github/last-commit/jnaraujo/exa-863-sistema-de-gerenciamento?style=flat-square)
-![GitHub](https://img.shields.io/github/license/jnaraujo/exa-863-sistema-de-gerenciamento)
+![Most used language](https://img.shields.io/github/languages/top/jnaraujo/sistema-de-gerenciamento?style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/jnaraujo/sistema-de-gerenciamento?style=flat-square)
+![GitHub](https://img.shields.io/github/license/jnaraujo/sistema-de-gerenciamento)
 
 </div>
 
@@ -38,13 +38,13 @@ O objetivo do projeto é desenvolver um sistema de gerenciamento de ordens de se
 - Clone este repositório
 
 ```bash
-$ git clone https://github.com/jnaraujo/exa-863-sistema-de-gerenciamento
+$ git clone https://github.com/jnaraujo/sistema-de-gerenciamento
 ```
 
 - Abra o projeto no IntelliJ IDEA
 
 ```bash
-$ cd exa-863-sistema-de-gerenciamento
+$ cd sistema-de-gerenciamento
 ```
 
 ## 📝 Licença
