@@ -79,4 +79,12 @@ public class ComputerComponent implements Component {
     public void setCost(Double cost) {
         this.cost = cost;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof ComputerComponent)) return false;
+
+        ComputerComponent component = (ComputerComponent) obj;
+        return component.getName().equals(this.name) && component.getManufacturer().equals(this.manufacturer) && component.getPrice().equals(this.price) && component.getCost().equals(this.cost);
+    }
 }
