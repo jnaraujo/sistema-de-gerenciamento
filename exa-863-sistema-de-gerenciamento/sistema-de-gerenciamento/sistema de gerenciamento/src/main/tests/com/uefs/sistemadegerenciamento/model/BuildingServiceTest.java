@@ -2,6 +2,8 @@ package com.uefs.sistemadegerenciamento.model;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BuildingServiceTest {
@@ -11,12 +13,14 @@ class BuildingServiceTest {
         BuildingService buildingService = new BuildingService();
 
         buildingService.addComponent(new ComputerComponent(
+                "1",
                 "HYPERX 8GB 2400MHz",
                 "HYPERX",
                 200.0,
                 100.0
         ));
         buildingService.addComponent(new ComputerComponent(
+                "2",
                 "HYPERX 8GB 2400MHz",
                 "HYPERX",
                 200.0,

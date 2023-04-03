@@ -4,16 +4,34 @@ package com.uefs.sistemadegerenciamento.model;
  * Classe que representa um componente de computador
  */
 public class ComputerComponent implements Component {
+    private String id;
     private String name;
     private String manufacturer;
     private Double price;
     private Double cost;
 
-    public ComputerComponent(String name, String manufacturer, Double price, Double cost) {
+    public ComputerComponent(String id, String name, String manufacturer, Double price, Double cost) {
+        this.id = id;
         this.name = name;
         this.manufacturer = manufacturer;
         this.price = price;
         this.cost = cost;
+    }
+
+    /**
+     * Retorna o id do componente
+     * @return Retorna o id do componente
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Define o id do componente
+     * @param id Id do componente
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
@@ -85,6 +103,7 @@ public class ComputerComponent implements Component {
         if(!(obj instanceof ComputerComponent)) return false;
 
         ComputerComponent component = (ComputerComponent) obj;
-        return component.getName().equals(this.name) && component.getManufacturer().equals(this.manufacturer) && component.getPrice().equals(this.price) && component.getCost().equals(this.cost);
+
+        return this.id.equals(component.id);
     }
 }

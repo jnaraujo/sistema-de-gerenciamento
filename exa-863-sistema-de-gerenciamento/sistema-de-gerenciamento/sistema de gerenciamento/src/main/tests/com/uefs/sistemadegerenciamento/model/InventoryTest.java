@@ -17,6 +17,7 @@ class InventoryTest {
     @Test
     void testInventory() {
         ComputerComponent component = new ComputerComponent(
+                "1",
                 "processador i5 10th gen",
                 "amd",
                 1000.0,
@@ -29,6 +30,7 @@ class InventoryTest {
     @Test
     void testRemoveComponent() {
         inventory.addComponent(new ComputerComponent(
+                "1",
                 "placa de video",
                 "amd",
                 1000.0,
@@ -36,6 +38,7 @@ class InventoryTest {
         ));
 
         inventory.addComponent(new ComputerComponent(
+                "2",
                 "placa mãe",
                 "giagabyte",
                 1500.0,
@@ -46,6 +49,7 @@ class InventoryTest {
         assertEquals("placa mãe", inventory.getComponents().get(1).getName());
 
         inventory.removeComponent(new ComputerComponent(
+                "1",
                 "placa de video",
                 "amd",
                 1000.0,

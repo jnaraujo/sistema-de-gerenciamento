@@ -11,7 +11,9 @@ class ComputerComponentTest {
 
     @BeforeEach
     void setUp() {
-        this.computerComponent = new ComputerComponent("HYPERX 8GB 2400MHz",
+        this.computerComponent = new ComputerComponent(
+                "1",
+                "HYPERX 8GB 2400MHz",
                 "HYPERX",
                 200.0,
                 100.0
