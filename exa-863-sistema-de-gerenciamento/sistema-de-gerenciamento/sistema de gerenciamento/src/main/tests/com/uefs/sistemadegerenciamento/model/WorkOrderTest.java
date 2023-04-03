@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -103,6 +104,7 @@ class WorkOrderTest {
 
         BuildingService buildingService = new BuildingService();
         buildingService.addComponent(new ComputerComponent(
+                UUID.randomUUID().toString(),
                 "HYPERX 8GB 2400MHz",
                 "HYPERX",
                 200.0,
