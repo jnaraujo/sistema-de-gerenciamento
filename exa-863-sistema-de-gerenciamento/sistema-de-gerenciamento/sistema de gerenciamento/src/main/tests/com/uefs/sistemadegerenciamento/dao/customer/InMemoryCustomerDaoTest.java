@@ -2,6 +2,7 @@ package com.uefs.sistemadegerenciamento.dao.customer;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +24,11 @@ class InMemoryCustomerDaoTest {
                 "99 9 9999-9999",
                 "joao@test.com"
         );
+    }
+
+    @AfterEach
+    void tearDown() {
+        customerDao.deleteAll();
     }
 
     @Test

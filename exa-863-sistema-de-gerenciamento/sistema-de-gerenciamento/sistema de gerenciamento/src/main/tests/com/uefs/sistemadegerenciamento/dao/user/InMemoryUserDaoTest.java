@@ -3,6 +3,7 @@ package com.uefs.sistemadegerenciamento.dao.user;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Technician;
 import com.uefs.sistemadegerenciamento.model.User;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +25,11 @@ class InMemoryUserDaoTest {
                 "João da Silva",
                 "joao@test.com"
         );
+    }
+
+    @AfterEach
+    void tearDown() {
+        userDao.deleteAll();
     }
 
     @Test

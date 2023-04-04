@@ -4,6 +4,8 @@ import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.Technician;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +35,11 @@ class InMemoryWorkOrderDaoTest {
                 "O cliente está reclamando de um problema no sistema",
                 customer
         );
+    }
+
+    @AfterEach
+    void tearDown() {
+        workOrderDao.deleteAll();
     }
 
     @Test

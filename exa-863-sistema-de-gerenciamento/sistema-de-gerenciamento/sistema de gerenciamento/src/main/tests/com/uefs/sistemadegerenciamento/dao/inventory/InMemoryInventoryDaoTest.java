@@ -2,6 +2,7 @@ package com.uefs.sistemadegerenciamento.dao.inventory;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.ComputerComponent;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +24,11 @@ class InMemoryInventoryDaoTest {
                 1500.00,
                 750.00
         );
+    }
+
+    @AfterEach
+    void tearDown() {
+        inventoryDao.deleteAll();
     }
 
     @Test
