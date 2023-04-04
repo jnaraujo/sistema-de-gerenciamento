@@ -10,7 +10,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InMemoryInventoryDaoTest {
+class InventoryDaoTest {
     private InventoryDao inventoryDao;
     private ComputerComponent component;
 

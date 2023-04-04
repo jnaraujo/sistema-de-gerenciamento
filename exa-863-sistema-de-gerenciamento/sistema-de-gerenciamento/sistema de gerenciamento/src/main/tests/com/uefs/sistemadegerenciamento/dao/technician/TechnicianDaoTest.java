@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class InMemoryTechnicianDaoTest {
+class TechnicianDaoTest {
     private TechnicianDao technicianDao;
     private Technician technician;
 
