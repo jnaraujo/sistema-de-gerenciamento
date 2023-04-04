@@ -33,4 +33,9 @@ public class InMemoryTechnicianDao implements TechnicianDao {
     public List<Technician> getAll() {
         return new ArrayList<>(technicians.values());
     }
+
+    @Override
+    public void deleteAll() {
+        technicians.clear();
+    }
 }

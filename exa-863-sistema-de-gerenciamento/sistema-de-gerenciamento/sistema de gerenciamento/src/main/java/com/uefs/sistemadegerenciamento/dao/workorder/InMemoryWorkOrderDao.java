@@ -32,4 +32,9 @@ public class InMemoryWorkOrderDao implements WorkOrderDao {
     public List<WorkOrder> getAll() {
         return new ArrayList<>(workOrders.values());
     }
+
+    @Override
+    public void deleteAll() {
+        workOrders.clear();
+    }
 }

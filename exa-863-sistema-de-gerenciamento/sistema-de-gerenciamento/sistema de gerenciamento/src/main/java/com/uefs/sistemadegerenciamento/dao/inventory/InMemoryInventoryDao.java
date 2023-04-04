@@ -38,4 +38,9 @@ public class InMemoryInventoryDao implements InventoryDao {
     public List<ComputerComponent> getAll() {
         return new ArrayList<>(components.values());
     }
+
+    @Override
+    public void deleteAll() {
+        components.clear();
+    }
 }

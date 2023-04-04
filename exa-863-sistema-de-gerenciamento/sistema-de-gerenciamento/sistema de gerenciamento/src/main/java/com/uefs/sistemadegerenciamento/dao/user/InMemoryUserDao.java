@@ -32,4 +32,9 @@ public class InMemoryUserDao implements UserDao{
     public List<User> getAll() {
         return new ArrayList<>(users.values());
     }
+
+    @Override
+    public void deleteAll() {
+        users.clear();
+    }
 }

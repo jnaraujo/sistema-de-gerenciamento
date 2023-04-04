@@ -32,4 +32,9 @@ public class InMemoryCustomerDao implements CustomerDao {
     public List<Customer> getAll() {
         return new ArrayList<>(customers.values());
     }
+
+    @Override
+    public void deleteAll() {
+        customers.clear();
+    }
 }
