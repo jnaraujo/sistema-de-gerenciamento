@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.dao.user;
 
+import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Technician;
 import com.uefs.sistemadegerenciamento.model.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,12 +13,12 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryUserDaoTest {
-    private InMemoryUserDao userDao;
+    private UserDao userDao;
     private User user;
 
     @BeforeEach
     void setUp(){
-        userDao = new InMemoryUserDao();
+        userDao = DAOManager.getUserDao();
         user = new Technician(
                 UUID.randomUUID().toString(),
                 "João da Silva",

@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.dao.inventory;
 
+import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.ComputerComponent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,12 +10,12 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryInventoryDaoTest {
-    private InMemoryInventoryDao inventoryDao;
+    private InventoryDao inventoryDao;
     private ComputerComponent component;
 
     @BeforeEach
     void setUp() {
-        inventoryDao = new InMemoryInventoryDao();
+        inventoryDao = DAOManager.getInventoryDao();
         component = new ComputerComponent(
                 UUID.randomUUID().toString(),
                 "Placa de Vídeo",

@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.dao.workorder;
 
+import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.Technician;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
@@ -13,13 +14,13 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryWorkOrderDaoTest {
-
+    private WorkOrderDao workOrderDao;
     private Customer customer;
     private WorkOrder workOrder;
-    private InMemoryWorkOrderDao workOrderDao;
 
     @BeforeEach
     void setUp() {
+        workOrderDao = DAOManager.getWorkOrderDao();
         customer = new Customer(
                 UUID.randomUUID().toString(),
                 "João da Silva",
@@ -32,7 +33,6 @@ class InMemoryWorkOrderDaoTest {
                 "O cliente está reclamando de um problema no sistema",
                 customer
         );
-        workOrderDao = new InMemoryWorkOrderDao();
     }
 
     @Test

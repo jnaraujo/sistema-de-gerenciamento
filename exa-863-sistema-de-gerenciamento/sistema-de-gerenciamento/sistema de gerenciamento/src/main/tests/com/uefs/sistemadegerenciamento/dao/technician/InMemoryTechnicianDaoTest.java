@@ -1,17 +1,18 @@
 package com.uefs.sistemadegerenciamento.dao.technician;
 
+import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Technician;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryTechnicianDaoTest {
-    private InMemoryTechnicianDao technicianDao;
+    private TechnicianDao technicianDao;
     private Technician technician;
 
     @BeforeEach
     void setUp() {
-        technicianDao = new InMemoryTechnicianDao();
+        technicianDao = DAOManager.getTechnicianDao();
         technician = new Technician("1", "João da Silva", "joao@test.com");
     }
 
