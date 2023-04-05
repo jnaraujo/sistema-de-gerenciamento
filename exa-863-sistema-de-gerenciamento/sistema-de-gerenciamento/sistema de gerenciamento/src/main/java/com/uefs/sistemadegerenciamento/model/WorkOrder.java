@@ -9,8 +9,8 @@ import java.util.List;
  */
 public class WorkOrder {
     private final String id;
-    private Customer customer;
-    private Technician technician;
+    private String customerId;
+    private String technicianId;
     private String status = "Em andamento";
     private String description;
     private final List<Service> services;
@@ -20,10 +20,10 @@ public class WorkOrder {
     public WorkOrder(
         String id,
         String description,
-        Customer customer
+        String customerId
     ) {
         this.id = id;
-        this.customer = customer;
+        this.customerId = customerId;
         this.description = description;
 
         this.services = new ArrayList<>();
@@ -75,7 +75,7 @@ public class WorkOrder {
      * @throws IllegalStateException Caso a ordem de serviço não tenha um técnico
      */
     public void finish() throws IllegalStateException{
-        if(this.technician == null)
+        if(this.technicianId == null)
             throw new IllegalStateException("Não é possível finalizar uma ordem de serviço sem um técnico");
 
         this.status = "Finalizado";
@@ -130,33 +130,33 @@ public class WorkOrder {
     }
 
     /**
-     * @return Retorna o cliente da ordem de serviço
+     * @return Retorna o id do cliente da ordem de serviço
      */
-    public Customer getCustomer() {
-        return customer;
+    public String getCustomerId() {
+        return customerId;
     }
 
     /**
-     * Altera o cliente da ordem de serviço
-     * @param customer Novo cliente da ordem de serviço
+     * Altera o id do cliente da ordem de serviço
+     * @param customerId Novo id do cliente da ordem de serviço
      */
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
     /**
      * @return Retorna o técnico da ordem de serviço
      */
-    public Technician getTechnician() {
-        return technician;
+    public String getTechnicianId() {
+        return technicianId;
     }
 
     /**
      * Altera o técnico da ordem de serviço
-     * @param technician Novo técnico da ordem de serviço
+     * @param technicianId Novo técnico da ordem de serviço
      */
-    public void setTechnician(Technician technician) {
-        this.technician = technician;
+    public void setTechnicianId(String technicianId) {
+        this.technicianId = technicianId;
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.model;
 
+import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,30 +10,18 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 
 class WorkOrderTest {
-    Customer customer;
-    Technician technician;
+    private String customerId;
+    private String technicianId;
     WorkOrder workOrder;
 
     @BeforeEach
     void setUp() {
-        customer = new Customer(
-                "1",
-                "John Doe",
-                "123 Main St",
-                "555-555-5555",
-                "teste@test.com"
-        );
-
-        technician = new Technician(
-                "2",
-                "João da Silva",
-                "joao@test.com"
-        );
-
+        customerId = IdGenerator.generate();
+        technicianId = IdGenerator.generate();
         workOrder = new WorkOrder(
                 "1",
                 "urgent work order",
-                customer
+                customerId
         );
     }
 
@@ -42,7 +31,7 @@ class WorkOrderTest {
         assertNotNull(workOrder);
         assertEquals("1", workOrder.getId());
         assertEquals("urgent work order", workOrder.getDescription());
-        assertEquals(customer, workOrder.getCustomer());
+        assertEquals(customerId, workOrder.getCustomerId());
         assertEquals("Em andamento", workOrder.getStatus());
         assertEquals(0, workOrder.getServices().size());
         assertFalse(workOrder.isFinished());
@@ -54,11 +43,11 @@ class WorkOrderTest {
 
     @Test
     void testSetTechnician() {
-        assertNull(workOrder.getTechnician());
+        assertNull(workOrder.getTechnicianId());
 
-        workOrder.setTechnician(this.technician);
+        workOrder.setTechnicianId(technicianId);
 
-        assertEquals(this.technician, workOrder.getTechnician());
+        assertEquals(this.technicianId, workOrder.getTechnicianId());
     }
 
     @Test
@@ -68,7 +57,7 @@ class WorkOrderTest {
 
     @Test
     void testWorkOrderFinish() {
-        workOrder.setTechnician(this.technician);
+        workOrder.setTechnicianId(this.technicianId);
 
         workOrder.finish();
 
@@ -89,7 +78,7 @@ class WorkOrderTest {
         WorkOrder workOrder = new WorkOrder(
                 "1",
                 "customer is complaining",
-                this.customer
+                customerId
         );
 
         workOrder.addService(new CleaningService(

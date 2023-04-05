@@ -4,6 +4,7 @@ import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.Technician;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
+import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,23 +17,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WorkOrderDaoTest {
     private WorkOrderDao workOrderDao;
-    private Customer customer;
     private WorkOrder workOrder;
 
     @BeforeEach
     void setUp() {
         workOrderDao = DAOManager.getWorkOrderDao();
-        customer = new Customer(
-                UUID.randomUUID().toString(),
-                "João da Silva",
-                "Rua A",
-                "75 9 1234-5678",
-                "joaodasilva@test.com"
-        );
         workOrder = new WorkOrder(
                 UUID.randomUUID().toString(),
                 "O cliente está reclamando de um problema no sistema",
-                customer
+                IdGenerator.generate()
+
         );
     }
 
@@ -58,14 +52,14 @@ class WorkOrderDaoTest {
     @Test
     void testUpdate(){
         workOrderDao.save(workOrder);
-        assertNull(workOrderDao.findById(workOrder.getId()).getTechnician());
+        assertNull(workOrderDao.findById(workOrder.getId()).getTechnicianId());
 
-        Technician technician = new Technician(UUID.randomUUID().toString(), "José Marcio", "josemarcio@test.com");
-        workOrder.setTechnician(technician);
+        String technician = IdGenerator.generate();
+        workOrder.setTechnicianId(technician);
 
         workOrderDao.update(workOrder);
 
-        assertEquals(technician, workOrderDao.findById(workOrder.getId()).getTechnician());
+        assertEquals(technician, workOrderDao.findById(workOrder.getId()).getTechnicianId());
     }
 
     @Test
@@ -75,13 +69,13 @@ class WorkOrderDaoTest {
                 new WorkOrder(
                         UUID.randomUUID().toString(),
                         "another work order",
-                        customer
+                        IdGenerator.generate()
                 ));
         orders.add(
                 new WorkOrder(
                         UUID.randomUUID().toString(),
                         "yet another work order",
-                        customer
+                        IdGenerator.generate()
                 )
         );
         orders.add(workOrder);
