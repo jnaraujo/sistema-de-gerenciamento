@@ -16,7 +16,8 @@ class ComputerComponentTest {
                 "HYPERX 8GB 2400MHz",
                 "HYPERX",
                 200.0,
-                100.0
+                100.0,
+                1
         );
     }
 
@@ -25,8 +26,8 @@ class ComputerComponentTest {
         assertNotNull(this.computerComponent);
         assertEquals("HYPERX 8GB 2400MHz", this.computerComponent.getName());
         assertEquals("HYPERX", this.computerComponent.getManufacturer());
-        assertEquals(200.0, this.computerComponent.getPrice());
-        assertEquals(100.0, this.computerComponent.getCost());
+        assertEquals(200.0, this.computerComponent.getPricePerUnit());
+        assertEquals(100.0, this.computerComponent.getCostPerUnit());
     }
 
 }

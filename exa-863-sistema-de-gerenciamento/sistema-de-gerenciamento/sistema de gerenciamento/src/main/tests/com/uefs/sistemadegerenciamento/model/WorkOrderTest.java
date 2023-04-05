@@ -108,7 +108,8 @@ class WorkOrderTest {
                 "HYPERX 8GB 2400MHz",
                 "HYPERX",
                 200.0,
-                100.0
+                100.0,
+                3
         ));
 
         workOrder.addService(buildingService);
@@ -116,7 +117,7 @@ class WorkOrderTest {
         List<Service> services = workOrder.getServices();
 
         assertEquals(3, services.size());
-        assertEquals(500.0, workOrder.getPrice());
-        assertEquals(250.0, workOrder.getCost());
+        assertEquals(900.0, workOrder.getPrice());
+        assertEquals(450.0, workOrder.getCost());
     }
 }

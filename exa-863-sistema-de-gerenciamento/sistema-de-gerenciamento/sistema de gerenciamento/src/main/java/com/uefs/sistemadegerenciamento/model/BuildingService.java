@@ -36,7 +36,7 @@ public class BuildingService implements Service{
     public double getCost() {
         double cost = 0;
         for (Component component : usedComponents) {
-            cost += component.getCost();
+            cost += component.getCostPerUnit() * component.getQuantity();
         }
         return cost;
     }
@@ -49,7 +49,7 @@ public class BuildingService implements Service{
     public double getPrice() {
         double price = 0;
         for (Component component : usedComponents) {
-            price += component.getPrice();
+            price += component.getPricePerUnit() * component.getQuantity();
         }
         return price;
     }

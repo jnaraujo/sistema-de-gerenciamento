@@ -7,10 +7,15 @@ public interface Component {
     /**
      * @return Retorna o preço do componente
      */
-    Double getPrice();
+    Double getPricePerUnit();
 
     /**
      * @return Retorna o custo do componente
      */
-    Double getCost();
+    Double getCostPerUnit();
+
+    /**
+     * @return Retorna a quantidade do componente
+     */
+    Integer getQuantity();
 }

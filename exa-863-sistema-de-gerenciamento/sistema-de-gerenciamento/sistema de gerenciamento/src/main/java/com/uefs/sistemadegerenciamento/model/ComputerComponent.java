@@ -7,15 +7,18 @@ public class ComputerComponent implements Component {
     private String id;
     private String name;
     private String manufacturer;
-    private Double price;
-    private Double cost;
+    private Double pricePerUnit;
+    private Double costPerUnit;
+    private Integer quantity;
 
-    public ComputerComponent(String id, String name, String manufacturer, Double price, Double cost) {
+    public ComputerComponent(String id, String name, String manufacturer, Double pricePerUnit, Double costPerUnit,
+                             Integer quantity) {
         this.id = id;
         this.name = name;
         this.manufacturer = manufacturer;
-        this.price = price;
-        this.cost = cost;
+        this.pricePerUnit = pricePerUnit;
+        this.costPerUnit = costPerUnit;
+        this.quantity = quantity;
     }
 
     /**
@@ -70,32 +73,40 @@ public class ComputerComponent implements Component {
      * Retorna o preço do componente
      * @return Retorna o preço do componente
      */
-    public Double getPrice() {
-        return price;
+    public Double getPricePerUnit() {
+        return pricePerUnit;
     }
 
     /**
      * Define o preço do componente
      * @param price Preço do componente
      */
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setPricePerUnit(Double price) {
+        this.pricePerUnit = price;
     }
 
     /**
      * Retorna o custo do componente
      * @return Retorna o custo do componente
      */
-    public Double getCost() {
-        return cost;
+    public Double getCostPerUnit() {
+        return costPerUnit;
     }
 
     /**
      * Define o custo do componente
      * @param cost Custo do componente
      */
-    public void setCost(Double cost) {
-        this.cost = cost;
+    public void setCostPerUnit(Double cost) {
+        this.costPerUnit = cost;
+    }
+
+    /**
+     * Retorna a quantidade do componente
+     * @return Retorna a quantidade do componente
+     */
+    public Integer getQuantity() {
+        return quantity;
     }
 
     @Override

@@ -5,12 +5,15 @@ package com.uefs.sistemadegerenciamento.model;
  */
 public class OtherComponent implements Component {
     private String description;
-    private Double price;
-    private Double cost;
-    public OtherComponent(String description, Double price, Double cost) {
+    private Double pricePerUnit;
+    private Double costPerUnit;
+    private Integer quantity;
+
+    public OtherComponent(String description, Double pricePerUnit, Double costPerUnit, Integer quantity) {
         this.description = description;
-        this.price = price;
-        this.cost = cost;
+        this.pricePerUnit = pricePerUnit;
+        this.costPerUnit = costPerUnit;
+        this.quantity = quantity;
     }
 
     /**
@@ -31,30 +34,38 @@ public class OtherComponent implements Component {
     /**
      * @return Retorna o preço do componente
      */
-    public Double getPrice() {
-        return price;
+    public Double getPricePerUnit() {
+        return pricePerUnit;
     }
 
     /**
      * Define o preço do componente
      * @param price Preço do componente
      */
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setPricePerUnit(Double price) {
+        this.pricePerUnit = price;
     }
 
     /**
      * @return Retorna o custo do componente
      */
-    public Double getCost() {
-        return cost;
+    public Double getCostPerUnit() {
+        return costPerUnit;
+    }
+
+    /**
+     * @return Retorna a quantidade do componente
+     */
+    @Override
+    public Integer getQuantity() {
+        return quantity;
     }
 
     /**
      * Define o custo do componente
      * @param cost Custo do componente
      */
-    public void setCost(Double cost) {
-        this.cost = cost;
+    public void setCostPerUnit(Double cost) {
+        this.costPerUnit = cost;
     }
 }

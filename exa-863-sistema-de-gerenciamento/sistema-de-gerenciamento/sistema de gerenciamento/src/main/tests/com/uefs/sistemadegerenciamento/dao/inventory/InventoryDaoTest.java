@@ -22,7 +22,8 @@ class InventoryDaoTest {
                 "Placa de Vídeo",
                 "Placa de vídeo de 8GB",
                 1500.00,
-                750.00
+                750.00,
+                1
         );
     }
 
@@ -48,12 +49,12 @@ class InventoryDaoTest {
     @Test
     void testUpdate() {
         inventoryDao.save(component);
-        assertEquals(750.00, inventoryDao.findById(component.getId()).getCost());
+        assertEquals(750.00, inventoryDao.findById(component.getId()).getCostPerUnit());
 
-        component.setCost(500.00);
+        component.setCostPerUnit(500.00);
         inventoryDao.update(component);
 
-        assertEquals(500.00, inventoryDao.findById(component.getId()).getCost());
+        assertEquals(500.00, inventoryDao.findById(component.getId()).getCostPerUnit());
     }
 
     @Test
@@ -70,7 +71,8 @@ class InventoryDaoTest {
                 "Placa Mãe",
                 "Placa mãe de 8GB",
                 1500.00,
-                750.00
+                750.00,
+                2
         ));
         assertEquals(2, inventoryDao.getAll().size());
     }

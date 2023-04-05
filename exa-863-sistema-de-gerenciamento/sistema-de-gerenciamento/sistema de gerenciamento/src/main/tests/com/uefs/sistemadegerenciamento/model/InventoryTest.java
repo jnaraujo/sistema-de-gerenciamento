@@ -21,7 +21,8 @@ class InventoryTest {
                 "processador i5 10th gen",
                 "amd",
                 1000.0,
-                500.0
+                500.0,
+                1
         );
         inventory.addComponent(component);
         assertTrue(inventory.getComponents().contains(component));
@@ -34,7 +35,8 @@ class InventoryTest {
                 "placa de video",
                 "amd",
                 1000.0,
-                500.0
+                500.0,
+                1
         ));
 
         inventory.addComponent(new ComputerComponent(
@@ -42,7 +44,8 @@ class InventoryTest {
                 "placa mãe",
                 "giagabyte",
                 1500.0,
-                700.0
+                700.0,
+                1
         ));
 
         assertEquals("placa de video", inventory.getComponents().get(0).getName());
@@ -53,7 +56,8 @@ class InventoryTest {
                 "placa de video",
                 "amd",
                 1000.0,
-                500.0
+                500.0,
+                1
         ));
 
         assertEquals("placa mãe", inventory.getComponents().get(0).getName());

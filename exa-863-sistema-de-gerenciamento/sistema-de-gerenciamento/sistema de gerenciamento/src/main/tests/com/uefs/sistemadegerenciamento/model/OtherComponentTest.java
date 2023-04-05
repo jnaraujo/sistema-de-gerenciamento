@@ -11,15 +11,16 @@ class OtherComponentTest {
 
     @BeforeEach
     void setUp() {
-        this.otherComponent = new OtherComponent("other component", 100.0, 50.0);
+        this.otherComponent = new OtherComponent("other component", 100.0, 50.0, 1);
     }
 
     @Test
     void testOtherComponentCreation() {
         assertNotNull(this.otherComponent);
         assertEquals("other component", this.otherComponent.getDescription());
-        assertEquals(100.0, this.otherComponent.getPrice());
-        assertEquals(50.0, this.otherComponent.getCost());
+        assertEquals(100.0, this.otherComponent.getPricePerUnit());
+        assertEquals(50.0, this.otherComponent.getCostPerUnit());
+        assertEquals(1, this.otherComponent.getQuantity());
     }
 
 }
