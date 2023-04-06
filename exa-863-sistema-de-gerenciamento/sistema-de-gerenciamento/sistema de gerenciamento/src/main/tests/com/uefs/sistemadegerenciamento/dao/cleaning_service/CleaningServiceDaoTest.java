@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CleaningServiceTest {
+class CleaningServiceDaoTest {
     private CleaningServiceDao cleaningServiceDao;
     private CleaningService cleaningService;
 
