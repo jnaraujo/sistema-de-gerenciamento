@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface WorkOrderDao extends Dao<WorkOrder> {
     List<WorkOrder> findOpenWorkOrders();
+    WorkOrder findOrderByTechnicianId(String technicianId);
 }

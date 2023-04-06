@@ -1,8 +1,6 @@
 package com.uefs.sistemadegerenciamento.dao.workorder;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
-import com.uefs.sistemadegerenciamento.model.Customer;
-import com.uefs.sistemadegerenciamento.model.Technician;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 import org.junit.jupiter.api.AfterEach;
@@ -18,16 +16,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class WorkOrderDaoTest {
     private WorkOrderDao workOrderDao;
     private WorkOrder workOrder;
+    private String technicianId;
+
 
     @BeforeEach
     void setUp() {
         workOrderDao = DAOManager.getWorkOrderDao();
+        technicianId = IdGenerator.generate();
         workOrder = new WorkOrder(
                 UUID.randomUUID().toString(),
                 "O cliente está reclamando de um problema no sistema",
                 IdGenerator.generate()
-
         );
+        workOrder.setTechnicianId(technicianId);
     }
 
     @AfterEach
@@ -87,6 +88,17 @@ class WorkOrderDaoTest {
         for(WorkOrder order : orders){
             assertTrue(workOrderDao.getAll().contains(order));
         }
+    }
+
+    @Test
+    void testFindOrderByTechnicianId(){
+        workOrderDao.save(workOrder);
+        assertEquals(workOrder, workOrderDao.findOrderByTechnicianId(workOrder.getTechnicianId()));
+    }
+
+    @Test
+    void testFindOrderByTechnicianIdNull(){
+        assertNull(workOrderDao.findOrderByTechnicianId(workOrder.getTechnicianId()));
     }
 
     @Test

@@ -49,4 +49,14 @@ public class InMemoryWorkOrderDao implements WorkOrderDao {
         }
         return openWorkOrders;
     }
+
+    @Override
+    public WorkOrder findOrderByTechnicianId(String technicianId) {
+        for (WorkOrder workOrder : workOrders.values()) {
+            if (workOrder.getTechnicianId().equals(technicianId)) {
+                return workOrder;
+            }
+        }
+        return null;
+    }
 }
