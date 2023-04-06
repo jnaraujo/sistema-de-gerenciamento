@@ -59,11 +59,27 @@ public class InstallationService implements Service{
     }
 
     /**
+     * Define o preço do serviço
+     * @param price Preço do serviço
+     */
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    /**
      * @return Retorna o custo do serviço
      */
     @Override
     public double getCost() {
         return this.cost;
+    }
+
+    /**
+     * Define o custo do serviço
+     * @param cost Custo do serviço
+     */
+    public void setCost(double cost) {
+        this.cost = cost;
     }
 
     /**
@@ -80,4 +96,6 @@ public class InstallationService implements Service{
     public void setId(String id) {
         this.id = id;
     }
+
+
 }
