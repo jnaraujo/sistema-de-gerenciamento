@@ -15,6 +15,24 @@ Projeto da disciplina EXA 863 - MI de Algoritmos e Programação II da Universid
 
 O objetivo do projeto é desenvolver um sistema de gerenciamento de ordens de serviço para uma empresa de manutenção de computadores.
 
+## 📚 Como o projeto está estruturado
+
+Para desenvolver o projeto, foi utilizado o padrão de arquitetura MVC (Model-View-Controller).
+
+Nesse padrão, a aplicação é dividida em 3 camadas:
+
+- Model: responsável por representar os dados da aplicação.
+- View: responsável por representar a interface gráfica da aplicação.
+- Controller: responsável por intermediar a comunicação entre a View e o Model.
+
+## 📋 Funcionalidades
+
+- [x] Cadastro de clientes
+- [x] Cadastro de usuários (técnicos, administradores e recepcionistas)
+- [x] Cadastro de ordens de serviço
+- [x] Cadastro de peças
+- [x] Cadastro de serviços
+
 ## 🎭 Diagrama de Classes
 
 ![Diagrama de Classes](./diagrama%20de%20classe.png)
