@@ -4,6 +4,8 @@ import com.uefs.sistemadegerenciamento.dao.cleaning_service.CleaningServiceDao;
 import com.uefs.sistemadegerenciamento.dao.cleaning_service.InMemoryCleaningServiceDao;
 import com.uefs.sistemadegerenciamento.dao.customer.CustomerDao;
 import com.uefs.sistemadegerenciamento.dao.customer.InMemoryCustomerDao;
+import com.uefs.sistemadegerenciamento.dao.installation_service.InMemoryInstallationServiceDao;
+import com.uefs.sistemadegerenciamento.dao.installation_service.InstallationServiceDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InMemoryInventoryDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InventoryDao;
 import com.uefs.sistemadegerenciamento.dao.technician.InMemoryTechnicianDao;
@@ -23,6 +25,7 @@ public class DAOManager {
     private static UserDao userDao;
     private static WorkOrderDao workOrderDao;
     private static CleaningServiceDao cleaningServiceDao;
+    private static InstallationServiceDao installationServiceDao;
 
     /**
      * @return o CustomerDao
@@ -79,5 +82,12 @@ public class DAOManager {
             cleaningServiceDao = new InMemoryCleaningServiceDao();
         }
         return cleaningServiceDao;
+    }
+
+    public static InstallationServiceDao getInstallationServiceDao(){
+        if(installationServiceDao == null){
+            installationServiceDao = new InMemoryInstallationServiceDao();
+        }
+        return installationServiceDao;
     }
 }
