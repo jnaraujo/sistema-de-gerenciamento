@@ -5,6 +5,8 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+.attach_pid*
+
 # AWS User-specific
 .idea/**/aws.xml
 
