@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.dao.user;
 
-import com.uefs.sistemadegerenciamento.model.User;
+import com.uefs.sistemadegerenciamento.model.user.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;

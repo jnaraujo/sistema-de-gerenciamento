@@ -1,7 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.technician;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
-import com.uefs.sistemadegerenciamento.model.Technician;
+import com.uefs.sistemadegerenciamento.model.user.Technician;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

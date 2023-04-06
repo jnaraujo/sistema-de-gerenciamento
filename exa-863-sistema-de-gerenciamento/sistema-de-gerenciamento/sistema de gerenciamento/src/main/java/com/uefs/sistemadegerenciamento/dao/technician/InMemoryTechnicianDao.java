@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.dao.technician;
 
-import com.uefs.sistemadegerenciamento.model.Technician;
+import com.uefs.sistemadegerenciamento.model.user.Technician;
 
 import java.util.ArrayList;
 import java.util.HashMap;

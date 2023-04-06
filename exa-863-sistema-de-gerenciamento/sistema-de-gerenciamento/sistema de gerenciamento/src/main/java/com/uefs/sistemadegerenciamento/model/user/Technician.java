@@ -1,11 +1,12 @@
-package com.uefs.sistemadegerenciamento.model;
+package com.uefs.sistemadegerenciamento.model.user;
 
 import com.uefs.sistemadegerenciamento.constants.UserType;
+import com.uefs.sistemadegerenciamento.model.user.User;
 
 /**
  * Classe que representa um técnico
  */
-public class Technician extends User{
+public class Technician extends User {
     public Technician(
         String id,
         String name,
