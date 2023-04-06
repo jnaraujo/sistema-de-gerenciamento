@@ -11,7 +11,8 @@ class TechnicianTest {
         Technician technician = new Technician(
                 "1",
                 "João da Silva",
-                "joao@test.com"
+                "joao@test.com",
+                "123456"
         );
 
         assertEquals("1", technician.getId());

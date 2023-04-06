@@ -9,8 +9,9 @@ public class Receptionist extends User{
     public Receptionist(
         String id,
         String name,
-        String email
+        String email,
+        String password
     ) {
-        super(id, name, email, UserType.RECEPCIONIST);
+        super(id, name, email, password, UserType.RECEPCIONIST);
     }
 }

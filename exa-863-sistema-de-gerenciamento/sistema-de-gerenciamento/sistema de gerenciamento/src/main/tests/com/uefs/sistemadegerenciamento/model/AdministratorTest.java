@@ -11,12 +11,14 @@ class AdministratorTest {
         Administrator administrator = new Administrator(
                 "1",
                 "João da Silva",
-                "test@test.com"
+                "test@test.com",
+                "123456"
         );
 
         assertEquals("1", administrator.getId());
         assertEquals("João da Silva", administrator.getName());
         assertEquals("test@test.com", administrator.getEmail());
+        assertEquals("123456", administrator.getPassword());
 
         administrator.setName("João da Silva Junior");
         administrator.setEmail("joao@test.com");

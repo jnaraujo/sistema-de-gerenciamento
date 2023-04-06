@@ -10,17 +10,20 @@ public abstract class User {
     private final String id;
     private String name;
     private String email;
+    private String password;
     private UserType userType;
 
     public User(
         String id,
         String name,
         String email,
+        String password,
         UserType userType
     ) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.password = password;
 
         this.userType = userType;
     }
@@ -60,6 +63,21 @@ public abstract class User {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return Retorna a senha do usuário
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Define a senha do usuário
+     * @param password Senha do usuário
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**

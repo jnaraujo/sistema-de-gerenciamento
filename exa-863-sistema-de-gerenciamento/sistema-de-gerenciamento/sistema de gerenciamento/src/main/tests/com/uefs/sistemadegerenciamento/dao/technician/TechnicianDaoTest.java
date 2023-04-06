@@ -14,7 +14,7 @@ class TechnicianDaoTest {
     @BeforeEach
     void setUp() {
         technicianDao = DAOManager.getTechnicianDao();
-        technician = new Technician("1", "João da Silva", "joao@test.com");
+        technician = new Technician("1", "João da Silva", "joao@test.com", "123456");
     }
 
     @AfterEach
@@ -56,7 +56,8 @@ class TechnicianDaoTest {
         technicianDao.save(new Technician(
                 "test",
                 "test",
-                "test@test.com"
+                "test@test.com",
+                "123456"
         ));
         technicianDao.save(technician);
 
@@ -64,7 +65,8 @@ class TechnicianDaoTest {
         assertTrue(technicianDao.getAll().contains(new Technician(
                 "test",
                 "test with another name",
-                "tdasdasdom"
+                "tdasdasdom",
+                "123456"
         )));
     }
 }

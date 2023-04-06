@@ -22,7 +22,8 @@ class UserDaoTest {
         user = new Technician(
                 UUID.randomUUID().toString(),
                 "João da Silva",
-                "joao@test.com"
+                "joao@test.com",
+                "123456"
         );
     }
 
@@ -68,7 +69,8 @@ class UserDaoTest {
         userDao.save(new Technician(
                 "test",
                 "test",
-                "test@test.com"
+                "test@test.com",
+                "123456"
         ));
         userDao.save(user);
 
@@ -76,7 +78,8 @@ class UserDaoTest {
         assertTrue(userDao.getAll().contains(new Technician(
                 "test",
                 "test",
-                "test@test.com"
+                "test@test.com",
+                "123456"
         )));
     }
 }
