@@ -89,4 +89,31 @@ class WorkOrderDaoTest {
         }
     }
 
+    @Test
+    void testFindOpenWorkOrders(){
+        List<WorkOrder> orders = new ArrayList<>();
+        orders.add(
+                new WorkOrder(
+                        UUID.randomUUID().toString(),
+                        "another work order",
+                        IdGenerator.generate()
+                ));
+        orders.add(
+                new WorkOrder(
+                        UUID.randomUUID().toString(),
+                        "yet another work order",
+                        IdGenerator.generate()
+                )
+        );
+        orders.add(workOrder);
+
+        for(WorkOrder order : orders){
+            workOrderDao.save(order);
+        }
+
+        for(WorkOrder order : orders){
+            assertTrue(workOrderDao.findOpenWorkOrders().contains(order));
+        }
+    }
+
 }

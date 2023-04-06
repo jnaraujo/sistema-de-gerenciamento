@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.dao.workorder;
 
+import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
 
 import java.util.ArrayList;
@@ -36,5 +37,16 @@ public class InMemoryWorkOrderDao implements WorkOrderDao {
     @Override
     public void deleteAll() {
         workOrders.clear();
+    }
+
+    @Override
+    public List<WorkOrder> findOpenWorkOrders() {
+        List<WorkOrder> openWorkOrders = new ArrayList<>();
+        for (WorkOrder workOrder : workOrders.values()) {
+            if (workOrder.getStatus().equals(OrderStatus.OPEN)) {
+                openWorkOrders.add(workOrder);
+            }
+        }
+        return openWorkOrders;
     }
 }
