@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.user;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
+import com.uefs.sistemadegerenciamento.model.Receptionist;
 import com.uefs.sistemadegerenciamento.model.Technician;
 import com.uefs.sistemadegerenciamento.model.User;
 import org.junit.jupiter.api.AfterEach;
@@ -28,6 +29,13 @@ class UserDaoTest {
     @AfterEach
     void tearDown() {
         userDao.deleteAll();
+    }
+
+    @Test
+    void testFindById(){
+        userDao.save(user);
+        assertEquals(user, userDao.findById(user.getId()));
+        assertEquals(Technician.class, userDao.findById(user.getId()).getClass());
     }
 
     @Test
