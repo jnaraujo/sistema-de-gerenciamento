@@ -88,6 +88,7 @@ class WorkOrderTest {
         ));
 
         workOrder.addService(new InstallationService(
+                IdGenerator.generate(),
                 200.00,
                 100.00
         ));

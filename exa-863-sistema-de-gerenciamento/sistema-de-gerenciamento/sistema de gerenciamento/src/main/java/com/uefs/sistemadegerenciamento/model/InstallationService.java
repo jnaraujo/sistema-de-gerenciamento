@@ -11,8 +11,10 @@ public class InstallationService implements Service{
     private String operatingSystem;
     private double price;
     private double cost;
+    private String id;
 
-    public InstallationService(double price, double cost) {
+    public InstallationService(String id, double price, double cost) {
+        this.id = id;
         this.programs = new ArrayList<>();
         this.price = price;
         this.cost = cost;
@@ -62,5 +64,20 @@ public class InstallationService implements Service{
     @Override
     public double getCost() {
         return this.cost;
+    }
+
+    /**
+     * @return Retorna o id do serviço
+     */
+    public String getId() {
+        return this.id;
+    }
+
+    /**
+     * Define o id do serviço
+     * @param id Id do serviço
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 }
