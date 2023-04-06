@@ -1,4 +1,4 @@
-package com.uefs.sistemadegerenciamento.model;
+package com.uefs.sistemadegerenciamento.model.user;
 
 import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;

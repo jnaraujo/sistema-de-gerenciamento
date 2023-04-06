@@ -1,4 +1,4 @@
-package com.uefs.sistemadegerenciamento.model;
+package com.uefs.sistemadegerenciamento.model.component;
 
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import org.junit.jupiter.api.BeforeEach;

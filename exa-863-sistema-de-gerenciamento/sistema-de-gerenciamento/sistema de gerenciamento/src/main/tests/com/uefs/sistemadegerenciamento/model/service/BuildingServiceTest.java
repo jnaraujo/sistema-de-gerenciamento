@@ -1,4 +1,4 @@
-package com.uefs.sistemadegerenciamento.model;
+package com.uefs.sistemadegerenciamento.model.service;
 
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import com.uefs.sistemadegerenciamento.model.service.BuildingService;

@@ -1,4 +1,4 @@
-package com.uefs.sistemadegerenciamento.model;
+package com.uefs.sistemadegerenciamento.model.service;
 
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;
 import com.uefs.sistemadegerenciamento.utils.IdGenerator;
