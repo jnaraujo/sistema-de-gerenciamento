@@ -1,6 +1,8 @@
 package com.uefs.sistemadegerenciamento.model;
 
 
+import com.uefs.sistemadegerenciamento.constants.UserType;
+
 /**
  * Classe que representa um usuário do sistema.
  */
@@ -8,15 +10,19 @@ public abstract class User {
     private final String id;
     private String name;
     private String email;
+    private UserType userType;
 
     public User(
         String id,
         String name,
-        String email
+        String email,
+        UserType userType
     ) {
         this.id = id;
         this.name = name;
         this.email = email;
+
+        this.userType = userType;
     }
 
     /**
@@ -54,6 +60,21 @@ public abstract class User {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return Retorna o tipo do usuário
+     */
+    public UserType getUserType() {
+        return userType;
+    }
+
+    /**
+     * Define o tipo do usuário
+     * @param userType Tipo do usuário
+     */
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 
     @Override

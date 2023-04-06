@@ -1,5 +1,7 @@
 package com.uefs.sistemadegerenciamento.model;
 
+import com.uefs.sistemadegerenciamento.constants.UserType;
+
 /**
  * Classe que representa um Administrador
  */
@@ -9,6 +11,6 @@ public class Administrator extends User{
         String name,
         String email
     ) {
-        super(id, name, email);
+        super(id, name, email, UserType.ADMINISTRATOR);
     }
 }

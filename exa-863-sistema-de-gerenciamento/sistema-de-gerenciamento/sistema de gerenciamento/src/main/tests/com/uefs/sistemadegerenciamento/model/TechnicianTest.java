@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.model;
 
+import com.uefs.sistemadegerenciamento.constants.UserType;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,5 +23,7 @@ class TechnicianTest {
 
         assertEquals("João da Silva Junior", technician.getName());
         assertEquals("jjunior@test.com", technician.getEmail());
+
+        assertEquals(UserType.TECHNICIAN, technician.getUserType());
     }
 }
