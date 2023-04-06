@@ -1,5 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao;
 
+import com.uefs.sistemadegerenciamento.dao.cleaning_service.CleaningServiceDao;
+import com.uefs.sistemadegerenciamento.dao.cleaning_service.InMemoryCleaningServiceDao;
 import com.uefs.sistemadegerenciamento.dao.customer.CustomerDao;
 import com.uefs.sistemadegerenciamento.dao.customer.InMemoryCustomerDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InMemoryInventoryDao;
@@ -20,6 +22,7 @@ public class DAOManager {
     private static TechnicianDao technicianDao;
     private static UserDao userDao;
     private static WorkOrderDao workOrderDao;
+    private static CleaningServiceDao cleaningServiceDao;
 
     /**
      * @return o CustomerDao
@@ -69,5 +72,12 @@ public class DAOManager {
             workOrderDao = new InMemoryWorkOrderDao();
         }
         return workOrderDao;
+    }
+
+    public static CleaningServiceDao getCleaningServiceDao(){
+        if(cleaningServiceDao == null){
+            cleaningServiceDao = new InMemoryCleaningServiceDao();
+        }
+        return cleaningServiceDao;
     }
 }
