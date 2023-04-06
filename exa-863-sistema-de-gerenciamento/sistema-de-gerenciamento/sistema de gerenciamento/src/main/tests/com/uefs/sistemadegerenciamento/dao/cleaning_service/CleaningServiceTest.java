@@ -1,7 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.cleaning_service;
 
+import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.CleaningService;
-import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +18,7 @@ class CleaningServiceTest {
 
     @BeforeEach
     void setUp(){
-        cleaningServiceDao = new InMemoryCleaningServiceDao();
+        cleaningServiceDao = DAOManager.getCleaningServiceDao();
         cleaningService = new CleaningService(
                 IdGenerator.generate(),
                 70.0,
