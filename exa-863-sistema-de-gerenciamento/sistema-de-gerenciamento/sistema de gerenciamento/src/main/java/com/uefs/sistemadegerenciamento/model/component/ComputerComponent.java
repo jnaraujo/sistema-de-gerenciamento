@@ -1,4 +1,4 @@
-package com.uefs.sistemadegerenciamento.model;
+package com.uefs.sistemadegerenciamento.model.component;
 
 /**
  * Classe que representa um componente de computador

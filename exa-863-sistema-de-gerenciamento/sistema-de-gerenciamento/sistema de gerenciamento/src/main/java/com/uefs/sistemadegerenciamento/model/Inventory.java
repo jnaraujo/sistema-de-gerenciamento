@@ -1,6 +1,8 @@
 package com.uefs.sistemadegerenciamento.model;
 
 
+import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
+
 import java.util.ArrayList;
 
 /**

@@ -1,4 +1,4 @@
-package com.uefs.sistemadegerenciamento.model;
+package com.uefs.sistemadegerenciamento.model.component;
 
 /**
  * Interface que representa um componente

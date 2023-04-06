@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.model.service;
 
-import com.uefs.sistemadegerenciamento.model.Component;
+import com.uefs.sistemadegerenciamento.model.component.Component;
 
 import java.util.ArrayList;
 import java.util.List;

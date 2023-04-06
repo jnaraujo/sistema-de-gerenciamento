@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.dao.inventory;
 
-import com.uefs.sistemadegerenciamento.model.ComputerComponent;
+import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 
 import java.util.ArrayList;
 import java.util.HashMap;

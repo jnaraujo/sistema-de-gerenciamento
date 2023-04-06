@@ -1,4 +1,6 @@
-package com.uefs.sistemadegerenciamento.model;
+package com.uefs.sistemadegerenciamento.model.component;
+
+import com.uefs.sistemadegerenciamento.model.component.Component;
 
 /**
  * Classe que representa um componente de computador que não está no estoque
