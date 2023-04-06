@@ -41,6 +41,9 @@ class CustomerDaoTest {
     void testDelete(){
         customerDao.save(customer);
         assertEquals(customer, customerDao.findById(customer.getId()));
+
+        customerDao.delete(customer.getId());
+        assertNull(customerDao.findById(customer.getId()));
     }
 
     @Test
