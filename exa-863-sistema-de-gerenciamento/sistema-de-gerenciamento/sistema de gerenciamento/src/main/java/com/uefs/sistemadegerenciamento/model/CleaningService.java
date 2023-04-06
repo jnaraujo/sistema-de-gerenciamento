@@ -48,11 +48,27 @@ public class CleaningService implements Service{
     }
 
     /**
+     * Define o preço serviço de limpeza
+     * @param price Preço do serviço de limpeza
+     */
+    public void setPrice(Double price){
+        this.price = price;
+    }
+
+    /**
      * @return Retorna o custo do serviço
      */
     @Override
     public double getCost() {
         return this.cost;
+    }
+
+    /**
+     * Define o custo do serviço de limpeza
+     * @param cost Custo do serviço
+     */
+    public void setCost(Double cost){
+        this.cost = cost;
     }
 
     /**
