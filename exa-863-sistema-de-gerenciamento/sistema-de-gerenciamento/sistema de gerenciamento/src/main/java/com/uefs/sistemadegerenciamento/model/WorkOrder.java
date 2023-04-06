@@ -1,5 +1,7 @@
 package com.uefs.sistemadegerenciamento.model;
 
+import com.uefs.sistemadegerenciamento.constants.OrderStatus;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +13,7 @@ public class WorkOrder {
     private final String id;
     private String customerId;
     private String technicianId;
-    private String status = "Em andamento";
+    private String status = OrderStatus.OPEN;
     private String description;
     private final List<Service> services;
     private Date createdAt;
@@ -78,7 +80,7 @@ public class WorkOrder {
         if(this.technicianId == null)
             throw new IllegalStateException("Não é possível finalizar uma ordem de serviço sem um técnico");
 
-        this.status = "Finalizado";
+        this.status = OrderStatus.CLOSED;
         this.finishedAt = new Date();
     }
 
@@ -86,7 +88,7 @@ public class WorkOrder {
      * Cancela a ordem de serviço
      */
     public void cancel() {
-        this.status = "Cancelado";
+        this.status = OrderStatus.CANCELED;
         this.finishedAt = new Date();
     }
 
@@ -94,21 +96,21 @@ public class WorkOrder {
      * @return Retorna true se a ordem de serviço estiver finalizada
      */
     public boolean isFinished() {
-        return this.status.equals("Finalizado");
+        return this.status.equals(OrderStatus.CLOSED);
     }
 
     /**
      * @return Retorna true se a ordem de serviço estiver cancelada
      */
     public boolean isCanceled() {
-        return this.status.equals("Cancelado");
+        return this.status.equals(OrderStatus.CANCELED);
     }
 
     /**
      * @return Retorna true se a ordem de serviço estiver em andamento
      */
     public boolean isOngoing() {
-        return this.status.equals("Em andamento");
+        return this.status.equals(OrderStatus.OPEN);
     }
 
     @Override
