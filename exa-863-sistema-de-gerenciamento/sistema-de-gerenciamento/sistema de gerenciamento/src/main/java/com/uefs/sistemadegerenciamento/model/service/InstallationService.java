@@ -97,5 +97,9 @@ public class InstallationService implements Service {
         this.id = id;
     }
 
-
+    @Override
+    public String toString() {
+        return "InstallationService [id=" + id + ", cost=" + cost + ", price=" + price + ", programs=" + programs
+                + ", operatingSystem=" + operatingSystem + "]";
+    }
 }

@@ -25,4 +25,16 @@ class InstallationServiceTest {
         assertEquals("Photoshop", installationService.getPrograms().get(1));
     }
 
+    @Test
+    void testToString() {
+        InstallationService installationService = new InstallationService(IdGenerator.generate(),  50.0, 25.0);
+        installationService.setOperatingSystem("Windows 10");
+        installationService.addProgram("Office");
+        installationService.addProgram("Photoshop");
+
+        String expected = "InstallationService [id=" + installationService.getId() + ", cost=25.0, price=50.0, " +
+                "programs=[Office, Photoshop], operatingSystem=Windows 10]";
+        assertEquals(expected, installationService.toString());
+    }
+
 }
