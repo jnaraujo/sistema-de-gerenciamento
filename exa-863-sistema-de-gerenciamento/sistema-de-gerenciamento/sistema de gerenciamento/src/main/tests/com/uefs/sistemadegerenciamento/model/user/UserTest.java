@@ -20,6 +20,7 @@ class UserTest {
             assertEquals("1", user.getId());
             assertEquals("João da Silva", user.getName());
             assertEquals("joao@test.com", user.getEmail());
+            assertEquals("User [id=1, name=João da Silva, email=joao@test.com, password=123456, userType=TECHNICIAN]", user.toString());
         }
 
 }
