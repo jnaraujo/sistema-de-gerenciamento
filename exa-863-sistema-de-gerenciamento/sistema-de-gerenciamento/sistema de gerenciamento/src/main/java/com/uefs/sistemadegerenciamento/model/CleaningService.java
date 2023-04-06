@@ -85,4 +85,12 @@ public class CleaningService implements Service{
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public boolean equals(Object object){
+        if(!(object instanceof CleaningService)) return false;
+
+        CleaningService service = (CleaningService) object;
+        return service.getId().equals(this.id);
+    }
 }

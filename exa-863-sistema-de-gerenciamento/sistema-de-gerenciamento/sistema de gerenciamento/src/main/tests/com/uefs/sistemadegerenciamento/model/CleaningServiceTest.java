@@ -23,4 +23,18 @@ class CleaningServiceTest {
         assertEquals("Placa Mãe", cleaningService.getComponents().get(1));
         assertEquals("Placa de Vídeo", cleaningService.getComponents().get(2));
     }
+
+    @Test
+    void testEquals(){
+        String id = IdGenerator.generate();
+
+        CleaningService service1 = new CleaningService(id, 50, 75);
+        CleaningService service2 = new CleaningService("anotherid", 25, 36);
+
+        assertFalse(service1.equals(service2));
+
+        service2.setId(id);
+
+        assertTrue(service1.equals(service2));
+    }
 }
