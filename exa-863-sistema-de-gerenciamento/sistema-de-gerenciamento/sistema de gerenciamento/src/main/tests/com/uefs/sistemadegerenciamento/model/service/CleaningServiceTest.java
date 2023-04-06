@@ -38,4 +38,12 @@ class CleaningServiceTest {
 
         assertTrue(service1.equals(service2));
     }
+
+    @Test
+    void testToString(){
+        String id = IdGenerator.generate();
+        CleaningService service = new CleaningService(id, 50, 75);
+
+        assertEquals("CleaningService [id=" + id + ", price=50.0, cost=75.0]", service.toString());
+    }
 }

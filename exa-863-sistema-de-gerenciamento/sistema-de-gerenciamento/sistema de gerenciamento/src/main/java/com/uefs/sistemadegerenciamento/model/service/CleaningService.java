@@ -93,4 +93,9 @@ public class CleaningService implements Service {
         CleaningService service = (CleaningService) object;
         return service.getId().equals(this.id);
     }
+
+    @Override
+    public String toString() {
+        return "CleaningService [id=" + id + ", price=" + price + ", cost=" + cost + "]";
+    }
 }
