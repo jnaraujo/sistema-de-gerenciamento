@@ -120,5 +120,4 @@ class ReportTest {
     void testGetAvarageComponentPrice(){
         assertEquals(716.66, report.getAvarageComponentPrice(), 0.01);
     }
-
 }

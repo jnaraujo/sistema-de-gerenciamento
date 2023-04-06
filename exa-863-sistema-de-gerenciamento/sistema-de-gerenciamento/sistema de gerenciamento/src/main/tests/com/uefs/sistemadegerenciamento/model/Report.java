@@ -40,14 +40,6 @@ public class Report {
         return hours / count;
     }
 
-    public Double getAvarageCost(){
-        Double sum = 0.0;
-        for (WorkOrder workOrder : workOrders) {
-            sum += workOrder.getCost();
-        }
-        return sum / workOrders.size();
-    }
-
     public Double getAvarageWorkOrderCost(){
         Double sum = 0.0;
         for (WorkOrder workOrder : workOrders) {
