@@ -115,12 +115,15 @@ class WorkOrderDaoTest {
                         IdGenerator.generate()
                 )
         );
-        orders.add(workOrder);
 
         for(WorkOrder order : orders){
             workOrderDao.save(order);
         }
+        workOrder.setTechnicianId(IdGenerator.generate());
+        workOrder.finish();
+        workOrderDao.save(workOrder);
 
+        assertEquals(orders.size(), workOrderDao.findOpenWorkOrders().size());
         for(WorkOrder order : orders){
             assertTrue(workOrderDao.findOpenWorkOrders().contains(order));
         }
