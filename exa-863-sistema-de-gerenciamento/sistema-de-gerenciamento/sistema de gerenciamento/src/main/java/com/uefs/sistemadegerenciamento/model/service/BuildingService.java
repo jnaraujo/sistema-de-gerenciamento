@@ -1,4 +1,6 @@
-package com.uefs.sistemadegerenciamento.model;
+package com.uefs.sistemadegerenciamento.model.service;
+
+import com.uefs.sistemadegerenciamento.model.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +8,7 @@ import java.util.List;
 /**
  * Classe que representa um serviço de montagem de computador
  */
-public class BuildingService implements Service{
+public class BuildingService implements Service {
     private List<Component> usedComponents;
     public BuildingService() {
         this.usedComponents = new ArrayList<>();

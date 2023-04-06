@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.model;
 
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
+import com.uefs.sistemadegerenciamento.model.service.Service;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.model;
 
+import com.uefs.sistemadegerenciamento.model.service.InstallationService;
 import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 import org.junit.jupiter.api.Test;
 

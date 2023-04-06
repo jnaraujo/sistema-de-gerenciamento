@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.dao.installation_service;
 
-import com.uefs.sistemadegerenciamento.model.InstallationService;
+import com.uefs.sistemadegerenciamento.model.service.InstallationService;
 
 import java.util.ArrayList;
 import java.util.HashMap;

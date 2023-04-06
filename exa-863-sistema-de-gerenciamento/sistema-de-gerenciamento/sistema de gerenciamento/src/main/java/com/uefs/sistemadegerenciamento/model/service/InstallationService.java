@@ -1,4 +1,4 @@
-package com.uefs.sistemadegerenciamento.model;
+package com.uefs.sistemadegerenciamento.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Classe que representa um serviço de instalação de programas e/ou sistemas operacionais
  */
-public class InstallationService implements Service{
+public class InstallationService implements Service {
     private final List<String> programs;
     private String operatingSystem;
     private double price;

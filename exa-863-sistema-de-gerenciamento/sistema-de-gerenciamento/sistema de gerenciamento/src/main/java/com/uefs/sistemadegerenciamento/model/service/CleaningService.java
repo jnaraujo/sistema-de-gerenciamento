@@ -1,4 +1,4 @@
-package com.uefs.sistemadegerenciamento.model;
+package com.uefs.sistemadegerenciamento.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Classe que representa um serviço de limpeza de computadores
  */
-public class CleaningService implements Service{
+public class CleaningService implements Service {
     private final List<String> components;
     private String id;
     private double price;

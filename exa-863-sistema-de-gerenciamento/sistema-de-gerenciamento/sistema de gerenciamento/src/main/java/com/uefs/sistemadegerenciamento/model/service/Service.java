@@ -1,4 +1,4 @@
-package com.uefs.sistemadegerenciamento.model;
+package com.uefs.sistemadegerenciamento.model.service;
 
 /**
  * Interface que representa um serviço

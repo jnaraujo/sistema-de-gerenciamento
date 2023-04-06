@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.dao.cleaning_service;
 
-import com.uefs.sistemadegerenciamento.model.CleaningService;
+import com.uefs.sistemadegerenciamento.model.service.CleaningService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
