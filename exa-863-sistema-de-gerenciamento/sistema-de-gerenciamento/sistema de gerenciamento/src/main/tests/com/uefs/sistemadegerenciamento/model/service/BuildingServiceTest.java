@@ -32,6 +32,7 @@ class BuildingServiceTest {
         assertEquals(400.0, buildingService.getPrice());
         assertEquals(225.5, buildingService.getCost());
         assertEquals(2, buildingService.getUsedComponents().size());
+        assertEquals("BuildingService [price=400.0, cost=225.5]", buildingService.toString());
     }
 
 }

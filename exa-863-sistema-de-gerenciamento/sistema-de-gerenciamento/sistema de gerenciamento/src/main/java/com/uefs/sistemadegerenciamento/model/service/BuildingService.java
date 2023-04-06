@@ -55,4 +55,9 @@ public class BuildingService implements Service {
         }
         return price;
     }
+
+    @Override
+    public String toString() {
+        return "BuildingService [price=" + getPrice() + ", cost=" + getCost() + "]";
+    }
 }
