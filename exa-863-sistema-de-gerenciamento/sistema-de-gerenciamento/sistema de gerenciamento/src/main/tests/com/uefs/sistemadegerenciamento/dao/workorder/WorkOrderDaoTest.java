@@ -16,19 +16,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class WorkOrderDaoTest {
     private WorkOrderDao workOrderDao;
     private WorkOrder workOrder;
-    private String technicianId;
 
 
     @BeforeEach
     void setUp() {
         workOrderDao = DAOManager.getWorkOrderDao();
-        technicianId = IdGenerator.generate();
         workOrder = new WorkOrder(
                 UUID.randomUUID().toString(),
                 "O cliente está reclamando de um problema no sistema",
                 IdGenerator.generate()
         );
-        workOrder.setTechnicianId(technicianId);
     }
 
     @AfterEach
@@ -92,6 +89,7 @@ class WorkOrderDaoTest {
 
     @Test
     void testFindOrderByTechnicianId(){
+        workOrder.setTechnicianId(IdGenerator.generate());
         workOrderDao.save(workOrder);
         assertEquals(workOrder, workOrderDao.findOrderByTechnicianId(workOrder.getTechnicianId()));
     }
