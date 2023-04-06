@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class CleaningService implements Service{
     private final List<String> components;
-
+    private String id;
     private double price;
     private double cost;
 
@@ -16,7 +16,8 @@ public class CleaningService implements Service{
      * @param price preço do serviço
      * @param cost custo do serviço
      */
-    public CleaningService(double price, double cost) {
+    public CleaningService(String id, double price, double cost) {
+        this.id = id;
         this.components = new ArrayList<>();
         this.price = price;
         this.cost = cost;
@@ -52,5 +53,20 @@ public class CleaningService implements Service{
     @Override
     public double getCost() {
         return this.cost;
+    }
+
+    /**
+     * @return Retorna o id do serviço
+     */
+    public String getId() {
+        return this.id;
+    }
+
+    /**
+     * Altera o id do serviço
+     * @param id Id do serviço
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 }

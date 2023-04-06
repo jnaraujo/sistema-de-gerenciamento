@@ -43,7 +43,7 @@ class ReportTest {
         calendar.set(2020, 1, 1, 12, 0, 0);
         workOrder1.setFinishedAt(calendar.getTime());
 
-        workOrder1.addService(new CleaningService(50.0, 25.0));
+        workOrder1.addService(new CleaningService(IdGenerator.generate(),50.0, 25.0));
         workOrder1.addService(new InstallationService(100.0, 50.0));
 
         workOrders.add(workOrder1);
