@@ -116,4 +116,12 @@ class WorkOrderTest {
         assertEquals(900.0, workOrder.getPrice());
         assertEquals(450.0, workOrder.getCost());
     }
+
+    @Test
+    void testToString(){
+        String expected = "WorkOrder [id=1, customerId=" + customerId + ", technicianId=null, status=Em andamento, " +
+                "description=urgent work order, services=[], createdAt=" + workOrder.getCreatedAt() + ", finishedAt" +
+                "=null]";
+        assertEquals(expected, workOrder.toString());
+    }
 }

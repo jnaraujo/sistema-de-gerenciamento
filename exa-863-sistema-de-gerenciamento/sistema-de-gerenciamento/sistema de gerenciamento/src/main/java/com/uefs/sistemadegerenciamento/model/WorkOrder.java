@@ -221,4 +221,10 @@ public class WorkOrder {
     public void setFinishedAt(Date finishedAt) {
         this.finishedAt = finishedAt;
     }
+
+    @Override
+    public String toString(){
+        return "WorkOrder [id=" + id + ", customerId=" + customerId + ", technicianId=" + technicianId + ", status=" + status + ", " +
+                "description=" + description + ", services=" + services + ", createdAt=" + createdAt + ", finishedAt=" + finishedAt + "]";
+    }
 }
