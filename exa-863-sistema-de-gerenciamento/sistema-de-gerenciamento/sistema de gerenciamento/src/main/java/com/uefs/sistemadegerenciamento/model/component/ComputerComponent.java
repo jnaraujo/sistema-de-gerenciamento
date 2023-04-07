@@ -117,4 +117,10 @@ public class ComputerComponent implements Component {
 
         return this.id.equals(component.id);
     }
+
+    @Override
+    public String toString(){
+        return "ComputerComponent [id=" + id + ", name=" + name + ", manufacturer=" + manufacturer + ", pricePerUnit="
+                + pricePerUnit + ", costPerUnit=" + costPerUnit + ", quantity=" + quantity + "]";
+    }
 }

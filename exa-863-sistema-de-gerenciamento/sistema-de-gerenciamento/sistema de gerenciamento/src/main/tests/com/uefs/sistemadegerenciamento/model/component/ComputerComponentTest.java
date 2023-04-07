@@ -31,4 +31,10 @@ class ComputerComponentTest {
         assertEquals(100.0, this.computerComponent.getCostPerUnit());
     }
 
+    @Test
+    void testToString() {
+        String expected = "ComputerComponent [id=1, name=HYPERX 8GB 2400MHz, manufacturer=HYPERX, pricePerUnit=200.0, costPerUnit=100.0, quantity=1]";
+        assertEquals(expected, computerComponent.toString());
+    }
+
 }
