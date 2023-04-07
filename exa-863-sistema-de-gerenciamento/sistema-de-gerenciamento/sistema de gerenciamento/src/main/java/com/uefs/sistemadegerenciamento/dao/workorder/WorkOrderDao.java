@@ -11,5 +11,10 @@ public interface WorkOrderDao extends Dao<WorkOrder> {
      * @return Lista de ordens de serviço abertas
      */
     List<WorkOrder> findOpenWorkOrders();
+
+    /**
+     * @param technicianId ID do técnico
+     * @return Retorna a ordem de serviço do técnico
+     */
     WorkOrder findOrderByTechnicianId(String technicianId);
 }
