@@ -7,9 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -101,32 +99,47 @@ class WorkOrderDaoTest {
 
     @Test
     void testFindOpenWorkOrders(){
-        List<WorkOrder> orders = new ArrayList<>();
-        orders.add(
-                new WorkOrder(
-                        UUID.randomUUID().toString(),
-                        "another work order",
-                        IdGenerator.generate()
-                ));
-        orders.add(
-                new WorkOrder(
-                        UUID.randomUUID().toString(),
-                        "yet another work order",
-                        IdGenerator.generate()
-                )
+        Calendar calendar = Calendar.getInstance();
+
+        WorkOrder workOrder2 = new WorkOrder(
+                UUID.randomUUID().toString(),
+                "another work order",
+                IdGenerator.generate()
         );
 
-        for(WorkOrder order : orders){
-            workOrderDao.save(order);
-        }
+        calendar.set(2020, Calendar.JANUARY, 5);
+        workOrder2.setCreatedAt(calendar.getTime());
+
+        WorkOrder workOrder3 = new WorkOrder(
+                UUID.randomUUID().toString(),
+                "yet another work order",
+                IdGenerator.generate()
+        );
+        calendar.set(2020, Calendar.JANUARY, 1);
+        workOrder3.setCreatedAt(calendar.getTime());
+
+        WorkOrder workOrder4 = new WorkOrder(
+                UUID.randomUUID().toString(),
+                "yet another work order",
+                IdGenerator.generate()
+        );
+        calendar.set(2020, Calendar.JANUARY, 3);
+        workOrder4.setCreatedAt(calendar.getTime());
+
         workOrder.setTechnicianId(IdGenerator.generate());
         workOrder.finish();
-        workOrderDao.save(workOrder);
 
-        assertEquals(orders.size(), workOrderDao.findOpenWorkOrders().size());
-        for(WorkOrder order : orders){
-            assertTrue(workOrderDao.findOpenWorkOrders().contains(order));
-        }
+        workOrderDao.save(workOrder);
+        workOrderDao.save(workOrder2);
+        workOrderDao.save(workOrder3);
+        workOrderDao.save(workOrder4);
+
+        List<WorkOrder> openOrders = workOrderDao.findOpenWorkOrders();
+
+        assertEquals(workOrder3.getId(), openOrders.get(0).getId());
+        assertEquals(workOrder4.getId(), openOrders.get(1).getId());
+        assertEquals(workOrder2.getId(), openOrders.get(2).getId());
+
     }
 
 }

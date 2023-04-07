@@ -3,9 +3,7 @@ package com.uefs.sistemadegerenciamento.dao.workorder;
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class InMemoryWorkOrderDao implements WorkOrderDao {
     private HashMap<String, WorkOrder> workOrders = new HashMap<>();
@@ -47,6 +45,7 @@ public class InMemoryWorkOrderDao implements WorkOrderDao {
                 openWorkOrders.add(workOrder);
             }
         }
+        openWorkOrders.sort(Comparator.comparing(WorkOrder::getCreatedAt));
         return openWorkOrders;
     }
 
