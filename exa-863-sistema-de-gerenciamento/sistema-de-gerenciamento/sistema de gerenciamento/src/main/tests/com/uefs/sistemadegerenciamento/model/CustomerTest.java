@@ -39,4 +39,18 @@ class CustomerTest {
         assertEquals("123-456-7890", customer.getPhone());
         assertEquals("joao@test.com", customer.getEmail());
     }
+
+    @Test
+    void testToString(){
+        Customer customer = new Customer(
+                "1",
+                "José da Silva",
+                "Rua A, 123",
+                "555-555-5555",
+                "test@test.com"
+        );
+        String expected = "Customer [id=1, name=José da Silva, email=test@test.com, " +
+                "phone=555-555-5555, address=Rua A, 123]";
+        assertEquals(expected, customer.toString());
+    }
 }

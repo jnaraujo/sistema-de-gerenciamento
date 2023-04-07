@@ -100,4 +100,10 @@ public class Customer {
 
         return customer.getId().equals(this.getId());
     }
+
+    @Override
+    public String toString() {
+        return "Customer [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone
+                + ", address=" + address + "]";
+    }
 }
