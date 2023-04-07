@@ -70,4 +70,10 @@ public class OtherComponent implements Component {
     public void setCostPerUnit(Double cost) {
         this.costPerUnit = cost;
     }
+
+    @Override
+    public String toString() {
+        return "OtherComponent [costPerUnit=" + costPerUnit + ", description=" + description + ", pricePerUnit="
+                + pricePerUnit + ", quantity=" + quantity + "]";
+    }
 }

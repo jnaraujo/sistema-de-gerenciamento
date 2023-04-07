@@ -24,4 +24,10 @@ class OtherComponentTest {
         assertEquals(1, this.otherComponent.getQuantity());
     }
 
+    @Test
+    void testToString(){
+        String expected = "OtherComponent [costPerUnit=50.0, description=other component, pricePerUnit=100.0, quantity=1]";
+        assertEquals(expected, this.otherComponent.toString());
+    }
+
 }
