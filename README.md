@@ -29,7 +29,7 @@ Nesse padrão, a aplicação é dividida em 3 camadas:
 
 ### Cadastro de clientes
 
-Permite que o usuário cadastre novos clientes da empresa de manutenção de computadores, incluindo informações como nome, endereço, telefone, e-mail, entre outros.
+É possível que o usuário cadastre novos clientes da empresa de manutenção de computadores, incluindo informações como nome, endereço, telefone, e-mail, entre outros.
 
 ### Cadastro de usuários (técnicos, administradores e recepcionistas)
 
@@ -37,7 +37,7 @@ Permite que o usuário cadastre novos usuários do sistema, incluindo informaç�
 
 ### Cadastro de ordens de serviço
 
-Permite que o usuário crie novas ordens de serviço, atribuindo clientes, técnicos responsáveis, peças utilizadas e serviços realizados, além de informações como data de criação, valor total etc.
+O usuário pode criar novas ordens de serviço, atribuindo clientes, técnicos responsáveis, peças utilizadas e serviços realizados, além de informações como data de criação, valor total etc.
 
 ### Cadastro de peças
 
@@ -48,6 +48,10 @@ Essas peças serão usadas nas ordens de serviço.
 
 Permite que o usuário cadastre novos serviços oferecidos pela empresa de manutenção de computadores, incluindo informações como nome, descrição e valor.
 Exemplos de serviço são: limpeza, instalação de sistemas operacionais etc.
+
+## Gerar relatórios
+
+O sistema é capaz de gerar relatórios sobre tempo médio de espera, preço e custo médio das peças, preço médio das ordens, satisfação do cliente, etc;
 
 ## 🎭 Diagrama de Classes
 
