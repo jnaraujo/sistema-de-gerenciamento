@@ -27,11 +27,27 @@ Nesse padrão, a aplicação é dividida em 3 camadas:
 
 ## 📋 Funcionalidades
 
-- [x] Cadastro de clientes
-- [x] Cadastro de usuários (técnicos, administradores e recepcionistas)
-- [x] Cadastro de ordens de serviço
-- [x] Cadastro de peças
-- [x] Cadastro de serviços
+### Cadastro de clientes
+
+Permite que o usuário cadastre novos clientes da empresa de manutenção de computadores, incluindo informações como nome, endereço, telefone, e-mail, entre outros.
+
+### Cadastro de usuários (técnicos, administradores e recepcionistas)
+
+Permite que o usuário cadastre novos usuários do sistema, incluindo informações como nome, e-mail, senha e cargo (técnico, administrador ou recepcionista).
+
+### Cadastro de ordens de serviço
+
+Permite que o usuário crie novas ordens de serviço, atribuindo clientes, técnicos responsáveis, peças utilizadas e serviços realizados, além de informações como data de criação, valor total etc.
+
+### Cadastro de peças
+
+Permite que o usuário cadastre novas peças utilizadas nas ordens de serviço, incluindo informações como nome, descrição, fabricante e quantidade em estoque.
+Essas peças serão usadas nas ordens de serviço.
+
+### Cadastro de serviços
+
+Permite que o usuário cadastre novos serviços oferecidos pela empresa de manutenção de computadores, incluindo informações como nome, descrição e valor.
+Exemplos de serviço são: limpeza, instalação de sistemas operacionais etc.
 
 ## 🎭 Diagrama de Classes
 
