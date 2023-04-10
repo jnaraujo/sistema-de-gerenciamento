@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.workorder;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
+import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 import org.junit.jupiter.api.AfterEach;
@@ -98,7 +99,7 @@ class WorkOrderDaoTest {
     }
 
     @Test
-    void testFindOpenWorkOrders(){
+    void testFindOpenWorkOrders() throws ServiceOrderWithoutTechnicianException {
         Calendar calendar = Calendar.getInstance();
 
         WorkOrder workOrder2 = new WorkOrder(

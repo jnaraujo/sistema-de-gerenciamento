@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.model;
 
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
+import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
 import com.uefs.sistemadegerenciamento.model.service.Service;
 
 import java.util.ArrayList;
@@ -75,11 +76,11 @@ public class WorkOrder {
 
     /**
      * Finaliza a ordem de serviço
-     * @throws IllegalStateException Caso a ordem de serviço não tenha um técnico
+     * @throws ServiceOrderWithoutTechnicianException Caso a ordem de serviço não tenha um técnico
      */
-    public void finish() throws IllegalStateException{
+    public void finish() throws ServiceOrderWithoutTechnicianException {
         if(this.technicianId == null)
-            throw new IllegalStateException("Não é possível finalizar uma ordem de serviço sem um técnico");
+            throw new ServiceOrderWithoutTechnicianException("Não é possível finalizar uma ordem de serviço sem um técnico");
 
         this.status = OrderStatus.CLOSED;
         this.finishedAt = new Date();

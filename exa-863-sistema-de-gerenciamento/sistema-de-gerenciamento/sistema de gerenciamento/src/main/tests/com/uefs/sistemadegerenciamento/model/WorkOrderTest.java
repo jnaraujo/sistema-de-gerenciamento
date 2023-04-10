@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.model;
 
+import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import com.uefs.sistemadegerenciamento.model.service.BuildingService;
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;
@@ -57,11 +58,11 @@ class WorkOrderTest {
 
     @Test
     void testWorkOrderFinishWithoutTechnician() {
-        assertThrows(IllegalStateException.class, workOrder::finish);
+        assertThrows(ServiceOrderWithoutTechnicianException.class, workOrder::finish);
     }
 
     @Test
-    void testWorkOrderFinish() {
+    void testWorkOrderFinish() throws ServiceOrderWithoutTechnicianException {
         workOrder.setTechnicianId(this.technicianId);
 
         workOrder.finish();
