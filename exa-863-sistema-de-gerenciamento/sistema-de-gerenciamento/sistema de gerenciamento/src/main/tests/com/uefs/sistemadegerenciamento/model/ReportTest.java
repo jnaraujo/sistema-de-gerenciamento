@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.model;
 
+import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreExeption;
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import com.uefs.sistemadegerenciamento.model.service.BuildingService;
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;
@@ -27,7 +28,7 @@ class ReportTest {
     }
 
     @BeforeEach
-    void setUpEach() {
+    void setUpEach() throws InvalidSatisfactionScoreExeption {
         calendar.clear();
 
         workOrders = new ArrayList<>();
@@ -48,6 +49,7 @@ class ReportTest {
 
         workOrder1.addService(new CleaningService(IdGenerator.generate(),50.0, 25.0));
         workOrder1.addService(new InstallationService(IdGenerator.generate(), 100.0, 50.0));
+        workOrder1.setSatisfactionScore(5);
 
         workOrders.add(workOrder1);
 
@@ -58,6 +60,7 @@ class ReportTest {
                 IdGenerator.generate()
         );
         workOrder2.setTechnicianId(IdGenerator.generate());
+        workOrder2.setSatisfactionScore(3);
 
         calendar.set(2020, 1, 1, 10, 0, 0);
         workOrder2.setCreatedAt(calendar.getTime());
@@ -122,5 +125,12 @@ class ReportTest {
     @Test
     void testGetAvarageComponentPrice(){
         assertEquals(716.66, report.getAvarageComponentPrice(), 0.01);
+    }
+    @Test
+    void testSatisfactionScore(){
+        // workOrder1: 5
+        // workOrder2: 3
+        // average: 4
+        assertEquals(4, report.getAvarageSatifaction());
     }
 }

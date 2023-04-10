@@ -78,4 +78,12 @@ public class Report {
         return sum / quantity;
     }
 
+    public Double getAvarageSatifaction(){
+        double sum = 0.0;
+        for (WorkOrder workOrder : workOrders) {
+            sum += workOrder.getSatisfactionScore();
+        }
+        return sum / workOrders.size();
+    }
+
 }
