@@ -7,7 +7,7 @@ import com.uefs.sistemadegerenciamento.constants.UserType;
  * Classe que representa um usuário do sistema.
  */
 public abstract class User {
-    private final String id;
+    private String id;
     private String name;
     private String email;
     private String password;
@@ -33,6 +33,14 @@ public abstract class User {
      */
     public String getId() {
         return id;
+    }
+
+    /**
+     * Define o id do usuário
+     * @param id Id do usuário
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
