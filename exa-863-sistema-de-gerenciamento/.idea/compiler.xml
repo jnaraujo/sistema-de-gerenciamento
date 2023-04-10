@@ -9,8 +9,5 @@
         <module name="sistemadegerenciamento" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="sistemadegerenciamento" target="19" />
-    </bytecodeTargetLevel>
   </component>
 </project>
