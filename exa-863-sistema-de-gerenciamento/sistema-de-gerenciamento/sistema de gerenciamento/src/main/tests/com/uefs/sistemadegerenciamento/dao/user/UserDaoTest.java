@@ -1,6 +1,8 @@
 package com.uefs.sistemadegerenciamento.dao.user;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
+import com.uefs.sistemadegerenciamento.model.user.Administrator;
+import com.uefs.sistemadegerenciamento.model.user.Receptionist;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import org.junit.jupiter.api.AfterEach;
@@ -80,5 +82,51 @@ class UserDaoTest {
                 "test@test.com",
                 "123456"
         )));
+    }
+
+    @Test
+    void testFindAllTechnicians(){
+        userDao.save(new Technician(
+                "test",
+                "test",
+                "",
+                ""
+        ));
+
+        userDao.save(user);
+
+        assertTrue(userDao.findAllTechnicians().contains(user));
+    }
+
+    @Test
+    void testFindAllAdministrators(){
+        User admin = new Administrator(
+                "adminid",
+                "test",
+                "",
+                ""
+        );
+        userDao.save(admin);
+
+        userDao.save(user);
+
+        assertFalse(userDao.findAllAdministrators().contains(user));
+        assertTrue(userDao.findAllAdministrators().contains(admin));
+    }
+
+    @Test
+    void testFindAllReceptionists(){
+        User receptionist = new Receptionist(
+                "receptionistid",
+                "test",
+                "",
+                ""
+        );
+        userDao.save(receptionist);
+
+        userDao.save(user);
+
+        assertFalse(userDao.findAllReceptionists().contains(user));
+        assertTrue(userDao.findAllReceptionists().contains(receptionist));
     }
 }
