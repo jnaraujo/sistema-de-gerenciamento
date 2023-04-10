@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.model;
 
+import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreExeption;
 import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import com.uefs.sistemadegerenciamento.model.service.BuildingService;
@@ -124,5 +125,19 @@ class WorkOrderTest {
                 "description=urgent work order, services=[], createdAt=" + workOrder.getCreatedAt() + ", finishedAt" +
                 "=null]";
         assertEquals(expected, workOrder.toString());
+    }
+
+    @Test
+    void testValidSatisfactionScore() throws InvalidSatisfactionScoreExeption {
+        assertEquals(0, workOrder.getSatisfactionScore());
+
+        workOrder.setSatisfactionScore(5);
+        assertEquals(5, workOrder.getSatisfactionScore());
+    }
+
+    @Test
+    void testInvalidSatisfactionScore(){
+        assertThrows(InvalidSatisfactionScoreExeption.class, () -> workOrder.setSatisfactionScore(6));
+        assertThrows(InvalidSatisfactionScoreExeption.class, () -> workOrder.setSatisfactionScore(-1));
     }
 }
