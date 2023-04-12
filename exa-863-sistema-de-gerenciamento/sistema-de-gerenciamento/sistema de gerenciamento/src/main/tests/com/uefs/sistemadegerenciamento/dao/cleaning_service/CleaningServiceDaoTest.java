@@ -19,7 +19,6 @@ class CleaningServiceDaoTest {
     void setUp(){
         cleaningServiceDao = DAOManager.getCleaningServiceDao();
         cleaningService = new CleaningService(
-                IdGenerator.generate(),
                 70.0,
                 35.5
         );
@@ -61,7 +60,6 @@ class CleaningServiceDaoTest {
         cleaningServiceDao.save(cleaningService);
 
         CleaningService cleaningService2 = new CleaningService(
-                IdGenerator.generate(),
                 50.0,
                 12.0
         );

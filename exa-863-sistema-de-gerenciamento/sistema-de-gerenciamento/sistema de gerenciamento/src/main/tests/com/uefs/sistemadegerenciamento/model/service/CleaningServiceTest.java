@@ -12,7 +12,10 @@ class CleaningServiceTest {
         double price = 50.0;
         double cost = 25.0;
 
-        CleaningService cleaningService = new CleaningService(IdGenerator.generate(), price, cost);
+        CleaningService cleaningService = new CleaningService(
+                price,
+                cost
+        );
         cleaningService.addComponent("HD");
         cleaningService.addComponent("Placa Mãe");
         cleaningService.addComponent("Placa de Vídeo");
@@ -29,8 +32,10 @@ class CleaningServiceTest {
     void testEquals(){
         String id = IdGenerator.generate();
 
-        CleaningService service1 = new CleaningService(id, 50, 75);
-        CleaningService service2 = new CleaningService("anotherid", 25, 36);
+        CleaningService service1 = new CleaningService(50, 75);
+        service1.setId(id);
+
+        CleaningService service2 = new CleaningService(25, 36);
 
         assertFalse(service1.equals(service2));
 
@@ -42,7 +47,9 @@ class CleaningServiceTest {
     @Test
     void testToString(){
         String id = IdGenerator.generate();
-        CleaningService service = new CleaningService(id, 50, 75);
+
+        CleaningService service = new CleaningService(50, 75);
+        service.setId(id);
 
         assertEquals("CleaningService [id=" + id + ", price=50.0, cost=75.0]", service.toString());
     }

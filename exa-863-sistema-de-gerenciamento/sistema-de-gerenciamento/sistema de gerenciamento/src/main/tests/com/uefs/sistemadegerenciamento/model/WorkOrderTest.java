@@ -89,7 +89,6 @@ class WorkOrderTest {
         );
 
         workOrder.addService(new CleaningService(
-                IdGenerator.generate(),
                 100.00,
                 50.00
         ));

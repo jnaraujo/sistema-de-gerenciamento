@@ -16,8 +16,7 @@ public class CleaningService implements Service {
      * @param price preço do serviço
      * @param cost custo do serviço
      */
-    public CleaningService(String id, double price, double cost) {
-        this.id = id;
+    public CleaningService(double price, double cost) {
         this.components = new ArrayList<>();
         this.price = price;
         this.cost = cost;
@@ -91,6 +90,9 @@ public class CleaningService implements Service {
         if(!(object instanceof CleaningService)) return false;
 
         CleaningService service = (CleaningService) object;
+
+        if (this.id == null || service.getId() == null) return false;
+        
         return service.getId().equals(this.id);
     }
 
