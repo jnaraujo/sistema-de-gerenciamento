@@ -10,11 +10,11 @@ class ReceptionistTest {
     @Test
     void testReceptionist() {
         Receptionist receptionist = new Receptionist(
-                "1",
                 "João da Silva",
                 "test@test.com",
                 "123456"
         );
+        receptionist.setId("1");
 
         assertEquals("1", receptionist.getId());
         assertEquals("João da Silva", receptionist.getName());
