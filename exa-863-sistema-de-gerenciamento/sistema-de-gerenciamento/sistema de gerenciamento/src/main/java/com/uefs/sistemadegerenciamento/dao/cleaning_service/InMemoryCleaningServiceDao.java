@@ -15,8 +15,10 @@ public class InMemoryCleaningServiceDao implements CleaningServiceDao{
     }
 
     @Override
-    public void save(CleaningService cleaningService) {
+    public CleaningService save(CleaningService cleaningService) {
         cleaningServices.put(cleaningService.getId(), cleaningService);
+
+        return cleaningService;
     }
 
     @Override

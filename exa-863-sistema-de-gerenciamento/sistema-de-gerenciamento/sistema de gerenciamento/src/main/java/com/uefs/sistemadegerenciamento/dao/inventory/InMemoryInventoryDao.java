@@ -15,8 +15,10 @@ public class InMemoryInventoryDao implements InventoryDao {
     }
 
     @Override
-    public void save(ComputerComponent component) {
+    public ComputerComponent save(ComputerComponent component) {
         components.put(component.getId(), component);
+
+        return component;
     }
 
     @Override

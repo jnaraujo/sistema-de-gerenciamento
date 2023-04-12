@@ -12,8 +12,10 @@ import java.util.List;
 public class InMemoryUserDao implements UserDao{
     private HashMap<String, User> users = new HashMap<>();
     @Override
-    public void save(User user) {
+    public User save(User user) {
         users.put(user.getId(), user);
+
+        return user;
     }
 
     @Override

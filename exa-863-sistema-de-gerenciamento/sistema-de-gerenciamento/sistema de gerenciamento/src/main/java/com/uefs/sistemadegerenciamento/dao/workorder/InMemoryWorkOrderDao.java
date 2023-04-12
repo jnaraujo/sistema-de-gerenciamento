@@ -9,11 +9,13 @@ import java.util.*;
 public class InMemoryWorkOrderDao implements WorkOrderDao {
     private HashMap<String, WorkOrder> workOrders = new HashMap<>();
     @Override
-    public void save(WorkOrder workOrder) {
+    public WorkOrder save(WorkOrder workOrder) {
         String id = IdGenerator.generate();
         workOrder.setId(id);
 
         workOrders.put(workOrder.getId(), workOrder);
+
+        return workOrder;
     }
 
     @Override

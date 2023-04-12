@@ -15,8 +15,10 @@ public class InMemoryInstallationServiceDao implements InstallationServiceDao {
     }
 
     @Override
-    public void save(InstallationService installationService) {
+    public InstallationService save(InstallationService installationService) {
         services.put(installationService.getId(), installationService);
+
+        return installationService;
     }
 
     @Override

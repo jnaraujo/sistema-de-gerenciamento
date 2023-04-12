@@ -6,7 +6,7 @@ public interface Dao<T> {
     /**
      * @param t o objeto a ser salvo
      */
-    void save(T t);
+    T save(T t);
 
     /**
      * @param id o id do objeto a ser deletado

@@ -9,8 +9,10 @@ import java.util.List;
 public class InMemoryCustomerDao implements CustomerDao {
     private HashMap<String, Customer> customers = new HashMap<>();
     @Override
-    public void save(Customer customer) {
+    public Customer save(Customer customer) {
         customers.put(customer.getId(), customer);
+
+        return customer;
     }
 
     @Override
