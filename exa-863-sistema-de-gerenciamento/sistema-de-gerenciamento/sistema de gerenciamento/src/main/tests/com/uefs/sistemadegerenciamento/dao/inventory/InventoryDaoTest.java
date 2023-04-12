@@ -33,13 +33,13 @@ class InventoryDaoTest {
 
     @Test
     void testSave() {
-        inventoryDao.save(component);
+        component = inventoryDao.save(component);
         assertEquals(component, inventoryDao.findById(component.getId()));
     }
 
     @Test
     void testDelete() {
-        inventoryDao.save(component);
+        component = inventoryDao.save(component);
         assertNotNull(inventoryDao.findById(component.getId()));
         inventoryDao.delete(component.getId());
         assertNull(inventoryDao.findById(component.getId()));
@@ -47,7 +47,7 @@ class InventoryDaoTest {
 
     @Test
     void testUpdate() {
-        inventoryDao.save(component);
+        component = inventoryDao.save(component);
         assertEquals(750.00, inventoryDao.findById(component.getId()).getCostPerUnit());
 
         component.setCostPerUnit(500.00);
@@ -58,13 +58,13 @@ class InventoryDaoTest {
 
     @Test
     void testFindById() {
-        inventoryDao.save(component);
+        component = inventoryDao.save(component);
         assertEquals(component, inventoryDao.findById(component.getId()));
     }
 
     @Test
     void testGetAll() {
-        inventoryDao.save(component);
+        component = inventoryDao.save(component);
         inventoryDao.save(new ComputerComponent(
                 "Placa Mãe",
                 "Placa mãe de 8GB",

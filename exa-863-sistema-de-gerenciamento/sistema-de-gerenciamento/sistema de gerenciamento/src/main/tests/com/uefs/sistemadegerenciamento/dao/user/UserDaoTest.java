@@ -35,20 +35,21 @@ class UserDaoTest {
 
     @Test
     void testFindById(){
-        userDao.save(user);
+        user = userDao.save(user);
         assertEquals(user, userDao.findById(user.getId()));
         assertEquals(Technician.class, userDao.findById(user.getId()).getClass());
     }
 
     @Test
     void testSave() {
-        userDao.save(user);
+        user = userDao.save(user);
         assertEquals(user, userDao.findById(user.getId()));
     }
 
     @Test
     void testDelete(){
-        userDao.save(user);
+        user = userDao.save(user);
+
         assertNotNull(userDao.findById(user.getId()));
         userDao.delete(user.getId());
         assertNull(userDao.findById(user.getId()));
@@ -56,7 +57,7 @@ class UserDaoTest {
 
     @Test
     void testUpdate(){
-        userDao.save(user);
+        user = userDao.save(user);
         assertEquals("João da Silva", userDao.findById(user.getId()).getName());
 
         user.setName("José Marcio");
@@ -67,14 +68,14 @@ class UserDaoTest {
 
     @Test
     void testGetAll(){
-        Technician technician = new Technician(
+        User technician = new Technician(
                 "test",
                 "test@test.com",
                 "123456"
         );
         technician.setId(IdGenerator.generate());
 
-        userDao.save(technician);
+        technician = userDao.save(technician);
         user = userDao.save(user);
 
         assertTrue(userDao.getAll().contains(user));

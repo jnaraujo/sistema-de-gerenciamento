@@ -32,13 +32,13 @@ class InstallationServiceDaoTest {
 
     @Test
     void testSave() {
-        dao.save(installationService);
+        installationService = dao.save(installationService);
         assertEquals(installationService, dao.findById(installationService.getId()));
     }
 
     @Test
     void testDelete(){
-        dao.save(installationService);
+        installationService = dao.save(installationService);
         assertEquals(installationService, dao.findById(installationService.getId()));
 
         dao.delete(installationService.getId());
@@ -47,7 +47,7 @@ class InstallationServiceDaoTest {
 
     @Test
     void testUpdate(){
-        dao.save(installationService);
+        installationService = dao.save(installationService);
         assertEquals(70.0, dao.findById(installationService.getId()).getPrice());
 
         installationService.setPrice(150.0);
@@ -58,14 +58,14 @@ class InstallationServiceDaoTest {
 
     @Test
     void testGetAll(){
-        dao.save(installationService);
+        installationService = dao.save(installationService);
 
         InstallationService installationService2 = new InstallationService(
                 "Instalação de Windows 7",
                 50.0,
                 12.0
         );
-        dao.save(installationService2);
+        installationService2 = dao.save(installationService2);
 
         List<InstallationService> allServices = dao.getAll();
 

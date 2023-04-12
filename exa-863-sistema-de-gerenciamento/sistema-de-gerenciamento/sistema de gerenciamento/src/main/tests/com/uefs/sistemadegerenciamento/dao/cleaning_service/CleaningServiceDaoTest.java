@@ -31,13 +31,13 @@ class CleaningServiceDaoTest {
 
     @Test
     void testSave() {
-        cleaningServiceDao.save(cleaningService);
+        cleaningService = cleaningServiceDao.save(cleaningService);
         assertEquals(cleaningService, cleaningServiceDao.findById(cleaningService.getId()));
     }
 
     @Test
     void testDelete(){
-        cleaningServiceDao.save(cleaningService);
+        cleaningService = cleaningServiceDao.save(cleaningService);
         assertEquals(cleaningService, cleaningServiceDao.findById(cleaningService.getId()));
 
         cleaningServiceDao.delete(cleaningService.getId());
@@ -46,7 +46,7 @@ class CleaningServiceDaoTest {
 
     @Test
     void testUpdate(){
-        cleaningServiceDao.save(cleaningService);
+        cleaningService = cleaningServiceDao.save(cleaningService);
         assertEquals(70.0, cleaningServiceDao.findById(cleaningService.getId()).getPrice());
 
         cleaningService.setPrice(150.0);
@@ -57,13 +57,13 @@ class CleaningServiceDaoTest {
 
     @Test
     void testGetAll(){
-        cleaningServiceDao.save(cleaningService);
+        cleaningService = cleaningServiceDao.save(cleaningService);
 
         CleaningService cleaningService2 = new CleaningService(
                 50.0,
                 12.0
         );
-        cleaningServiceDao.save(cleaningService2);
+        cleaningService2 = cleaningServiceDao.save(cleaningService2);
 
         List<CleaningService> allServices = cleaningServiceDao.getAll();
 

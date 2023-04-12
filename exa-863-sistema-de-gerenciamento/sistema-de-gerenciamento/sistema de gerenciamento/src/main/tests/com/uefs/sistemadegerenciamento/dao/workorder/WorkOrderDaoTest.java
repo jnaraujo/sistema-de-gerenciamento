@@ -36,13 +36,13 @@ class WorkOrderDaoTest {
 
     @Test
     void testSave() {
-        workOrderDao.save(workOrder);
+        workOrder = workOrderDao.save(workOrder);
         assertEquals(workOrder, workOrderDao.findById(workOrder.getId()));
     }
 
     @Test
     void testDelete(){
-        workOrderDao.save(workOrder);
+        workOrder = workOrderDao.save(workOrder);
         assertNotNull(workOrderDao.findById(workOrder.getId()));
         workOrderDao.delete(workOrder.getId());
         assertNull(workOrderDao.findById(workOrder.getId()));
@@ -51,7 +51,7 @@ class WorkOrderDaoTest {
     @Test
     void testUpdate(){
         workOrder.setTechnicianId(null);
-        workOrderDao.save(workOrder);
+        workOrder = workOrderDao.save(workOrder);
         assertNull(workOrderDao.findById(workOrder.getId()).getTechnicianId());
 
         String technician = IdGenerator.generate();
@@ -79,7 +79,7 @@ class WorkOrderDaoTest {
         orders.add(workOrder);
 
         for(WorkOrder order : orders){
-            workOrderDao.save(order);
+            order = workOrderDao.save(order);
         }
 
         for(WorkOrder order : orders){
@@ -90,7 +90,7 @@ class WorkOrderDaoTest {
     @Test
     void testFindOrderByTechnicianId(){
         workOrder.setTechnicianId(IdGenerator.generate());
-        workOrderDao.save(workOrder);
+        workOrder = workOrderDao.save(workOrder);
         assertEquals(workOrder, workOrderDao.findOrderByTechnicianId(workOrder.getTechnicianId()));
     }
 
@@ -159,8 +159,8 @@ class WorkOrderDaoTest {
         calendar.set(2020, Calendar.JANUARY, 5, 4, 30, 0);
         workOrder2.setFinishedAt(calendar.getTime()); // 1 hour and 30 minutes
 
-        workOrderDao.save(workOrder);
-        workOrderDao.save(workOrder2);
+        workOrder = workOrderDao.save(workOrder);
+        workOrder2 = workOrderDao.save(workOrder2);
 
         double expected = (1 + 1.5) / 2; // 2 hour and 30 minutes / 2 = 1 hour and 15 minutes
 
@@ -186,8 +186,8 @@ class WorkOrderDaoTest {
         calendar.set(2020, Calendar.JANUARY, 5, 4, 30, 0);
         workOrder2.setFinishedAt(calendar.getTime()); // 1 hour and 30 minutes
 
-        workOrderDao.save(workOrder);
-        workOrderDao.save(workOrder2);
+        workOrder = workOrderDao.save(workOrder);
+        workOrder2 = workOrderDao.save(workOrder2);
 
         double expected = (1 + 1.5) / 2; // 2 hour and 30 minutes / 2 = 1 hour and 15 minutes
 
@@ -204,8 +204,8 @@ class WorkOrderDaoTest {
         );
         workOrder2.addService(new InstallationService("Photoshop 2022", 100.0, 70.0));
 
-        workOrderDao.save(workOrder);
-        workOrderDao.save(workOrder2);
+        workOrder = workOrderDao.save(workOrder);
+        workOrder2 = workOrderDao.save(workOrder2);
 
         double expected = (50 + 70.0) / 2;
         assertEquals(expected, workOrderDao.getAverageWorkOrderCost());
@@ -221,8 +221,8 @@ class WorkOrderDaoTest {
         );
         workOrder2.addService(new InstallationService("Windows Vista", 70.54, 70.0));
 
-        workOrderDao.save(workOrder);
-        workOrderDao.save(workOrder2);
+        workOrder = workOrderDao.save(workOrder);
+        workOrder2 = workOrderDao.save(workOrder2);
 
         double expected = (120 + 70.54) / 2;
         assertEquals(expected, workOrderDao.getAverageWorkOrderPrice());
@@ -237,8 +237,8 @@ class WorkOrderDaoTest {
         );
         workOrder2.setSatisfactionScore(5);
 
-        workOrderDao.save(workOrder);
-        workOrderDao.save(workOrder2);
+        workOrder = workOrderDao.save(workOrder);
+        workOrder2 = workOrderDao.save(workOrder2);
 
         double expected = (3 + 5) / 2;
         assertEquals(expected, workOrderDao.getAverageCustomerSatifaction());

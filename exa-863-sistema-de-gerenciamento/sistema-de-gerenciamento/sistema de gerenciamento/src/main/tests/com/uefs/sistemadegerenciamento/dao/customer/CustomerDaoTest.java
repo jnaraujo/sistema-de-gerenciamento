@@ -32,13 +32,13 @@ class CustomerDaoTest {
 
     @Test
     void testSave() {
-        customerDao.save(customer);
+        customer = customerDao.save(customer);
         assertEquals(customer, customerDao.findById(customer.getId()));
     }
 
     @Test
     void testDelete(){
-        customerDao.save(customer);
+        customer = customerDao.save(customer);
         assertEquals(customer, customerDao.findById(customer.getId()));
 
         customerDao.delete(customer.getId());
@@ -47,7 +47,7 @@ class CustomerDaoTest {
 
     @Test
     void testUpdate(){
-        customerDao.save(customer);
+        customer = customerDao.save(customer);
         assertEquals("Rua ABC", customerDao.findById(customer.getId()).getAddress());
 
         customer.setAddress("Rua XYZ");
