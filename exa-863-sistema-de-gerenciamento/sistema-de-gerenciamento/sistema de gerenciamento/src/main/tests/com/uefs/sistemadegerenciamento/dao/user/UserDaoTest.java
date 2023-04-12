@@ -78,11 +78,14 @@ class UserDaoTest {
         user = userDao.save(user);
 
         assertTrue(userDao.getAll().contains(user));
-        assertTrue(userDao.getAll().contains(new Technician(
+
+        User expected = new Technician(
                 "test",
                 "test@test.com",
                 "123456"
-        )));
+        );
+        expected.setId(technician.getId());
+        assertTrue(userDao.getAll().contains(expected));
     }
 
     @Test

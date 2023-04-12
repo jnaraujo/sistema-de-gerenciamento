@@ -18,7 +18,6 @@ class CustomerDaoTest {
     void setUp(){
         customerDao = DAOManager.getCustomerDao();
         customer = new Customer(
-                UUID.randomUUID().toString(),
                 "João da Silva",
                 "Rua ABC",
                 "99 9 9999-9999",
@@ -59,25 +58,26 @@ class CustomerDaoTest {
 
     @Test
     void testGetAll(){
-        String id = UUID.randomUUID().toString();
-
         customerDao.save(new Customer(
-                id,
                 "José da Silva",
                 "Rua MNOP",
                 "99 9 1111-9999",
                 "jose@test.com"
         ));
-        customerDao.save(customer);
+
+        customer = customerDao.save(customer);
 
         assertEquals(2, customerDao.getAll().size());
         assertTrue(customerDao.getAll().contains(customer));
-        assertTrue(customerDao.getAll().contains(new Customer(
-                id,
+
+        Customer expectedCustomer = new Customer(
                 "José da Silva",
                 "Rua MNOP",
                 "99 9 1111-9999",
                 "jose@test.com"
-        )));
+        );
+        expectedCustomer.setId(customer.getId());
+
+        assertTrue(customerDao.getAll().contains(expectedCustomer));
     }
 }

@@ -11,13 +11,11 @@ public class Customer {
     private String email;
 
     public Customer(
-        String id,
         String name,
         String address,
         String phone,
         String email
     ) {
-        this.id = id;
         this.name = name;
         this.address = address;
         this.phone = phone;
