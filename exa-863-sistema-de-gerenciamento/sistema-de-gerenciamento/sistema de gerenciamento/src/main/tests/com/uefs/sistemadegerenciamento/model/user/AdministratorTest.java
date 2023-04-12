@@ -10,11 +10,11 @@ class AdministratorTest {
     @Test
     void testReceptionist() {
         Administrator administrator = new Administrator(
-                "1",
                 "João da Silva",
                 "test@test.com",
                 "123456"
         );
+        administrator.setId("1");
 
         assertEquals("1", administrator.getId());
         assertEquals("João da Silva", administrator.getName());
