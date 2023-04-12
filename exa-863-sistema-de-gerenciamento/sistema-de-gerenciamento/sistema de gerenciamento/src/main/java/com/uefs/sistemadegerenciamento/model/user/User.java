@@ -14,13 +14,11 @@ public abstract class User {
     private UserType userType;
 
     public User(
-        String id,
         String name,
         String email,
         String password,
         UserType userType
     ) {
-        this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -109,6 +107,8 @@ public abstract class User {
             return false;
         }
         User user = (User) obj;
+
+        if(this.getId() == null || user.getId() == null) return false;
 
         return user.getId().equals(this.getId());
     }
