@@ -4,6 +4,7 @@ import com.uefs.sistemadegerenciamento.model.user.Administrator;
 import com.uefs.sistemadegerenciamento.model.user.Receptionist;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;
+import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +14,9 @@ public class InMemoryUserDao implements UserDao{
     private HashMap<String, User> users = new HashMap<>();
     @Override
     public User save(User user) {
+        String id = IdGenerator.generate();
+        user.setId(id);
+
         users.put(user.getId(), user);
 
         return user;
