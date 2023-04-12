@@ -8,8 +8,6 @@ import com.uefs.sistemadegerenciamento.dao.installation_service.InMemoryInstalla
 import com.uefs.sistemadegerenciamento.dao.installation_service.InstallationServiceDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InMemoryInventoryDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InventoryDao;
-import com.uefs.sistemadegerenciamento.dao.technician.InMemoryTechnicianDao;
-import com.uefs.sistemadegerenciamento.dao.technician.TechnicianDao;
 import com.uefs.sistemadegerenciamento.dao.user.InMemoryUserDao;
 import com.uefs.sistemadegerenciamento.dao.user.UserDao;
 import com.uefs.sistemadegerenciamento.dao.workorder.InMemoryWorkOrderDao;
@@ -21,7 +19,6 @@ import com.uefs.sistemadegerenciamento.dao.workorder.WorkOrderDao;
 public class DAOManager {
     private static CustomerDao customerDao;
     private static InventoryDao inventoryDao;
-    private static TechnicianDao technicianDao;
     private static UserDao userDao;
     private static WorkOrderDao workOrderDao;
     private static CleaningServiceDao cleaningServiceDao;
@@ -46,17 +43,6 @@ public class DAOManager {
         }
         return inventoryDao;
     }
-
-    /**
-     * @return o TechnicianDao
-     */
-    public static TechnicianDao getTechnicianDao() {
-        if(technicianDao == null){
-            technicianDao = new InMemoryTechnicianDao();
-        }
-        return technicianDao;
-    }
-
     /**
      * @return o UserDao
      */
