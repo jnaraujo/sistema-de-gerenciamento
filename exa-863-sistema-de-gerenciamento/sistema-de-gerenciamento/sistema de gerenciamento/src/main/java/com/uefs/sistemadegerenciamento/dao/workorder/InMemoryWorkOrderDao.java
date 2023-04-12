@@ -58,4 +58,63 @@ public class InMemoryWorkOrderDao implements WorkOrderDao {
         }
         return null;
     }
+
+    @Override
+    public Double getAverageTimeInHoursToRepair() {
+        double sum = 0;
+
+        for(WorkOrder order : workOrders.values()){
+            long diff = order.getFinishedAt().getTime() - order.getCreatedAt().getTime();
+            sum += diff;
+        }
+
+        double hours = sum / (60 * 60 * 1000);
+
+        return hours / workOrders.size();
+    }
+
+    @Override
+    public Double getAverageTimeInHoursToRepairByTechnician(String technicianId) {
+        double hours = 0;
+        int count = 0;
+
+        for(WorkOrder order : workOrders.values()){
+            if(order.getTechnicianId().equals(technicianId)){
+                long diff = order.getFinishedAt().getTime() - order.getCreatedAt().getTime();
+                hours += diff;
+                count++;
+            }
+        }
+
+        hours = hours / (60 * 60 * 1000);
+
+        return hours / count;
+    }
+
+    @Override
+    public Double getAverageWorkOrderCost() {
+        double sum = 0;
+        for(WorkOrder order : workOrders.values()){
+            sum += order.getCost();
+        }
+        return sum / workOrders.size();
+    }
+
+    @Override
+    public Double getAverageWorkOrderPrice() {
+        double sum = 0;
+        for(WorkOrder order : workOrders.values()){
+            sum += order.getPrice();
+        }
+        return sum / workOrders.size();
+    }
+
+    @Override
+    public Double getAverageCustomerSatifaction() {
+        double sum = 0;
+        for(WorkOrder order : workOrders.values()){
+            sum += order.getSatisfactionScore();
+        }
+        return sum / workOrders.size();
+    }
 }

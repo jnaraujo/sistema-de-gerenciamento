@@ -1,8 +1,10 @@
 package com.uefs.sistemadegerenciamento.dao.workorder;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
+import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreExeption;
 import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
+import com.uefs.sistemadegerenciamento.model.service.InstallationService;
 import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,6 +27,7 @@ class WorkOrderDaoTest {
                 "O cliente está reclamando de um problema no sistema",
                 IdGenerator.generate()
         );
+        workOrder.setTechnicianId(IdGenerator.generate());
     }
 
     @AfterEach
@@ -48,6 +51,7 @@ class WorkOrderDaoTest {
 
     @Test
     void testUpdate(){
+        workOrder.setTechnicianId(null);
         workOrderDao.save(workOrder);
         assertNull(workOrderDao.findById(workOrder.getId()).getTechnicianId());
 
@@ -141,6 +145,114 @@ class WorkOrderDaoTest {
         assertEquals(workOrder4.getId(), openOrders.get(1).getId());
         assertEquals(workOrder2.getId(), openOrders.get(2).getId());
 
+    }
+
+    @Test
+    void testGetAverageTimeInHoursToRepair() throws ServiceOrderWithoutTechnicianException {
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(2020, Calendar.JANUARY, 1, 10, 0, 0);
+        workOrder.setCreatedAt(calendar.getTime());
+        calendar.set(2020, Calendar.JANUARY, 1, 11, 0, 0);
+        workOrder.setFinishedAt(calendar.getTime()); // 1 hour
+
+        WorkOrder workOrder2 = new WorkOrder(
+                UUID.randomUUID().toString(),
+                "another work order",
+                IdGenerator.generate()
+        );
+        calendar.set(2020, Calendar.JANUARY, 5, 3, 0, 0);
+        workOrder2.setCreatedAt(calendar.getTime());
+        calendar.set(2020, Calendar.JANUARY, 5, 4, 30, 0);
+        workOrder2.setFinishedAt(calendar.getTime()); // 1 hour and 30 minutes
+
+        workOrderDao.save(workOrder);
+        workOrderDao.save(workOrder2);
+
+        double expected = (1 + 1.5) / 2; // 2 hour and 30 minutes / 2 = 1 hour and 15 minutes
+
+        assertEquals(expected, workOrderDao.getAverageTimeInHoursToRepair());
+    }
+
+    @Test
+    void testGetAverageTimeInHoursToRepairByTechnician(){
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(2020, Calendar.JANUARY, 1, 10, 0, 0);
+        workOrder.setCreatedAt(calendar.getTime());
+        calendar.set(2020, Calendar.JANUARY, 1, 11, 0, 0);
+        workOrder.setFinishedAt(calendar.getTime()); // 1 hour
+
+        WorkOrder workOrder2 = new WorkOrder(
+                UUID.randomUUID().toString(),
+                "another work order",
+                IdGenerator.generate()
+        );
+        workOrder2.setTechnicianId(workOrder.getTechnicianId());
+        calendar.set(2020, Calendar.JANUARY, 5, 3, 0, 0);
+        workOrder2.setCreatedAt(calendar.getTime());
+        calendar.set(2020, Calendar.JANUARY, 5, 4, 30, 0);
+        workOrder2.setFinishedAt(calendar.getTime()); // 1 hour and 30 minutes
+
+        workOrderDao.save(workOrder);
+        workOrderDao.save(workOrder2);
+
+        double expected = (1 + 1.5) / 2; // 2 hour and 30 minutes / 2 = 1 hour and 15 minutes
+
+        assertEquals(expected, workOrderDao.getAverageTimeInHoursToRepairByTechnician(workOrder.getTechnicianId()));
+    }
+
+    @Test
+    void testFetAverageWorkOrderCost(){
+        workOrder.addService(new InstallationService(IdGenerator.generate(), 100.0, 50.0));
+
+        WorkOrder workOrder2 = new WorkOrder(
+                UUID.randomUUID().toString(),
+                "another work order",
+                IdGenerator.generate()
+        );
+        workOrder2.addService(new InstallationService(IdGenerator.generate(), 100.0, 70.0));
+
+        workOrderDao.save(workOrder);
+        workOrderDao.save(workOrder2);
+
+        double expected = (50 + 70.0) / 2;
+        assertEquals(expected, workOrderDao.getAverageWorkOrderCost());
+    }
+
+    @Test
+    void testGetAverageWorkOrderPrice(){
+        workOrder.addService(new InstallationService(IdGenerator.generate(), 120.0, 50.0));
+
+        WorkOrder workOrder2 = new WorkOrder(
+                UUID.randomUUID().toString(),
+                "another work order",
+                IdGenerator.generate()
+        );
+        workOrder2.addService(new InstallationService(IdGenerator.generate(), 70.54, 70.0));
+
+        workOrderDao.save(workOrder);
+        workOrderDao.save(workOrder2);
+
+        double expected = (120 + 70.54) / 2;
+        assertEquals(expected, workOrderDao.getAverageWorkOrderPrice());
+    }
+
+    @Test
+    void testGetAverageCustomerSatisfaction() throws InvalidSatisfactionScoreExeption {
+        workOrder.setSatisfactionScore(3);
+        WorkOrder workOrder2 = new WorkOrder(
+                UUID.randomUUID().toString(),
+                "another work order",
+                IdGenerator.generate()
+        );
+        workOrder2.setSatisfactionScore(5);
+
+        workOrderDao.save(workOrder);
+        workOrderDao.save(workOrder2);
+
+        double expected = (3 + 5) / 2;
+        assertEquals(expected, workOrderDao.getAverageCustomerSatifaction());
     }
 
 }
