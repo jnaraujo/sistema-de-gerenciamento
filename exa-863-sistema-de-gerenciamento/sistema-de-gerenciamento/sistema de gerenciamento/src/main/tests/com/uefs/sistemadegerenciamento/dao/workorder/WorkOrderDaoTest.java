@@ -204,14 +204,14 @@ class WorkOrderDaoTest {
 
     @Test
     void testFetAverageWorkOrderCost(){
-        workOrder.addService(new InstallationService(IdGenerator.generate(), "Paint", 100.0, 50.0));
+        workOrder.addService(new InstallationService("Paint", 100.0, 50.0));
 
         WorkOrder workOrder2 = new WorkOrder(
                 UUID.randomUUID().toString(),
                 "another work order",
                 IdGenerator.generate()
         );
-        workOrder2.addService(new InstallationService(IdGenerator.generate(), "Photoshop 2022", 100.0, 70.0));
+        workOrder2.addService(new InstallationService("Photoshop 2022", 100.0, 70.0));
 
         workOrderDao.save(workOrder);
         workOrderDao.save(workOrder2);
@@ -222,14 +222,14 @@ class WorkOrderDaoTest {
 
     @Test
     void testGetAverageWorkOrderPrice(){
-        workOrder.addService(new InstallationService(IdGenerator.generate(), "Windows 12", 120.0, 50.0));
+        workOrder.addService(new InstallationService("Windows 12", 120.0, 50.0));
 
         WorkOrder workOrder2 = new WorkOrder(
                 UUID.randomUUID().toString(),
                 "another work order",
                 IdGenerator.generate()
         );
-        workOrder2.addService(new InstallationService(IdGenerator.generate(), "Windows Vista", 70.54, 70.0));
+        workOrder2.addService(new InstallationService("Windows Vista", 70.54, 70.0));
 
         workOrderDao.save(workOrder);
         workOrderDao.save(workOrder2);

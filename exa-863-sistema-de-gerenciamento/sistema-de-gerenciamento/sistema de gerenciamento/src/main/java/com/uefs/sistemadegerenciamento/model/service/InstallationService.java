@@ -12,8 +12,7 @@ public class InstallationService implements Service {
     private double cost;
     private String description;
 
-    public InstallationService(String id, String description, double price, double cost) {
-        this.id = id;
+    public InstallationService(String description, double price, double cost) {
         this.price = price;
         this.cost = cost;
         this.description = description;

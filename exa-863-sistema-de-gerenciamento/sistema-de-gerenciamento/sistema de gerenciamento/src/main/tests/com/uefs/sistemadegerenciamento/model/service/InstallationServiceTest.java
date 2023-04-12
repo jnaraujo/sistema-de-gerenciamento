@@ -13,7 +13,6 @@ class InstallationServiceTest {
         double cost = 25.0;
 
         InstallationService installationService = new InstallationService(
-                IdGenerator.generate(),
                 "Instalação de Windows 10",
                 price,
                 cost
@@ -26,7 +25,6 @@ class InstallationServiceTest {
     @Test
     void testToString() {
         InstallationService installationService = new InstallationService(
-                IdGenerator.generate(),
                 "Instalação de Windows 10",
                 50.0,
                 25.0

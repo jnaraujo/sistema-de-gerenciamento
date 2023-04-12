@@ -106,8 +106,8 @@ class UserDaoTest {
                 "",
                 ""
         );
-        userDao.save(admin);
 
+        userDao.save(admin);
         userDao.save(user);
 
         assertFalse(userDao.findAllAdministrators().contains(user));

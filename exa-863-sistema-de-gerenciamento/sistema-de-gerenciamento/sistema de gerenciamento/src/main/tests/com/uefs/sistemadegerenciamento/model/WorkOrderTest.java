@@ -95,7 +95,6 @@ class WorkOrderTest {
         ));
 
         workOrder.addService(new InstallationService(
-                IdGenerator.generate(),
                 "Windows 10",
                 200.00,
                 100.00
