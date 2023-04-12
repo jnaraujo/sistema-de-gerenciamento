@@ -1,7 +1,6 @@
 package com.uefs.sistemadegerenciamento.model.user;
 
 import com.uefs.sistemadegerenciamento.constants.UserType;
-import com.uefs.sistemadegerenciamento.model.user.User;
 
 /**
  * Classe que representa um técnico

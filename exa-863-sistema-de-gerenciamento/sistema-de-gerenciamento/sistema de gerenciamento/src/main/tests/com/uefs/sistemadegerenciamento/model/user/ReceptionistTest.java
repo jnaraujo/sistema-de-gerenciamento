@@ -1,7 +1,6 @@
 package com.uefs.sistemadegerenciamento.model.user;
 
 import com.uefs.sistemadegerenciamento.constants.UserType;
-import com.uefs.sistemadegerenciamento.model.user.Receptionist;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
