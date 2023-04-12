@@ -11,11 +11,11 @@ class UserTest {
         @Test
         void testUser() {
             User user = new Technician(
-                    "1",
                     "João da Silva",
                     "joao@test.com",
                     "123456"
             );
+            user.setId("1");
 
             assertEquals("1", user.getId());
             assertEquals("João da Silva", user.getName());
@@ -26,23 +26,25 @@ class UserTest {
         @Test
         void testEquals(){
             User technician = new Technician(
-                    "1",
                     "João",
                     "joao@test.com",
                     "4565"
             );
+            technician.setId("1");
+
             User administrator = new Administrator(
-                    "2",
                     "Pedro",
                     "pedro@test.com",
                     "123"
             );
+            administrator.setId("2");
+
             User receptionist = new Receptionist(
-                    "2",
                     "Pedro",
                     "pedro@test.com",
                     "abc"
             );
+            receptionist.setId("2");
 
             assertNotEquals(technician, administrator);
             assertNotEquals(technician, receptionist);

@@ -5,6 +5,7 @@ import com.uefs.sistemadegerenciamento.model.user.Administrator;
 import com.uefs.sistemadegerenciamento.model.user.Receptionist;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;
+import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,6 @@ class UserDaoTest {
     void setUp(){
         userDao = DAOManager.getUserDao();
         user = new Technician(
-                UUID.randomUUID().toString(),
                 "João da Silva",
                 "joao@test.com",
                 "123456"
@@ -67,17 +67,18 @@ class UserDaoTest {
 
     @Test
     void testGetAll(){
-        userDao.save(new Technician(
-                "test",
+        Technician technician = new Technician(
                 "test",
                 "test@test.com",
                 "123456"
-        ));
-        userDao.save(user);
+        );
+        technician.setId(IdGenerator.generate());
+
+        userDao.save(technician);
+        user = userDao.save(user);
 
         assertTrue(userDao.getAll().contains(user));
         assertTrue(userDao.getAll().contains(new Technician(
-                "test",
                 "test",
                 "test@test.com",
                 "123456"
@@ -88,12 +89,11 @@ class UserDaoTest {
     void testFindAllTechnicians(){
         userDao.save(new Technician(
                 "test",
-                "test",
                 "",
                 ""
         ));
 
-        userDao.save(user);
+        user = userDao.save(user);
 
         assertTrue(userDao.findAllTechnicians().contains(user));
     }
@@ -101,14 +101,13 @@ class UserDaoTest {
     @Test
     void testFindAllAdministrators(){
         User admin = new Administrator(
-                "adminid",
                 "test",
                 "",
                 ""
         );
 
-        userDao.save(admin);
-        userDao.save(user);
+        admin = userDao.save(admin);
+        user = userDao.save(user);
 
         assertFalse(userDao.findAllAdministrators().contains(user));
         assertTrue(userDao.findAllAdministrators().contains(admin));
@@ -117,14 +116,13 @@ class UserDaoTest {
     @Test
     void testFindAllReceptionists(){
         User receptionist = new Receptionist(
-                "receptionistid",
                 "test",
-                "",
-                ""
+                "test@test.com",
+                "teste"
         );
-        userDao.save(receptionist);
+        receptionist = userDao.save(receptionist);
 
-        userDao.save(user);
+        user = userDao.save(user);
 
         assertFalse(userDao.findAllReceptionists().contains(user));
         assertTrue(userDao.findAllReceptionists().contains(receptionist));

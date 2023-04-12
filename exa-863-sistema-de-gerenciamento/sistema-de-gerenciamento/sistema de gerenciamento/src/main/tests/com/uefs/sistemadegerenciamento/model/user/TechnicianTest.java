@@ -10,11 +10,11 @@ class TechnicianTest {
     @Test
     void testTechnician() {
         Technician technician = new Technician(
-                "1",
                 "João da Silva",
                 "joao@test.com",
                 "123456"
         );
+        technician.setId("1");
 
         assertEquals("1", technician.getId());
         assertEquals("João da Silva", technician.getName());
