@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.customer;
 
 import com.uefs.sistemadegerenciamento.model.Customer;
+import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +11,9 @@ public class InMemoryCustomerDao implements CustomerDao {
     private HashMap<String, Customer> customers = new HashMap<>();
     @Override
     public Customer save(Customer customer) {
+        String id = IdGenerator.generate();
+        customer.setId(id);
+
         customers.put(customer.getId(), customer);
 
         return customer;
