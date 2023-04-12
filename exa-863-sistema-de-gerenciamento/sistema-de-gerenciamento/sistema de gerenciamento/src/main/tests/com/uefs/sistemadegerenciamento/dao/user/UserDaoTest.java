@@ -104,13 +104,13 @@ class UserDaoTest {
 
     @Test
     void testFindAllAdministrators(){
-        User admin = new Administrator(
+        Administrator admin = new Administrator(
                 "test",
                 "",
                 ""
         );
 
-        admin = userDao.save(admin);
+        userDao.save(admin);
 
         assertTrue(userDao.findAllAdministrators().contains(admin));
     }

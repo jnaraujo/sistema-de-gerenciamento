@@ -240,7 +240,7 @@ class WorkOrderDaoTest {
         workOrder = workOrderDao.save(workOrder);
         workOrder2 = workOrderDao.save(workOrder2);
 
-        double expected = (3 + 5) / 2;
+        float expected = (3 + 5) / 2;
         assertEquals(expected, workOrderDao.getAverageCustomerSatifaction());
     }
 
