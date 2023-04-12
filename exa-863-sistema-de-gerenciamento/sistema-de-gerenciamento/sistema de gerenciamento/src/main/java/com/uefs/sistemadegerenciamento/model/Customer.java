@@ -4,7 +4,7 @@ package com.uefs.sistemadegerenciamento.model;
  * Classe que representa um Consumidor - o cliente da loja
  */
 public class Customer {
-    private final String id;
+    private String id;
     private String name;
     private String address;
     private String phone;
@@ -29,6 +29,14 @@ public class Customer {
      */
     public String getId() {
         return id;
+    }
+
+    /**
+     * Define o id do consumidor
+     * @param id Id do consumidor
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
