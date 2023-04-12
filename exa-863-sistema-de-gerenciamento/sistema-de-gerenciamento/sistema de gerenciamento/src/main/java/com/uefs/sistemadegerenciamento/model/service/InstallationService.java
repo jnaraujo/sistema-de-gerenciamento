@@ -7,48 +7,33 @@ import java.util.List;
  * Classe que representa um serviço de instalação de programas e/ou sistemas operacionais
  */
 public class InstallationService implements Service {
-    private final List<String> programs;
-    private String operatingSystem;
+    private String id;
     private double price;
     private double cost;
-    private String id;
+    private String description;
 
-    public InstallationService(String id, double price, double cost) {
+    public InstallationService(String id, String description, double price, double cost) {
         this.id = id;
-        this.programs = new ArrayList<>();
         this.price = price;
         this.cost = cost;
+        this.description = description;
     }
 
     /**
-     * @return Retorna a lista de programas a serem instalados
+     * @return Retorna a descrição do serviço
      */
-    public List<String> getPrograms() {
-        return programs;
+    public String getDescription() {
+        return this.description;
     }
 
     /**
-     * Adiciona um programa à lista de programas a serem instalados
-     * @param program Programa a ser adicionado à lista de programas a serem instalados
+     * Define a descrição do serviço
+     * @param description Descrição do serviço
      */
-    public void addProgram(String program) {
-        this.programs.add(program);
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    /**
-     * @return Retorna o sistema operacional a ser instalado
-     */
-    public String getOperatingSystem() {
-        return operatingSystem;
-    }
-
-    /**
-     * Define o sistema operacional a ser instalado
-     * @param operatingSystem Sistema operacional a ser instalado
-     */
-    public void setOperatingSystem(String operatingSystem) {
-        this.operatingSystem = operatingSystem;
-    }
 
     /**
      * @return Retorna o preço do serviço
@@ -99,7 +84,6 @@ public class InstallationService implements Service {
 
     @Override
     public String toString() {
-        return "InstallationService [id=" + id + ", cost=" + cost + ", price=" + price + ", programs=" + programs
-                + ", operatingSystem=" + operatingSystem + "]";
+        return "InstallationService [id=" + id + ", cost=" + cost + ", price=" + price + ", description=" + description + "]";
     }
 }

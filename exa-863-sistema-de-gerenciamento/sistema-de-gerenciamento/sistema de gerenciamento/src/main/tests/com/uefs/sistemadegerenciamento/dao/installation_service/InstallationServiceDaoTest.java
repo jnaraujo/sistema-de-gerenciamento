@@ -20,6 +20,7 @@ class InstallationServiceDaoTest {
         dao = DAOManager.getInstallationServiceDao();
         installationService = new InstallationService(
                 IdGenerator.generate(),
+                "Instalação de Windows 10",
                 70.0,
                 35.5
         );
@@ -62,6 +63,7 @@ class InstallationServiceDaoTest {
 
         InstallationService installationService2 = new InstallationService(
                 IdGenerator.generate(),
+                "Instalação de Windows 7",
                 50.0,
                 12.0
         );
