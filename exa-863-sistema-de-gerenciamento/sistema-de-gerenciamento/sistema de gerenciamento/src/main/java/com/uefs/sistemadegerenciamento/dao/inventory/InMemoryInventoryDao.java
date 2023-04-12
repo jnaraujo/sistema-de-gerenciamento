@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.inventory;
 
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
+import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +17,9 @@ public class InMemoryInventoryDao implements InventoryDao {
 
     @Override
     public ComputerComponent save(ComputerComponent component) {
+        String id = IdGenerator.generate();
+        component.setId(id);
+
         components.put(component.getId(), component);
 
         return component;
