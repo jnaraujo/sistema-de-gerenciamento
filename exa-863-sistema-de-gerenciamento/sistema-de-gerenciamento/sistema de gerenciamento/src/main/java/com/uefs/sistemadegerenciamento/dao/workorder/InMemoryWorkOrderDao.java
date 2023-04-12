@@ -2,6 +2,7 @@ package com.uefs.sistemadegerenciamento.dao.workorder;
 
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
+import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 
 import java.util.*;
 
@@ -9,6 +10,9 @@ public class InMemoryWorkOrderDao implements WorkOrderDao {
     private HashMap<String, WorkOrder> workOrders = new HashMap<>();
     @Override
     public void save(WorkOrder workOrder) {
+        String id = IdGenerator.generate();
+        workOrder.setId(id);
+
         workOrders.put(workOrder.getId(), workOrder);
     }
 
