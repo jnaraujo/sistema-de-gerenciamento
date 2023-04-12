@@ -13,7 +13,7 @@ import java.util.List;
  * Classe que representa uma ordem de serviço
  */
 public class WorkOrder {
-    private final String id;
+    private String id;
     private String customerId;
     private String technicianId;
     private String status = OrderStatus.OPEN;
@@ -133,6 +133,14 @@ public class WorkOrder {
      */
     public String getId() {
         return id;
+    }
+
+    /**
+     * Altera o id da ordem de serviço
+     * @param id Novo id da ordem de serviço
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
