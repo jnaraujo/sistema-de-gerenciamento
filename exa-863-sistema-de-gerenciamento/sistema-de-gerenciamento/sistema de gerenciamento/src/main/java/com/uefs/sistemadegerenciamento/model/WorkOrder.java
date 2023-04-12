@@ -24,11 +24,9 @@ public class WorkOrder {
     private int satisfactionScore;
 
     public WorkOrder(
-        String id,
         String description,
         String customerId
     ) {
-        this.id = id;
         this.customerId = customerId;
         this.description = description;
 
@@ -123,6 +121,9 @@ public class WorkOrder {
             return false;
         }
         WorkOrder workOrder = (WorkOrder) obj;
+
+        if(workOrder.getId() == null || this.id == null) return false;
+
         return workOrder.getId().equals(this.id);
     }
 

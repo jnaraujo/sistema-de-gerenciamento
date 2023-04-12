@@ -26,10 +26,10 @@ class WorkOrderTest {
         customerId = IdGenerator.generate();
         technicianId = IdGenerator.generate();
         workOrder = new WorkOrder(
-                "1",
                 "urgent work order",
                 customerId
         );
+        workOrder.setId("1");
     }
 
 
@@ -83,10 +83,10 @@ class WorkOrderTest {
     @Test
     void testWorkOrderAddService() {
         WorkOrder workOrder = new WorkOrder(
-                "1",
                 "customer is complaining",
                 customerId
         );
+        workOrder.setId("1");
 
         workOrder.addService(new CleaningService(
                 100.00,

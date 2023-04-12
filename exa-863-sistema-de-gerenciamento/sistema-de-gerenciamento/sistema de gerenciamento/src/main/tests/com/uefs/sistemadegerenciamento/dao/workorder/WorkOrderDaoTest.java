@@ -23,7 +23,6 @@ class WorkOrderDaoTest {
     void setUp() {
         workOrderDao = DAOManager.getWorkOrderDao();
         workOrder = new WorkOrder(
-                UUID.randomUUID().toString(),
                 "O cliente está reclamando de um problema no sistema",
                 IdGenerator.generate()
         );
@@ -68,13 +67,11 @@ class WorkOrderDaoTest {
         List<WorkOrder> orders = new ArrayList<>();
         orders.add(
                 new WorkOrder(
-                        UUID.randomUUID().toString(),
                         "another work order",
                         IdGenerator.generate()
                 ));
         orders.add(
                 new WorkOrder(
-                        UUID.randomUUID().toString(),
                         "yet another work order",
                         IdGenerator.generate()
                 )
@@ -107,7 +104,6 @@ class WorkOrderDaoTest {
         Calendar calendar = Calendar.getInstance();
 
         WorkOrder workOrder2 = new WorkOrder(
-                UUID.randomUUID().toString(),
                 "another work order",
                 IdGenerator.generate()
         );
@@ -116,7 +112,6 @@ class WorkOrderDaoTest {
         workOrder2.setCreatedAt(calendar.getTime());
 
         WorkOrder workOrder3 = new WorkOrder(
-                UUID.randomUUID().toString(),
                 "yet another work order",
                 IdGenerator.generate()
         );
@@ -124,7 +119,6 @@ class WorkOrderDaoTest {
         workOrder3.setCreatedAt(calendar.getTime());
 
         WorkOrder workOrder4 = new WorkOrder(
-                UUID.randomUUID().toString(),
                 "yet another work order",
                 IdGenerator.generate()
         );
@@ -134,10 +128,10 @@ class WorkOrderDaoTest {
         workOrder.setTechnicianId(IdGenerator.generate());
         workOrder.finish();
 
-        workOrderDao.save(workOrder);
-        workOrderDao.save(workOrder2);
-        workOrderDao.save(workOrder3);
-        workOrderDao.save(workOrder4);
+        workOrder = workOrderDao.save(workOrder);
+        workOrder2 = workOrderDao.save(workOrder2);
+        workOrder3 = workOrderDao.save(workOrder3);
+        workOrder4 = workOrderDao.save(workOrder4);
 
         List<WorkOrder> openOrders = workOrderDao.findOpenWorkOrders();
 
@@ -157,7 +151,6 @@ class WorkOrderDaoTest {
         workOrder.setFinishedAt(calendar.getTime()); // 1 hour
 
         WorkOrder workOrder2 = new WorkOrder(
-                UUID.randomUUID().toString(),
                 "another work order",
                 IdGenerator.generate()
         );
@@ -184,7 +177,6 @@ class WorkOrderDaoTest {
         workOrder.setFinishedAt(calendar.getTime()); // 1 hour
 
         WorkOrder workOrder2 = new WorkOrder(
-                UUID.randomUUID().toString(),
                 "another work order",
                 IdGenerator.generate()
         );
@@ -207,7 +199,6 @@ class WorkOrderDaoTest {
         workOrder.addService(new InstallationService("Paint", 100.0, 50.0));
 
         WorkOrder workOrder2 = new WorkOrder(
-                UUID.randomUUID().toString(),
                 "another work order",
                 IdGenerator.generate()
         );
@@ -225,7 +216,6 @@ class WorkOrderDaoTest {
         workOrder.addService(new InstallationService("Windows 12", 120.0, 50.0));
 
         WorkOrder workOrder2 = new WorkOrder(
-                UUID.randomUUID().toString(),
                 "another work order",
                 IdGenerator.generate()
         );
@@ -242,7 +232,6 @@ class WorkOrderDaoTest {
     void testGetAverageCustomerSatisfaction() throws InvalidSatisfactionScoreExeption {
         workOrder.setSatisfactionScore(3);
         WorkOrder workOrder2 = new WorkOrder(
-                UUID.randomUUID().toString(),
                 "another work order",
                 IdGenerator.generate()
         );
