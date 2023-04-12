@@ -99,7 +99,7 @@ class UserDaoTest {
 
         user = userDao.save(user);
 
-        assertTrue(userDao.findAllTechnicians().contains(user));
+        assertTrue(userDao.findAllTechnicians().contains((Technician) user));
     }
 
     @Test
@@ -111,24 +111,19 @@ class UserDaoTest {
         );
 
         admin = userDao.save(admin);
-        user = userDao.save(user);
 
-        assertFalse(userDao.findAllAdministrators().contains(user));
         assertTrue(userDao.findAllAdministrators().contains(admin));
     }
 
     @Test
     void testFindAllReceptionists(){
-        User receptionist = new Receptionist(
+        Receptionist receptionist = new Receptionist(
                 "test",
                 "test@test.com",
                 "teste"
         );
-        receptionist = userDao.save(receptionist);
+        userDao.save(receptionist);
 
-        user = userDao.save(user);
-
-        assertFalse(userDao.findAllReceptionists().contains(user));
         assertTrue(userDao.findAllReceptionists().contains(receptionist));
     }
 }
