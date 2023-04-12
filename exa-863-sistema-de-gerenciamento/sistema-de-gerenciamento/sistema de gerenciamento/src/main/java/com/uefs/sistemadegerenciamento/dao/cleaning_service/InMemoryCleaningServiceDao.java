@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.cleaning_service;
 
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;
+import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +17,9 @@ public class InMemoryCleaningServiceDao implements CleaningServiceDao{
 
     @Override
     public CleaningService save(CleaningService cleaningService) {
+        String id = IdGenerator.generate();
+        cleaningService.setId(id);
+
         cleaningServices.put(cleaningService.getId(), cleaningService);
 
         return cleaningService;
