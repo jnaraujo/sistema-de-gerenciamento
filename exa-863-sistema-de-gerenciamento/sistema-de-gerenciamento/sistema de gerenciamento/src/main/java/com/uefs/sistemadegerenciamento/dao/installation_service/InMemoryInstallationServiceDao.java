@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.installation_service;
 
 import com.uefs.sistemadegerenciamento.model.service.InstallationService;
+import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +17,9 @@ public class InMemoryInstallationServiceDao implements InstallationServiceDao {
 
     @Override
     public InstallationService save(InstallationService installationService) {
+        String id = IdGenerator.generate();
+        installationService.setId(id);
+
         services.put(installationService.getId(), installationService);
 
         return installationService;
