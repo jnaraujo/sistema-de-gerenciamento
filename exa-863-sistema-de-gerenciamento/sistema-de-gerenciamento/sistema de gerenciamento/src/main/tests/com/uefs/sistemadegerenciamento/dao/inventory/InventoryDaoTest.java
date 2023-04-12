@@ -18,7 +18,6 @@ class InventoryDaoTest {
     void setUp() {
         inventoryDao = DAOManager.getInventoryDao();
         component = new ComputerComponent(
-                UUID.randomUUID().toString(),
                 "Placa de Vídeo",
                 "Placa de vídeo de 8GB",
                 1500.00,
@@ -67,7 +66,6 @@ class InventoryDaoTest {
     void testGetAll() {
         inventoryDao.save(component);
         inventoryDao.save(new ComputerComponent(
-                UUID.randomUUID().toString(),
                 "Placa Mãe",
                 "Placa mãe de 8GB",
                 1500.00,

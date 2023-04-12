@@ -101,7 +101,6 @@ class WorkOrderTest {
 
         BuildingService buildingService = new BuildingService();
         buildingService.addComponent(new ComputerComponent(
-                UUID.randomUUID().toString(),
                 "HYPERX 8GB 2400MHz",
                 "HYPERX",
                 200.0,

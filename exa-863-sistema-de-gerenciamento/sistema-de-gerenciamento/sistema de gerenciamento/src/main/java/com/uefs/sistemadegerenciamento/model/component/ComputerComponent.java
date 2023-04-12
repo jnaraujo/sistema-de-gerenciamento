@@ -11,9 +11,13 @@ public class ComputerComponent implements Component {
     private Double costPerUnit;
     private Integer quantity;
 
-    public ComputerComponent(String id, String name, String manufacturer, Double pricePerUnit, Double costPerUnit,
-                             Integer quantity) {
-        this.id = id;
+    public ComputerComponent(
+            String name,
+            String manufacturer,
+            Double pricePerUnit,
+            Double costPerUnit,
+            Integer quantity
+    ) {
         this.name = name;
         this.manufacturer = manufacturer;
         this.pricePerUnit = pricePerUnit;

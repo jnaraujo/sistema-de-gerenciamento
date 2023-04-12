@@ -12,14 +12,14 @@ class ComputerComponentTest {
 
     @BeforeEach
     void setUp() {
-        this.computerComponent = new ComputerComponent(
-                "1",
+        computerComponent = new ComputerComponent(
                 "HYPERX 8GB 2400MHz",
                 "HYPERX",
                 200.0,
                 100.0,
                 1
         );
+        computerComponent.setId("1");
     }
 
     @Test

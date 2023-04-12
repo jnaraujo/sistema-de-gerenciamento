@@ -13,7 +13,6 @@ class BuildingServiceTest {
         BuildingService buildingService = new BuildingService();
 
         buildingService.addComponent(new ComputerComponent(
-                "1",
                 "HYPERX 8GB 2400MHz",
                 "HYPERX",
                 200.0,
@@ -21,7 +20,6 @@ class BuildingServiceTest {
                 1
         ));
         buildingService.addComponent(new ComputerComponent(
-                "2",
                 "HYPERX 8GB 2400MHz",
                 "HYPERX",
                 200.0,
