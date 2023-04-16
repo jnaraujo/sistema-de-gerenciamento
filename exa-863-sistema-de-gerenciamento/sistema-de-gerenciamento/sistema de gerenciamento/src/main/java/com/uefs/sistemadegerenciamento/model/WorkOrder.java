@@ -16,7 +16,7 @@ public class WorkOrder {
     private String id;
     private String customerId;
     private String technicianId;
-    private String status = OrderStatus.OPEN;
+    private String status;
     private String description;
     private final List<Service> services;
     private Date createdAt;
@@ -33,6 +33,12 @@ public class WorkOrder {
 
         this.services = new ArrayList<>();
         this.createdAt = new Date();
+
+        this.satisfactionScore = 0;
+        this.paymentMethod = null;
+        this.technicianId = null;
+        this.status = OrderStatus.OPEN;
+        this.id = null;
     }
 
     /**

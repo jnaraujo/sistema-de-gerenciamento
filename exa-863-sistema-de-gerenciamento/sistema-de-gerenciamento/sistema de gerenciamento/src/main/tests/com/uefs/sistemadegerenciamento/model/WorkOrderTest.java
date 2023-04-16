@@ -44,6 +44,7 @@ class WorkOrderTest {
         assertNotNull(workOrder.getCreatedAt());
         assertNull(workOrder.getFinishedAt());
         assertEquals(null, workOrder.getPaymentMethod());
+        assertEquals(0, workOrder.getSatisfactionScore());
     }
 
     @Test
