@@ -71,4 +71,44 @@ class InventoryDaoTest {
         ));
         assertEquals(2, inventoryDao.getAll().size());
     }
+
+    @Test
+    void testGetAveragePrice() {
+        component = inventoryDao.save(component); // 1500.00
+        inventoryDao.save(new ComputerComponent(
+                "Placa Mãe",
+                "Placa mãe de 8GB",
+                1500.00,
+                750.00,
+                2
+        )); // 3000.00
+        assertEquals(1500.00, inventoryDao.getAveragePrice());
+    }
+
+    @Test
+    void testGetAverageCost() {
+        component = inventoryDao.save(component); // 750.00
+        inventoryDao.save(new ComputerComponent(
+                "Placa Mãe",
+                "Placa mãe de 8GB",
+                1500.00,
+                750.00,
+                2
+        ));
+        double average = (1500.00 + 750.00) / 3;
+        assertEquals(average, inventoryDao.getAverageCost());
+    }
+
+    @Test
+    void testFindAvailableComponents() {
+        component = inventoryDao.save(component);
+        inventoryDao.save(new ComputerComponent(
+                "Placa Mãe",
+                "Placa mãe de 8GB",
+                1500.00,
+                750.00,
+                0
+        ));
+        assertEquals(component.getId(), inventoryDao.findAvailableComponents().get(0).getId());
+    }
 }

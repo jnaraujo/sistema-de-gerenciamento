@@ -49,4 +49,42 @@ public class InMemoryInventoryDao implements InventoryDao {
     public void deleteAll() {
         components.clear();
     }
+
+    @Override
+    public double getAveragePrice() {
+        double average = 0;
+        int quantity = 0;
+
+        for (ComputerComponent component : components.values()) {
+            average += component.getPricePerUnit() * component.getQuantity();
+            quantity += component.getQuantity();
+        }
+
+        return average / quantity;
+    }
+
+    @Override
+    public double getAverageCost() {
+        double average = 0;
+        int quantity = 0;
+
+        for (ComputerComponent component : components.values()) {
+            average += component.getCostPerUnit() * component.getQuantity();
+            quantity += component.getQuantity();
+        }
+        return average / quantity;
+    }
+
+    @Override
+    public List<ComputerComponent> findAvailableComponents() {
+        List<ComputerComponent> availableComponents = new ArrayList<>();
+
+        for (ComputerComponent component : components.values()) {
+            if (component.getQuantity() > 0) {
+                availableComponents.add(component);
+            }
+        }
+
+        return availableComponents;
+    }
 }
