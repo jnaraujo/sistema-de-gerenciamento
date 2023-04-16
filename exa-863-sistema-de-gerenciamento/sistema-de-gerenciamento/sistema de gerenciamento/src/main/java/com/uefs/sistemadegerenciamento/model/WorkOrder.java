@@ -22,6 +22,7 @@ public class WorkOrder {
     private Date createdAt;
     private Date finishedAt;
     private int satisfactionScore;
+    private String paymentMethod;
 
     public WorkOrder(
         String description,
@@ -250,6 +251,20 @@ public class WorkOrder {
         if(satisfactionScore < 0 || satisfactionScore > 5)
             throw new InvalidSatisfactionScoreExeption("A nota de satisfação deve estar entre 0 e 5");
         this.satisfactionScore = satisfactionScore;
+    }
+
+    /**
+     * @return Retorna o método de pagamento da ordem de serviço
+     */
+    String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    /**
+     * Define o método de pagamento da ordem de serviço
+     */
+    void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     @Override

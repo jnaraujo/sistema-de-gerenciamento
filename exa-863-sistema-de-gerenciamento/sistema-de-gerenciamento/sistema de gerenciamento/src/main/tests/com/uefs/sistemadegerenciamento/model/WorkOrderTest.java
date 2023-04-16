@@ -43,6 +43,7 @@ class WorkOrderTest {
         assertTrue(workOrder.isOngoing());
         assertNotNull(workOrder.getCreatedAt());
         assertNull(workOrder.getFinishedAt());
+        assertEquals(null, workOrder.getPaymentMethod());
     }
 
     @Test
