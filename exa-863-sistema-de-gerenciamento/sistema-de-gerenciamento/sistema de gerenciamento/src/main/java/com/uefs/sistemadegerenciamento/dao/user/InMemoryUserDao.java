@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.dao.user;
 
+import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.model.user.Administrator;
 import com.uefs.sistemadegerenciamento.model.user.Receptionist;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
@@ -51,7 +52,7 @@ public class InMemoryUserDao implements UserDao{
     public List<Technician> findAllTechnicians() {
         List<Technician> technicians = new ArrayList<>();
         for (User user : users.values()) {
-            if (user instanceof Technician) {
+            if (user.getUserType().equals(UserType.TECHNICIAN)) {
                 technicians.add((Technician) user);
             }
         }
@@ -62,7 +63,7 @@ public class InMemoryUserDao implements UserDao{
     public List<Administrator> findAllAdministrators() {
         List<Administrator> administrators = new ArrayList<>();
         for (User user : users.values()) {
-            if (user instanceof Administrator) {
+            if (user.getUserType().equals(UserType.ADMINISTRATOR)) {
                 administrators.add((Administrator) user);
             }
         }
@@ -73,7 +74,7 @@ public class InMemoryUserDao implements UserDao{
     public List<Receptionist> findAllReceptionists() {
         List<Receptionist> receptionists = new ArrayList<>();
         for (User user : users.values()) {
-            if (user instanceof Receptionist) {
+            if (user.getUserType().equals(UserType.RECEPCIONIST)) {
                 receptionists.add((Receptionist) user);
             }
         }
