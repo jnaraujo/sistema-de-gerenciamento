@@ -26,6 +26,6 @@ class ReceptionistTest {
         assertEquals("João da Silva Junior", receptionist.getName());
         assertEquals("joao@test.com", receptionist.getEmail());
 
-        assertEquals(UserType.RECEPCIONIST, receptionist.getUserType());
+        assertEquals(UserType.RECEPTIONIST, receptionist.getUserType());
     }
 }

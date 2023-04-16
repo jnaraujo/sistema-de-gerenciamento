@@ -11,6 +11,6 @@ public class Receptionist extends User {
         String email,
         String password
     ) {
-        super(name, email, password, UserType.RECEPCIONIST);
+        super(name, email, password, UserType.RECEPTIONIST);
     }
 }

@@ -74,7 +74,7 @@ public class InMemoryUserDao implements UserDao{
     public List<Receptionist> findAllReceptionists() {
         List<Receptionist> receptionists = new ArrayList<>();
         for (User user : users.values()) {
-            if (user.getUserType().equals(UserType.RECEPCIONIST)) {
+            if (user.getUserType().equals(UserType.RECEPTIONIST)) {
                 receptionists.add((Receptionist) user);
             }
         }
