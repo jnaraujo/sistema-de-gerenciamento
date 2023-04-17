@@ -14,11 +14,15 @@ import com.uefs.sistemadegerenciamento.dao.workorder.InMemoryWorkOrderDao;
 import com.uefs.sistemadegerenciamento.dao.workorder.WorkOrderDao;
 
 /**
+ * <p>
  * Classe que gerencia os DAOs do sistema
  * Oferece métodos estáticos para obter os DAOs
+ * </p>
  *
+ * <p>
  * Se não houve nenhum DAO criado, cria um DAO em memória
  * se já houve um DAO criado, retorna o mesmo
+ * </p>
  *
  * @see CustomerDao
  * @see InventoryDao
