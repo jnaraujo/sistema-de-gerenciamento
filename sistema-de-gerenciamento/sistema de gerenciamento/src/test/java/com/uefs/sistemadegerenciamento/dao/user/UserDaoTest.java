@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.user;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
+import com.uefs.sistemadegerenciamento.dao.user.UserDao;
 import com.uefs.sistemadegerenciamento.model.user.Administrator;
 import com.uefs.sistemadegerenciamento.model.user.Receptionist;
 import com.uefs.sistemadegerenciamento.model.user.Technician;

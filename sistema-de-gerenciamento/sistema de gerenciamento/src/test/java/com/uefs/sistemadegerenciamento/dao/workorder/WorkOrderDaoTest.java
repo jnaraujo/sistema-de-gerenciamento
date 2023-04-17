@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.workorder;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
+import com.uefs.sistemadegerenciamento.dao.workorder.WorkOrderDao;
 import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreException;
 import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;

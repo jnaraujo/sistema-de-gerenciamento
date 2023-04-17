@@ -1,5 +1,9 @@
 package com.uefs.sistemadegerenciamento.model.user;
 
+import com.uefs.sistemadegerenciamento.model.user.Administrator;
+import com.uefs.sistemadegerenciamento.model.user.Receptionist;
+import com.uefs.sistemadegerenciamento.model.user.Technician;
+import com.uefs.sistemadegerenciamento.model.user.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

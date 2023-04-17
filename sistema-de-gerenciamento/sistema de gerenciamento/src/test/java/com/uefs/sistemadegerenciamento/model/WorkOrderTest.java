@@ -2,6 +2,7 @@ package com.uefs.sistemadegerenciamento.model;
 
 import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreException;
 import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
+import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import com.uefs.sistemadegerenciamento.model.service.BuildingService;
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;

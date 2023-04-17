@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.inventory;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
+import com.uefs.sistemadegerenciamento.dao.inventory.InventoryDao;
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

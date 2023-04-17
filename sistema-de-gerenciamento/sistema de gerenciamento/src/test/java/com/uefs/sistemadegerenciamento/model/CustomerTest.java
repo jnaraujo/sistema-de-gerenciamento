@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.model;
 
+import com.uefs.sistemadegerenciamento.model.Customer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

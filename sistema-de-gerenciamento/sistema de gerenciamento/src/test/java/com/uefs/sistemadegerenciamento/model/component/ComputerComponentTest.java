@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.model.component;
 
+import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

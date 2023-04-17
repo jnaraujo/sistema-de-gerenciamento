@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.model.service;
 
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
+import com.uefs.sistemadegerenciamento.model.service.BuildingService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

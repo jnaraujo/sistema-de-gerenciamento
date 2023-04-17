@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.customer;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
+import com.uefs.sistemadegerenciamento.dao.customer.CustomerDao;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

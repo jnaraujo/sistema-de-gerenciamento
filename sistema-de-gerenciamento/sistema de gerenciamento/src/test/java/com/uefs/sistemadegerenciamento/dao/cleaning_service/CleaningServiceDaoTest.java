@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.cleaning_service;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
+import com.uefs.sistemadegerenciamento.dao.cleaning_service.CleaningServiceDao;
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

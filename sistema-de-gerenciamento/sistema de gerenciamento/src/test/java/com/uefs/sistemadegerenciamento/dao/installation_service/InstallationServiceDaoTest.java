@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.installation_service;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
+import com.uefs.sistemadegerenciamento.dao.installation_service.InstallationServiceDao;
 import com.uefs.sistemadegerenciamento.model.service.InstallationService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
