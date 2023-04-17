@@ -1,21 +1,28 @@
 package com.uefs.sistemadegerenciamento.model.component;
 
 /**
- * Interface que representa um componente
+ * Interface que representa um componente do sistema.
+ * Um componente é qualquer objeto que pode ser adicionado a um produto.
+ *
+ * @see ComputerComponent
+ * @see OtherComponent
  */
 public interface Component {
     /**
-     * @return Retorna o preço do componente
+     * Retorna o nome do componente.
+     * @return o preço do componente
      */
     Double getPricePerUnit();
 
     /**
-     * @return Retorna o custo do componente
+     * Retorna o custo do componente.
+     * @return o custo do componente
      */
     Double getCostPerUnit();
 
     /**
-     * @return Retorna a quantidade do componente
+     * Retorna a quantidade do componente.
+     * @return a quantidade do componente
      */
     Integer getQuantity();
 }
