@@ -1,7 +1,14 @@
 package com.uefs.sistemadegerenciamento.model;
 
 /**
- * Classe que representa um Consumidor - o cliente da loja
+ * <p>
+ *     Classe que representa um consumidor no sistema
+ * </p>
+ * <p>
+ *     A classe contém os atributos id, nome, endereço, telefone e email
+ * </p>
+ *
+ * @see WorkOrder
  */
 public class Customer {
     private String id;
@@ -10,6 +17,13 @@ public class Customer {
     private String phone;
     private String email;
 
+    /**
+     * Criar um consumidor com os atributos id, nome, endereço, telefone e email
+     * @param name Nome do consumidor
+     * @param address Endereço do consumidor
+     * @param phone Telefone do consumidor
+     * @param email Email do consumidor
+     */
     public Customer(
         String name,
         String address,
@@ -23,7 +37,8 @@ public class Customer {
     }
 
     /**
-     * @return Retorna o id do consumidor
+     * Retorna o id do consumidor
+     * @return o id do consumidor
      */
     public String getId() {
         return id;
@@ -38,7 +53,8 @@ public class Customer {
     }
 
     /**
-     * @return Retorna o nome do consumidor
+     * Retorna o nome do consumidor
+     * @return o nome do consumidor
      */
     public String getName() {
         return name;
@@ -53,7 +69,8 @@ public class Customer {
     }
 
     /**
-     * @return Retorna o endereço do consumidor
+     * Retorna o endereço do consumidor
+     * @return o endereço do consumidor
      */
     public String getAddress() {
         return address;
@@ -68,7 +85,8 @@ public class Customer {
     }
 
     /**
-     * @return Retorna o telefone do consumidor
+     * Retorna o telefone do consumidor
+     * @return o telefone do consumidor
      */
     public String getPhone() {
         return phone;
@@ -83,7 +101,8 @@ public class Customer {
     }
 
     /**
-     * @return Retorna o email do consumidor
+     * Retorna o email do consumidor
+     * @return o email do consumidor
      */
     public String getEmail() {
         return email;
