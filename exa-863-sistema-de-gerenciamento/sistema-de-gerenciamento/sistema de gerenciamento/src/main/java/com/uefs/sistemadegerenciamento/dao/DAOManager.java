@@ -14,7 +14,19 @@ import com.uefs.sistemadegerenciamento.dao.workorder.InMemoryWorkOrderDao;
 import com.uefs.sistemadegerenciamento.dao.workorder.WorkOrderDao;
 
 /**
- * Classe que gerencia os DAOs
+ * Classe que gerencia os DAOs do sistema
+ * Oferece métodos estáticos para obter os DAOs
+ *
+ * Se não houve nenhum DAO criado, cria um DAO em memória
+ * se já houve um DAO criado, retorna o mesmo
+ *
+ * @see CustomerDao
+ * @see InventoryDao
+ * @see UserDao
+ * @see WorkOrderDao
+ * @see CleaningServiceDao
+ * @see InstallationServiceDao
+ * @see InMemoryCustomerDao
  */
 public class DAOManager {
     private static CustomerDao customerDao;
@@ -25,6 +37,7 @@ public class DAOManager {
     private static InstallationServiceDao installationServiceDao;
 
     /**
+     * Retorna o DAO para gerenciamento de clientes.
      * @return o CustomerDao
      */
     public static CustomerDao getCustomerDao() {
@@ -35,6 +48,7 @@ public class DAOManager {
     }
 
     /**
+     * Retorna o DAO para gerenciamento de inventário.
      * @return o InventoryDao
      */
     public static InventoryDao getInventoryDao() {
@@ -44,6 +58,7 @@ public class DAOManager {
         return inventoryDao;
     }
     /**
+     * Retorna o DAO para gerenciamento de usuários.
      * @return o UserDao
      */
     public static UserDao getUserDao() {
@@ -54,6 +69,7 @@ public class DAOManager {
     }
 
     /**
+     * Retorna o DAO para gerenciamento de ordens de serviço.
      * @return o WorkOrderDao
      */
     public static WorkOrderDao getWorkOrderDao() {
@@ -63,6 +79,10 @@ public class DAOManager {
         return workOrderDao;
     }
 
+    /**
+     * Retorna o DAO para gerenciamento de serviços de limpeza.
+     * @return o CleaningServiceDao
+     */
     public static CleaningServiceDao getCleaningServiceDao(){
         if(cleaningServiceDao == null){
             cleaningServiceDao = new InMemoryCleaningServiceDao();
@@ -70,6 +90,10 @@ public class DAOManager {
         return cleaningServiceDao;
     }
 
+    /**
+     * Retorna o DAO para gerenciamento de serviços de instalação.
+     * @return o InstallationServiceDao
+     */
     public static InstallationServiceDao getInstallationServiceDao(){
         if(installationServiceDao == null){
             installationServiceDao = new InMemoryInstallationServiceDao();
