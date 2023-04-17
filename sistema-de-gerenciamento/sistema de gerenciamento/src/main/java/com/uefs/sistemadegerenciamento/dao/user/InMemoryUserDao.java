@@ -20,7 +20,20 @@ import java.util.List;
  * @author Jônatas Araújo
  */
 public class InMemoryUserDao implements UserDao{
-    private HashMap<String, User> users = new HashMap<>();
+    private HashMap<String, User> users;
+
+    /**
+     * Cria um novo {@link InMemoryUserDao}.
+     */
+    public InMemoryUserDao() {
+        users = new HashMap<>();
+    }
+
+    /**
+     * Salva um usuário.
+     * @param user Usuário a ser salvo.
+     * @return Usuário salvo com o ID gerado.
+     */
     @Override
     public User save(User user) {
         String id = IdGenerator.generate();
@@ -31,31 +44,55 @@ public class InMemoryUserDao implements UserDao{
         return user;
     }
 
+    /**
+     * Deleta um usuário pelo ID.
+     * @param userID ID do usuário a ser deletado.
+     */
     @Override
     public void delete(String userID) {
         users.remove(userID);
     }
 
+    /**
+     * Atualiza um usuário.
+     * @param user Usuário a ser atualizado.
+     */
     @Override
     public void update(User user) {
         users.replace(user.getId(), user);
     }
 
+    /**
+     * Busca um usuário pelo ID.
+     * @param id ID do usuário a ser buscado.
+     * @return Usuário com o ID informado.
+     */
     @Override
     public User findById(String id) {
         return users.get(id);
     }
 
+    /**
+     * @param email Email do usuário a ser buscado.
+     * @return Todos os usuários cadastrados.
+     */
     @Override
     public List<User> getAll() {
         return new ArrayList<>(users.values());
     }
 
+    /**
+     * Deleta todos os usuários.
+     */
     @Override
     public void deleteAll() {
         users.clear();
     }
 
+    /**
+     * Retorna todos os {@link Technician} cadastrados.
+     * @return Todos os técnicos cadastrados.
+     */
     @Override
     public List<Technician> findAllTechnicians() {
         List<Technician> technicians = new ArrayList<>();
@@ -67,6 +104,10 @@ public class InMemoryUserDao implements UserDao{
         return technicians;
     }
 
+    /**
+     * Retorna todos os {@link Administrator} cadastrados.
+     * @return Todos os administradores cadastrados.
+     */
     @Override
     public List<Administrator> findAllAdministrators() {
         List<Administrator> administrators = new ArrayList<>();
@@ -78,6 +119,10 @@ public class InMemoryUserDao implements UserDao{
         return administrators;
     }
 
+    /**
+     * Retorna todos os {@link Receptionist} cadastrados.
+     * @return Todos os recepcionistas cadastrados.
+     */
     @Override
     public List<Receptionist> findAllReceptionists() {
         List<Receptionist> receptionists = new ArrayList<>();
