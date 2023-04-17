@@ -4,7 +4,14 @@ package com.uefs.sistemadegerenciamento.model.user;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 
 /**
- * Classe que representa um usuário do sistema.
+ * Classe abstrata que representa um usuário do sistema.
+ *
+ * Possui campos para o identificador (id), nome, e-mail, senha e tipo de usuário.
+ *
+ * Essa classe deve ser estendida por outras classes para adicionar comportamentos específicos
+ * de acordo com o tipo de usuário, como por exemplo, um administrador, um cliente, um funcionário, etc.
+ *
+ * Além disso, essa classe implementa os métodos equals e toString.
  */
 public abstract class User {
     private String id;
@@ -13,6 +20,12 @@ public abstract class User {
     private String password;
     private UserType userType;
 
+    /**
+     * @param name Nome do usuário
+     * @param email Email do usuário
+     * @param password Senha do usuário
+     * @param userType Tipo do usuário
+     */
     public User(
         String name,
         String email,
@@ -27,6 +40,7 @@ public abstract class User {
     }
 
     /**
+     * Retorna o id do usuário
      * @return Retorna o id do usuário
      */
     public String getId() {
@@ -42,7 +56,8 @@ public abstract class User {
     }
 
     /**
-     * @return Retorna o nome do usuário
+     * Retorna o nome do usuário
+     * @return nome do usuário
      */
     public String getName() {
         return name;
@@ -57,6 +72,7 @@ public abstract class User {
     }
 
     /**
+     * Retorna o email do usuário
      * @return Retorna o email do usuário
      */
     public String getEmail() {
@@ -72,6 +88,7 @@ public abstract class User {
     }
 
     /**
+     * Retorna a senha do usuário
      * @return Retorna a senha do usuário
      */
     public String getPassword() {
@@ -87,6 +104,7 @@ public abstract class User {
     }
 
     /**
+     * Retorna o tipo do usuário
      * @return Retorna o tipo do usuário
      */
     public UserType getUserType() {
