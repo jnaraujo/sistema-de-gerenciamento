@@ -73,8 +73,7 @@ public class InMemoryUserDao implements UserDao{
     }
 
     /**
-     * Busca um usuário pelo email.
-     * @param email Email do usuário a ser buscado.
+     * Retorna todos os usuários cadastrados.
      * @return Todos os usuários cadastrados.
      */
     @Override
