@@ -8,8 +8,30 @@ import com.uefs.sistemadegerenciamento.model.user.User;
 
 import java.util.List;
 
+/**
+ * Interface que define os métodos de acesso a dados da classe {@link User}
+ * UserDao representa os usuários do sistema.
+ * @see User
+ * @see Technician
+ * @see Administrator
+ * @see Receptionist
+ */
 public interface UserDao extends Dao<User> {
+    /**
+     * Retorna a lista de técnicos
+     * @return lista de técnicos
+     */
     List<Technician> findAllTechnicians();
+
+    /**
+     * Retorna a lista de administradores
+     * @return lista de administradores
+     */
     List<Administrator> findAllAdministrators();
+
+    /**
+     * Retorna a lista de recepcionistas
+     * @return lista de recepcionistas
+     */
     List<Receptionist> findAllReceptionists();
 }
