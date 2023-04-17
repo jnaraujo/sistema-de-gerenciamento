@@ -6,10 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe que representa um serviço de montagem de computador
+ * Classe que implementa {@link Service} e representa um serviço de montagem de computador.
+ * Um serviço de montagem de computador é composto por uma lista de componentes
+ *
+ * @see com.uefs.sistemadegerenciamento.model.WorkOrder
  */
 public class BuildingService implements Service {
     private List<Component> usedComponents;
+
+    /**
+     * Cria um serviço de montagem de computador
+     */
     public BuildingService() {
         this.usedComponents = new ArrayList<>();
     }
@@ -32,7 +39,7 @@ public class BuildingService implements Service {
 
     /**
      * Retorna o custo do serviço
-     * @return Retorna o custo do serviço
+     * @return o custo do serviço
      */
     @Override
     public double getCost() {
@@ -45,7 +52,7 @@ public class BuildingService implements Service {
 
     /**
      * Retorna o preço do serviço
-     * @return Retorna o preço do serviço
+     * @return o preço do serviço
      */
     @Override
     public double getPrice() {
