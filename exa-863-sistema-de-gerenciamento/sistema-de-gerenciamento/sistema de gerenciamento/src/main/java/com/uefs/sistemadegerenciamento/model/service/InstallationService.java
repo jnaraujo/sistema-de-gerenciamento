@@ -4,7 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe que representa um serviço de instalação de programas e/ou sistemas operacionais
+ * <p>
+ *     Classe que implementa {@link Service} e representa um serviço de instalação.
+ * </p>
+ * <p>
+ *     Um serviço de instalação é composto por uma lista de componentes, um preço e um custo.
+ * </p>
+ *
+ * @see Service
+ * @see com.uefs.sistemadegerenciamento.model.WorkOrder
  */
 public class InstallationService implements Service {
     private String id;
@@ -12,6 +20,12 @@ public class InstallationService implements Service {
     private double cost;
     private String description;
 
+    /**
+     * Cria um serviço de instalação
+     * @param description Descrição do serviço
+     * @param price Preço do serviço
+     * @param cost Custo do serviço
+     */
     public InstallationService(String description, double price, double cost) {
         this.price = price;
         this.cost = cost;
@@ -19,7 +33,8 @@ public class InstallationService implements Service {
     }
 
     /**
-     * @return Retorna a descrição do serviço
+     * Retorna a descrição do serviço
+     * @return a descrição do serviço
      */
     public String getDescription() {
         return this.description;
@@ -35,7 +50,8 @@ public class InstallationService implements Service {
 
 
     /**
-     * @return Retorna o preço do serviço
+     * Retorna o preço do serviço
+     * @return o preço do serviço
      */
     @Override
     public double getPrice() {
@@ -51,7 +67,8 @@ public class InstallationService implements Service {
     }
 
     /**
-     * @return Retorna o custo do serviço
+     * Retorna o custo do serviço
+     * @return o custo do serviço
      */
     @Override
     public double getCost() {
@@ -67,7 +84,8 @@ public class InstallationService implements Service {
     }
 
     /**
-     * @return Retorna o id do serviço
+     * Retorna o id do serviço
+     * @return o id do serviço
      */
     public String getId() {
         return this.id;
