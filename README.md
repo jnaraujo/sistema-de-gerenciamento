@@ -67,7 +67,8 @@ O sistema é capaz de gerar relatórios sobre tempo médio de espera, preço e c
 
 ### 🔍 Pré-requisitos
 
-- [OpenJDK 19](https://jdk.java.net/19/)
+- [OpenJDK 20](https://jdk.java.net/20/)
+- [JUnit 5](https://junit.org/junit5/)
 - [JavaFX](https://openjfx.io/)
 - [Maven](https://maven.apache.org/)
 - [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/)
