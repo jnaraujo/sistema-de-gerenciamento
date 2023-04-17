@@ -1,0 +1,17 @@
+module:com.uefs.sistemadegerenciamento
+com.uefs.sistemadegerenciamento
+com.uefs.sistemadegerenciamento.constants
+com.uefs.sistemadegerenciamento.controllers
+com.uefs.sistemadegerenciamento.dao
+com.uefs.sistemadegerenciamento.dao.cleaning_service
+com.uefs.sistemadegerenciamento.dao.customer
+com.uefs.sistemadegerenciamento.dao.installation_service
+com.uefs.sistemadegerenciamento.dao.inventory
+com.uefs.sistemadegerenciamento.dao.user
+com.uefs.sistemadegerenciamento.dao.workorder
+com.uefs.sistemadegerenciamento.errors
+com.uefs.sistemadegerenciamento.model
+com.uefs.sistemadegerenciamento.model.component
+com.uefs.sistemadegerenciamento.model.service
+com.uefs.sistemadegerenciamento.model.user
+com.uefs.sistemadegerenciamento.utils
