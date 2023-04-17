@@ -10,7 +10,23 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Classe que representa uma ordem de serviço
+ * <p>
+ *     Classe que representa uma ordem de serviço.
+ * </p>
+ * <p>
+ *     Uma ordem de serviço é composta por um id, um id do cliente, um id do técnico, um status, uma descrição,
+ *     uma lista de serviços, uma data de criação, uma data de finalização, uma pontuação de satisfação e um método de pagamento.
+ * </p>
+ * <p>
+ *     A ordem de serviço também possui métodos para adicionar serviços, finalizar, cancelar e calcular o preço e o custo.
+ * </p>
+ *
+ * @see Service
+ * @see OrderStatus
+ * @see ServiceOrderWithoutTechnicianException
+ * @see InvalidSatisfactionScoreException
+ *
+ * @author Jônatas Araujo
  */
 public class WorkOrder {
     private String id;
@@ -24,6 +40,11 @@ public class WorkOrder {
     private int satisfactionScore;
     private String paymentMethod;
 
+    /**
+     * Cria uma ordem de serviço
+     * @param description Descrição da ordem de serviço
+     * @param customerId Id do cliente da ordem de serviço
+     */
     public WorkOrder(
         String description,
         String customerId
@@ -42,7 +63,8 @@ public class WorkOrder {
     }
 
     /**
-     * @return Retorna a lista de serviços cadastrados na ordem de serviço
+     * Retorna a lista de serviços cadastrados na ordem de serviço
+     * @return a lista de serviços cadastrados na ordem de serviço
      */
     public List<Service> getServices() {
         return services;
@@ -102,21 +124,24 @@ public class WorkOrder {
     }
 
     /**
-     * @return Retorna true se a ordem de serviço estiver finalizada
+     * Retorna se a ordem de serviço está finalizada
+     * @return true se a ordem de serviço estiver finalizada
      */
     public boolean isFinished() {
         return this.status.equals(OrderStatus.CLOSED);
     }
 
     /**
-     * @return Retorna true se a ordem de serviço estiver cancelada
+     * Retorna se a ordem de serviço está cancelada
+     * @return true se a ordem de serviço estiver cancelada
      */
     public boolean isCanceled() {
         return this.status.equals(OrderStatus.CANCELED);
     }
 
     /**
-     * @return Retorna true se a ordem de serviço estiver em andamento
+     * Retorna se a ordem de serviço está em andamento
+     * @return true se a ordem de serviço estiver em andamento
      */
     public boolean isOngoing() {
         return this.status.equals(OrderStatus.OPEN);
@@ -137,7 +162,8 @@ public class WorkOrder {
     // getters and setters
 
     /**
-     * @return Retorna o id da ordem de serviço
+     * Retorna o id da ordem de serviço
+     * @return o id da ordem de serviço
      */
     public String getId() {
         return id;
@@ -152,7 +178,8 @@ public class WorkOrder {
     }
 
     /**
-     * @return Retorna o id do cliente da ordem de serviço
+     * Retorna o id do cliente da ordem de serviço
+     * @return o id do cliente da ordem de serviço
      */
     public String getCustomerId() {
         return customerId;
@@ -167,7 +194,8 @@ public class WorkOrder {
     }
 
     /**
-     * @return Retorna o técnico da ordem de serviço
+     * Retorna o técnico da ordem de serviço
+     * @return o técnico da ordem de serviço
      */
     public String getTechnicianId() {
         return technicianId;
@@ -182,7 +210,8 @@ public class WorkOrder {
     }
 
     /**
-     * @return Retorna o status da ordem de serviço
+     * Retorna o status da ordem de serviço
+     * @return o status da ordem de serviço
      */
     public String getStatus() {
         return status;
@@ -197,7 +226,8 @@ public class WorkOrder {
     }
 
     /**
-     * @return Retorna a descrição da ordem de serviço
+     * Retorna a descrição da ordem de serviço
+     * @return a descrição da ordem de serviço
      */
     public String getDescription() {
         return description;
@@ -212,7 +242,8 @@ public class WorkOrder {
     }
 
     /**
-     * @return Retorna a data de criação da ordem de serviço
+     * Retorna a data de criação da ordem de serviço
+     * @return a data de criação da ordem de serviço
      */
     public Date getCreatedAt() {
         return createdAt;
@@ -227,7 +258,8 @@ public class WorkOrder {
     }
 
     /**
-     * @return Retorna a data de finalização da ordem de serviço
+     * Retorna a data de finalização da ordem de serviço
+     * @return a data de finalização da ordem de serviço
      */
     public Date getFinishedAt() {
         return finishedAt;
@@ -242,7 +274,8 @@ public class WorkOrder {
     }
 
     /**
-     * @return Retorna a nota de satisfação da ordem de serviço
+     * Retorna a nota de satisfação da ordem de serviço
+     * @return a nota de satisfação da ordem de serviço
      */
     public int getSatisfactionScore() {
         return satisfactionScore;
@@ -251,7 +284,7 @@ public class WorkOrder {
     /**
      * Altera a nota de satisfação da ordem de serviço
      * @param satisfactionScore Nova nota de satisfação da ordem de serviço (deve estar entre 0 e 5)
-        * @throws InvalidSatisfactionScoreException Caso a nota de satisfação não esteja entre 0 e 5
+     * @throws InvalidSatisfactionScoreException Caso a nota de satisfação não esteja entre 0 e 5
      */
     public void setSatisfactionScore(int satisfactionScore) throws InvalidSatisfactionScoreException {
         if(satisfactionScore < 0 || satisfactionScore > 5)
@@ -260,7 +293,8 @@ public class WorkOrder {
     }
 
     /**
-     * @return Retorna o método de pagamento da ordem de serviço
+     * Retorna o método de pagamento da ordem de serviço
+     * @return o método de pagamento da ordem de serviço
      */
     String getPaymentMethod() {
         return paymentMethod;
