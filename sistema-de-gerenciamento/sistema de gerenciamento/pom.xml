@@ -45,8 +45,9 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>src</sourceDirectory>
         <testSourceDirectory>
-            src/test
+            test
         </testSourceDirectory>
         <plugins>
             <plugin>
