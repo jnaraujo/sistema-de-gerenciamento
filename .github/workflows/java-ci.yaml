@@ -25,4 +25,4 @@ jobs:
       - name: Build with Maven
         run: mvn -f "./sistema-de-gerenciamento/sistema de gerenciamento" --batch-mode --update-snapshots package
       - name: Run tests
-        run: mvn -f "./sistema-de-gerenciamento/sistema de gerenciamento" --batch-mode --update-snapshots test
+        run: mvn -f "./sistema-de-gerenciamento/sistema de gerenciamento" test
