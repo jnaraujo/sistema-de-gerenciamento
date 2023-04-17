@@ -3,7 +3,7 @@ package com.uefs.sistemadegerenciamento.model.component;
 import com.uefs.sistemadegerenciamento.model.component.Component;
 
 /**
- * Classe que representa um componente de computador que não está no estoque
+ * Classe que representa um componente de computador que não está no estoque.
  */
 public class OtherComponent implements Component {
     private String description;
@@ -11,6 +11,13 @@ public class OtherComponent implements Component {
     private Double costPerUnit;
     private Integer quantity;
 
+    /**
+     * Cria uma nova instância de OtherComponent com os parâmetros especificados.
+     * @param description Descrição do componente
+     * @param pricePerUnit Preço do componente
+     * @param costPerUnit Custo do componente
+     * @param quantity Quantidade do componente
+     */
     public OtherComponent(String description, Double pricePerUnit, Double costPerUnit, Integer quantity) {
         this.description = description;
         this.pricePerUnit = pricePerUnit;
@@ -19,7 +26,8 @@ public class OtherComponent implements Component {
     }
 
     /**
-     * @return Retorna a descrição do componente
+     * Retorna a descrição do componente
+     * @return a descrição do componente
      */
     public String getDescription() {
         return description;
@@ -34,29 +42,32 @@ public class OtherComponent implements Component {
     }
 
     /**
-     * @return Retorna o preço do componente
+     * Retorna o preço do componente por unidade
+     * @return o preço do componente por unidade
      */
     public Double getPricePerUnit() {
         return pricePerUnit;
     }
 
     /**
-     * Define o preço do componente
-     * @param price Preço do componente
+     * Define o preço do componente por unidade
+     * @param price Preço do componente por unidade
      */
     public void setPricePerUnit(Double price) {
         this.pricePerUnit = price;
     }
 
     /**
-     * @return Retorna o custo do componente
+     * Retorna o custo do componente por unidade
+     * @return o custo do componente por unidade
      */
     public Double getCostPerUnit() {
         return costPerUnit;
     }
 
     /**
-     * @return Retorna a quantidade do componente
+     * Define a quantidade do componente
+     * @return a quantidade do componente
      */
     @Override
     public Integer getQuantity() {
@@ -64,8 +75,8 @@ public class OtherComponent implements Component {
     }
 
     /**
-     * Define o custo do componente
-     * @param cost Custo do componente
+     * Define o custo do componente por unidade
+     * @param cost Custo do componente por unidade
      */
     public void setCostPerUnit(Double cost) {
         this.costPerUnit = cost;
