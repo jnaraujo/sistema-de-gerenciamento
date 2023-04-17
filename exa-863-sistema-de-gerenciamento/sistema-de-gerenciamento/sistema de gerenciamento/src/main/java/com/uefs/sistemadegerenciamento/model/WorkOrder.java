@@ -1,7 +1,7 @@
 package com.uefs.sistemadegerenciamento.model;
 
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
-import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreExeption;
+import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreException;
 import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
 import com.uefs.sistemadegerenciamento.model.service.Service;
 
@@ -251,11 +251,11 @@ public class WorkOrder {
     /**
      * Altera a nota de satisfação da ordem de serviço
      * @param satisfactionScore Nova nota de satisfação da ordem de serviço (deve estar entre 0 e 5)
-        * @throws InvalidSatisfactionScoreExeption Caso a nota de satisfação não esteja entre 0 e 5
+        * @throws InvalidSatisfactionScoreException Caso a nota de satisfação não esteja entre 0 e 5
      */
-    public void setSatisfactionScore(int satisfactionScore) throws InvalidSatisfactionScoreExeption {
+    public void setSatisfactionScore(int satisfactionScore) throws InvalidSatisfactionScoreException {
         if(satisfactionScore < 0 || satisfactionScore > 5)
-            throw new InvalidSatisfactionScoreExeption("A nota de satisfação deve estar entre 0 e 5");
+            throw new InvalidSatisfactionScoreException("A nota de satisfação deve estar entre 0 e 5");
         this.satisfactionScore = satisfactionScore;
     }
 

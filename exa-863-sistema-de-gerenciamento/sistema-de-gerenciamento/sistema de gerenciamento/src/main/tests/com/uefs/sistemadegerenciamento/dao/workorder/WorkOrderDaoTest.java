@@ -1,7 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao.workorder;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
-import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreExeption;
+import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreException;
 import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.service.InstallationService;
@@ -229,7 +229,7 @@ class WorkOrderDaoTest {
     }
 
     @Test
-    void testGetAverageCustomerSatisfaction() throws InvalidSatisfactionScoreExeption {
+    void testGetAverageCustomerSatisfaction() throws InvalidSatisfactionScoreException {
         workOrder.setSatisfactionScore(3);
         WorkOrder workOrder2 = new WorkOrder(
                 "another work order",

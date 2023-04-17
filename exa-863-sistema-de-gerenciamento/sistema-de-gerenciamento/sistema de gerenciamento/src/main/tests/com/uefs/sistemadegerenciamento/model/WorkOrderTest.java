@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.model;
 
-import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreExeption;
+import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreException;
 import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import com.uefs.sistemadegerenciamento.model.service.BuildingService;
@@ -125,7 +125,7 @@ class WorkOrderTest {
     }
 
     @Test
-    void testValidSatisfactionScore() throws InvalidSatisfactionScoreExeption {
+    void testValidSatisfactionScore() throws InvalidSatisfactionScoreException {
         assertEquals(0, workOrder.getSatisfactionScore());
 
         workOrder.setSatisfactionScore(5);
@@ -134,7 +134,7 @@ class WorkOrderTest {
 
     @Test
     void testInvalidSatisfactionScore(){
-        assertThrows(InvalidSatisfactionScoreExeption.class, () -> workOrder.setSatisfactionScore(6));
-        assertThrows(InvalidSatisfactionScoreExeption.class, () -> workOrder.setSatisfactionScore(-1));
+        assertThrows(InvalidSatisfactionScoreException.class, () -> workOrder.setSatisfactionScore(6));
+        assertThrows(InvalidSatisfactionScoreException.class, () -> workOrder.setSatisfactionScore(-1));
     }
 }
