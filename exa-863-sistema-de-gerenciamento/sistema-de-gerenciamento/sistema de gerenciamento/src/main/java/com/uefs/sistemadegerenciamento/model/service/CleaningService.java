@@ -4,7 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe que representa um serviço de limpeza de computadores
+ * <p>
+ *     Classe que implementa {@link Service} e representa um serviço de limpeza.
+ * </p>
+ * <p>
+ *     Um serviço de limpeza é composto por uma lista de componentes, um preço e um custo.
+ * </p>
+ *
+ * @see Service
+ * @see com.uefs.sistemadegerenciamento.model.WorkOrder
  */
 public class CleaningService implements Service {
     private final List<String> components;
@@ -13,6 +21,7 @@ public class CleaningService implements Service {
     private double cost;
 
     /**
+     * Criar um serviço de limpeza
      * @param price preço do serviço
      * @param cost custo do serviço
      */
@@ -39,7 +48,8 @@ public class CleaningService implements Service {
     }
 
     /**
-     * @return Retorna o preço do serviço
+     * Retorna o preço do serviço
+     * @return o preço do serviço
      */
     @Override
     public double getPrice() {
@@ -55,7 +65,8 @@ public class CleaningService implements Service {
     }
 
     /**
-     * @return Retorna o custo do serviço
+     * Retorna o custo do serviço
+     * @return o custo do serviço
      */
     @Override
     public double getCost() {
@@ -71,7 +82,8 @@ public class CleaningService implements Service {
     }
 
     /**
-     * @return Retorna o id do serviço
+     * Retorna o id do serviço
+     * @return o id do serviço
      */
     public String getId() {
         return this.id;
