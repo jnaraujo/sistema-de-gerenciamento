@@ -8,6 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * <p>
+ *     Implementação de {@link CleaningServiceDao} que armazena os dados em memória.
+ * </p>
+ *
+ * @see CleaningServiceDao
  * @author Jônatas Araújo
  */
 public class InMemoryCleaningServiceDao implements CleaningServiceDao{
