@@ -15,6 +15,12 @@ import com.uefs.sistemadegerenciamento.constants.UserType;
  * @author Jônatas Araújo
  */
 public class Receptionist extends User {
+    /**
+     * Cria um novo usuário do tipo {@link UserType#RECEPTIONIST}
+     * @param name Nome do usuário
+     * @param email Email do usuário
+     * @param password Senha do usuário
+     */
     public Receptionist(
         String name,
         String email,
