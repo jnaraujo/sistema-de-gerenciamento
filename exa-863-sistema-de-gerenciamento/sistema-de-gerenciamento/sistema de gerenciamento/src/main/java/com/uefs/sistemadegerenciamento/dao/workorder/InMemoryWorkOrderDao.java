@@ -7,6 +7,11 @@ import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 import java.util.*;
 
 /**
+ * <p>
+ *     Implementação de {@link WorkOrderDao} que armazena os dados em memória.
+ * </p>
+ *
+ * @see WorkOrderDao
  * @author Jônatas Araújo
  */
 public class InMemoryWorkOrderDao implements WorkOrderDao {

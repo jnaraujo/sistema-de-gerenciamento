@@ -8,6 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * <p>
+ *     Implementação de {@link CustomerDao} que armazena os dados em memória.
+ * </p>
+ *
+ * @see CustomerDao
  * @author Jônatas Araújo
  */
 public class InMemoryCustomerDao implements CustomerDao {

@@ -8,6 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * <p>
+ *     Implementação de {@link InstallationServiceDao} que armazena os dados em memória.
+ * </p>
+ *
+ * @see InstallationServiceDao
  * @author Jônatas Araújo
  */
 public class InMemoryInstallationServiceDao implements InstallationServiceDao {

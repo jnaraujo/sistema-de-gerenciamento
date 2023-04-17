@@ -12,6 +12,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * <p>
+ *     Implementação de {@link UserDao} que armazena os dados em memória.
+ * </p>
+ *
+ * @see UserDao
  * @author Jônatas Araújo
  */
 public class InMemoryUserDao implements UserDao{

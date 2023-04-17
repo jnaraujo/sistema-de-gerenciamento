@@ -8,6 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * <p>
+ *     Implementação de {@link InventoryDao} que armazena os dados em memória.
+ * </p>
+ *
+ * @see InventoryDao
  * @author Jônatas Araújo
  */
 public class InMemoryInventoryDao implements InventoryDao {
