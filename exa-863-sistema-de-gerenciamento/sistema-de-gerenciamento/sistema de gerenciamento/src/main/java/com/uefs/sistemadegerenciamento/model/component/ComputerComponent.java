@@ -1,7 +1,7 @@
 package com.uefs.sistemadegerenciamento.model.component;
 
 /**
- * Classe que representa um componente de computador
+ * Classe que representa um componente de computador do sistema.
  */
 public class ComputerComponent implements Component {
     private String id;
@@ -11,6 +11,14 @@ public class ComputerComponent implements Component {
     private Double costPerUnit;
     private Integer quantity;
 
+    /**
+     * Cria uma nova instância de ComputerComponent com os parâmetros especificados.
+     * @param name Nome do componente
+     * @param manufacturer Fabricante do componente
+     * @param pricePerUnit Preço do componente
+     * @param costPerUnit Custo do componente
+     * @param quantity Quantidade do componente
+     */
     public ComputerComponent(
             String name,
             String manufacturer,
@@ -27,7 +35,7 @@ public class ComputerComponent implements Component {
 
     /**
      * Retorna o id do componente
-     * @return Retorna o id do componente
+     * @return o id do componente
      */
     public String getId() {
         return id;
@@ -59,7 +67,7 @@ public class ComputerComponent implements Component {
 
     /**
      * Retorna o fabricante do componente
-     * @return Retorna o fabricante do componente
+     * @return o fabricante do componente
      */
     public String getManufacturer() {
         return manufacturer;
@@ -75,7 +83,7 @@ public class ComputerComponent implements Component {
 
     /**
      * Retorna o preço do componente
-     * @return Retorna o preço do componente
+     * @return o preço do componente
      */
     public Double getPricePerUnit() {
         return pricePerUnit;
@@ -91,7 +99,7 @@ public class ComputerComponent implements Component {
 
     /**
      * Retorna o custo do componente
-     * @return Retorna o custo do componente
+     * @return o custo do componente
      */
     public Double getCostPerUnit() {
         return costPerUnit;
@@ -107,7 +115,7 @@ public class ComputerComponent implements Component {
 
     /**
      * Retorna a quantidade do componente
-     * @return Retorna a quantidade do componente
+     * @return a quantidade do componente
      */
     public Integer getQuantity() {
         return quantity;
