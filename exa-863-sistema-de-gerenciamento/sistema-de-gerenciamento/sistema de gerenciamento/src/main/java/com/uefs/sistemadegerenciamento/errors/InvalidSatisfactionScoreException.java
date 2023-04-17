@@ -2,6 +2,8 @@ package com.uefs.sistemadegerenciamento.errors;
 
 /**
  * Exceção lançada quando um valor inválido de satisfação é atribuído a um objeto.
+ *
+ * @author Jônatas Araújo
  */
 public class InvalidSatisfactionScoreException extends Exception{
     /**

@@ -2,6 +2,8 @@ package com.uefs.sistemadegerenciamento.constants;
 
 /**
  * Classe que contém os status possíveis de uma WorkOrder
+ *
+ * @author Jônatas Araújo
  */
 public class OrderStatus {
     /**

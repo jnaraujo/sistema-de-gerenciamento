@@ -25,6 +25,7 @@ import com.uefs.sistemadegerenciamento.constants.UserType;
  * @see Receptionist
  * @see Administrator
  * @see Technician
+ * @author Jônatas Araújo
  */
 public abstract class User {
     private String id;

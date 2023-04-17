@@ -5,6 +5,8 @@ import com.uefs.sistemadegerenciamento.model.service.InstallationService;
 
 /**
  * Interface que define os métodos de acesso a dados da classe {@link InstallationService}
+ *
+ * @author Jônatas Araújo
  */
 public interface InstallationServiceDao extends Dao<InstallationService> {
 }

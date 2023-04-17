@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * Interface que define os métodos de acesso a dados da classe {@link ComputerComponent}.
  * InventoryDao representa o estoque de componentes da empresa.
+ *
+ * @author Jônatas Araújo
  */
 public interface InventoryDao extends Dao<ComputerComponent> {
     /**

@@ -2,6 +2,8 @@ package com.uefs.sistemadegerenciamento.errors;
 
 /**
  * Exceção lançada quando uma ordem de serviço não possui um técnico.
+ *
+ * @author Jônatas Araújo
  */
 public class ServiceOrderWithoutTechnicianException extends Exception{
     /**

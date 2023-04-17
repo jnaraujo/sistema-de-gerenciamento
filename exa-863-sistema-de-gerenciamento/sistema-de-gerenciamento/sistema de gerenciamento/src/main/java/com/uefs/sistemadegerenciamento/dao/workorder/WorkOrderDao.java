@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * Interface que define os métodos de acesso a dados de ordens de serviço.
  * @see WorkOrder
+ * @author Jônatas Araújo
  */
 public interface WorkOrderDao extends Dao<WorkOrder> {
     /**

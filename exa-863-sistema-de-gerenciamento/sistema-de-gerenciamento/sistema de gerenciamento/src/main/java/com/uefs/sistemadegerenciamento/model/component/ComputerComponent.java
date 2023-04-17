@@ -2,6 +2,8 @@ package com.uefs.sistemadegerenciamento.model.component;
 
 /**
  * Classe que representa um componente de computador do sistema.
+ *
+ * @author Jônatas Araújo
  */
 public class ComputerComponent implements Component {
     private String id;

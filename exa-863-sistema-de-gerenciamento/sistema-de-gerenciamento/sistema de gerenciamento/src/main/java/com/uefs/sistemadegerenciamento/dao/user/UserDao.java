@@ -15,6 +15,7 @@ import java.util.List;
  * @see Technician
  * @see Administrator
  * @see Receptionist
+ * @author Jônatas Araújo
  */
 public interface UserDao extends Dao<User> {
     /**

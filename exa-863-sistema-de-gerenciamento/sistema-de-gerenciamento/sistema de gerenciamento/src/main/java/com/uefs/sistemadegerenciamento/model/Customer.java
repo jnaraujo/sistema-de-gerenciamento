@@ -9,6 +9,7 @@ package com.uefs.sistemadegerenciamento.model;
  * </p>
  *
  * @see WorkOrder
+ * @author Jônatas Araújo
  */
 public class Customer {
     private String id;

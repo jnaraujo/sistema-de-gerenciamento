@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author Jônatas Araújo
+ */
 public class InMemoryCleaningServiceDao implements CleaningServiceDao{
 
     HashMap<String, CleaningService> cleaningServices;

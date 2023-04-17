@@ -14,6 +14,7 @@ package com.uefs.sistemadegerenciamento.model.service;
  * @see CleaningService
  * @see InstallationService
  * @see com.uefs.sistemadegerenciamento.model.WorkOrder
+ * @author Jônatas Araújo
  */
 public interface Service {
     /**

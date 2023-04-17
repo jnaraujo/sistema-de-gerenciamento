@@ -10,6 +10,7 @@ import java.util.List;
  * Um serviço de montagem de computador é composto por uma lista de componentes
  *
  * @see com.uefs.sistemadegerenciamento.model.WorkOrder
+ * @author Jônatas Araújo
  */
 public class BuildingService implements Service {
     private List<Component> usedComponents;

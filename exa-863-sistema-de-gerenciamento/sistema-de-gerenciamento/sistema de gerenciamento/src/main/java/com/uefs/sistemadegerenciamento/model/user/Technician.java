@@ -12,6 +12,7 @@ import com.uefs.sistemadegerenciamento.constants.UserType;
  * </p>
  *
  * @see User
+ * @author Jônatas Araújo
  */
 public class Technician extends User {
     /**

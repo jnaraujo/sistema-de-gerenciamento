@@ -5,6 +5,8 @@ import java.util.List;
 /**
  * Interface para um DAO genérico que contém as operações básicas de persistência de um objeto.
  * @param <T> o tipo de objeto que será salvo
+ *
+ * @author Jônatas Araújo
  */
 public interface Dao<T> {
     /**

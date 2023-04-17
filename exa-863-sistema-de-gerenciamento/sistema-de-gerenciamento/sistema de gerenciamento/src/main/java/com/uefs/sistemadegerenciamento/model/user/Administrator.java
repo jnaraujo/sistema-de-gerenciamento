@@ -14,6 +14,7 @@ import com.uefs.sistemadegerenciamento.constants.UserType;
  * </p>
  *
  * @see User
+ * @author Jônatas Araújo
  */
 public class Administrator extends User {
     /**

@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author Jônatas Araújo
+ */
 public class InMemoryUserDao implements UserDao{
     private HashMap<String, User> users = new HashMap<>();
     @Override

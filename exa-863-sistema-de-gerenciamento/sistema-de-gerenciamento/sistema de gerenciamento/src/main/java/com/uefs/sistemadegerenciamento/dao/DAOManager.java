@@ -31,6 +31,7 @@ import com.uefs.sistemadegerenciamento.dao.workorder.WorkOrderDao;
  * @see CleaningServiceDao
  * @see InstallationServiceDao
  * @see InMemoryCustomerDao
+ * @author Jônatas Araújo
  */
 public class DAOManager {
     private static CustomerDao customerDao;

@@ -6,6 +6,7 @@ package com.uefs.sistemadegerenciamento.model.component;
  *
  * @see ComputerComponent
  * @see OtherComponent
+ * @author Jônatas Araújo
  */
 public interface Component {
     /**

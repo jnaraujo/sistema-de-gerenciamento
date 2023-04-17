@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author Jônatas Araújo
+ */
 public class InMemoryInstallationServiceDao implements InstallationServiceDao {
 
     HashMap<String, InstallationService> services;

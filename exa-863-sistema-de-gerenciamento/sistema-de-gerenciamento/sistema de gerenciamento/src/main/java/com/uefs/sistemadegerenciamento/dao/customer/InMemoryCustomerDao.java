@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author Jônatas Araújo
+ */
 public class InMemoryCustomerDao implements CustomerDao {
     private HashMap<String, Customer> customers = new HashMap<>();
     @Override

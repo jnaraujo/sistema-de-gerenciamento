@@ -6,6 +6,9 @@ import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 
 import java.util.*;
 
+/**
+ * @author Jônatas Araújo
+ */
 public class InMemoryWorkOrderDao implements WorkOrderDao {
     private HashMap<String, WorkOrder> workOrders = new HashMap<>();
     @Override

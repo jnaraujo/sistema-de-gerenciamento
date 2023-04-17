@@ -4,6 +4,8 @@ import com.uefs.sistemadegerenciamento.model.component.Component;
 
 /**
  * Classe que representa um componente de computador que não está no estoque.
+ *
+ * @author Jônatas Araújo
  */
 public class OtherComponent implements Component {
     private String description;

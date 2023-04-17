@@ -13,6 +13,7 @@ import java.util.List;
  *
  * @see Service
  * @see com.uefs.sistemadegerenciamento.model.WorkOrder
+ * @author Jônatas Araújo
  */
 public class InstallationService implements Service {
     private String id;
