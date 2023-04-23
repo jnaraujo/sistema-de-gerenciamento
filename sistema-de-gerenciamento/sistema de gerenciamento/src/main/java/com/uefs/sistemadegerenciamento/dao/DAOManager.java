@@ -10,7 +10,7 @@ import com.uefs.sistemadegerenciamento.dao.inventory.InMemoryInventoryDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InventoryDao;
 import com.uefs.sistemadegerenciamento.dao.user.InMemoryUserDao;
 import com.uefs.sistemadegerenciamento.dao.user.UserDao;
-import com.uefs.sistemadegerenciamento.dao.workorder.InMemoryWorkOrderDao;
+import com.uefs.sistemadegerenciamento.dao.workorder.InDiskWorkOrderDao;
 import com.uefs.sistemadegerenciamento.dao.workorder.WorkOrderDao;
 
 /**
@@ -79,7 +79,7 @@ public class DAOManager {
      */
     public static WorkOrderDao getWorkOrderDao() {
         if(workOrderDao == null){
-            workOrderDao = new InMemoryWorkOrderDao();
+            workOrderDao = new InDiskWorkOrderDao("data/workorders.ser");
         }
         return workOrderDao;
     }
