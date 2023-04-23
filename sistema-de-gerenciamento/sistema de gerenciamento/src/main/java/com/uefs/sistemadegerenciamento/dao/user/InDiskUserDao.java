@@ -1,6 +1,8 @@
 package com.uefs.sistemadegerenciamento.dao.user;
 
 import com.uefs.sistemadegerenciamento.constants.UserType;
+import com.uefs.sistemadegerenciamento.dao.FileManager;
+import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.user.Administrator;
 import com.uefs.sistemadegerenciamento.model.user.Receptionist;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
@@ -13,7 +15,7 @@ import java.util.List;
 
 /**
  * <p>
- *     Implementação de {@link UserDao} que armazena os dados em memória.
+ *     Implementação de {@link UserDao} que armazena os dados em disco.
  * </p>
  *
  * @see UserDao
@@ -21,12 +23,15 @@ import java.util.List;
  */
 public class InDiskUserDao implements UserDao{
     private HashMap<String, User> users;
+    private FileManager<String, User> fileManager;
 
     /**
      * Cria um novo {@link InDiskUserDao}.
      */
-    public InDiskUserDao() {
+    public InDiskUserDao(String fileName) {
         users = new HashMap<>();
+        fileManager = new FileManager(fileName);
+        users = fileManager.load();
     }
 
     /**
@@ -41,6 +46,7 @@ public class InDiskUserDao implements UserDao{
 
         users.put(user.getId(), user);
 
+        fileManager.save(users);
         return user;
     }
 
@@ -51,6 +57,7 @@ public class InDiskUserDao implements UserDao{
     @Override
     public void delete(String userID) {
         users.remove(userID);
+        fileManager.save(users);
     }
 
     /**
@@ -60,6 +67,7 @@ public class InDiskUserDao implements UserDao{
     @Override
     public void update(User user) {
         users.replace(user.getId(), user);
+        fileManager.save(users);
     }
 
     /**
@@ -87,6 +95,7 @@ public class InDiskUserDao implements UserDao{
     @Override
     public void deleteAll() {
         users.clear();
+        fileManager.save(users);
     }
 
     /**

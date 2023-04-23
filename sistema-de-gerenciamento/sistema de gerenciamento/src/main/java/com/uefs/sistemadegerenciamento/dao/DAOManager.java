@@ -8,6 +8,7 @@ import com.uefs.sistemadegerenciamento.dao.installation_service.InMemoryInstalla
 import com.uefs.sistemadegerenciamento.dao.installation_service.InstallationServiceDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InMemoryInventoryDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InventoryDao;
+import com.uefs.sistemadegerenciamento.dao.user.InDiskUserDao;
 import com.uefs.sistemadegerenciamento.dao.user.InMemoryUserDao;
 import com.uefs.sistemadegerenciamento.dao.user.UserDao;
 import com.uefs.sistemadegerenciamento.dao.workorder.InDiskWorkOrderDao;
@@ -68,7 +69,7 @@ public class DAOManager {
      */
     public static UserDao getUserDao() {
         if(userDao == null){
-            userDao = new InMemoryUserDao();
+            userDao = new InDiskUserDao("data/users.ser");
         }
         return userDao;
     }
