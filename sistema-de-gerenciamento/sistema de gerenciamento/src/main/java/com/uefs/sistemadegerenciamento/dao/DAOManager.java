@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.dao;
 
 import com.uefs.sistemadegerenciamento.dao.cleaning_service.CleaningServiceDao;
+import com.uefs.sistemadegerenciamento.dao.cleaning_service.InDiskCleaningServiceDao;
 import com.uefs.sistemadegerenciamento.dao.cleaning_service.InMemoryCleaningServiceDao;
 import com.uefs.sistemadegerenciamento.dao.customer.CustomerDao;
 import com.uefs.sistemadegerenciamento.dao.customer.InDiskCustomerDao;
@@ -92,7 +93,7 @@ public class DAOManager {
      */
     public static CleaningServiceDao getCleaningServiceDao(){
         if(cleaningServiceDao == null){
-            cleaningServiceDao = new InMemoryCleaningServiceDao();
+            cleaningServiceDao = new InDiskCleaningServiceDao("cleaningservices.binarydao");
         }
         return cleaningServiceDao;
     }
