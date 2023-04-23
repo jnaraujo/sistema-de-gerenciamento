@@ -4,6 +4,7 @@ import com.uefs.sistemadegerenciamento.dao.cleaning_service.CleaningServiceDao;
 import com.uefs.sistemadegerenciamento.dao.cleaning_service.InMemoryCleaningServiceDao;
 import com.uefs.sistemadegerenciamento.dao.customer.CustomerDao;
 import com.uefs.sistemadegerenciamento.dao.customer.InMemoryCustomerDao;
+import com.uefs.sistemadegerenciamento.dao.installation_service.InDiskInstallationServiceDao;
 import com.uefs.sistemadegerenciamento.dao.installation_service.InMemoryInstallationServiceDao;
 import com.uefs.sistemadegerenciamento.dao.installation_service.InstallationServiceDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InDiskInventoryDao;
@@ -101,7 +102,7 @@ public class DAOManager {
      */
     public static InstallationServiceDao getInstallationServiceDao(){
         if(installationServiceDao == null){
-            installationServiceDao = new InMemoryInstallationServiceDao();
+            installationServiceDao = new InDiskInstallationServiceDao("installationservices.binarydao");
         }
         return installationServiceDao;
     }
