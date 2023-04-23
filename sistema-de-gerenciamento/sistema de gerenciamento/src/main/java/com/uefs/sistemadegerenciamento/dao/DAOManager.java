@@ -6,10 +6,9 @@ import com.uefs.sistemadegerenciamento.dao.customer.CustomerDao;
 import com.uefs.sistemadegerenciamento.dao.customer.InMemoryCustomerDao;
 import com.uefs.sistemadegerenciamento.dao.installation_service.InMemoryInstallationServiceDao;
 import com.uefs.sistemadegerenciamento.dao.installation_service.InstallationServiceDao;
-import com.uefs.sistemadegerenciamento.dao.inventory.InMemoryInventoryDao;
+import com.uefs.sistemadegerenciamento.dao.inventory.InDiskInventoryDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InventoryDao;
 import com.uefs.sistemadegerenciamento.dao.user.InDiskUserDao;
-import com.uefs.sistemadegerenciamento.dao.user.InMemoryUserDao;
 import com.uefs.sistemadegerenciamento.dao.user.UserDao;
 import com.uefs.sistemadegerenciamento.dao.workorder.InDiskWorkOrderDao;
 import com.uefs.sistemadegerenciamento.dao.workorder.WorkOrderDao;
@@ -59,7 +58,7 @@ public class DAOManager {
      */
     public static InventoryDao getInventoryDao() {
         if(inventoryDao == null){
-            inventoryDao = new InMemoryInventoryDao();
+            inventoryDao = new InDiskInventoryDao("inventory.binarydao");
         }
         return inventoryDao;
     }
