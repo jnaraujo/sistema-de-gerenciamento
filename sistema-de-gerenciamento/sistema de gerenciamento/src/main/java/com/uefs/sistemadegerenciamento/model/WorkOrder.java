@@ -5,6 +5,7 @@ import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreException;
 import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
 import com.uefs.sistemadegerenciamento.model.service.Service;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +29,7 @@ import java.util.List;
  *
  * @author Jônatas Araujo
  */
-public class WorkOrder {
+public class WorkOrder implements Serializable {
     private String id;
     private String customerId;
     private String technicianId;

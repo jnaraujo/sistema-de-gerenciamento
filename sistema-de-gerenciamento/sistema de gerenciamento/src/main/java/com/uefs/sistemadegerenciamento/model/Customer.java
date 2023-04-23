@@ -1,5 +1,7 @@
 package com.uefs.sistemadegerenciamento.model;
 
+import java.io.Serializable;
+
 /**
  * <p>
  *     Classe que representa um consumidor no sistema
@@ -11,7 +13,7 @@ package com.uefs.sistemadegerenciamento.model;
  * @see WorkOrder
  * @author Jônatas Araújo
  */
-public class Customer {
+public class Customer implements Serializable {
     private String id;
     private String name;
     private String address;

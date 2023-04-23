@@ -3,6 +3,8 @@ package com.uefs.sistemadegerenciamento.model.user;
 
 import com.uefs.sistemadegerenciamento.constants.UserType;
 
+import java.io.Serializable;
+
 /**
  * <p>
  * Classe abstrata que representa um usuário do sistema.
@@ -27,7 +29,7 @@ import com.uefs.sistemadegerenciamento.constants.UserType;
  * @see Technician
  * @author Jônatas Araújo
  */
-public abstract class User {
+public abstract class User implements Serializable {
     private String id;
     private String name;
     private String email;

@@ -1,5 +1,7 @@
 package com.uefs.sistemadegerenciamento.model.component;
 
+import java.io.Serializable;
+
 /**
  * Interface que representa um componente do sistema.
  * Um componente é qualquer objeto que pode ser adicionado a um produto.
@@ -8,7 +10,7 @@ package com.uefs.sistemadegerenciamento.model.component;
  * @see OtherComponent
  * @author Jônatas Araújo
  */
-public interface Component {
+public interface Component extends Serializable {
     /**
      * Retorna o nome do componente.
      * @return o preço do componente

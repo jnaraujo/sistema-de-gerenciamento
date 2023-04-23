@@ -1,5 +1,7 @@
 package com.uefs.sistemadegerenciamento.model.service;
 
+import java.io.Serializable;
+
 /**
  * <p>
  * Interface que representa um serviço prestado.
@@ -16,7 +18,7 @@ package com.uefs.sistemadegerenciamento.model.service;
  * @see com.uefs.sistemadegerenciamento.model.WorkOrder
  * @author Jônatas Araújo
  */
-public interface Service {
+public interface Service extends Serializable{
     /**
      * Retorna o preço do serviço
      * @return o preço do serviço
