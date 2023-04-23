@@ -69,7 +69,7 @@ public class DAOManager {
      */
     public static UserDao getUserDao() {
         if(userDao == null){
-            userDao = new InDiskUserDao("data/users.ser");
+            userDao = new InDiskUserDao("users.binarydao");
         }
         return userDao;
     }
@@ -80,7 +80,7 @@ public class DAOManager {
      */
     public static WorkOrderDao getWorkOrderDao() {
         if(workOrderDao == null){
-            workOrderDao = new InDiskWorkOrderDao("data/workorders.ser");
+            workOrderDao = new InDiskWorkOrderDao("workorders.binarydao");
         }
         return workOrderDao;
     }
