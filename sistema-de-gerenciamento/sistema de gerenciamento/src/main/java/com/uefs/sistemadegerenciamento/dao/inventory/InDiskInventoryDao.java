@@ -25,7 +25,6 @@ public class InDiskInventoryDao implements InventoryDao {
      * Cria um novo {@link InDiskInventoryDao}.
      */
     public InDiskInventoryDao(String fileName) {
-        components = new HashMap<>();
         fileManager = new FileManager(fileName);
         components = fileManager.load();
     }

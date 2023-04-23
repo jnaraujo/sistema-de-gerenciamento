@@ -29,7 +29,6 @@ public class InDiskUserDao implements UserDao{
      * Cria um novo {@link InDiskUserDao}.
      */
     public InDiskUserDao(String fileName) {
-        users = new HashMap<>();
         fileManager = new FileManager(fileName);
         users = fileManager.load();
     }
