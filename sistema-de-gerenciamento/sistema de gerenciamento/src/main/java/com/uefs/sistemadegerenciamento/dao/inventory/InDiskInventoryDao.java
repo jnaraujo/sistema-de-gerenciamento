@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * <p>
- *     Implementação de {@link InventoryDao} que armazena os dados em memória.
+ *     Implementação de {@link InventoryDao} que armazena os dados em disco.
  * </p>
  *
  * @see InventoryDao

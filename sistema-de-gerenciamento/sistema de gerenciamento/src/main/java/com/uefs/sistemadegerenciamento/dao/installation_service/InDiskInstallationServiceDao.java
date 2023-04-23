@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * <p>
- *     Implementação de {@link InstallationServiceDao} que armazena os dados em memória.
+ *     Implementação de {@link InstallationServiceDao} que armazena os dados em disco.
  * </p>
  *
  * @see InstallationServiceDao
