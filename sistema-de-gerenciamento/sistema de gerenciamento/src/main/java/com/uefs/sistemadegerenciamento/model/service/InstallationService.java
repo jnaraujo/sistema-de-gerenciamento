@@ -104,4 +104,19 @@ public class InstallationService implements Service {
     public String toString() {
         return "InstallationService [id=" + id + ", cost=" + cost + ", price=" + price + ", description=" + description + "]";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+    	if(!(obj instanceof InstallationService)) {
+    		return false;
+    	}
+
+        InstallationService other = (InstallationService) obj;
+
+        if(this.id == null || other.id == null) {
+        	return false;
+        }
+
+        return this.id.equals(other.id);
+    }
 }
