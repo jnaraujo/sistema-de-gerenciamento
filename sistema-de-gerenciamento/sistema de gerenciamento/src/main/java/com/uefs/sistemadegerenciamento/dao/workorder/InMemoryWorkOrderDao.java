@@ -205,7 +205,7 @@ public class InMemoryWorkOrderDao implements WorkOrderDao {
      * @return A satisfacao média de uma ordem de serviço.
      */
     @Override
-    public Double getAverageCustomerSatifaction() {
+    public Double getAverageCustomerSatisfaction() {
         double sum = 0;
         for(WorkOrder order : workOrders.values()){
             sum += order.getSatisfactionScore();

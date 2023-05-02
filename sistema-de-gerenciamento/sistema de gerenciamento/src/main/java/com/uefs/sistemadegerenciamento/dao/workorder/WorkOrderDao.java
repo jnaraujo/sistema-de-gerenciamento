@@ -59,5 +59,5 @@ public interface WorkOrderDao extends Dao<WorkOrder> {
      * Retorna a satisfação média dos clientes
      * @return satisfação média dos clientes
      */
-    Double getAverageCustomerSatifaction();
+    Double getAverageCustomerSatisfaction();
 }
