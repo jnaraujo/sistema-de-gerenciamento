@@ -21,8 +21,13 @@ public class FileManager<K, T> {
     public void save(HashMap<K, T> objects) {
         try {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILE_NAME));
+
+            objectOutputStream.write(new byte[0]); // clear file
+
             objectOutputStream.writeObject(objects);
+
             objectOutputStream.close();
+            objectOutputStream.flush();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -31,8 +36,10 @@ public class FileManager<K, T> {
     public HashMap<K, T> load() {
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(FILE_NAME));
-            HashMap<K, T> objects = (HashMap<K, T>) objectInputStream.readObject();
+            HashMap objects = (HashMap<K, T>) objectInputStream.readObject();
+
             objectInputStream.close();
+
             return objects;
         } catch (Exception e) {
             e.printStackTrace();
