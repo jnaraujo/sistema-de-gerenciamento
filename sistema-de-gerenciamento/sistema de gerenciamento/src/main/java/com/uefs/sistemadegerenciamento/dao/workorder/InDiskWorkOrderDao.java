@@ -120,6 +120,21 @@ public class InDiskWorkOrderDao implements WorkOrderDao{
     }
 
     /**
+     * Busca a primeira ordem de serviço aberta que não possui técnico.
+     * @return A primeira ordem de serviço aberta.
+     */
+    @Override
+    public WorkOrder findFirstOpenWorkOrder() {
+        List<WorkOrder> openWorkOrdersWithNoTechnician = findOpenWorkOrders().stream().filter(workOrder -> workOrder.getTechnicianId() == null).toList();
+
+        if (openWorkOrdersWithNoTechnician.isEmpty()) {
+            return null;
+        }
+
+        return openWorkOrdersWithNoTechnician.get(0);
+    }
+
+    /**
      * Busca a ordem de serviço do técnico com o ID informado.
      * @param technicianId ID do técnico.
      * @return A ordem de serviço do técnico com o ID informado.

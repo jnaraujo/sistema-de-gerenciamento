@@ -106,6 +106,16 @@ public class InMemoryWorkOrderDao implements WorkOrderDao {
         return openWorkOrders;
     }
 
+    @Override
+    public WorkOrder findFirstOpenWorkOrder() {
+        for (WorkOrder workOrder : workOrders.values()) {
+            if (workOrder.getStatus().equals(OrderStatus.OPEN)) {
+                return workOrder;
+            }
+        }
+        return null;
+    }
+
     /**
      * Busca a ordem de serviço do técnico com o ID informado.
      * @param technicianId ID do técnico.
@@ -138,6 +148,8 @@ public class InMemoryWorkOrderDao implements WorkOrderDao {
 
         return hours / workOrders.size();
     }
+
+
 
     /**
      * Retorna o tempo médio que um técnico demora para reparar uma ordem de serviço.

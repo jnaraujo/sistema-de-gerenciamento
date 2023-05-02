@@ -100,6 +100,45 @@ class WorkOrderDaoTest {
     }
 
     @Test
+    void testFindFirstOpenWorkOrder(){
+        Calendar calendar = Calendar.getInstance();
+
+        WorkOrder workOrder2 = new WorkOrder(
+                "another work order",
+                IdGenerator.generate()
+        );
+
+        calendar.set(2020, Calendar.JANUARY, 5);
+        workOrder2.setCreatedAt(calendar.getTime());
+
+        calendar.set(2020, Calendar.JANUARY, 1);
+        workOrder.setCreatedAt(calendar.getTime());
+
+        workOrder.setTechnicianId(null);
+
+        workOrderDao.save(workOrder);
+        workOrderDao.save(workOrder2);
+
+        assertEquals(workOrder, workOrderDao.findFirstOpenWorkOrder());
+    }
+
+    @Test
+    void testFindFirstOpenWorkOrderNull(){
+        WorkOrder workOrder2 = new WorkOrder(
+                "another work order",
+                IdGenerator.generate()
+        );
+
+        workOrder.setTechnicianId(IdGenerator.generate());
+        workOrder2.setTechnicianId(IdGenerator.generate());
+
+        workOrderDao.save(workOrder);
+        workOrderDao.save(workOrder2);
+
+        assertNull(workOrderDao.findFirstOpenWorkOrder());
+    }
+
+    @Test
     void testFindOpenWorkOrders() throws ServiceOrderWithoutTechnicianException {
         Calendar calendar = Calendar.getInstance();
 
