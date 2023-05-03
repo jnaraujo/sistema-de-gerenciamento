@@ -1,10 +1,16 @@
 package com.uefs.sistemadegerenciamento.dao;
 
 import com.uefs.sistemadegerenciamento.dao.cleaning_service.CleaningServiceDao;
+import com.uefs.sistemadegerenciamento.dao.cleaning_service.InDiskCleaningServiceDao;
 import com.uefs.sistemadegerenciamento.dao.customer.CustomerDao;
+import com.uefs.sistemadegerenciamento.dao.customer.InDiskCustomerDao;
+import com.uefs.sistemadegerenciamento.dao.installation_service.InDiskInstallationServiceDao;
 import com.uefs.sistemadegerenciamento.dao.installation_service.InstallationServiceDao;
+import com.uefs.sistemadegerenciamento.dao.inventory.InDiskInventoryDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InventoryDao;
+import com.uefs.sistemadegerenciamento.dao.user.InDiskUserDao;
 import com.uefs.sistemadegerenciamento.dao.user.UserDao;
+import com.uefs.sistemadegerenciamento.dao.workorder.InDiskWorkOrderDao;
 import com.uefs.sistemadegerenciamento.dao.workorder.WorkOrderDao;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
@@ -37,19 +43,19 @@ public class DaoPersistenceTest {
 
     @BeforeEach
     void setUp(){
-        customerDao = DAOManager.getCustomerDao();
-        inventoryDao = DAOManager.getInventoryDao();
-        userDao = DAOManager.getUserDao();
-        installationServiceDao = DAOManager.getInstallationServiceDao();
-        cleaningServiceDao = DAOManager.getCleaningServiceDao();
-        workOrderDao = DAOManager.getWorkOrderDao();
+        customerDao = new InDiskCustomerDao("customers_test.binarydao");
+        inventoryDao = new InDiskInventoryDao("inventory_test.binarydao");
+        userDao = new InDiskUserDao("users_test.binarydao");
+        installationServiceDao = new InDiskInstallationServiceDao("installationservices_test.binarydao");
+        cleaningServiceDao = new InDiskCleaningServiceDao("cleaningservices_test.binarydao");
+        workOrderDao = new InDiskWorkOrderDao("workorders_test.binarydao");
 
-        customerFileManager = new FileManager<>("customers.binarydao");
-        inventoryFileManager = new FileManager<>("inventory.binarydao");
-        usersFileManager = new FileManager<>("users.binarydao");
-        installationServiceFileManager = new FileManager<>("installationservices.binarydao");
-        cleaningServiceFileManager = new FileManager<>("cleaningservices.binarydao");
-        workOrderFileManager = new FileManager<>("workorders.binarydao");
+        customerFileManager = new FileManager<>("customers_test.binarydao");
+        inventoryFileManager = new FileManager<>("inventory_test.binarydao");
+        usersFileManager = new FileManager<>("users_test.binarydao");
+        installationServiceFileManager = new FileManager<>("installationservices_test.binarydao");
+        cleaningServiceFileManager = new FileManager<>("cleaningservices_test.binarydao");
+        workOrderFileManager = new FileManager<>("workorders_test.binarydao");
     }
 
     @AfterEach
@@ -66,10 +72,9 @@ public class DaoPersistenceTest {
     void testSaveCustomerSave(){
         Customer customer1 = new Customer("João", "12345678910", "Rua 1", "12345678");
         Customer customer2 = new Customer("Maria", "12345678911", "Rua 2", "12345679");
+
         customerDao.save(customer1);
         customerDao.save(customer2);
-
-        System.out.println(customerFileManager.load());
 
         assertEquals(customer1, customerFileManager.load().get(customer1.getId()));
         assertEquals(customer2, customerFileManager.load().get(customer2.getId()));
@@ -79,8 +84,9 @@ public class DaoPersistenceTest {
     void testSaveComputerComponentSave(){
         ComputerComponent component1 = new ComputerComponent("Placa de Vídeo", "GTX 1080", 1000.0, 10.0, 10);
         ComputerComponent component2 = new ComputerComponent("CPU", "I9", 1000.0, 10.0, 10);
-        DAOManager.getInventoryDao().save(component1);
-        DAOManager.getInventoryDao().save(component2);
+
+        inventoryDao.save(component1);
+        inventoryDao.save(component2);
 
         assertEquals(component1, inventoryFileManager.load().get(component1.getId()));
         assertEquals(component2, inventoryFileManager.load().get(component2.getId()));
@@ -90,8 +96,9 @@ public class DaoPersistenceTest {
     void testUserSave(){
         Technician technician1 = new Technician("Técnico 1", "12345678912", "123");
         Administrator administrator1 = new Administrator("ADM 2", "12345678913", "123");
-        DAOManager.getUserDao().save(technician1);
-        DAOManager.getUserDao().save(administrator1);
+
+        userDao.save(technician1);
+        userDao.save(administrator1);
 
         assertEquals(technician1, usersFileManager.load().get(technician1.getId()));
         assertEquals(administrator1, usersFileManager.load().get(administrator1.getId()));
@@ -101,8 +108,9 @@ public class DaoPersistenceTest {
     void testInstallationServiceSave(){
         InstallationService installationService1 = new InstallationService("instalação de plca de video", 200.0, 100.0);
         InstallationService installationService2 = new InstallationService("instalação de cpu", 200.0, 100.0);
-        DAOManager.getInstallationServiceDao().save(installationService1);
-        DAOManager.getInstallationServiceDao().save(installationService2);
+
+        installationServiceDao.save(installationService1);
+        installationServiceDao.save(installationService2);
 
         assertEquals(installationService1, installationServiceFileManager.load().get(installationService1.getId()));
         assertEquals(installationService2, installationServiceFileManager.load().get(installationService2.getId()));
@@ -113,7 +121,8 @@ public class DaoPersistenceTest {
         CleaningService cleaningService = new CleaningService(100.0, 50.0);
         cleaningService.addComponent("Placa de Vídeo");
         cleaningService.addComponent("CPU");
-        DAOManager.getCleaningServiceDao().save(cleaningService);
+
+        cleaningServiceDao.save(cleaningService);
 
         assertEquals(cleaningService, cleaningServiceFileManager.load().get(cleaningService.getId()));
     }
@@ -125,6 +134,7 @@ public class DaoPersistenceTest {
                 "computador não liga",
                 "12345678910"
         );
+
         workOrderDao.save(workOrder);
 
         assertEquals(workOrder, workOrderFileManager.load().get(workOrder.getId()));
