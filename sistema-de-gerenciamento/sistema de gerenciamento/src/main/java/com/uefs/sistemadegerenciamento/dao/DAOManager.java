@@ -2,12 +2,10 @@ package com.uefs.sistemadegerenciamento.dao;
 
 import com.uefs.sistemadegerenciamento.dao.cleaning_service.CleaningServiceDao;
 import com.uefs.sistemadegerenciamento.dao.cleaning_service.InDiskCleaningServiceDao;
-import com.uefs.sistemadegerenciamento.dao.cleaning_service.InMemoryCleaningServiceDao;
 import com.uefs.sistemadegerenciamento.dao.customer.CustomerDao;
 import com.uefs.sistemadegerenciamento.dao.customer.InDiskCustomerDao;
 import com.uefs.sistemadegerenciamento.dao.customer.InMemoryCustomerDao;
 import com.uefs.sistemadegerenciamento.dao.installation_service.InDiskInstallationServiceDao;
-import com.uefs.sistemadegerenciamento.dao.installation_service.InMemoryInstallationServiceDao;
 import com.uefs.sistemadegerenciamento.dao.installation_service.InstallationServiceDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InDiskInventoryDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InventoryDao;
