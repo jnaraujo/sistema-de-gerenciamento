@@ -16,15 +16,15 @@ import java.util.List;
  * @see InstallationServiceDao
  * @author Jônatas Araújo
  */
-public class InDiskInstallationServiceDao implements InstallationServiceDao {
+public class DiskInstallationServiceDao implements InstallationServiceDao {
 
     private HashMap<String, InstallationService> services;
     private FileManager<String, InstallationService> fileManager;
 
     /**
-     * Cria um novo {@link InDiskInstallationServiceDao}.
+     * Cria um novo {@link DiskInstallationServiceDao}.
      */
-    public InDiskInstallationServiceDao(String fileName) {
+    public DiskInstallationServiceDao(String fileName) {
         fileManager = new FileManager(fileName);
         services = fileManager.load();
     }

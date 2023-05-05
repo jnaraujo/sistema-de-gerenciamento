@@ -1,17 +1,17 @@
 package com.uefs.sistemadegerenciamento.dao;
 
 import com.uefs.sistemadegerenciamento.dao.cleaning_service.CleaningServiceDao;
-import com.uefs.sistemadegerenciamento.dao.cleaning_service.InDiskCleaningServiceDao;
+import com.uefs.sistemadegerenciamento.dao.cleaning_service.DiskCleaningServiceDao;
 import com.uefs.sistemadegerenciamento.dao.customer.CustomerDao;
-import com.uefs.sistemadegerenciamento.dao.customer.InDiskCustomerDao;
+import com.uefs.sistemadegerenciamento.dao.customer.DiskCustomerDao;
 import com.uefs.sistemadegerenciamento.dao.customer.InMemoryCustomerDao;
-import com.uefs.sistemadegerenciamento.dao.installation_service.InDiskInstallationServiceDao;
+import com.uefs.sistemadegerenciamento.dao.installation_service.DiskInstallationServiceDao;
 import com.uefs.sistemadegerenciamento.dao.installation_service.InstallationServiceDao;
-import com.uefs.sistemadegerenciamento.dao.inventory.InDiskInventoryDao;
+import com.uefs.sistemadegerenciamento.dao.inventory.DiskInventoryDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InventoryDao;
-import com.uefs.sistemadegerenciamento.dao.user.InDiskUserDao;
+import com.uefs.sistemadegerenciamento.dao.user.DiskUserDao;
 import com.uefs.sistemadegerenciamento.dao.user.UserDao;
-import com.uefs.sistemadegerenciamento.dao.workorder.InDiskWorkOrderDao;
+import com.uefs.sistemadegerenciamento.dao.workorder.DiskWorkOrderDao;
 import com.uefs.sistemadegerenciamento.dao.workorder.WorkOrderDao;
 
 /**
@@ -48,7 +48,7 @@ public class DAOManager {
      */
     public static CustomerDao getCustomerDao() {
         if(customerDao == null){
-            customerDao = new InDiskCustomerDao("customers.binarydao");
+            customerDao = new DiskCustomerDao("customers.binarydao");
         }
         return customerDao;
     }
@@ -59,7 +59,7 @@ public class DAOManager {
      */
     public static InventoryDao getInventoryDao() {
         if(inventoryDao == null){
-            inventoryDao = new InDiskInventoryDao("inventory.binarydao");
+            inventoryDao = new DiskInventoryDao("inventory.binarydao");
         }
         return inventoryDao;
     }
@@ -69,7 +69,7 @@ public class DAOManager {
      */
     public static UserDao getUserDao() {
         if(userDao == null){
-            userDao = new InDiskUserDao("users.binarydao");
+            userDao = new DiskUserDao("users.binarydao");
         }
         return userDao;
     }
@@ -80,7 +80,7 @@ public class DAOManager {
      */
     public static WorkOrderDao getWorkOrderDao() {
         if(workOrderDao == null){
-            workOrderDao = new InDiskWorkOrderDao("workorders.binarydao");
+            workOrderDao = new DiskWorkOrderDao("workorders.binarydao");
         }
         return workOrderDao;
     }
@@ -91,7 +91,7 @@ public class DAOManager {
      */
     public static CleaningServiceDao getCleaningServiceDao(){
         if(cleaningServiceDao == null){
-            cleaningServiceDao = new InDiskCleaningServiceDao("cleaningservices.binarydao");
+            cleaningServiceDao = new DiskCleaningServiceDao("cleaningservices.binarydao");
         }
         return cleaningServiceDao;
     }
@@ -102,7 +102,7 @@ public class DAOManager {
      */
     public static InstallationServiceDao getInstallationServiceDao(){
         if(installationServiceDao == null){
-            installationServiceDao = new InDiskInstallationServiceDao("installationservices.binarydao");
+            installationServiceDao = new DiskInstallationServiceDao("installationservices.binarydao");
         }
         return installationServiceDao;
     }

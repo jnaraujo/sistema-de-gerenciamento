@@ -3,10 +3,8 @@ package com.uefs.sistemadegerenciamento.dao.workorder;
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.dao.FileManager;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
-import com.uefs.sistemadegerenciamento.model.service.Service;
 import com.uefs.sistemadegerenciamento.utils.IdGenerator;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -20,7 +18,7 @@ import java.util.List;
  * @see WorkOrderDao
  * @author Jônatas Araújo
  */
-public class InDiskWorkOrderDao implements WorkOrderDao{
+public class DiskWorkOrderDao implements WorkOrderDao{
     private HashMap<String, WorkOrder> workOrders;
     private FileManager<String, WorkOrder> fileManager;
 
@@ -28,7 +26,7 @@ public class InDiskWorkOrderDao implements WorkOrderDao{
     /**
      * Cria um novo {@link InMemoryWorkOrderDao}.
      */
-    public InDiskWorkOrderDao(String fileName) {
+    public DiskWorkOrderDao(String fileName) {
         workOrders = new HashMap<>();
         fileManager = new FileManager(fileName);
         workOrders = fileManager.load();

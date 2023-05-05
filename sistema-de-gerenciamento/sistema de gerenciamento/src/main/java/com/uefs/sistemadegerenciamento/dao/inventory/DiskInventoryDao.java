@@ -16,15 +16,15 @@ import java.util.List;
  * @see InventoryDao
  * @author Jônatas Araújo
  */
-public class InDiskInventoryDao implements InventoryDao {
+public class DiskInventoryDao implements InventoryDao {
 
     private HashMap<String, ComputerComponent> components;
     private FileManager<String, ComputerComponent> fileManager;
 
     /**
-     * Cria um novo {@link InDiskInventoryDao}.
+     * Cria um novo {@link DiskInventoryDao}.
      */
-    public InDiskInventoryDao(String fileName) {
+    public DiskInventoryDao(String fileName) {
         fileManager = new FileManager(fileName);
         components = fileManager.load();
     }

@@ -2,7 +2,6 @@ package com.uefs.sistemadegerenciamento.dao.user;
 
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.FileManager;
-import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.user.Administrator;
 import com.uefs.sistemadegerenciamento.model.user.Receptionist;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
@@ -21,14 +20,14 @@ import java.util.List;
  * @see UserDao
  * @author Jônatas Araújo
  */
-public class InDiskUserDao implements UserDao{
+public class DiskUserDao implements UserDao{
     private HashMap<String, User> users;
     private FileManager<String, User> fileManager;
 
     /**
-     * Cria um novo {@link InDiskUserDao}.
+     * Cria um novo {@link DiskUserDao}.
      */
-    public InDiskUserDao(String fileName) {
+    public DiskUserDao(String fileName) {
         fileManager = new FileManager(fileName);
         users = fileManager.load();
     }

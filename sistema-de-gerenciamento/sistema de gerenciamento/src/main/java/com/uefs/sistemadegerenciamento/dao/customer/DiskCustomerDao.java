@@ -16,14 +16,14 @@ import java.util.List;
  * @see CustomerDao
  * @author Jônatas Araújo
  */
-public class InDiskCustomerDao implements CustomerDao {
+public class DiskCustomerDao implements CustomerDao {
     private HashMap<String, Customer> customers;
     private FileManager<String, Customer> fileManager;
 
     /**
-     * Cria um novo {@link InDiskCustomerDao}.
+     * Cria um novo {@link DiskCustomerDao}.
      */
-    public InDiskCustomerDao(String fileName){
+    public DiskCustomerDao(String fileName){
         fileManager = new FileManager<>(fileName);
         customers = fileManager.load();
     }

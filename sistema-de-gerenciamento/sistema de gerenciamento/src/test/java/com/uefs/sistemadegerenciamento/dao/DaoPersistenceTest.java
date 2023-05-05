@@ -1,16 +1,16 @@
 package com.uefs.sistemadegerenciamento.dao;
 
 import com.uefs.sistemadegerenciamento.dao.cleaning_service.CleaningServiceDao;
-import com.uefs.sistemadegerenciamento.dao.cleaning_service.InDiskCleaningServiceDao;
+import com.uefs.sistemadegerenciamento.dao.cleaning_service.DiskCleaningServiceDao;
 import com.uefs.sistemadegerenciamento.dao.customer.CustomerDao;
-import com.uefs.sistemadegerenciamento.dao.customer.InDiskCustomerDao;
-import com.uefs.sistemadegerenciamento.dao.installation_service.InDiskInstallationServiceDao;
+import com.uefs.sistemadegerenciamento.dao.customer.DiskCustomerDao;
+import com.uefs.sistemadegerenciamento.dao.installation_service.DiskInstallationServiceDao;
 import com.uefs.sistemadegerenciamento.dao.installation_service.InstallationServiceDao;
-import com.uefs.sistemadegerenciamento.dao.inventory.InDiskInventoryDao;
+import com.uefs.sistemadegerenciamento.dao.inventory.DiskInventoryDao;
 import com.uefs.sistemadegerenciamento.dao.inventory.InventoryDao;
-import com.uefs.sistemadegerenciamento.dao.user.InDiskUserDao;
+import com.uefs.sistemadegerenciamento.dao.user.DiskUserDao;
 import com.uefs.sistemadegerenciamento.dao.user.UserDao;
-import com.uefs.sistemadegerenciamento.dao.workorder.InDiskWorkOrderDao;
+import com.uefs.sistemadegerenciamento.dao.workorder.DiskWorkOrderDao;
 import com.uefs.sistemadegerenciamento.dao.workorder.WorkOrderDao;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
@@ -43,12 +43,12 @@ public class DaoPersistenceTest {
 
     @BeforeEach
     void setUp(){
-        customerDao = new InDiskCustomerDao("customers_test.binarydao");
-        inventoryDao = new InDiskInventoryDao("inventory_test.binarydao");
-        userDao = new InDiskUserDao("users_test.binarydao");
-        installationServiceDao = new InDiskInstallationServiceDao("installationservices_test.binarydao");
-        cleaningServiceDao = new InDiskCleaningServiceDao("cleaningservices_test.binarydao");
-        workOrderDao = new InDiskWorkOrderDao("workorders_test.binarydao");
+        customerDao = new DiskCustomerDao("customers_test.binarydao");
+        inventoryDao = new DiskInventoryDao("inventory_test.binarydao");
+        userDao = new DiskUserDao("users_test.binarydao");
+        installationServiceDao = new DiskInstallationServiceDao("installationservices_test.binarydao");
+        cleaningServiceDao = new DiskCleaningServiceDao("cleaningservices_test.binarydao");
+        workOrderDao = new DiskWorkOrderDao("workorders_test.binarydao");
 
         customerFileManager = new FileManager<>("customers_test.binarydao");
         inventoryFileManager = new FileManager<>("inventory_test.binarydao");

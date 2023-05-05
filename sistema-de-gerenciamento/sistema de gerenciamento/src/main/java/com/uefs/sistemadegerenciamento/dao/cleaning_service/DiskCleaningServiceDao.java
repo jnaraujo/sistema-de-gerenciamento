@@ -16,15 +16,15 @@ import java.util.List;
  * @see CleaningServiceDao
  * @author Jônatas Araújo
  */
-public class InDiskCleaningServiceDao implements CleaningServiceDao{
+public class DiskCleaningServiceDao implements CleaningServiceDao{
 
     private HashMap<String, CleaningService> cleaningServices;
     private FileManager<String, CleaningService> fileManager;
 
     /**
-     * Cria um novo objeto {@link InDiskCleaningServiceDao}
+     * Cria um novo objeto {@link DiskCleaningServiceDao}
      */
-    public InDiskCleaningServiceDao(String fileName) {
+    public DiskCleaningServiceDao(String fileName) {
         fileManager = new FileManager<>(fileName);
         cleaningServices = fileManager.load();
     }
