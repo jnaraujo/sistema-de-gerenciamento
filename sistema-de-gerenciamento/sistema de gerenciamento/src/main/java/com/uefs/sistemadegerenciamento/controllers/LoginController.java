@@ -64,7 +64,7 @@ public class LoginController {
             FXMLLoader fxmlLoader = PageLoader.load(url);
             Parent root = fxmlLoader.load();
 
-            HelloApplication.stage.setTitle("Home - Sistema de Gerenciamento");
+            HelloApplication.stage.setTitle("Sistema de Gerenciamento");
 
             HomeController homeController = fxmlLoader.getController();
             homeController.setUser(user);
