@@ -140,4 +140,21 @@ public class DiskUserDao implements UserDao{
         }
         return receptionists;
     }
+
+    /**
+     * Busca um usuário pelo email.
+     * @param email Email do usuário a ser buscado.
+     * @return Usuário com o email informado.
+     */
+    @Override
+    public User findByEmail(String email) {
+        for (User user : users.values()) {
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+
 }

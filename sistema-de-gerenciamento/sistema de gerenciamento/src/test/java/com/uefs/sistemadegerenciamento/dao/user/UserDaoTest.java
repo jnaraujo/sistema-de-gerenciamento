@@ -126,4 +126,10 @@ class UserDaoTest {
 
         assertTrue(userDao.findAllReceptionists().contains(receptionist));
     }
+
+    @Test
+    void testFindByEmail(){
+        user = userDao.save(user);
+        assertEquals(user, userDao.findByEmail(user.getEmail()));
+    }
 }

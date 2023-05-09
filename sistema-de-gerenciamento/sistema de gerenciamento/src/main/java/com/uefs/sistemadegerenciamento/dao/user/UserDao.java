@@ -35,4 +35,11 @@ public interface UserDao extends Dao<User> {
      * @return lista de recepcionistas
      */
     List<Receptionist> findAllReceptionists();
+
+    /**
+     * Retorna um usuário pelo email
+     * @param email Email do usuário
+     * @return Usuário com o email especificado
+     */
+    User findByEmail(String email);
 }
