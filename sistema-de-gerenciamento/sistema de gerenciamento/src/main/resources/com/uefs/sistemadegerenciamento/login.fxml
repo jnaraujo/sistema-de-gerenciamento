@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.PasswordField?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.uefs.sistemadegerenciamento.controllers.LoginController">
+<VBox fx:id="loginBox" alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="500.0" prefWidth="500.0" spacing="20" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.uefs.sistemadegerenciamento.controllers.LoginController">
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20" />
+            <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
-    <Label text="Sistema de Gerenciamento" fx:id="welcomeText" />
+        <Label fx:id="titleText" text="Sistema de Gerenciamento" />
 
-    <TextField fx:id="txtLogin" promptText="Login" />
-    <PasswordField fx:id="txtSenha" promptText="Senha"  />
+    <TextField fx:id="emailField" promptText="Login" text="admin" />
+    <PasswordField fx:id="passwordField" promptText="Senha" text="admin" />
 
-    <Button text="Login" onAction="#onLoginClick" />
+    <Button onAction="#onLoginClick" text="Login" />
 </VBox>
