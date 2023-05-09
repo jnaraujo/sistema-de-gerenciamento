@@ -4,6 +4,7 @@
 ![Most used language](https://img.shields.io/github/languages/top/jnaraujo/sistema-de-gerenciamento?style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/jnaraujo/sistema-de-gerenciamento?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/jnaraujo/sistema-de-gerenciamento)
+![Project build workflow](https://github.com/jnaraujo/sistema-de-gerenciamento/actions/workflows/build.yaml/badge.svg)
 
 </div>
 
