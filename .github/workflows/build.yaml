@@ -1,0 +1,44 @@
+name: Java Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: "oracle"
+          java-version: "20"
+
+      - name: Build with Maven
+        run: cd "./sistema-de-gerenciamento/sistema de gerenciamento/" && mvn clean install
+
+      - name: Run tests with Maven
+        run: cd "./sistema-de-gerenciamento/sistema de gerenciamento/" && mvn test
+
+      - name: Generate Javadoc
+        run: cd "./sistema-de-gerenciamento/sistema de gerenciamento/" && mvn javadoc:javadoc
+
+      - name: Publish Javadoc
+        uses: actions/upload-artifact@v2
+        with:
+          name: Javadoc
+          path: "./sistema-de-gerenciamento/sistema de gerenciamento/target/site/apidocs"
+
+      - name: Deploy Javadoc to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: "./sistema-de-gerenciamento/sistema de gerenciamento/target/site/apidocs"
