@@ -9,5 +9,8 @@
         <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
-    <Label  text="Bem vindo Usuário!" />
+    <Label
+        fx:id="titleText"
+        text="Bem vindo Usuário!"
+    />
 </VBox>

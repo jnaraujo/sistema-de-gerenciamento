@@ -66,6 +66,9 @@ public class LoginController {
 
             HelloApplication.stage.setTitle("Home - Sistema de Gerenciamento");
 
+            HomeController homeController = fxmlLoader.getController();
+            homeController.setUser(user);
+
             MainController.staticRoot.getChildren().clear();
             MainController.staticRoot.getChildren().add(root);
 
