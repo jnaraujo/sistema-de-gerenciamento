@@ -137,3 +137,5 @@ replay_pid*
 
 # ignore binary dao files
 *.binarydao
+
+target/
