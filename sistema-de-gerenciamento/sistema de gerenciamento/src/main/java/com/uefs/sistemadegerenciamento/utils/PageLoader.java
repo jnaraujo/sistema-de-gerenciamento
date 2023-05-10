@@ -3,6 +3,7 @@ package com.uefs.sistemadegerenciamento.utils;
 import com.uefs.sistemadegerenciamento.HelloApplication;
 import com.uefs.sistemadegerenciamento.controllers.HomeController;
 import com.uefs.sistemadegerenciamento.controllers.MainController;
+import com.uefs.sistemadegerenciamento.model.user.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -33,5 +34,13 @@ public class PageLoader {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * Abre a página inicial do sistema
+     * @param user - o usuário que está logado no sistema
+     */
+    public static void goHome(User user) {
+        PageLoader.goHome(user);
     }
 }

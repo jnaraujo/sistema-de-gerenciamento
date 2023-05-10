@@ -78,8 +78,7 @@ public class WorkOrderListController {
 
     @FXML
     public void onBackButtonClick() {
-        HomeController controller = PageLoader.openPage("home.fxml");
-        controller.setUser(user);
+        PageLoader.goHome(user);
     }
 
     private HBox createWorkOrderComponent(WorkOrder workOrder, boolean isButtonDisabled, boolean doesTechnicianHaveAWorkOrder) {
