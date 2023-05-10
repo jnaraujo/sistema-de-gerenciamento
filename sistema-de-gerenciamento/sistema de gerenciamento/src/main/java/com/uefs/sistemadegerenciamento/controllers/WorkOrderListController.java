@@ -82,13 +82,17 @@ public class WorkOrderListController {
         controller.setUser(user);
     }
 
-    private HBox createWorkOrderComponent(WorkOrder workOrder, boolean isButtonDisabled, boolean isTechnicianWorkOrder) {
+    private HBox createWorkOrderComponent(WorkOrder workOrder, boolean isButtonDisabled, boolean doesTechnicianHaveAWorkOrder) {
         Customer customer = DAOManager.getCustomerDao().findById(workOrder.getCustomerId());
 
         return WorkOrderComponent.create(workOrder, customer, user, isButtonDisabled, (event) -> {
-            workOrder.setTechnicianId(user.getId());
-            DAOManager.getWorkOrderDao().update(workOrder);
-            fetchWorkOrders();
+            if(doesTechnicianHaveAWorkOrder){
+                System.out.println("Tecnico ja possui uma ordem de serviço");
+            }else{
+                workOrder.setTechnicianId(user.getId());
+                DAOManager.getWorkOrderDao().update(workOrder);
+                fetchWorkOrders();
+            }
         });
     }
 }
