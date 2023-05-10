@@ -17,10 +17,10 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        HelloApplication.stage = stage;
+
         FXMLLoader mainFxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main.fxml"));
         Scene scene = new Scene(mainFxmlLoader.load(), 800, 800);
-
-        HelloApplication.stage = stage;
 
         stage.setTitle("Sistema de Gerenciamento");
         stage.setScene(scene);

@@ -26,8 +26,6 @@ public class LoginController {
     @FXML
     public PasswordField passwordField;
 
-    private User user;
-
     @FXML
     public void initialize() {
         HelloApplication.stage.setTitle("Login - Sistema de Gerenciamento");
@@ -60,24 +58,11 @@ public class LoginController {
             return;
         }
 
-        this.user = user;
-        this.openPage("home.fxml");
+        this.openPage("home.fxml", user);
     }
 
-    private void openPage(String url) {
-        try{
-            FXMLLoader fxmlLoader = PageLoader.load(url);
-            Parent root = fxmlLoader.load();
-
-            HomeController homeController = fxmlLoader.getController();
-            homeController.setUser(user);
-
-            MainController.staticRoot.getChildren().clear();
-            MainController.staticRoot.getChildren().add(root);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
+    private void openPage(String url, User user) {
+        HomeController homeController = PageLoader.openPage(url);
+        homeController.setUser(user);
     }
 }
