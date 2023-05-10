@@ -109,7 +109,7 @@ public class DiskWorkOrderDao implements WorkOrderDao{
     public List<WorkOrder> findOpenWorkOrders() {
         List<WorkOrder> openWorkOrders = new ArrayList<>();
         for (WorkOrder workOrder : workOrders.values()) {
-            if (workOrder.getStatus().equals(OrderStatus.OPEN)) {
+            if (workOrder.getStatus().equals(OrderStatus.OPEN) && workOrder.getTechnicianId() == null) {
                 openWorkOrders.add(workOrder);
             }
         }
@@ -140,7 +140,7 @@ public class DiskWorkOrderDao implements WorkOrderDao{
     @Override
     public WorkOrder findOrderByTechnicianId(String technicianId) {
         for (WorkOrder workOrder : workOrders.values()) {
-            if (workOrder.getTechnicianId().equals(technicianId)) {
+            if (workOrder.getTechnicianId() != null && workOrder.getTechnicianId().equals(technicianId)) {
                 return workOrder;
             }
         }
