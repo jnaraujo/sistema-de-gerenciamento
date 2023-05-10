@@ -29,6 +29,11 @@ public class LoginController {
     private User user;
 
     @FXML
+    public void initialize() {
+        HelloApplication.stage.setTitle("Login - Sistema de Gerenciamento");
+    }
+
+    @FXML
     public void onLoginClick()  {
         emailField.styleProperty().setValue("");
         passwordField.styleProperty().setValue("");
@@ -63,8 +68,6 @@ public class LoginController {
         try{
             FXMLLoader fxmlLoader = PageLoader.load(url);
             Parent root = fxmlLoader.load();
-
-            HelloApplication.stage.setTitle("Sistema de Gerenciamento");
 
             HomeController homeController = fxmlLoader.getController();
             homeController.setUser(user);
