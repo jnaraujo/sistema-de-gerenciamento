@@ -2,6 +2,7 @@ package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.HelloApplication;
 import com.uefs.sistemadegerenciamento.model.user.User;
+import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import javafx.fxml.FXML;
 
 public class WorkOrderListController {
@@ -19,6 +20,7 @@ public class WorkOrderListController {
 
     @FXML
     public void onBackButtonClick() {
-        System.out.println("Back button clicked");
+        HomeController controller = PageLoader.openPage("home.fxml");
+        controller.setUser(user);
     }
 }
