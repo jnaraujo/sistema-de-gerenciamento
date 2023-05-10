@@ -31,34 +31,7 @@
          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
       </padding>
    </GridPane>
-   <FlowPane fx:id="flowPane" hgap="16.0" prefHeight="170.0" prefWidth="784.0" prefWrapLength="150.0" vgap="16.0">
-      <children>
-         <Button alignment="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="250.0" style="-fx-background-color: #5c677d; -fx-background-radius: 8px;" text="Adicionar usuário" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Button>
-         <Button alignment="CENTER" layoutX="18.0" layoutY="18.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="250.0" style="-fx-background-color: #5c677d; -fx-background-radius: 8px;" text="Listar ordens de serviço" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Button>
-         <Button alignment="CENTER" layoutX="172.0" layoutY="18.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="250.0" style="-fx-background-color: #5c677d; -fx-background-radius: 8px;" text="Adicionar usuário" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Button>
-         <Button alignment="CENTER" layoutX="351.0" layoutY="20.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="250.0" style="-fx-background-color: #5c677d; -fx-background-radius: 8px;" text="Adicionar usuário" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Button>
-         <Button alignment="CENTER" layoutX="518.0" layoutY="20.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="250.0" style="-fx-background-color: #5c677d; -fx-background-radius: 8px;" text="Adicionar usuário" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-            <font>
-               <Font size="14.0" />
-            </font>
-         </Button>
-      </children>
+   <FlowPane fx:id="flowPane" hgap="16.0" prefHeight="375.0" prefWidth="784.0" prefWrapLength="150.0" vgap="16.0">
       <opaqueInsets>
          <Insets />
       </opaqueInsets>

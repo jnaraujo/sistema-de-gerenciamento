@@ -14,6 +14,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,37 +53,78 @@ public class HomeController {
     }
 
     private void setUpListOfUserViewsButtons() {
-        Map<UserType, List<List<String>>> views = new HashMap<>();
+        List<Button> buttons = new ArrayList<>();
 
-        views.put(UserType.RECEPTIONIST, List.of(
-                List.of("create_order.fxml", "Criar ordem de serviço")
-        ));
-
-        views.put(UserType.TECHNICIAN, List.of(
-                List.of("create_order.fxml", "Criar ordem de serviço"),
-                List.of("list_orders.fxml", "Listar ordens de serviço")
-        ));
-
-        views.put(UserType.ADMINISTRATOR, List.of(
-                List.of("create_order.fxml", "Criar ordem de serviço"),
-                List.of("list_orders.fxml", "Listar ordens de serviço"),
-                List.of("list_users.fxml", "Listar usuários"),
-                List.of("create_user.fxml", "Criar usuário"),
-                List.of("inventory.fxml", "Ver estoque")
-        ));
-
-        for (List<String> view : views.get(user.getUserType())) {
-            String path = view.get(0);
-            String title = view.get(1);
-
-            Button button = createButton(title);
-
-            button.setOnAction(event -> {
-                openPage(path, title);
-            });
-
-            flowPane.getChildren().add(button);
+        if(user.getUserType() == UserType.RECEPTIONIST) {
+            buttons.addAll(getReceptionistButtons());
+        } else if(user.getUserType() == UserType.TECHNICIAN) {
+            buttons.addAll(getTechnicianButtons());
+        } else if(user.getUserType() == UserType.ADMINISTRATOR) {
+            buttons.addAll(getAdministratorButtons());
+            buttons.addAll(getTechnicianButtons());
+            buttons.addAll(getReceptionistButtons());
         }
+
+        flowPane.getChildren().addAll(buttons);
+    }
+
+    private List<Button> getTechnicianButtons(){
+        List<Button> buttons = new ArrayList<>();
+
+        Button button = createButton("Listar ordens de serviço");
+        button.setOnAction(event -> {
+            WorkOrderListController controller = (WorkOrderListController) PageLoader.openPage("work_order_list.fxml");
+            controller.setUser(user);
+
+        });
+        buttons.add(button);
+
+        button = createButton("Ver estoque");
+        button.setOnAction(event -> {
+//            InventoryController controller = (InventoryController) PageLoader.openPage("inventory.fxml");
+//            controller.setUser(user);
+        });
+        buttons.add(button);
+
+        button = createButton("Criar ordem de serviço");
+        button.setOnAction(event -> {
+//            CreateOrderController controller = (CreateOrderController) PageLoader.openPage("create_order.fxml");
+//            controller.setUser(user);
+        });
+
+        return buttons;
+    }
+
+    private List<Button> getReceptionistButtons(){
+        List<Button> buttons = new ArrayList<>();
+
+        Button button = createButton("Criar ordem de serviço");
+        button.setOnAction(event -> {
+//            CreateOrderController controller = (CreateOrderController) PageLoader.openPage("create_order.fxml");
+//            controller.setUser(user);
+        });
+        buttons.add(button);
+
+        return buttons;
+    }
+
+    private List<Button> getAdministratorButtons(){
+        List<Button> buttons = new ArrayList<>();
+
+        Button button = createButton("Gerar relatório");
+        button.setOnAction(event -> {
+//            CreateOrderController controller = (CreateOrderController) PageLoader.openPage("create_order.fxml");
+//            controller.setUser(user);
+        });
+        buttons.add(button);
+
+        button = createButton("Gerenciar usuários");
+        button.setOnAction(event -> {
+//            ManageUsersController controller = (ManageUsersController) PageLoader.openPage("manage_users.fxml");
+//            controller.setUser(user);
+        });
+
+        return buttons;
     }
 
     private Button createButton(String text) {
@@ -107,19 +149,8 @@ public class HomeController {
         return button;
     }
 
-    private void openPage(String url, String title) {
-        try{
-            FXMLLoader fxmlLoader = PageLoader.load(url);
-            Parent root = fxmlLoader.load();
+    private void openPage(String url) {
 
-            HelloApplication.stage.setTitle(title + " - Sistema de Gerenciamento");
-
-            MainController.staticRoot.getChildren().clear();
-            MainController.staticRoot.getChildren().add(root);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
     }
 }
