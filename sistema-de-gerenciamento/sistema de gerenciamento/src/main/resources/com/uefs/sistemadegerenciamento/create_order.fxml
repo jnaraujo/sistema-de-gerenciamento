@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.CreateWorkOrderController">
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+    </padding>
+    <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="784.0" spacing="16.0">
+        <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="111.0" text="Voltar" />
+            <Label fx:id="titleText" prefHeight="36.0" prefWidth="356.0" text="Criar nova ordem de serviço">
+                <font>
+                    <Font name="System Bold" size="25.0" />
+                </font>
+            </Label>
+        </children>
+    </HBox>
+   <VBox prefHeight="476.0" prefWidth="784.0">
+      <VBox.margin>
+         <Insets top="16.0" />
+      </VBox.margin>
+      <children>
+         <Label text="Descrição da Ordem de Serviço:">
+            <font>
+               <Font size="16.0" />
+            </font></Label>
+         <TextArea prefHeight="141.0" prefWidth="784.0">
+            <font>
+               <Font size="14.0" />
+            </font></TextArea>
+      </children>
+   </VBox>
+   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="196.0" text="Criar nova Ordem de Serviço" />
+</VBox>

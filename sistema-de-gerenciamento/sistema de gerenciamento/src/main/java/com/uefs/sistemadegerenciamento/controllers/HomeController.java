@@ -93,8 +93,8 @@ public class HomeController {
 
         Button button = BigButtonComponent.create("Criar ordem de serviço");
         button.setOnAction(event -> {
-//            CreateOrderController controller = (CreateOrderController) PageLoader.openPage("create_order.fxml");
-//            controller.setUser(user);
+            CreateWorkOrderController controller = PageLoader.openPage("create_order.fxml");
+            controller.setUser(user);
         });
         buttons.add(button);
 
