@@ -32,30 +32,7 @@
          <Insets top="16.0" />
       </VBox.margin>
    </HBox>
-   <VBox prefHeight="100.0" prefWidth="784.0">
-      <children>
-         <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="784.0">
-            <children>
-               <VBox prefHeight="100.0" prefWidth="0.0">
-                  <children>
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="O cliente está reclamando de um problema no sistema. Ele suspeita que seja algo relacionado as memorias ram..." wrappingWidth="635.13671875">
-                        <font>
-                           <Font name="System Bold" size="18.0" />
-                        </font></Text>
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente: João Pedro - Email: joao@test.com - Criado em: 20/11/2023" wrappingWidth="631.13671875">
-                        <font>
-                           <Font size="18.0" />
-                        </font>
-                     </Text>
-                  </children>
-               </VBox>
-               <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="174.0" text="Abrir ordem" />
-            </children>
-            <padding>
-               <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-            </padding>
-         </HBox>
-      </children>
+   <VBox prefHeight="100.0" prefWidth="784.0" fx:id="technicianCurrentWorkOrderVBox">
       <padding>
          <Insets bottom="8.0" />
       </padding>
@@ -75,77 +52,13 @@
          <Insets top="16.0" />
       </VBox.margin>
    </HBox>
-   <VBox layoutX="18.0" layoutY="56.0" prefHeight="568.0" prefWidth="784.0" spacing="16.0">
-      <children>
-         <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="784.0">
+   <ScrollPane fx:id="scrollPane" prefHeight="519.0" prefWidth="784.0">
+     <content>
+       <AnchorPane fx:id="anchorPane" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="512.0" prefWidth="769.0">
             <children>
-               <VBox prefHeight="100.0" prefWidth="0.0">
-                  <children>
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="O cliente está reclamando de um problema no sistema. Ele suspeita que seja algo relacionado as memorias ram..." wrappingWidth="635.13671875">
-                        <font>
-                           <Font name="System Bold" size="18.0" />
-                        </font>
-                     </Text>
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente: João Pedro - Email: joao@test.com - Criado em: 20/11/2023" wrappingWidth="631.13671875">
-                        <font>
-                           <Font size="18.0" />
-                        </font>
-                     </Text>
-                  </children>
-               </VBox>
-               <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="148.0" text="Pegar ordem" />
+               <VBox fx:id="workOrderListVBox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="784.0" spacing="16.0" style="-fx-background-insets: 0;" />
             </children>
-            <padding>
-               <Insets bottom="8.0" left="8.0" top="8.0" />
-            </padding>
-         </HBox>
-         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="26.0" prefHeight="60.0" prefWidth="784.0">
-            <children>
-               <VBox prefHeight="100.0" prefWidth="0.0">
-                  <children>
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="O cliente está reclamando de um problema no sistema. Ele suspeita que seja algo relacionado as memorias ram..." wrappingWidth="635.13671875">
-                        <font>
-                           <Font name="System Bold" size="18.0" />
-                        </font>
-                     </Text>
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente: João Pedro - Email: joao@test.com - Criado em: 20/11/2023" wrappingWidth="631.13671875">
-                        <font>
-                           <Font size="18.0" />
-                        </font>
-                     </Text>
-                  </children>
-               </VBox>
-               <Button disable="true" mnemonicParsing="false" prefHeight="55.0" prefWidth="166.0" text="Pegar ordem" />
-            </children>
-            <padding>
-               <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-            </padding>
-         </HBox>
-         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="117.0" prefHeight="60.0" prefWidth="784.0">
-            <children>
-               <VBox prefHeight="100.0" prefWidth="0.0">
-                  <children>
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="O cliente está reclamando de um problema no sistema. Ele suspeita que seja algo relacionado as memorias ram..." wrappingWidth="635.13671875">
-                        <font>
-                           <Font name="System Bold" size="18.0" />
-                        </font>
-                     </Text>
-                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente: João Pedro - Email: joao@test.com - Criado em: 20/11/2023" wrappingWidth="631.13671875">
-                        <font>
-                           <Font size="18.0" />
-                        </font>
-                     </Text>
-                  </children>
-               </VBox>
-               <Button disable="true" mnemonicParsing="false" prefHeight="55.0" prefWidth="186.0" text="Pegar ordem" />
-            </children>
-            <padding>
-               <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-            </padding>
-         </HBox>
-      </children>
-      <VBox.margin>
-         <Insets top="8.0" />
-      </VBox.margin>
-   </VBox>
+         </AnchorPane>
+     </content>
+   </ScrollPane>
 </VBox>
