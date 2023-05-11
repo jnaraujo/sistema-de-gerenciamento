@@ -35,7 +35,6 @@ public class CreateWorkOrderController {
 
     @FXML
     public void initialize() {
-        System.out.println("initialize");
         HelloApplication.stage.setTitle("Criar Ordem de Serviço");
 
         customers = fetchCustomers();
