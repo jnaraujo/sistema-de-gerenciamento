@@ -79,12 +79,6 @@ public class HomeController {
         });
         buttons.add(button);
 
-        button = BigButtonComponent.create("Criar ordem de serviço");
-        button.setOnAction(event -> {
-//            CreateOrderController controller = (CreateOrderController) PageLoader.openPage("create_order.fxml");
-//            controller.setUser(user);
-        });
-
         return buttons;
     }
 
@@ -94,6 +88,13 @@ public class HomeController {
         Button button = BigButtonComponent.create("Criar ordem de serviço");
         button.setOnAction(event -> {
             CreateWorkOrderController controller = PageLoader.openPage("create_order.fxml");
+            controller.setUser(user);
+        });
+        buttons.add(button);
+
+        button = BigButtonComponent.create("Criar novo Cliente");
+        button.setOnAction(event -> {
+            CreateCustomerController controller = PageLoader.openPage("create_customer.fxml");
             controller.setUser(user);
         });
         buttons.add(button);
