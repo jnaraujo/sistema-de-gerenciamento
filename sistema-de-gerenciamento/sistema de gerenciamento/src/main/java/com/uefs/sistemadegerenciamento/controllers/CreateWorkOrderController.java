@@ -106,13 +106,13 @@ public class CreateWorkOrderController {
 
         if(customer == null) {
             customersComboBox.setStyle("-fx-border-color: red; -fx-font-size: 14px");
-            error("Selecione um cliente");
+            error("Selecione um cliente.");
             return;
         }
 
         if(descriptionTextArea.getText().isEmpty()) {
             descriptionTextArea.setStyle("-fx-border-color: red; -fx-font-size: 14px");
-            error("Digite uma descrição");
+            error("Digite uma descrição.");
             return;
         }
 
