@@ -31,7 +31,7 @@ public class WorkOrderComponent {
         descriptionLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 16));
         descriptionLabel.setPrefWidth(600);
 
-        Label clientText = new Label("Cliente: " + customer.getName() + " - Phone" + customer.getPhone() + " - Email: " + customer.getEmail());
+        Label clientText = new Label("Cliente: " + customer.getName() + " - Phone: " + customer.getPhone() + " - Email: " + customer.getEmail());
         clientText.setPrefWidth(600);
         clientText.setFont(new Font(14));
 
