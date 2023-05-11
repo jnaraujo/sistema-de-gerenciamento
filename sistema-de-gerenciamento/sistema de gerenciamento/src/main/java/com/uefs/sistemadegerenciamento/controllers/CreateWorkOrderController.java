@@ -87,6 +87,12 @@ public class CreateWorkOrderController {
     }
 
     @FXML
+    public void onCreateCustomerButtonClick() {
+        CreateCustomerController controller = PageLoader.openPage("create_customer.fxml");
+        controller.setUser(user);
+    }
+
+    @FXML
     public void onCreateOrderButtonClick() {
         Customer customer = (Customer) customersComboBox.getValue();
 

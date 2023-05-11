@@ -30,7 +30,16 @@
                      <Font size="16.0" />
                  </font>
              </Label>
-             <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="310.0" style="-fx-font-size: 14px;" />
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="16.0">
+               <children>
+                   <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="310.0" style="-fx-font-size: 14px;" />
+                  <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="143.0" text="Criar novo Cliente &gt;" onAction="#onCreateCustomerButtonClick">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </VBox>
 
           <VBox prefHeight="254.0" prefWidth="784.0" spacing="8.0">
