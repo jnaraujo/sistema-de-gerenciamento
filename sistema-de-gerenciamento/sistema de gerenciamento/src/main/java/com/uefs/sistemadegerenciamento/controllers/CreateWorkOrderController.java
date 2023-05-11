@@ -38,9 +38,7 @@ public class CreateWorkOrderController {
         System.out.println("initialize");
         HelloApplication.stage.setTitle("Criar Ordem de Serviço");
 
-        customers = DAOManager.getCustomerDao().getAll();
-        customers.sort(Comparator.comparing(Customer::getName));
-
+        customers = fetchCustomers();
 
         customersComboBox.setEditable(true);
         customersComboBox.getItems().addAll(customers);
@@ -79,6 +77,12 @@ public class CreateWorkOrderController {
                 }
            });
         });
+    }
+
+    private List<Customer> fetchCustomers() {
+        List<Customer> customers = DAOManager.getCustomerDao().getAll();
+        customers.sort(Comparator.comparing(Customer::getName));
+        return customers;
     }
 
     @FXML
