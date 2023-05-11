@@ -29,7 +29,7 @@
                <Font size="16.0" />
             </font>
          </Label>
-         <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="310.0" />
+         <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="310.0" style="-fx-font-size: 14px;" />
          <Label text="Descrição da Ordem de Serviço:">
             <font>
                <Font size="16.0" />
