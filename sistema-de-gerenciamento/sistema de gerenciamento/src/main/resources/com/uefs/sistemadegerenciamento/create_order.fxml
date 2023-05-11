@@ -24,6 +24,12 @@
          <Insets top="16.0" />
       </VBox.margin>
       <children>
+         <Label layoutX="10.0" layoutY="10.0" text="Cliente:">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Label>
+         <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="310.0" />
          <Label text="Descrição da Ordem de Serviço:">
             <font>
                <Font size="16.0" />
