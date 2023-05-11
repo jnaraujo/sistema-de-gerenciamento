@@ -19,26 +19,38 @@
             </Label>
         </children>
     </HBox>
-   <VBox prefHeight="476.0" prefWidth="784.0">
+   <VBox prefHeight="476.0" prefWidth="784.0" spacing="16.0">
       <VBox.margin>
          <Insets top="16.0" />
       </VBox.margin>
       <children>
-         <Label layoutX="10.0" layoutY="10.0" text="Cliente:">
+         <VBox prefHeight="31.0" prefWidth="784.0" spacing="8.0">
+             <Label layoutX="10.0" layoutY="10.0" text="Cliente:">
+                 <font>
+                     <Font size="16.0" />
+                 </font>
+             </Label>
+             <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="310.0" style="-fx-font-size: 14px;" />
+         </VBox>
+
+          <VBox prefHeight="254.0" prefWidth="784.0" spacing="8.0">
+              <Label text="Descrição da Ordem de Serviço:">
+                  <font>
+                      <Font size="16.0" />
+                  </font></Label>
+              <TextArea fx:id="descriptionTextArea" prefHeight="248.0" prefWidth="784.0" wrapText="true">
+                  <font>
+                      <Font size="14.0" />
+                  </font>
+              </TextArea>
+          </VBox>
+
+         <Label fx:id="infoLabel" alignment="CENTER" prefHeight="30.0" prefWidth="784.0" text="" textAlignment="CENTER">
             <font>
                <Font size="16.0" />
             </font>
          </Label>
-         <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="310.0" style="-fx-font-size: 14px;" />
-         <Label text="Descrição da Ordem de Serviço:">
-            <font>
-               <Font size="16.0" />
-            </font></Label>
-         <TextArea prefHeight="141.0" prefWidth="784.0">
-            <font>
-               <Font size="14.0" />
-            </font></TextArea>
       </children>
    </VBox>
-   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="196.0" text="Criar nova Ordem de Serviço" />
+   <Button mnemonicParsing="false" onAction="#onCreateOrderButtonClick" prefHeight="25.0" prefWidth="196.0" text="Criar nova Ordem de Serviço" />
 </VBox>

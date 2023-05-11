@@ -3,23 +3,29 @@ package com.uefs.sistemadegerenciamento.controllers;
 import com.uefs.sistemadegerenciamento.HelloApplication;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
+import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.util.StringConverter;
-
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class CreateWorkOrderController {
     User user;
 
     @FXML
     public ComboBox customersComboBox;
+
+    @FXML
+    public TextArea descriptionTextArea;
+
+    @FXML
+    public Label infoLabel;
 
     private List<Customer> customers;
 
@@ -78,5 +84,52 @@ public class CreateWorkOrderController {
     @FXML
     public void onBackButtonClick() {
         PageLoader.goHome(user);
+    }
+
+    @FXML
+    public void onCreateOrderButtonClick() {
+        Customer customer = (Customer) customersComboBox.getValue();
+
+        customersComboBox.setStyle("-fx-border-color: none; -fx-font-size: 14px");
+        descriptionTextArea.setStyle("-fx-border-color: none; -fx-font-size: 14px");
+        info("");
+
+        if(customer == null) {
+            customersComboBox.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            error("Selecione um cliente");
+            return;
+        }
+
+        if(descriptionTextArea.getText().isEmpty()) {
+            descriptionTextArea.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            error("Digite uma descrição");
+            return;
+        }
+
+        WorkOrder workOrder = new WorkOrder(
+                descriptionTextArea.getText(),
+                customer.getId()
+        );
+
+        DAOManager.getWorkOrderDao().save(workOrder);
+        success("Ordem de serviço criada com sucesso!");
+
+        descriptionTextArea.setText("");
+        customersComboBox.setValue(null);
+    }
+
+    private void info(String message) {
+        infoLabel.setStyle("-fx-text-fill: #000000");
+        infoLabel.setText(message);
+    }
+
+    private void error(String message) {
+        infoLabel.setStyle("-fx-text-fill: #ff0000");
+        infoLabel.setText(message);
+    }
+
+    private void success(String message) {
+        infoLabel.setStyle("-fx-text-fill: #00ff00");
+        infoLabel.setText(message);
     }
 }
