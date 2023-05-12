@@ -3,9 +3,7 @@ package com.uefs.sistemadegerenciamento.controllers;
 import com.uefs.sistemadegerenciamento.HelloApplication;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
-import com.uefs.sistemadegerenciamento.model.user.Administrator;
-import com.uefs.sistemadegerenciamento.model.user.Receptionist;
-import com.uefs.sistemadegerenciamento.model.user.Technician;
+import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import com.uefs.sistemadegerenciamento.view.components.UpdateUserComponent;
@@ -16,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.util.StringConverter;
 
 import java.util.Comparator;
 import java.util.List;
@@ -113,12 +110,23 @@ public class ManageUserController {
 
         alert.showAndWait().ifPresent((buttonType) -> {
             if(buttonType == buttonTypeYes) {
-                DAOManager.getUserDao().delete(deletedUser.getId());
-                users.remove(deletedUser);
+                deleteUser(deletedUser);
             }
 
             alert.close();
         });
+    }
+
+    private void deleteUser(User user){
+        WorkOrder order = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(user.getId());
+
+        if(order != null){
+            order.setTechnicianId(null);
+            DAOManager.getWorkOrderDao().update(order);
+        }
+
+        DAOManager.getUserDao().delete(user.getId());
+        users.remove(user);
     }
 
     private List<User> fetchUsers() {
