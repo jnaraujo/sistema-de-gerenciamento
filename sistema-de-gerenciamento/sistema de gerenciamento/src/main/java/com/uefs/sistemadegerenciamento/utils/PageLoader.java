@@ -42,6 +42,6 @@ public class PageLoader {
      */
     public static void goHome(User user) {
         HomeController controller = PageLoader.openPage("home.fxml");
-        controller.setUser(user);
+        controller.setLoggedUser(user);
     }
 }

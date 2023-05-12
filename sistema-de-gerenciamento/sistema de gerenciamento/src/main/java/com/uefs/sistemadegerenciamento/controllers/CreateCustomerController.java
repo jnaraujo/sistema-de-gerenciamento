@@ -3,22 +3,14 @@ package com.uefs.sistemadegerenciamento.controllers;
 import com.uefs.sistemadegerenciamento.HelloApplication;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
-import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.util.StringConverter;
-
-import java.util.Comparator;
-import java.util.List;
 
 public class CreateCustomerController {
-    private User user;
+    private User loggedUser;
 
     @FXML
     public TextField nameField;
@@ -35,8 +27,8 @@ public class CreateCustomerController {
     @FXML
     public Label infoLabel;
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
     }
 
     @FXML
@@ -46,7 +38,7 @@ public class CreateCustomerController {
 
     @FXML
     public void onBackButtonClick() {
-        PageLoader.goHome(user);
+        PageLoader.goHome(loggedUser);
     }
 
     @FXML

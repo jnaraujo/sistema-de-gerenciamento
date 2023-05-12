@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
 
 public class CreateUserController {
-    private User user;
+    private User loggedUser;
     @FXML
     public TextField nameField;
     @FXML
@@ -28,8 +28,8 @@ public class CreateUserController {
     @FXML
     public Label infoLabel;
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
     }
 
     @FXML
@@ -71,7 +71,7 @@ public class CreateUserController {
 
     @FXML
     public void onBackButtonClick() {
-        PageLoader.goHome(user);
+        PageLoader.goHome(loggedUser);
     }
 
     @FXML

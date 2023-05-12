@@ -5,16 +5,9 @@ import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class LoginController {
     @FXML
@@ -63,6 +56,6 @@ public class LoginController {
 
     private void openPage(String url, User user) {
         HomeController homeController = PageLoader.openPage(url);
-        homeController.setUser(user);
+        homeController.setLoggedUser(user);
     }
 }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeController {
-    private User user;
+    private User loggedUser;
 
     @FXML
     public Label titleLabel;
@@ -24,10 +24,10 @@ public class HomeController {
     @FXML
     public FlowPane flowPane;
 
-    public void setUser(User user) {
-        this.user = user;
-        titleLabel.setText("Bem vindo, " + user.getName()+ "!");
-        userRoleText.setText("Seu cargo atual: " + userTypeToText(user.getUserType()));
+    public void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
+        titleLabel.setText("Bem vindo, " + loggedUser.getName()+ "!");
+        userRoleText.setText("Seu cargo atual: " + userTypeToText(loggedUser.getUserType()));
 
         setUpListOfUserViewsButtons();
     }
@@ -48,11 +48,11 @@ public class HomeController {
     private void setUpListOfUserViewsButtons() {
         List<Button> buttons = new ArrayList<>();
 
-        if(user.getUserType() == UserType.RECEPTIONIST) {
+        if(loggedUser.getUserType() == UserType.RECEPTIONIST) {
             buttons.addAll(getReceptionistButtons());
-        } else if(user.getUserType() == UserType.TECHNICIAN) {
+        } else if(loggedUser.getUserType() == UserType.TECHNICIAN) {
             buttons.addAll(getTechnicianButtons());
-        } else if(user.getUserType() == UserType.ADMINISTRATOR) {
+        } else if(loggedUser.getUserType() == UserType.ADMINISTRATOR) {
             buttons.addAll(getAdministratorButtons());
             buttons.addAll(getTechnicianButtons());
             buttons.addAll(getReceptionistButtons());
@@ -67,7 +67,7 @@ public class HomeController {
         Button button = BigButtonComponent.create("Listar ordens de serviço");
         button.setOnAction(event -> {
             WorkOrderListController controller = PageLoader.openPage("work_order_list.fxml");
-            controller.setUser(user);
+            controller.setLoggedUser(loggedUser);
 
         });
         buttons.add(button);
@@ -88,14 +88,14 @@ public class HomeController {
         Button button = BigButtonComponent.create("Criar ordem de serviço");
         button.setOnAction(event -> {
             CreateWorkOrderController controller = PageLoader.openPage("create_order.fxml");
-            controller.setUser(user);
+            controller.setLoggedUser(loggedUser);
         });
         buttons.add(button);
 
         button = BigButtonComponent.create("Criar novo Cliente");
         button.setOnAction(event -> {
             CreateCustomerController controller = PageLoader.openPage("create_customer.fxml");
-            controller.setUser(user);
+            controller.setLoggedUser(loggedUser);
         });
         buttons.add(button);
 
@@ -115,7 +115,14 @@ public class HomeController {
         button = BigButtonComponent.create("Criar novo usuário");
         button.setOnAction(event -> {
             CreateUserController controller = (CreateUserController) PageLoader.openPage("create_user.fxml");
-            controller.setUser(user);
+            controller.setLoggedUser(loggedUser);
+        });
+        buttons.add(button);
+
+        button = BigButtonComponent.create("Gerenciar usuários");
+        button.setOnAction(event -> {
+            ManageUserController controller = PageLoader.openPage("manage_user.fxml");
+            controller.setUser(loggedUser);
         });
         buttons.add(button);
 
