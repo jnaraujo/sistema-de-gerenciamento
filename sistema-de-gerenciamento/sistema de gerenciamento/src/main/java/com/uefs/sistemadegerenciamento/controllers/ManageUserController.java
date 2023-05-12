@@ -26,10 +26,7 @@ public class ManageUserController {
 
     private ObservableList<User> users;
 
-    private final int COMPONENT_HEIGHT = 80 + 16;
-
-    @FXML
-    private ScrollPane scrollPane;
+    private final int COMPONENT_HEIGHT = 95 + 16;
 
     @FXML
     private VBox userListVBox;
