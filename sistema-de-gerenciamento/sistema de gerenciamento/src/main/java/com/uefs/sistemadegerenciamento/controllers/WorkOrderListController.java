@@ -8,7 +8,7 @@ import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
-import com.uefs.sistemadegerenciamento.view.components.EmptyWorkOrderComponent;
+import com.uefs.sistemadegerenciamento.view.components.EmptyComponent;
 import com.uefs.sistemadegerenciamento.view.components.WorkOrderComponent;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -54,7 +54,7 @@ public class WorkOrderListController {
         if(loggedUserWorkOrder != null) {
             technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserWorkOrder, (Technician) loggedUser, false));
         }else{
-            technicianCurrentWorkOrderVBox.getChildren().add(EmptyWorkOrderComponent.create());
+            technicianCurrentWorkOrderVBox.getChildren().add(EmptyComponent.create("Não há ordens de serviço disponíveis"));
         }
     }
 
@@ -67,7 +67,7 @@ public class WorkOrderListController {
         filterComboBox.getItems().addAll("Todas", "Abertas", "Fechadas");
         filterComboBox.getSelectionModel().select(1);
 
-        workOrderListVBox.getChildren().add(EmptyWorkOrderComponent.create());
+        workOrderListVBox.getChildren().add(EmptyComponent.create("Não há ordens de serviço disponíveis"));
         openWorkOrders.addListener(new ListChangeListener<WorkOrder>() {
             @Override
             public void onChanged(Change<? extends WorkOrder> change) {
@@ -79,11 +79,11 @@ public class WorkOrderListController {
                 if(doesLoggedUserHaveWorkOrder) {
                     technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserWorkOrder, (Technician) loggedUser, false));
                 }else{
-                    technicianCurrentWorkOrderVBox.getChildren().add(EmptyWorkOrderComponent.create());
+                    technicianCurrentWorkOrderVBox.getChildren().add(EmptyComponent.create("Não há ordens de serviço disponíveis"));
                 }
 
                 workOrderListVBox.getChildren().removeIf(node -> {
-                    return node.getId().equals("empty-work-order");
+                    return node.getId().equals("empty-component");
                 });
 
                 while (change.next()) {
@@ -111,7 +111,7 @@ public class WorkOrderListController {
                 }
 
                 if(openWorkOrders.isEmpty()) {
-                    workOrderListVBox.getChildren().add(EmptyWorkOrderComponent.create());
+                    workOrderListVBox.getChildren().add(EmptyComponent.create("Não há ordens de serviço disponíveis"));
                 }
 
                 anchorPane.setPrefHeight(COMPONENT_HEIGHT * workOrderListVBox.getChildren().size() + 16);

@@ -7,10 +7,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class EmptyWorkOrderComponent {
-    public static HBox create() {
+public class EmptyComponent {
+    public static HBox create(String description) {
         HBox hBox = new HBox();
-        hBox.setId("empty-work-order");
+        hBox.setId("empty-component");
         hBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setPrefHeight(80);
         hBox.setPrefWidth(750);
@@ -24,7 +24,7 @@ public class EmptyWorkOrderComponent {
 
         vBox.setPadding(new javafx.geometry.Insets(0, 8, 0, 0));
 
-        Label descriptionLabel = new Label("Não há ordens de serviço disponíveis");
+        Label descriptionLabel = new Label(description);
         descriptionLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 16));
         descriptionLabel.setMaxWidth(750);
 
