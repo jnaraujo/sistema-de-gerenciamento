@@ -10,6 +10,7 @@ import javafx.scene.text.FontWeight;
 public class EmptyWorkOrderComponent {
     public static HBox create() {
         HBox hBox = new HBox();
+        hBox.setId("empty-work-order");
         hBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setPrefHeight(80);
         hBox.setPrefWidth(750);
