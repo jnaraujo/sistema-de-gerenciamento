@@ -11,7 +11,7 @@ public class MainController {
     private VBox root;
 
     @FXML
-    private static VBox staticRoot;
+    public static VBox staticRoot;
 
     @FXML
     private void initialize() throws IOException {
