@@ -71,13 +71,13 @@ public class WorkOrderListController {
         openWorkOrders.addListener(new ListChangeListener<WorkOrder>() {
             @Override
             public void onChanged(Change<? extends WorkOrder> change) {
-                WorkOrder loggedUserHaveWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(loggedUser.getId());
-                boolean doesLoggedUserHaveWorkOrder = loggedUserHaveWorkOrder != null;
+                WorkOrder loggedUserWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(loggedUser.getId());
+                boolean doesLoggedUserHaveWorkOrder = loggedUserWorkOrder != null;
 
                 technicianCurrentWorkOrderVBox.getChildren().clear();
 
                 if(doesLoggedUserHaveWorkOrder) {
-                    technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserHaveWorkOrder, (Technician) loggedUser, false));
+                    technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserWorkOrder, (Technician) loggedUser, false));
                 }else{
                     technicianCurrentWorkOrderVBox.getChildren().add(EmptyWorkOrderComponent.create());
                 }
