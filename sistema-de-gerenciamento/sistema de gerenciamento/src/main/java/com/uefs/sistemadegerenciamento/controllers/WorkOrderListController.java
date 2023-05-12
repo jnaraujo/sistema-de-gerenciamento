@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
@@ -12,10 +13,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class WorkOrderListController {
@@ -33,12 +36,15 @@ public class WorkOrderListController {
     @FXML
     private VBox technicianCurrentWorkOrderVBox;
 
+    @FXML
+    private ComboBox filterComboBox;
+
     private final int COMPONENT_HEIGHT = 83 + 16;
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
 
-        openWorkOrders.addAll(fetchWorkOrders());
+        openWorkOrders.addAll(fetchOpenWorkOrders());
 
         WorkOrder loggedUserWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(loggedUser.getId());
 
@@ -51,15 +57,14 @@ public class WorkOrderListController {
         }
     }
 
-    private List<WorkOrder> fetchWorkOrders() {
-        return DAOManager.getWorkOrderDao().findOpenWorkOrders();
-    }
-
     @FXML
     private void initialize() {
         HelloApplication.stage.setTitle("Lista de ordens de serviço");
 
         openWorkOrders = FXCollections.observableArrayList();
+
+        filterComboBox.getItems().addAll("Todas", "Abertas", "Fechadas");
+        filterComboBox.getSelectionModel().select(1);
 
         workOrderListVBox.getChildren().add(EmptyWorkOrderComponent.create());
         openWorkOrders.addListener(new ListChangeListener<WorkOrder>() {
@@ -122,6 +127,22 @@ public class WorkOrderListController {
     }
 
     @FXML
+    private void onFilterComboBoxAction() {
+        String filter = filterComboBox.getSelectionModel().getSelectedItem().toString();
+        System.out.println(filter);
+        if(filter.equals("Todas")) {
+            openWorkOrders.removeAll(openWorkOrders);
+            openWorkOrders.addAll(fetchAllWorkOrders());
+        }else if(filter.equals("Abertas")) {
+            openWorkOrders.removeAll(openWorkOrders);
+            openWorkOrders.addAll(fetchOpenWorkOrders());
+        }else if(filter.equals("Fechadas")) {
+            openWorkOrders.removeAll(openWorkOrders);
+            openWorkOrders.addAll(fetchClosedWorkOrders());
+        }
+    }
+
+    @FXML
     private void onBackButtonClick() {
         PageLoader.goHome(loggedUser);
     }
@@ -137,8 +158,29 @@ public class WorkOrderListController {
                 DAOManager.getWorkOrderDao().update(workOrder);
 
                 openWorkOrders.removeAll(openWorkOrders);
-                openWorkOrders.addAll(fetchWorkOrders());
+                openWorkOrders.addAll(fetchOpenWorkOrders());
             }
         });
+    }
+
+    private List<WorkOrder> fetchOpenWorkOrders() {
+        return DAOManager.getWorkOrderDao().findOpenWorkOrders();
+    }
+
+    private List<WorkOrder> fetchClosedWorkOrders() {
+        List<WorkOrder> workOrders = DAOManager.getWorkOrderDao().getAll();
+
+        workOrders.removeIf(workOrder -> {
+            return workOrder.getStatus().equals(OrderStatus.OPEN);
+        });
+
+        workOrders.sort(Comparator.comparing(WorkOrder::getCreatedAt));
+        return workOrders;
+    }
+
+    private List<WorkOrder> fetchAllWorkOrders() {
+        List<WorkOrder> workOrders = DAOManager.getWorkOrderDao().getAll();
+        workOrders.sort(Comparator.comparing(WorkOrder::getCreatedAt));
+        return workOrders;
     }
 }

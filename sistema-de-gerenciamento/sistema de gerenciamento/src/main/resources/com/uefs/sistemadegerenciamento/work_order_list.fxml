@@ -32,7 +32,7 @@
          <Insets top="16.0" />
       </VBox.margin>
    </HBox>
-   <VBox prefHeight="100.0" prefWidth="784.0" fx:id="technicianCurrentWorkOrderVBox">
+   <VBox fx:id="technicianCurrentWorkOrderVBox" prefHeight="100.0" prefWidth="784.0">
       <padding>
          <Insets bottom="8.0" />
       </padding>
@@ -40,13 +40,27 @@
          <Insets bottom="8.0" top="8.0" />
       </VBox.margin>
    </VBox>
-   <HBox alignment="CENTER_LEFT" layoutX="18.0" layoutY="72.0" prefHeight="38.0" prefWidth="784.0">
+   <HBox alignment="CENTER_LEFT" layoutX="18.0" layoutY="72.0" prefHeight="38.0" prefWidth="784.0" spacing="32.0">
       <children>
-         <Text text="Ultimas ordens em serviço:">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Text>
+         <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="452.0">
+            <children>
+               <Text text="Ordens em Serviço:">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Text>
+            </children>
+         </HBox>
+         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="306.0" spacing="16.0">
+            <children>
+               <Text text="Filtrar por:">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Text>
+               <ComboBox prefHeight="25.0" prefWidth="211.0" fx:id="filterComboBox" onAction="#onFilterComboBoxAction" />
+            </children>
+         </HBox>
       </children>
       <VBox.margin>
          <Insets top="16.0" />
