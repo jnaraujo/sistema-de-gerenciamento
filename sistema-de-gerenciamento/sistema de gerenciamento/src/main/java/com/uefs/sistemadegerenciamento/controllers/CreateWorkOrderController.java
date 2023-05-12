@@ -43,7 +43,7 @@ public class CreateWorkOrderController {
         customersComboBox.setEditable(true);
         customersComboBox.getItems().addAll(customers);
         customersComboBox.setPromptText("Selecione um cliente");
-        customersComboBox.setConverter(new CustomerConverter());
+        customersComboBox.setConverter(new CustomerConverter(customers));
 
 
         customersComboBox.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
