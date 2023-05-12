@@ -128,4 +128,8 @@ public class HomeController {
 
         return buttons;
     }
+
+    public void onLogOutClick() {
+        PageLoader.openPage("login.fxml");
+    }
 }
