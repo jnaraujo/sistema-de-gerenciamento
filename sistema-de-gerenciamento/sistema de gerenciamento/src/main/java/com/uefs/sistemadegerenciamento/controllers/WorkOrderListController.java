@@ -34,7 +34,7 @@ public class WorkOrderListController {
     @FXML
     private VBox technicianCurrentWorkOrderVBox;
 
-    private final int COMPONENT_HEIGHT = 80 + 16;
+    private final int COMPONENT_HEIGHT = 83 + 16;
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
