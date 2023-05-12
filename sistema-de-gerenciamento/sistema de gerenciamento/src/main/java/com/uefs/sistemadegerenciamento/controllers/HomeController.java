@@ -112,11 +112,12 @@ public class HomeController {
         });
         buttons.add(button);
 
-        button = BigButtonComponent.create("Gerenciar usuários");
+        button = BigButtonComponent.create("Criar novo usuário");
         button.setOnAction(event -> {
-//            ManageUsersController controller = (ManageUsersController) PageLoader.openPage("manage_users.fxml");
-//            controller.setUser(user);
+            CreateUserController controller = (CreateUserController) PageLoader.openPage("create_user.fxml");
+            controller.setUser(user);
         });
+        buttons.add(button);
 
         return buttons;
     }

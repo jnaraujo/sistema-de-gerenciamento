@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.CreateUserController">
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+    </padding>
+    <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="784.0" spacing="16.0">
+        <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="111.0" text="Voltar" />
+            <Label fx:id="titleText" prefHeight="36.0" prefWidth="356.0" text="Criar novo Usuário">
+                <font>
+                    <Font name="System Bold" size="25.0" />
+                </font>
+            </Label>
+        </children>
+    </HBox>
+   <VBox prefHeight="476.0" prefWidth="784.0" spacing="16.0">
+      <VBox.margin>
+         <Insets top="16.0" />
+      </VBox.margin>
+      <children>
+         <VBox layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="784.0" spacing="8.0">
+            <children>
+               <Label text="Nome">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="nameField" prefHeight="25.0" prefWidth="340.0" promptText="Ex: João da Silva">
+                  <font>
+                     <Font size="14.0" />
+                  </font></TextField>
+            </children>
+         </VBox>
+         <HBox prefHeight="19.0" prefWidth="784.0" spacing="8.0">
+            <children>
+               <VBox prefHeight="18.0" prefWidth="784.0" spacing="8.0">
+                  <children>
+                     <Label text="Email">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="emailField" prefHeight="25.0" prefWidth="132.0" promptText="Ex: joaodasilva@exemplo.com">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </TextField>
+                  </children>
+               </VBox>
+               <VBox prefHeight="18.0" prefWidth="784.0" spacing="8.0">
+                  <children>
+                     <Label text="Senha">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="132.0" promptText="**************">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </PasswordField>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+         <VBox layoutX="10.0" layoutY="10.0" prefHeight="21.0" prefWidth="784.0" spacing="8.0">
+            <children>
+               <Label text="Tipo do usuário">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <ChoiceBox fx:id="userTypeChoiceBox" prefHeight="25.0" prefWidth="388.0" />
+            </children>
+         </VBox>
+
+         <Label fx:id="infoLabel" alignment="CENTER" prefHeight="30.0" prefWidth="784.0" text="" textAlignment="CENTER">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Label>
+      </children>
+   </VBox>
+   <Button mnemonicParsing="false" onAction="#onCreateCustomerButtonClick" prefHeight="48.0" prefWidth="828.0" text="Criar novo Usuário">
+      <font>
+         <Font size="16.0" />
+      </font></Button>
+</VBox>
