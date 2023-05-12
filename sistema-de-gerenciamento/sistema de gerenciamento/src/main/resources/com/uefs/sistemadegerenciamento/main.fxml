@@ -3,5 +3,5 @@
 <?import javafx.scene.layout.*?>
 
 
-<VBox fx:id="root" style="-fx-background-color: #edf2fb;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.uefs.sistemadegerenciamento.controllers.MainController">
+<VBox fx:id="root" style="-fx-background-color: #eaeaea;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.uefs.sistemadegerenciamento.controllers.MainController">
 </VBox>
