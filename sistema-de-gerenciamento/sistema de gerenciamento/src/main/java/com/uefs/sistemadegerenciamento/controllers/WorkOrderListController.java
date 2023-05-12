@@ -132,7 +132,6 @@ public class WorkOrderListController {
     @FXML
     private void onFilterComboBoxAction() {
         String filter = filterComboBox.getSelectionModel().getSelectedItem().toString();
-        System.out.println(filter);
         if(filter.equals("Todas")) {
             openWorkOrders.removeAll(openWorkOrders);
             openWorkOrders.addAll(fetchAllWorkOrders());
