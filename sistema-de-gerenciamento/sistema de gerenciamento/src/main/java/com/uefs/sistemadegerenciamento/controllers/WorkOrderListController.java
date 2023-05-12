@@ -26,16 +26,16 @@ public class WorkOrderListController {
     private ObservableList<WorkOrder> openWorkOrders;
 
     @FXML
-    public ScrollPane scrollPane;
+    private ScrollPane scrollPane;
 
     @FXML
-    public VBox workOrderListVBox;
+    private VBox workOrderListVBox;
 
     @FXML
-    public AnchorPane anchorPane;
+    private AnchorPane anchorPane;
 
     @FXML
-    public VBox technicianCurrentWorkOrderVBox;
+    private VBox technicianCurrentWorkOrderVBox;
 
     private final int COMPONENT_HEIGHT = 80 + 16;
 

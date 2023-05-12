@@ -29,13 +29,13 @@ public class ManageUserController {
     private final int COMPONENT_HEIGHT = 80 + 16;
 
     @FXML
-    public ScrollPane scrollPane;
+    private ScrollPane scrollPane;
 
     @FXML
-    public VBox userListVBox;
+    private VBox userListVBox;
 
     @FXML
-    public AnchorPane userListAnchorPane;
+    private AnchorPane userListAnchorPane;
 
     public void setUser(User user) {
         this.loggedUser = user;

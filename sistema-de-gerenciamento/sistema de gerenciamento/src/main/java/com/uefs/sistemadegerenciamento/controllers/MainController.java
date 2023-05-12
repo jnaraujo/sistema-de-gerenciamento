@@ -8,9 +8,10 @@ import java.io.IOException;
 
 public class MainController {
     @FXML
-    public VBox root;
+    private VBox root;
 
-    public static VBox staticRoot;
+    @FXML
+    private static VBox staticRoot;
 
     @FXML
     private void initialize() throws IOException {

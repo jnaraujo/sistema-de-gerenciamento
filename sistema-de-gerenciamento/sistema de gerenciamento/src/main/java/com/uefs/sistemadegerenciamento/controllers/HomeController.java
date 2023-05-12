@@ -16,13 +16,13 @@ public class HomeController {
     private User loggedUser;
 
     @FXML
-    public Label titleLabel;
+    private Label titleLabel;
 
     @FXML
-    public Text userRoleText;
+    private Text userRoleText;
 
     @FXML
-    public FlowPane flowPane;
+    private FlowPane flowPane;
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;

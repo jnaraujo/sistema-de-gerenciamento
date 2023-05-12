@@ -11,13 +11,13 @@ import javafx.scene.control.TextField;
 
 public class LoginController {
     @FXML
-    public Label titleText;
+    private Label titleText;
 
     @FXML
-    public TextField emailField;
+    private TextField emailField;
 
     @FXML
-    public PasswordField passwordField;
+    private PasswordField passwordField;
 
     @FXML
     private void initialize() {

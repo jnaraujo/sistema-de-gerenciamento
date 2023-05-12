@@ -19,13 +19,13 @@ public class CreateWorkOrderController {
     private User loggedUser;
 
     @FXML
-    public ComboBox customersComboBox;
+    private ComboBox customersComboBox;
 
     @FXML
-    public TextArea descriptionTextArea;
+    private TextArea descriptionTextArea;
 
     @FXML
-    public Label infoLabel;
+    private Label infoLabel;
 
     private List<Customer> customers;
 

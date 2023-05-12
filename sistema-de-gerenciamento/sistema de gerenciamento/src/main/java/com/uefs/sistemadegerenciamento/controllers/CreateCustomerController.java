@@ -13,19 +13,19 @@ public class CreateCustomerController {
     private User loggedUser;
 
     @FXML
-    public TextField nameField;
+    private TextField nameField;
 
     @FXML
-    public TextField emailField;
+    private TextField emailField;
 
     @FXML
-    public TextField phoneField;
+    private TextField phoneField;
 
     @FXML
-    public TextField addressField;
+    private TextField addressField;
 
     @FXML
-    public Label infoLabel;
+    private Label infoLabel;
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;

@@ -18,15 +18,15 @@ import javafx.util.StringConverter;
 public class CreateUserController {
     private User loggedUser;
     @FXML
-    public TextField nameField;
+    private TextField nameField;
     @FXML
-    public TextField emailField;
+    private TextField emailField;
     @FXML
-    public PasswordField passwordField;
+    private PasswordField passwordField;
     @FXML
-    public ChoiceBox<UserType> userTypeChoiceBox;
+    private ChoiceBox<UserType> userTypeChoiceBox;
     @FXML
-    public Label infoLabel;
+    private Label infoLabel;
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
