@@ -5,6 +5,7 @@ module com.uefs.sistemadegerenciamento {
     requires org.kordamp.bootstrapfx.core;
 
     opens com.uefs.sistemadegerenciamento to javafx.fxml;
+    opens com.uefs.sistemadegerenciamento.controllers to javafx.fxml;
     exports com.uefs.sistemadegerenciamento;
     exports com.uefs.sistemadegerenciamento.controllers;
 }
