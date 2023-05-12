@@ -8,6 +8,9 @@ import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import com.uefs.sistemadegerenciamento.view.components.EmptyWorkOrderComponent;
 import com.uefs.sistemadegerenciamento.view.components.WorkOrderComponent;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -18,9 +21,9 @@ import java.util.List;
 
 public class WorkOrderListController {
 
-    private User user;
+    private User loggedUser;
 
-    private List<WorkOrder> openWorkOrders;
+    private ObservableList<WorkOrder> openWorkOrders;
 
     @FXML
     public ScrollPane scrollPane;
@@ -34,63 +37,111 @@ public class WorkOrderListController {
     @FXML
     public VBox technicianCurrentWorkOrderVBox;
 
-    public void setUser(User user) {
-        this.user = user;
+    private final int COMPONENT_HEIGHT = 80 + 16;
 
-        fetchWorkOrders();
+    public void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
 
-        int componentHeight = 80 + 16;
-        anchorPane.setPrefHeight(componentHeight * workOrderListVBox.getChildren().size() + 16);
-    }
+        openWorkOrders.addAll(fetchWorkOrders());
 
-    private void fetchWorkOrders() {
+        WorkOrder loggedUserWorkOrder = DAOManager.getWorkOrderDao().findOrderByTechnicianId(loggedUser.getId());
+
         technicianCurrentWorkOrderVBox.getChildren().clear();
-        workOrderListVBox.getChildren().clear();
 
-        List<WorkOrder> workOrders = DAOManager.getWorkOrderDao().findOpenWorkOrders();
-        openWorkOrders = workOrders;
-
-        boolean doesTechnicianHaveWorkOrder = DAOManager.getWorkOrderDao().findOrderByTechnicianId(user.getId()) != null;
-        boolean isButtonDisabled = doesTechnicianHaveWorkOrder;
-
-        for (WorkOrder workOrder : workOrders) {
-            workOrderListVBox.getChildren().add(createWorkOrderComponent(workOrder, isButtonDisabled, false));
-        }
-
-        if(workOrders.isEmpty()) {
-            workOrderListVBox.getChildren().add(EmptyWorkOrderComponent.create());
-        }
-
-        if(!doesTechnicianHaveWorkOrder){
+        if(loggedUserWorkOrder != null) {
+            technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserWorkOrder, false));
+        }else{
             technicianCurrentWorkOrderVBox.getChildren().add(EmptyWorkOrderComponent.create());
         }
+    }
 
-        if (doesTechnicianHaveWorkOrder) {
-            WorkOrder workOrder = DAOManager.getWorkOrderDao().findOrderByTechnicianId(user.getId());
-            technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(workOrder, false, true));
-        }
+    private List<WorkOrder> fetchWorkOrders() {
+        return DAOManager.getWorkOrderDao().findOpenWorkOrders();
     }
 
     @FXML
     public void initialize() {
         HelloApplication.stage.setTitle("Lista de ordens de serviço");
+
+        openWorkOrders = FXCollections.observableArrayList();
+
+        workOrderListVBox.getChildren().add(EmptyWorkOrderComponent.create());
+        openWorkOrders.addListener(new ListChangeListener<WorkOrder>() {
+            @Override
+            public void onChanged(Change<? extends WorkOrder> change) {
+                WorkOrder loggedUserHaveWorkOrder = DAOManager.getWorkOrderDao().findOrderByTechnicianId(loggedUser.getId());
+                boolean doesLoggedUserHaveWorkOrder = loggedUserHaveWorkOrder != null;
+                boolean isButtonDisabled = doesLoggedUserHaveWorkOrder;
+
+                technicianCurrentWorkOrderVBox.getChildren().clear();
+
+                if(doesLoggedUserHaveWorkOrder) {
+                    technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserHaveWorkOrder, false));
+                }else{
+                    technicianCurrentWorkOrderVBox.getChildren().add(EmptyWorkOrderComponent.create());
+                }
+
+                workOrderListVBox.getChildren().removeIf(node -> {
+                    return node.getId().equals("empty-work-order");
+                });
+
+                while (change.next()) {
+                    if (change.wasAdded()) {
+                        for (WorkOrder workOrder : change.getAddedSubList()) {
+                            addWorkOrderToLayout(workOrder, isButtonDisabled);
+                        }
+                    }
+
+                    if (change.wasRemoved()) {
+                        for (WorkOrder workOrder : change.getRemoved()) {
+                            removeWorkOrderFromLayout(workOrder);
+                        }
+                    }
+
+                    if(change.wasUpdated()){
+                        for (WorkOrder workOrder : change.getList()) {
+                            removeWorkOrderFromLayout(workOrder);
+                            addWorkOrderToLayout(workOrder, isButtonDisabled);
+                        }
+                    }
+                }
+
+                if(openWorkOrders.isEmpty()) {
+                    workOrderListVBox.getChildren().add(EmptyWorkOrderComponent.create());
+                }
+
+                anchorPane.setPrefHeight(COMPONENT_HEIGHT * workOrderListVBox.getChildren().size() + 16);
+            }
+        });
+    }
+
+    private void addWorkOrderToLayout(WorkOrder workOrder, boolean isButtonDisabled) {
+        workOrderListVBox.getChildren().add(createWorkOrderComponent(workOrder, isButtonDisabled));
+    }
+
+    private void removeWorkOrderFromLayout(WorkOrder workOrder) {
+        workOrderListVBox.getChildren().removeIf(node -> {
+            return node.getId().equals("work-order-" + workOrder.getId());
+        });
     }
 
     @FXML
     public void onBackButtonClick() {
-        PageLoader.goHome(user);
+        PageLoader.goHome(loggedUser);
     }
 
-    private HBox createWorkOrderComponent(WorkOrder workOrder, boolean isButtonDisabled, boolean doesTechnicianHaveAWorkOrder) {
+    private HBox createWorkOrderComponent(WorkOrder workOrder, boolean isButtonDisabled) {
         Customer customer = DAOManager.getCustomerDao().findById(workOrder.getCustomerId());
 
-        return WorkOrderComponent.create(workOrder, customer, user, isButtonDisabled, (event) -> {
-            if(doesTechnicianHaveAWorkOrder){
+        return WorkOrderComponent.create(workOrder, customer, loggedUser, isButtonDisabled, (event) -> {
+            if(isButtonDisabled){
                 System.out.println("Tecnico ja possui uma ordem de serviço");
             }else{
-                workOrder.setTechnicianId(user.getId());
+                workOrder.setTechnicianId(loggedUser.getId());
                 DAOManager.getWorkOrderDao().update(workOrder);
-                fetchWorkOrders();
+
+                openWorkOrders.removeAll(openWorkOrders);
+                openWorkOrders.addAll(fetchWorkOrders());
             }
         });
     }
