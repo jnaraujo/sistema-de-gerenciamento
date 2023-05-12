@@ -72,7 +72,6 @@ public class WorkOrderListController {
             public void onChanged(Change<? extends WorkOrder> change) {
                 WorkOrder loggedUserHaveWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(loggedUser.getId());
                 boolean doesLoggedUserHaveWorkOrder = loggedUserHaveWorkOrder != null;
-                boolean isButtonDisabled = doesLoggedUserHaveWorkOrder;
 
                 technicianCurrentWorkOrderVBox.getChildren().clear();
 
@@ -89,6 +88,11 @@ public class WorkOrderListController {
                 while (change.next()) {
                     if (change.wasAdded()) {
                         for (WorkOrder workOrder : change.getAddedSubList()) {
+                            boolean doesWorkOrderHaveTechnician = workOrder.getTechnicianId() != null;
+                            boolean isWorkOrderClosed = workOrder.getStatus() == OrderStatus.CLOSED;
+
+                            boolean isButtonDisabled = doesLoggedUserHaveWorkOrder || isWorkOrderClosed || doesWorkOrderHaveTechnician;
+
                             addWorkOrderToLayout(workOrder, isButtonDisabled);
                         }
                     }
@@ -96,13 +100,6 @@ public class WorkOrderListController {
                     if (change.wasRemoved()) {
                         for (WorkOrder workOrder : change.getRemoved()) {
                             removeWorkOrderFromLayout(workOrder);
-                        }
-                    }
-
-                    if(change.wasUpdated()){
-                        for (WorkOrder workOrder : change.getList()) {
-                            removeWorkOrderFromLayout(workOrder);
-                            addWorkOrderToLayout(workOrder, isButtonDisabled);
                         }
                     }
                 }
