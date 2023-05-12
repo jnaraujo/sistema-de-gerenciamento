@@ -75,7 +75,7 @@ public class CreateUserController {
     }
 
     @FXML
-    public void onCreateCustomerButtonClick() {
+    public void onCreateUserButtonClick() {
         nameField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
         emailField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
         passwordField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
@@ -109,7 +109,7 @@ public class CreateUserController {
 
         DAOManager.getUserDao().save(user);
 
-        success("Cliente criado com sucesso!");
+        success("Usuário criado com sucesso!");
 
         nameField.setText("");
         emailField.setText("");

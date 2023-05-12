@@ -87,7 +87,7 @@
          </Label>
       </children>
    </VBox>
-   <Button mnemonicParsing="false" onAction="#onCreateCustomerButtonClick" prefHeight="48.0" prefWidth="828.0" text="Criar novo Usuário">
+   <Button mnemonicParsing="false" onAction="#onCreateUserButtonClick" prefHeight="48.0" prefWidth="828.0" text="Criar novo Usuário">
       <font>
          <Font size="16.0" />
       </font></Button>
