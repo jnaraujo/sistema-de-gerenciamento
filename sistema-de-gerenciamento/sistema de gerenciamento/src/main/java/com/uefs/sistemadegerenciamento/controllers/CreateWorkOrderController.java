@@ -6,6 +6,7 @@ import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
+import com.uefs.sistemadegerenciamento.utils.converter.CustomerConverter;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -42,23 +43,7 @@ public class CreateWorkOrderController {
         customersComboBox.setEditable(true);
         customersComboBox.getItems().addAll(customers);
         customersComboBox.setPromptText("Selecione um cliente");
-        customersComboBox.setConverter(new StringConverter<Customer>() {
-            @Override
-            public String toString(Customer customer) {
-                if(customer == null) return "";
-
-                return customer.getName() + " - " + customer.getEmail();
-            }
-
-            @Override
-            public Customer fromString(String string) {
-                return (Customer) customersComboBox.getItems()
-                        .stream()
-                        .filter(customer -> this.toString((Customer) customer).equals(string))
-                        .findFirst()
-                        .orElse(null);
-            }
-        });
+        customersComboBox.setConverter(new CustomerConverter());
 
 
         customersComboBox.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
