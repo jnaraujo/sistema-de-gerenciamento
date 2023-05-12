@@ -64,7 +64,7 @@ public class HomeController {
     private List<Button> getTechnicianButtons(){
         List<Button> buttons = new ArrayList<>();
 
-        Button button = BigButtonComponent.create("Listar ordens de serviço");
+        Button button = BigButtonComponent.create("\uD83D\uDCCB Listar ordens de serviço");
         button.setOnAction(event -> {
             WorkOrderListController controller = PageLoader.openPage("work_order_list.fxml");
             controller.setLoggedUser(loggedUser);
@@ -72,7 +72,7 @@ public class HomeController {
         });
         buttons.add(button);
 
-        button = BigButtonComponent.create("Ver estoque");
+        button = BigButtonComponent.create("\uD83D\uDCE6 Ver estoque");
         button.setOnAction(event -> {
 //            InventoryController controller = (InventoryController) PageLoader.openPage("inventory.fxml");
 //            controller.setUser(user);
@@ -85,14 +85,14 @@ public class HomeController {
     private List<Button> getReceptionistButtons(){
         List<Button> buttons = new ArrayList<>();
 
-        Button button = BigButtonComponent.create("Criar ordem de serviço");
+        Button button = BigButtonComponent.create("\uD83D\uDD27 Criar ordem de serviço");
         button.setOnAction(event -> {
             CreateWorkOrderController controller = PageLoader.openPage("create_order.fxml");
             controller.setLoggedUser(loggedUser);
         });
         buttons.add(button);
 
-        button = BigButtonComponent.create("Criar novo Cliente");
+        button = BigButtonComponent.create("\uD83E\uDDD1\u200D\uD83D\uDCBC Criar novo Cliente");
         button.setOnAction(event -> {
             CreateCustomerController controller = PageLoader.openPage("create_customer.fxml");
             controller.setLoggedUser(loggedUser);
@@ -105,21 +105,21 @@ public class HomeController {
     private List<Button> getAdministratorButtons(){
         List<Button> buttons = new ArrayList<>();
 
-        Button button = BigButtonComponent.create("Gerar relatório");
+        Button button = BigButtonComponent.create("\uD83D\uDCCA Gerar relatório");
         button.setOnAction(event -> {
 //            CreateOrderController controller = (CreateOrderController) PageLoader.openPage("create_order.fxml");
 //            controller.setUser(user);
         });
         buttons.add(button);
 
-        button = BigButtonComponent.create("Criar novo usuário");
+        button = BigButtonComponent.create("\uD83D\uDC64 Criar novo usuário");
         button.setOnAction(event -> {
             CreateUserController controller = (CreateUserController) PageLoader.openPage("create_user.fxml");
             controller.setLoggedUser(loggedUser);
         });
         buttons.add(button);
 
-        button = BigButtonComponent.create("Gerenciar usuários");
+        button = BigButtonComponent.create("\uD83D\uDC65 Gerenciar usuários");
         button.setOnAction(event -> {
             ManageUserController controller = PageLoader.openPage("manage_user.fxml");
             controller.setUser(loggedUser);
