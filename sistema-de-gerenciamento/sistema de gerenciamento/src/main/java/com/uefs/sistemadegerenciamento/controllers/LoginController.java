@@ -20,12 +20,12 @@ public class LoginController {
     public PasswordField passwordField;
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         HelloApplication.stage.setTitle("Login - Sistema de Gerenciamento");
     }
 
     @FXML
-    public void onLoginClick()  {
+    private void onLoginClick()  {
         emailField.styleProperty().setValue("");
         passwordField.styleProperty().setValue("");
 

@@ -13,7 +13,7 @@ public class MainController {
     public static VBox staticRoot;
 
     @FXML
-    public void initialize() throws IOException {
+    private void initialize() throws IOException {
         this.openPage("login.fxml");
         staticRoot = root;
     }

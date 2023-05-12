@@ -43,7 +43,7 @@ public class ManageUserController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         HelloApplication.stage.setTitle("Gerenciar Usuários");
 
         users = FXCollections.observableArrayList();
@@ -131,7 +131,7 @@ public class ManageUserController {
     }
 
     @FXML
-    public void onBackButtonClick() {
+    private void onBackButtonClick() {
         PageLoader.goHome(loggedUser);
     }
 }

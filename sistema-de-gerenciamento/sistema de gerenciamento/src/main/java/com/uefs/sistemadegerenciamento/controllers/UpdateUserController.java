@@ -43,7 +43,7 @@ public class UpdateUserController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         HelloApplication.stage.setTitle("Atualizar Usuário");
 
         userTypeChoiceBox.getItems().addAll(UserType.values());
@@ -80,12 +80,12 @@ public class UpdateUserController {
     }
 
     @FXML
-    public void onBackButtonClick() {
+    private void onBackButtonClick() {
         PageLoader.goHome(loggedUser);
     }
 
     @FXML
-    public void onUpdateUserButtonClick() {
+    private void onUpdateUserButtonClick() {
         nameField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
         emailField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
         passwordField.setStyle("-fx-border-color: none; -fx-font-size: 14px");

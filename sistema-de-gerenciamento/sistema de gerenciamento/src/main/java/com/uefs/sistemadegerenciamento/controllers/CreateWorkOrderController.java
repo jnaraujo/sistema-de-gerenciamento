@@ -34,7 +34,7 @@ public class CreateWorkOrderController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         HelloApplication.stage.setTitle("Criar Ordem de Serviço");
 
         customers = fetchCustomers();
@@ -85,18 +85,18 @@ public class CreateWorkOrderController {
     }
 
     @FXML
-    public void onBackButtonClick() {
+    private void onBackButtonClick() {
         PageLoader.goHome(loggedUser);
     }
 
     @FXML
-    public void onCreateCustomerButtonClick() {
+    private void onCreateCustomerButtonClick() {
         CreateCustomerController controller = PageLoader.openPage("create_customer.fxml");
         controller.setLoggedUser(loggedUser);
     }
 
     @FXML
-    public void onCreateOrderButtonClick() {
+    private void onCreateOrderButtonClick() {
         Customer customer = (Customer) customersComboBox.getValue();
 
         customersComboBox.setStyle("-fx-border-color: none; -fx-font-size: 14px");

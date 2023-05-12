@@ -60,7 +60,7 @@ public class WorkOrderListController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         HelloApplication.stage.setTitle("Lista de ordens de serviço");
 
         openWorkOrders = FXCollections.observableArrayList();
@@ -126,7 +126,7 @@ public class WorkOrderListController {
     }
 
     @FXML
-    public void onBackButtonClick() {
+    private void onBackButtonClick() {
         PageLoader.goHome(loggedUser);
     }
 

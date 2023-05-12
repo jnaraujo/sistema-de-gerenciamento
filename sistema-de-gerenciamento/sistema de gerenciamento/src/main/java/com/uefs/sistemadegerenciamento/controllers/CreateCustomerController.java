@@ -32,17 +32,17 @@ public class CreateCustomerController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         HelloApplication.stage.setTitle("Criar Cliente");
     }
 
     @FXML
-    public void onBackButtonClick() {
+    private void onBackButtonClick() {
         PageLoader.goHome(loggedUser);
     }
 
     @FXML
-    public void onCreateCustomerButtonClick() {
+    private void onCreateCustomerButtonClick() {
         nameField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
         emailField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
         phoneField.setStyle("-fx-border-color: none; -fx-font-size: 14px");

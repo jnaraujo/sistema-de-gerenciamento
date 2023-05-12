@@ -33,7 +33,7 @@ public class CreateUserController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         HelloApplication.stage.setTitle("Criar Usuário");
 
         userTypeChoiceBox.getItems().addAll(UserType.values());
@@ -70,12 +70,12 @@ public class CreateUserController {
     }
 
     @FXML
-    public void onBackButtonClick() {
+    private void onBackButtonClick() {
         PageLoader.goHome(loggedUser);
     }
 
     @FXML
-    public void onCreateUserButtonClick() {
+    private void onCreateUserButtonClick() {
         nameField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
         emailField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
         passwordField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
