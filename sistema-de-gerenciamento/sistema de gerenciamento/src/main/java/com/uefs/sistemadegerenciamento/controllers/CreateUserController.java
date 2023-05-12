@@ -92,16 +92,11 @@ public class CreateUserController {
     }
 
     private User userFactory(String name, String email, String password, UserType userType) {
-        switch (userType) {
-            case ADMINISTRATOR:
-                return new Administrator(name, email, password);
-            case TECHNICIAN:
-                return new Technician(name, email, password);
-            case RECEPTIONIST:
-                return new Receptionist(name, email, password);
-            default:
-                return null;
-        }
+        return switch (userType) {
+            case ADMINISTRATOR -> new Administrator(name, email, password);
+            case RECEPTIONIST -> new Receptionist(name, email, password);
+            case TECHNICIAN -> new Technician(name, email, password);
+        };
     }
 
     private void info(String message) {
