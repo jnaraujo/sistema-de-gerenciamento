@@ -61,7 +61,7 @@ public class WorkOrderComponent {
 
         if (isTechnicianWorkOrder) {
             button.setText("Abrir ordem");
-            button.setStyle("-fx-background-color: rgba(54,140,243,0.53); -fx-text-fill: #fff; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-font-size: 16px;");
+            button.setStyle("-fx-background-color: rgba(54,140,243,0.53); -fx-text-fill: #000000; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-font-size: 16px;");
         }
 
         hBox.getChildren().addAll(vBox, button);
