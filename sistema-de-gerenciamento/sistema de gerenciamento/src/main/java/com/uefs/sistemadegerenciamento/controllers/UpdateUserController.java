@@ -8,12 +8,12 @@ import com.uefs.sistemadegerenciamento.model.user.Receptionist;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
+import com.uefs.sistemadegerenciamento.utils.converter.UserTypeConverter;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.util.StringConverter;
 
 public class UpdateUserController {
     private User loggedUser;
@@ -47,35 +47,7 @@ public class UpdateUserController {
         HelloApplication.stage.setTitle("Atualizar Usuário");
 
         userTypeChoiceBox.getItems().addAll(UserType.values());
-        userTypeChoiceBox.setConverter(new StringConverter<UserType>() {
-            @Override
-            public String toString(UserType userType) {
-                switch (userType) {
-                    case ADMINISTRATOR:
-                        return "Administrador";
-                    case RECEPTIONIST:
-                        return "Recepcionista";
-                    case TECHNICIAN:
-                        return "Técnico";
-                    default:
-                        return "";
-                }
-            }
-
-            @Override
-            public UserType fromString(String s) {
-                switch (s) {
-                    case "Administrador":
-                        return UserType.ADMINISTRATOR;
-                    case "Recepcionista":
-                        return UserType.RECEPTIONIST;
-                    case "Técnico":
-                        return UserType.TECHNICIAN;
-                    default:
-                        return null;
-                }
-            }
-        });
+        userTypeChoiceBox.setConverter(new UserTypeConverter());
         userTypeChoiceBox.getSelectionModel().selectFirst();
     }
 
