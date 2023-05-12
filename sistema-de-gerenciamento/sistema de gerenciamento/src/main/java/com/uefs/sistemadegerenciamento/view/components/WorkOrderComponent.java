@@ -17,6 +17,7 @@ import javafx.scene.text.TextAlignment;
 public class WorkOrderComponent {
     public static HBox create(WorkOrder workOrder, Customer customer, User user,  boolean isButtonDisabled, EventHandler onButtonClick) {
         HBox hBox = new HBox();
+        hBox.setId("work-order-"+workOrder.getId());
         hBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setPrefHeight(80);
         hBox.setPrefWidth(750);
