@@ -1,7 +1,7 @@
 package com.uefs.sistemadegerenciamento.view.components;
 
-import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.model.user.User;
+import com.uefs.sistemadegerenciamento.utils.UserTypeParser;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -36,7 +36,7 @@ public class UpdateUserComponent {
         emailLabel.setPrefWidth(LEFT_WIDTH);
         emailLabel.setFont(new Font(16));
 
-        Label cargoLabel = new Label("Cargo: "+ userTypeToLabel(user.getUserType()));
+        Label cargoLabel = new Label("Cargo: "+ UserTypeParser.toString(user.getUserType()));
         cargoLabel.setPrefWidth(LEFT_WIDTH);
         cargoLabel.setFont(new Font(16));
 
@@ -77,13 +77,5 @@ public class UpdateUserComponent {
         hBox.getChildren().addAll(vBox, buttonHBox);
 
         return hBox;
-    }
-    
-    static private String userTypeToLabel(UserType type){
-        return switch (type) {
-            case ADMINISTRATOR -> "Administrador";
-            case RECEPTIONIST -> "Recepcionista";
-            case TECHNICIAN -> "Técnico";
-        };
     }
 }

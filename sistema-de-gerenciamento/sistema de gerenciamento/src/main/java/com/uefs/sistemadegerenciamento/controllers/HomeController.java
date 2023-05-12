@@ -3,6 +3,7 @@ package com.uefs.sistemadegerenciamento.controllers;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
+import com.uefs.sistemadegerenciamento.utils.UserTypeParser;
 import com.uefs.sistemadegerenciamento.view.components.BigButtonComponent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,24 +28,10 @@ public class HomeController {
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
         titleLabel.setText("Bem vindo, " + loggedUser.getName()+ "!");
-        userRoleText.setText("Seu cargo atual: " + userTypeToText(loggedUser.getUserType()));
+        userRoleText.setText("Seu cargo atual: " + UserTypeParser.toString(loggedUser.getUserType()));
 
         setUpListOfUserViewsButtons();
     }
-
-    private String userTypeToText(UserType userType) {
-        switch (userType) {
-            case ADMINISTRATOR:
-                return "Administrador";
-            case RECEPTIONIST:
-                return "Recepcionista";
-            case TECHNICIAN:
-                return "Técnico";
-            default:
-                return "Desconhecido";
-        }
-    }
-
     private void setUpListOfUserViewsButtons() {
         List<Button> buttons = new ArrayList<>();
 
