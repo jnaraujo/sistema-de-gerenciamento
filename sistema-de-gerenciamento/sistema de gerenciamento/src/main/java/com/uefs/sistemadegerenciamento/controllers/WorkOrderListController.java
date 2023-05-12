@@ -5,6 +5,7 @@ import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
+import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import com.uefs.sistemadegerenciamento.view.components.EmptyWorkOrderComponent;
@@ -39,7 +40,7 @@ public class WorkOrderListController {
     @FXML
     private ComboBox filterComboBox;
 
-    private final int COMPONENT_HEIGHT = 83 + 16;
+    private final int COMPONENT_HEIGHT = 105 + 16;
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
@@ -51,7 +52,7 @@ public class WorkOrderListController {
         technicianCurrentWorkOrderVBox.getChildren().clear();
 
         if(loggedUserWorkOrder != null) {
-            technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserWorkOrder, false));
+            technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserWorkOrder, (Technician) loggedUser, false));
         }else{
             technicianCurrentWorkOrderVBox.getChildren().add(EmptyWorkOrderComponent.create());
         }
@@ -76,7 +77,7 @@ public class WorkOrderListController {
                 technicianCurrentWorkOrderVBox.getChildren().clear();
 
                 if(doesLoggedUserHaveWorkOrder) {
-                    technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserHaveWorkOrder, false));
+                    technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserHaveWorkOrder, (Technician) loggedUser, false));
                 }else{
                     technicianCurrentWorkOrderVBox.getChildren().add(EmptyWorkOrderComponent.create());
                 }
@@ -93,7 +94,12 @@ public class WorkOrderListController {
 
                             boolean isButtonDisabled = doesLoggedUserHaveWorkOrder || isWorkOrderClosed || doesWorkOrderHaveTechnician;
 
-                            addWorkOrderToLayout(workOrder, isButtonDisabled);
+                            if(!doesWorkOrderHaveTechnician){
+                                addWorkOrderToLayout(workOrder, null, isButtonDisabled);
+                            }else{
+                                Technician technician = (Technician) DAOManager.getUserDao().findById(workOrder.getTechnicianId());
+                                addWorkOrderToLayout(workOrder, technician, true);
+                            }
                         }
                     }
 
@@ -113,8 +119,8 @@ public class WorkOrderListController {
         });
     }
 
-    private void addWorkOrderToLayout(WorkOrder workOrder, boolean isButtonDisabled) {
-        workOrderListVBox.getChildren().add(createWorkOrderComponent(workOrder, isButtonDisabled));
+    private void addWorkOrderToLayout(WorkOrder workOrder, Technician technician, boolean isButtonDisabled) {
+        workOrderListVBox.getChildren().add(createWorkOrderComponent(workOrder, technician, isButtonDisabled));
     }
 
     private void removeWorkOrderFromLayout(WorkOrder workOrder) {
@@ -144,10 +150,10 @@ public class WorkOrderListController {
         PageLoader.goHome(loggedUser);
     }
 
-    private HBox createWorkOrderComponent(WorkOrder workOrder, boolean isButtonDisabled) {
+    private HBox createWorkOrderComponent(WorkOrder workOrder, Technician technician, boolean isButtonDisabled) {
         Customer customer = DAOManager.getCustomerDao().findById(workOrder.getCustomerId());
 
-        return WorkOrderComponent.create(workOrder, customer, loggedUser, isButtonDisabled, (event) -> {
+        return WorkOrderComponent.create(workOrder, technician, customer, loggedUser, isButtonDisabled, (event) -> {
             if(isButtonDisabled){
                 System.out.println("Tecnico ja possui uma ordem de serviço");
             }else{

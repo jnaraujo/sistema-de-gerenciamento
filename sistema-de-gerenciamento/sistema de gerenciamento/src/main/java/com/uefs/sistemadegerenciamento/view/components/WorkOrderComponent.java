@@ -1,8 +1,8 @@
 package com.uefs.sistemadegerenciamento.view.components;
 
-import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
+import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -15,11 +15,10 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
 public class WorkOrderComponent {
-    public static HBox create(WorkOrder workOrder, Customer customer, User user,  boolean isButtonDisabled, EventHandler onButtonClick) {
+    public static HBox create(WorkOrder workOrder, Technician technician, Customer customer, User user, boolean isButtonDisabled, EventHandler onButtonClick) {
         HBox hBox = new HBox();
         hBox.setId("work-order-"+workOrder.getId());
         hBox.setAlignment(Pos.CENTER_LEFT);
-        hBox.setPrefHeight(80);
         hBox.setPrefWidth(750);
         hBox.setPadding(new javafx.geometry.Insets(8, 8, 8, 8));
         hBox.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #d4d4d4; -fx-border-width: 1px; -fx-border-radius: 8px;");
@@ -36,12 +35,16 @@ public class WorkOrderComponent {
         clientText.setPrefWidth(600);
         clientText.setFont(new Font(14));
 
+        String technicianName = technician != null ? technician.getName() : "Nenhum";
+        Label technicianText = new Label("Técnico Associado: " + technicianName);
+        technicianText.setPrefWidth(600);
+        technicianText.setFont(new Font(14));
 
         Label otherDataText = new Label("Status: " + workOrder.getStatus() + " - Data de abertura: " + workOrder.getCreatedAt());
         clientText.setMaxWidth(600);
         otherDataText.setFont(new Font(14));
 
-        vBox.getChildren().addAll(descriptionLabel, clientText, otherDataText);
+        vBox.getChildren().addAll(descriptionLabel, clientText, otherDataText, technicianText);
 
         Button button = new Button("Pegar ordem");
         button.setMnemonicParsing(false);
