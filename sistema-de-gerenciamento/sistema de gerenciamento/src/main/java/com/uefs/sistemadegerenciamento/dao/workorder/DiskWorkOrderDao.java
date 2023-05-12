@@ -96,6 +96,8 @@ public class DiskWorkOrderDao implements WorkOrderDao{
         fileManager.save(workOrders);
     }
 
+
+
     /**
      * <p>
      *     Busca todas as ordens de serviço abertas.
@@ -153,6 +155,16 @@ public class DiskWorkOrderDao implements WorkOrderDao{
             return workOrder;
         }
         return null;
+    }
+
+    /**
+     * Busca todas as ordens de serviço de um cliente.
+     * @param customerId ID do cliente
+     * @return Todas as ordens de serviço de um cliente.
+     */
+    @Override
+    public List<WorkOrder> findAllWorkOrdersByCustomer(String customerId) {
+        return workOrders.values().stream().filter(workOrder -> workOrder.getCustomerId().equals(customerId)).toList();
     }
 
     /**

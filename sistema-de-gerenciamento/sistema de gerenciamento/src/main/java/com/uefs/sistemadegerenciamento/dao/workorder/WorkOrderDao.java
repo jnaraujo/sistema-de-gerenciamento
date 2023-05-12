@@ -30,6 +30,14 @@ public interface WorkOrderDao extends Dao<WorkOrder> {
      */
     WorkOrder findOpenOrderByTechnicianId(String technicianId);
 
+
+    /**
+     * Retorna uma lista de ordens de serviço abertas por ordem de criação (mais antiga primeiro) de um técnico
+     * @param customerId ID do cliente
+     * @return lista de ordens de serviço do cliente
+     */
+    List<WorkOrder> findAllWorkOrdersByCustomer(String customerId);
+
     /**
      * Retorna o tempo médio de espera para reparo de uma ordem de serviço
      * @return Tempo médio de espera para reparo de uma ordem de serviço

@@ -100,6 +100,28 @@ class WorkOrderDaoTest {
     }
 
     @Test
+    void testFindAllWorkOrdersByCustomer(){
+        String customerID = IdGenerator.generate();
+
+        workOrder.setCustomerId(customerID);
+        workOrderDao.save(workOrder);
+
+        WorkOrder workOrder2 = new WorkOrder(
+                "another work order",
+                customerID
+        );
+        workOrderDao.save(workOrder2);
+
+        WorkOrder workOrder3 = new WorkOrder(
+                "another work order",
+                IdGenerator.generate()
+        );
+        workOrderDao.save(workOrder3);
+
+        assertEquals(2, workOrderDao.findAllWorkOrdersByCustomer(customerID).size());
+    }
+
+    @Test
     void testFindFirstOpenWorkOrder(){
         Calendar calendar = Calendar.getInstance();
 
