@@ -113,6 +113,13 @@ public class HomeController {
         });
         buttons.add(button);
 
+        button = BigButtonComponent.create("\uD83D\uDC65 Gerenciar clientes");
+        button.setOnAction(event -> {
+            ManageCustomersController controller = PageLoader.openPage("manage_customers.fxml");
+            controller.setLoggedUser(loggedUser);
+        });
+        buttons.add(button);
+
         return buttons;
     }
 
