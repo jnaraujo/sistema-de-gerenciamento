@@ -88,9 +88,9 @@ public class ManageCustomersController {
     }
 
     private void onUpdateCustomerButtonClick(Customer updatedCustomer) {
-//        UpdateCustomerController updateCustomerController = (UpdateCustomerController) PageLoader.openPage("update_customer.fxml");
-//        updateCustomerController.setLoggedCustomer(loggedUser);
-//        updateCustomerController.setUpdatedCustomer(updatedCustomer);
+        UpdateCustomerController updateCustomerController = PageLoader.openPage("update_customer.fxml");
+        updateCustomerController.setLoggedUser(loggedUser);
+        updateCustomerController.setUpdatedCustomer(updatedCustomer);
     }
 
     private void onDeleteCustomerButtonClick(Customer deletedCustomer) {
