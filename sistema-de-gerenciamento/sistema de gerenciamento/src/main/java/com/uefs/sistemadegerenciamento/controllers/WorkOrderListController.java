@@ -64,7 +64,7 @@ public class WorkOrderListController {
 
         openWorkOrders = FXCollections.observableArrayList();
 
-        filterComboBox.getItems().addAll("Todas", "Abertas", "Fechadas");
+        filterComboBox.getItems().addAll("Todas", "Disponíveis", "Fechadas");
         filterComboBox.getSelectionModel().select(1);
 
         workOrderListVBox.getChildren().add(EmptyComponent.create("Não há ordens de serviço disponíveis"));
@@ -135,7 +135,7 @@ public class WorkOrderListController {
         if(filter.equals("Todas")) {
             openWorkOrders.removeAll(openWorkOrders);
             openWorkOrders.addAll(fetchAllWorkOrders());
-        }else if(filter.equals("Abertas")) {
+        }else if(filter.equals("Disponíveis")) {
             openWorkOrders.removeAll(openWorkOrders);
             openWorkOrders.addAll(fetchOpenWorkOrders());
         }else if(filter.equals("Fechadas")) {
