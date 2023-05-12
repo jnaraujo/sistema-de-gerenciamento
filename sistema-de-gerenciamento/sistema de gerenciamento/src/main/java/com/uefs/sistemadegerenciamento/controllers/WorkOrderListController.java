@@ -12,7 +12,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -41,7 +40,7 @@ public class WorkOrderListController {
 
         openWorkOrders.addAll(fetchWorkOrders());
 
-        WorkOrder loggedUserWorkOrder = DAOManager.getWorkOrderDao().findOrderByTechnicianId(loggedUser.getId());
+        WorkOrder loggedUserWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(loggedUser.getId());
 
         technicianCurrentWorkOrderVBox.getChildren().clear();
 
@@ -66,7 +65,7 @@ public class WorkOrderListController {
         openWorkOrders.addListener(new ListChangeListener<WorkOrder>() {
             @Override
             public void onChanged(Change<? extends WorkOrder> change) {
-                WorkOrder loggedUserHaveWorkOrder = DAOManager.getWorkOrderDao().findOrderByTechnicianId(loggedUser.getId());
+                WorkOrder loggedUserHaveWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(loggedUser.getId());
                 boolean doesLoggedUserHaveWorkOrder = loggedUserHaveWorkOrder != null;
                 boolean isButtonDisabled = doesLoggedUserHaveWorkOrder;
 

@@ -122,11 +122,19 @@ public class InMemoryWorkOrderDao implements WorkOrderDao {
      * @return A ordem de serviço do técnico com o ID informado.
      */
     @Override
-    public WorkOrder findOrderByTechnicianId(String technicianId) {
+    public WorkOrder findOpenOrderByTechnicianId(String technicianId) {
         for (WorkOrder workOrder : workOrders.values()) {
-            if (workOrder.getTechnicianId().equals(technicianId)) {
-                return workOrder;
+            if(workOrder.getTechnicianId() == null){
+                continue;
             }
+            if(!workOrder.getTechnicianId().equals(technicianId)){
+                continue;
+            }
+            if(!workOrder.getStatus().equals(OrderStatus.OPEN)){
+                continue;
+            }
+
+            return workOrder;
         }
         return null;
     }
