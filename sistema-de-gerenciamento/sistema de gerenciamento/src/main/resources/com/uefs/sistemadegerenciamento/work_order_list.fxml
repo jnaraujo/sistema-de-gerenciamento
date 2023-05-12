@@ -52,7 +52,7 @@
          <Insets top="16.0" />
       </VBox.margin>
    </HBox>
-   <ScrollPane fx:id="scrollPane" prefHeight="519.0" prefWidth="784.0">
+   <ScrollPane prefHeight="519.0" prefWidth="784.0">
      <content>
        <AnchorPane fx:id="anchorPane" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="512.0" prefWidth="769.0">
             <children>

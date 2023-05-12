@@ -26,9 +26,6 @@ public class WorkOrderListController {
     private ObservableList<WorkOrder> openWorkOrders;
 
     @FXML
-    private ScrollPane scrollPane;
-
-    @FXML
     private VBox workOrderListVBox;
 
     @FXML
