@@ -8,23 +8,23 @@
 <VBox prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.HomeController">
    <GridPane prefHeight="62.0" prefWidth="800.0">
      <columnConstraints>
-       <ColumnConstraints hgrow="SOMETIMES" maxWidth="335.0" minWidth="10.0" prefWidth="225.0" />
-       <ColumnConstraints hgrow="SOMETIMES" maxWidth="442.0" minWidth="10.0" prefWidth="391.0" />
+       <ColumnConstraints hgrow="SOMETIMES" maxWidth="382.0" minWidth="10.0" prefWidth="343.0" />
+       <ColumnConstraints hgrow="SOMETIMES" maxWidth="442.0" minWidth="10.0" prefWidth="325.0" />
          <ColumnConstraints hgrow="SOMETIMES" maxWidth="315.0" minWidth="10.0" prefWidth="74.0" />
      </columnConstraints>
      <rowConstraints>
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-          <Label fx:id="titleLabel" text="Bem vindo Usuário!">
+          <Label fx:id="titleLabel" prefHeight="25.0" prefWidth="219.0" text="Bem vindo Usuário!">
             <font>
                <Font size="16.0" />
             </font></Label>
-          <Text fx:id="userRoleText" strokeType="OUTSIDE" strokeWidth="0.0" text="Seu cargo atual:" GridPane.columnIndex="1">
+          <Text fx:id="userRoleText" strokeType="OUTSIDE" strokeWidth="0.0" text="Seu cargo atual:" wrappingWidth="253.6796875" GridPane.columnIndex="1">
             <font>
                <Font size="16.0" />
             </font></Text>
-         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Sair" onAction="#onLogOutClick" GridPane.columnIndex="2" />
+         <Button mnemonicParsing="false" onAction="#onLogOutClick" prefHeight="25.0" prefWidth="108.0" text="Sair" GridPane.columnIndex="2" />
       </children>
       <VBox.margin>
          <Insets />
