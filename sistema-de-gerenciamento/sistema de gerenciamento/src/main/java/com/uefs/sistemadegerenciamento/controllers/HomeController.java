@@ -127,6 +127,14 @@ public class HomeController {
         });
         buttons.add(button);
 
+        button = BigButtonComponent.create("Criar novo Serviço de Instalação");
+        button.setOnAction(event -> {
+            CreateInstallationServiceController controller = PageLoader.openPage("create_installation_service.fxml");
+            controller.setLoggedUser(loggedUser);
+        });
+        buttons.add(button);
+
+
         return buttons;
     }
 
