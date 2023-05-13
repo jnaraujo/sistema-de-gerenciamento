@@ -123,6 +123,14 @@ public class ComputerComponent implements Component {
         return quantity;
     }
 
+    /**
+     * Define a quantidade do componente
+     * @param quantity Quantidade do componente
+     */
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof ComputerComponent)) return false;
