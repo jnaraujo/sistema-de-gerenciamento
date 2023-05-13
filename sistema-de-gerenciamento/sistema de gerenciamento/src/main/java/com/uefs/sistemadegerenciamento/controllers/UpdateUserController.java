@@ -97,13 +97,6 @@ public class UpdateUserController {
         DAOManager.getUserDao().update(updatedUser);
 
         success("Usuário atualizado com sucesso!");
-
-        nameField.setText("");
-        emailField.setText("");
-        passwordField.setText("");
-        userTypeChoiceBox.getSelectionModel().selectFirst();
-
-        nameField.requestFocus();
     }
 
     private User userFactory(String name, String email, String password, UserType userType) {
