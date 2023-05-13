@@ -106,7 +106,7 @@ public class HomeController {
         });
         buttons.add(button);
 
-        button = BigButtonComponent.create("\uD83D\uDC64 Criar novo usuário");
+        button = BigButtonComponent.create("➕ Criar novo usuário");
         button.setOnAction(event -> {
             CreateUserController controller = (CreateUserController) PageLoader.openPage("create_user.fxml");
             controller.setLoggedUser(loggedUser);
@@ -116,6 +116,13 @@ public class HomeController {
         button = BigButtonComponent.create("\uD83D\uDC65 Gerenciar usuários");
         button.setOnAction(event -> {
             ManageUserController controller = PageLoader.openPage("manage_user.fxml");
+            controller.setLoggedUser(loggedUser);
+        });
+        buttons.add(button);
+
+        button = BigButtonComponent.create("\uD83D\uDD0C Adicionar novo componente");
+        button.setOnAction(event -> {
+            CreateComponentController controller = PageLoader.openPage("create_component.fxml");
             controller.setLoggedUser(loggedUser);
         });
         buttons.add(button);
