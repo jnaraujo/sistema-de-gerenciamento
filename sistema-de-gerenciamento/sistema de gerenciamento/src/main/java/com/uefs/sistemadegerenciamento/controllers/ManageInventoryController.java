@@ -1,17 +1,13 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.HelloApplication;
-import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
-import com.uefs.sistemadegerenciamento.model.Customer;
-import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import com.uefs.sistemadegerenciamento.view.components.ComputerComponentComponent;
 import com.uefs.sistemadegerenciamento.view.components.EmptyComponent;
-import com.uefs.sistemadegerenciamento.view.components.UpdateCustomerComponent;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -68,7 +64,7 @@ public class ManageInventoryController {
                 }
 
                 if(componentListVBox.getChildren().size() == 0) {
-                    componentListVBox.getChildren().add(EmptyComponent.create("Nenhum cliente cadastrado."));
+                    componentListVBox.getChildren().add(EmptyComponent.create("Nenhuma peça cadastrada."));
                 }
 
                 componentListAnchorPane.setPrefHeight(COMPONENT_HEIGHT * componentListVBox.getChildren().size() + 16);
@@ -91,9 +87,9 @@ public class ManageInventoryController {
     }
 
     private void onUpdateComponentButtonClick(ComputerComponent updatedComponent) {
-//        UpdateCustomerController updateCustomerController = PageLoader.openPage("update_customer.fxml");
-//        updateCustomerController.setLoggedUser(loggedUser);
-//        updateCustomerController.setUpdatedCustomer(updatedComponent);
+        UpdateComponentController controller = PageLoader.openPage("update_component.fxml");
+        controller.setLoggedUser(loggedUser);
+        controller.setComputerComponent(updatedComponent);
     }
 
     private void onDeleteComponentButtonClick(ComputerComponent deletedComponent) {
@@ -110,7 +106,7 @@ public class ManageInventoryController {
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Deletar Cliente.");
+        alert.setTitle("Deletar componente");
         alert.setHeaderText("Você tem certeza que deseja deletar o componente " + deletedComponent.getName() + "?");
         alert.setContentText("Essa ação não pode ser desfeita.");
         alert.getDialogPane().getScene().getWindow().setOnCloseRequest((event) -> {
