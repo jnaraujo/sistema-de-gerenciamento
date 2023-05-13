@@ -87,9 +87,9 @@ public class ManageCleaningServiceController {
     }
 
     private void onUpdateComponentButtonClick(CleaningService updatedService) {
-//        UpdateInstallationServiceController controller = PageLoader.openPage("update_installation_service.fxml");
-//        controller.setLoggedUser(loggedUser);
-//        controller.setInstallationService(updatedService);
+        UpdateCleaningServiceController controller = PageLoader.openPage("update_cleaning_service.fxml");
+        controller.setLoggedUser(loggedUser);
+        controller.setService(updatedService);
     }
 
     private void onDeleteComponentButtonClick(CleaningService deletedService) {
