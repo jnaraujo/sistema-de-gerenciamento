@@ -59,10 +59,10 @@ public class HomeController {
         });
         buttons.add(button);
 
-        button = BigButtonComponent.create("\uD83D\uDCE6 Ver estoque");
+        button = BigButtonComponent.create("\uD83D\uDCE6 Gerenciar estoque");
         button.setOnAction(event -> {
-//            InventoryController controller = (InventoryController) PageLoader.openPage("inventory.fxml");
-//            controller.setUser(user);
+            ManageInventoryController controller = PageLoader.openPage("manage_inventory.fxml");
+            controller.setLoggedUser(loggedUser);
         });
         buttons.add(button);
 
