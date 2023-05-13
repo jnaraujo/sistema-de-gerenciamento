@@ -84,13 +84,13 @@ public class CreateCleaningServiceController {
         CleaningService service = new CleaningService(pricePerUnit, costPerUnit);
 
         List<String> componentList = List.of(componentListField.getText().split("[,\\n]+"));
-        componentList.removeIf(String::isEmpty);
 
-        for(int i = 0; i < componentList.size(); i++) {
-            componentList.set(i, componentList.get(i).trim());
-        }
-
-        componentList.forEach(service::addComponent);
+        componentList
+                .stream().filter(component -> !component.trim().isEmpty())
+                .forEach(component -> {
+                    String componentTrimmed = component.trim();
+                    service.addComponent(componentTrimmed);
+                });
 
         DAOManager.getCleaningServiceDao().save(service);
 
