@@ -45,8 +45,8 @@ class CleaningServiceDaoTest {
         cleaningServiceDao.save(cleaningService2);
 
         assertEquals(2, cleaningServiceDao.getAll().size());
-        assertEquals(cleaningService, cleaningServiceDao.getAll().get(0));
-        assertEquals(cleaningService2, cleaningServiceDao.getAll().get(1));
+        assertEquals(cleaningService, cleaningServiceDao.findById(cleaningService.getId()));
+        assertEquals(cleaningService2, cleaningServiceDao.findById(cleaningService2.getId()));
     }
 
     @Test
