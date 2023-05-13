@@ -53,7 +53,8 @@ public class UpdateUserController {
 
     @FXML
     private void onBackButtonClick() {
-        PageLoader.goHome(loggedUser);
+        ManageUserController controller = PageLoader.openPage("manage_user.fxml");
+        controller.setLoggedUser(loggedUser);
     }
 
     @FXML
