@@ -66,6 +66,13 @@ public class HomeController {
         });
         buttons.add(button);
 
+        button = BigButtonComponent.create("Gerenciar Serviços de Instalação");
+        button.setOnAction(event -> {
+            ManageInstallationServiceController controller = PageLoader.openPage("manage_installation_service.fxml");
+            controller.setLoggedUser(loggedUser);
+        });
+        buttons.add(button);
+
         return buttons;
     }
 
