@@ -96,8 +96,8 @@ public class ManageInventoryController {
         if(loggedUser.getUserType() != UserType.ADMINISTRATOR) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
-            alert.setHeaderText("Você não tem permissão para deletar usuários");
-            alert.setContentText("Apenas administradores podem deletar usuários");
+            alert.setHeaderText("Você não tem permissão para deletar componentes");
+            alert.setContentText("Apenas administradores podem deletar componentes.");
             alert.getDialogPane().getScene().getWindow().setOnCloseRequest((event) -> {
                 alert.close();
             });
