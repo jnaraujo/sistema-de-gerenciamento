@@ -116,7 +116,7 @@ public class HomeController {
         button = BigButtonComponent.create("\uD83D\uDC65 Gerenciar usuários");
         button.setOnAction(event -> {
             ManageUserController controller = PageLoader.openPage("manage_user.fxml");
-            controller.setUser(loggedUser);
+            controller.setLoggedUser(loggedUser);
         });
         buttons.add(button);
 

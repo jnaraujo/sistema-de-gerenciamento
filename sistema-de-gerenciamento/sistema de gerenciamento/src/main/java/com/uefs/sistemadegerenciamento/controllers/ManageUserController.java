@@ -31,7 +31,7 @@ public class ManageUserController {
     @FXML
     private AnchorPane userListAnchorPane;
 
-    public void setUser(User user) {
+    public void setLoggedUser(User user) {
         this.loggedUser = user;
         users.addAll(fetchUsers());
     }
