@@ -106,7 +106,7 @@ public class UpdateCustomerController {
     }
 
     private void success(String message) {
-        infoLabel.setStyle("-fx-text-fill: #00ff00");
+        infoLabel.setStyle("-fx-text-fill: #157315");
         infoLabel.setText(message);
     }
 }
