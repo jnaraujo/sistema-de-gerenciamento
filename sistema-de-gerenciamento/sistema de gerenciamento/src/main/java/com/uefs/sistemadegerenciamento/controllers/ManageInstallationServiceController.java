@@ -85,10 +85,10 @@ public class ManageInstallationServiceController {
         });
     }
 
-    private void onUpdateComponentButtonClick(InstallationService updatedComponent) {
-//        UpdateComponentController controller = PageLoader.openPage("update_component.fxml");
-//        controller.setLoggedUser(loggedUser);
-//        controller.setComputerComponent(updatedComponent);
+    private void onUpdateComponentButtonClick(InstallationService updatedService) {
+        UpdateInstallationServiceController controller = PageLoader.openPage("update_installation_service.fxml");
+        controller.setLoggedUser(loggedUser);
+        controller.setInstallationService(updatedService);
     }
 
     private void onDeleteComponentButtonClick(InstallationService deletedService) {

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.UpdateInstallationServiceController">
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+    </padding>
+    <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="784.0" spacing="16.0">
+        <children>
+            <Button mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="111.0" text="Voltar" />
+            <Label prefHeight="36.0" prefWidth="657.0" text="Atualizar Serviço de Instalação">
+                <font>
+                    <Font name="System Bold" size="25.0" />
+                </font>
+            </Label>
+        </children>
+    </HBox>
+   <VBox prefHeight="476.0" prefWidth="784.0" spacing="16.0">
+      <VBox.margin>
+         <Insets top="16.0" />
+      </VBox.margin>
+      <children>
+         <VBox layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="784.0" spacing="8.0">
+            <children>
+               <Label text="Descrição do Serviço">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <TextField fx:id="descriptionField" prefHeight="25.0" prefWidth="340.0" promptText="Ex: Windowns 11">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </TextField>
+            </children>
+         </VBox>
+         <HBox prefHeight="19.0" prefWidth="784.0" spacing="8.0">
+            <children>
+               <VBox prefHeight="18.0" prefWidth="784.0" spacing="8.0">
+                  <children>
+                     <Label text="Preço por unidade (em REAIS)">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="pricePerUnitField" prefHeight="25.0" prefWidth="132.0" promptText="Ex: 400,00">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </TextField>
+                  </children>
+               </VBox>
+               <VBox prefHeight="18.0" prefWidth="784.0" spacing="8.0">
+                  <children>
+                     <Label text="Custo por unidade (em REAIS)">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="costPerUnitField" prefHeight="25.0" prefWidth="132.0" promptText="Ex: 125,00">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </TextField>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+
+         <Label fx:id="infoLabel" alignment="CENTER" prefHeight="30.0" prefWidth="784.0" text="" textAlignment="CENTER">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Label>
+      </children>
+   </VBox>
+   <Button mnemonicParsing="false" onAction="#onUpdateButtonClick" prefHeight="58.0" prefWidth="802.0" text="Atualizar Serviço de Instalação" />
+</VBox>
