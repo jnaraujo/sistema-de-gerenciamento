@@ -73,6 +73,13 @@ public class HomeController {
         });
         buttons.add(button);
 
+        button = BigButtonComponent.create("Gerenciar Serviços de Limpeza");
+        button.setOnAction(event -> {
+            ManageCleaningServiceController controller = PageLoader.openPage("manage_cleaning_service.fxml");
+            controller.setLoggedUser(loggedUser);
+        });
+        buttons.add(button);
+
         return buttons;
     }
 
