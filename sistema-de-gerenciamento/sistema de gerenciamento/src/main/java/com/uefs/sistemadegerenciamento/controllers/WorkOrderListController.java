@@ -2,6 +2,7 @@ package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.HelloApplication;
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
+import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
@@ -14,10 +15,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
 
 import java.util.Comparator;
 import java.util.List;
@@ -154,6 +158,15 @@ public class WorkOrderListController extends Controller {
             if(isButtonDisabled){
                 System.out.println("Tecnico ja possui uma ordem de serviço");
             }else{
+                if(getLoggedUser().getUserType() != UserType.TECHNICIAN){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Você não tem permissão para aceitar ordens de serviço.");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Apenas técnicos podem aceitar ordens de serviço.");
+                    alert.showAndWait();
+
+                    return;
+                }
                 workOrder.setTechnicianId(getLoggedUser().getId());
                 DAOManager.getWorkOrderDao().update(workOrder);
 
