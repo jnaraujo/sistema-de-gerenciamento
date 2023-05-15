@@ -12,9 +12,7 @@ import javafx.scene.control.TextField;
 
 import java.util.List;
 
-public class UpdateCleaningServiceController {
-    private User loggedUser;
-
+public class UpdateCleaningServiceController extends Controller {
     private CleaningService service;
 
     @FXML
@@ -28,10 +26,6 @@ public class UpdateCleaningServiceController {
 
     @FXML
     private Label infoLabel;
-
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
-    }
 
     public void setService(CleaningService service) {
         this.service = service;
@@ -53,8 +47,7 @@ public class UpdateCleaningServiceController {
 
     @FXML
     private void onBackButtonClick() {
-        ManageCleaningServiceController controller = PageLoader.openPage("manage_cleaning_service.fxml");
-        controller.setLoggedUser(loggedUser);
+        this.backPage();
     }
 
     @FXML

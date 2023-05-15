@@ -9,8 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class CreateInstallationServiceController {
-    private User loggedUser;
+public class CreateInstallationServiceController extends Controller {
 
     @FXML
     private TextField descriptionField;
@@ -24,10 +23,6 @@ public class CreateInstallationServiceController {
     @FXML
     private Label infoLabel;
 
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
-    }
-
     @FXML
     private void initialize() {
         HelloApplication.stage.setTitle("Adicionar novo Serviço de Instalação");
@@ -35,7 +30,7 @@ public class CreateInstallationServiceController {
 
     @FXML
     private void onBackButtonClick() {
-        PageLoader.goHome(loggedUser);
+        backPage();
     }
 
     @FXML

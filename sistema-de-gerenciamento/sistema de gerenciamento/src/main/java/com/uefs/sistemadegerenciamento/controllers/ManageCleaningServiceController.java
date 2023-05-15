@@ -20,8 +20,7 @@ import javafx.scene.layout.VBox;
 import java.util.Comparator;
 import java.util.List;
 
-public class ManageCleaningServiceController {
-    private User loggedUser;
+public class ManageCleaningServiceController extends Controller {
     private ObservableList<CleaningService> services;
     private final int COMPONENT_HEIGHT = 95 + 16;
     @FXML
@@ -30,8 +29,9 @@ public class ManageCleaningServiceController {
     @FXML
     private AnchorPane listAnchorPane;
 
-    public void setLoggedUser(User user) {
-        this.loggedUser = user;
+    @Override
+    public void setLoggedUser(User loggedUser) {
+        super.setLoggedUser(loggedUser);
         services.addAll(fetchServices());
     }
 
@@ -88,12 +88,13 @@ public class ManageCleaningServiceController {
 
     private void onUpdateComponentButtonClick(CleaningService updatedService) {
         UpdateCleaningServiceController controller = PageLoader.openPage("update_cleaning_service.fxml");
-        controller.setLoggedUser(loggedUser);
+        controller.setLoggedUser(getLoggedUser());
         controller.setService(updatedService);
+        controller.setPreviousPage("manage_cleaning_service.fxml");
     }
 
     private void onDeleteComponentButtonClick(CleaningService deletedService) {
-        if(loggedUser.getUserType() != UserType.ADMINISTRATOR) {
+        if(getLoggedUser().getUserType() != UserType.ADMINISTRATOR) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("Você não tem permissão para deletar Serviços de Limpeza.");
@@ -139,6 +140,6 @@ public class ManageCleaningServiceController {
 
     @FXML
     private void onBackButtonClick() {
-        PageLoader.goHome(loggedUser);
+        PageLoader.goHome(getLoggedUser());
     }
 }

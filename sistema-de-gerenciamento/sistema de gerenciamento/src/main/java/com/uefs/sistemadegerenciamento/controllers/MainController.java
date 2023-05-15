@@ -6,7 +6,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class MainController {
+public class MainController extends Controller {
     @FXML
     private VBox root;
 

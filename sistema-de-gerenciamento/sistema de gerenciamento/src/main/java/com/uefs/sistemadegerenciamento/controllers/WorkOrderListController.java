@@ -22,10 +22,7 @@ import javafx.scene.layout.VBox;
 import java.util.Comparator;
 import java.util.List;
 
-public class WorkOrderListController {
-
-    private User loggedUser;
-
+public class WorkOrderListController extends Controller {
     private ObservableList<WorkOrder> openWorkOrders;
 
     @FXML
@@ -42,8 +39,9 @@ public class WorkOrderListController {
 
     private final int COMPONENT_HEIGHT = 105 + 16;
 
+    @Override
     public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
+        super.setLoggedUser(loggedUser);
 
         openWorkOrders.addAll(fetchOpenWorkOrders());
 
@@ -71,13 +69,13 @@ public class WorkOrderListController {
         openWorkOrders.addListener(new ListChangeListener<WorkOrder>() {
             @Override
             public void onChanged(Change<? extends WorkOrder> change) {
-                WorkOrder loggedUserWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(loggedUser.getId());
+                WorkOrder loggedUserWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(getLoggedUser().getId());
                 boolean doesLoggedUserHaveWorkOrder = loggedUserWorkOrder != null;
 
                 technicianCurrentWorkOrderVBox.getChildren().clear();
 
                 if(doesLoggedUserHaveWorkOrder) {
-                    technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserWorkOrder, (Technician) loggedUser, false));
+                    technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserWorkOrder, (Technician) getLoggedUser(), false));
                 }else{
                     technicianCurrentWorkOrderVBox.getChildren().add(EmptyComponent.create("Não há ordens de serviço disponíveis"));
                 }
@@ -146,17 +144,17 @@ public class WorkOrderListController {
 
     @FXML
     private void onBackButtonClick() {
-        PageLoader.goHome(loggedUser);
+        backPage();
     }
 
     private HBox createWorkOrderComponent(WorkOrder workOrder, Technician technician, boolean isButtonDisabled) {
         Customer customer = DAOManager.getCustomerDao().findById(workOrder.getCustomerId());
 
-        return WorkOrderComponent.create(workOrder, technician, customer, loggedUser, isButtonDisabled, (event) -> {
+        return WorkOrderComponent.create(workOrder, technician, customer, getLoggedUser(), isButtonDisabled, (event) -> {
             if(isButtonDisabled){
                 System.out.println("Tecnico ja possui uma ordem de serviço");
             }else{
-                workOrder.setTechnicianId(loggedUser.getId());
+                workOrder.setTechnicianId(getLoggedUser().getId());
                 DAOManager.getWorkOrderDao().update(workOrder);
 
                 openWorkOrders.removeAll(openWorkOrders);

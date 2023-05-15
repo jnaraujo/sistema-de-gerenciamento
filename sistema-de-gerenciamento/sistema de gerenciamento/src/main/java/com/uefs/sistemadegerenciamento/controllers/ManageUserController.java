@@ -18,9 +18,7 @@ import javafx.scene.layout.VBox;
 import java.util.Comparator;
 import java.util.List;
 
-public class ManageUserController {
-    private User loggedUser;
-
+public class ManageUserController extends Controller {
     private ObservableList<User> users;
 
     private final int COMPONENT_HEIGHT = 95 + 16;
@@ -31,8 +29,9 @@ public class ManageUserController {
     @FXML
     private AnchorPane userListAnchorPane;
 
+    @Override
     public void setLoggedUser(User user) {
-        this.loggedUser = user;
+        super.setLoggedUser(user);
         users.addAll(fetchUsers());
     }
 
@@ -48,7 +47,7 @@ public class ManageUserController {
                 while (change.next()) {
                     if (change.wasAdded()) {
                         for (User user : change.getAddedSubList()) {
-                            addUserToLayout(user, user.getId() == loggedUser.getId());
+                            addUserToLayout(user, user.getId() == getLoggedUser().getId());
                         }
                     } else if (change.wasRemoved()) {
                         for (User user : change.getRemoved()) {
@@ -78,12 +77,13 @@ public class ManageUserController {
 
     private void onUpdateUserButtonClick(User updatedUser) {
         UpdateUserController updateUserController = (UpdateUserController) PageLoader.openPage("update_user.fxml");
-        updateUserController.setLoggedUser(loggedUser);
+        updateUserController.setLoggedUser(getLoggedUser());
         updateUserController.setUpdatedUser(updatedUser);
+        updateUserController.setPreviousPage("manage_user.fxml");
     }
 
     private void onDeleteUserButtonClick(User deletedUser) {
-        if(loggedUser.getUserType() != UserType.ADMINISTRATOR) {
+        if(getLoggedUser().getUserType() != UserType.ADMINISTRATOR) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("Você não tem permissão para deletar usuários");
@@ -137,6 +137,6 @@ public class ManageUserController {
 
     @FXML
     private void onBackButtonClick() {
-        PageLoader.goHome(loggedUser);
+        backPage();
     }
 }

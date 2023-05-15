@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeController {
+public class HomeController extends Controller {
     private User loggedUser;
 
     @FXML
@@ -32,6 +32,7 @@ public class HomeController {
 
         setUpListOfUserViewsButtons();
     }
+
     private void setUpListOfUserViewsButtons() {
         List<Button> buttons = new ArrayList<>();
 

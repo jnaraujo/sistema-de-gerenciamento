@@ -15,9 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class UpdateUserController {
-    private User loggedUser;
-
+public class UpdateUserController extends Controller {
     private User updatedUser;
     @FXML
     private TextField nameField;
@@ -29,10 +27,6 @@ public class UpdateUserController {
     private ChoiceBox<UserType> userTypeChoiceBox;
     @FXML
     private Label infoLabel;
-
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
-    }
 
     public void setUpdatedUser(User updatedUser) {
         this.updatedUser = updatedUser;
@@ -53,8 +47,7 @@ public class UpdateUserController {
 
     @FXML
     private void onBackButtonClick() {
-        ManageUserController controller = PageLoader.openPage("manage_user.fxml");
-        controller.setLoggedUser(loggedUser);
+        backPage();
     }
 
     @FXML

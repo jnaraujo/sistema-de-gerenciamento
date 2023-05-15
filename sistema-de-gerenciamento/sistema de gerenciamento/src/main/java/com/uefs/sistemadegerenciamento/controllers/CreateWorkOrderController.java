@@ -16,8 +16,7 @@ import javafx.util.StringConverter;
 import java.util.Comparator;
 import java.util.List;
 
-public class CreateWorkOrderController {
-    private User loggedUser;
+public class CreateWorkOrderController extends Controller {
 
     @FXML
     private ComboBox customersComboBox;
@@ -29,10 +28,6 @@ public class CreateWorkOrderController {
     private Label infoLabel;
 
     private List<Customer> customers;
-
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
-    }
 
     @FXML
     private void initialize() {
@@ -71,13 +66,14 @@ public class CreateWorkOrderController {
 
     @FXML
     private void onBackButtonClick() {
-        PageLoader.goHome(loggedUser);
+        backPage();
     }
 
     @FXML
     private void onCreateCustomerButtonClick() {
-        CreateCustomerController controller = PageLoader.openPage("create_customer.fxml");
-        controller.setLoggedUser(loggedUser);
+        Controller controller = PageLoader.openPage("create_customer.fxml");
+        controller.setLoggedUser(getLoggedUser());
+        controller.setPreviousPage("create_order.fxml");
     }
 
     @FXML

@@ -19,8 +19,7 @@ import javafx.scene.layout.VBox;
 import java.util.Comparator;
 import java.util.List;
 
-public class ManageInstallationServiceController {
-    private User loggedUser;
+public class ManageInstallationServiceController extends Controller {
     private ObservableList<InstallationService> services;
     private final int COMPONENT_HEIGHT = 95 + 16;
     @FXML
@@ -29,8 +28,9 @@ public class ManageInstallationServiceController {
     @FXML
     private AnchorPane listAnchorPane;
 
+    @Override
     public void setLoggedUser(User user) {
-        this.loggedUser = user;
+        super.setLoggedUser(user);
         services.addAll(fetchServices());
     }
 
@@ -87,12 +87,13 @@ public class ManageInstallationServiceController {
 
     private void onUpdateComponentButtonClick(InstallationService updatedService) {
         UpdateInstallationServiceController controller = PageLoader.openPage("update_installation_service.fxml");
-        controller.setLoggedUser(loggedUser);
+        controller.setLoggedUser(getLoggedUser());
         controller.setInstallationService(updatedService);
+        controller.setPreviousPage("manage_installation_service.fxml");
     }
 
     private void onDeleteComponentButtonClick(InstallationService deletedService) {
-        if(loggedUser.getUserType() != UserType.ADMINISTRATOR) {
+        if(getLoggedUser().getUserType() != UserType.ADMINISTRATOR) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("Você não tem permissão para deletar Serviços de Instalação.");
@@ -139,6 +140,6 @@ public class ManageInstallationServiceController {
 
     @FXML
     private void onBackButtonClick() {
-        PageLoader.goHome(loggedUser);
+        backPage();
     }
 }

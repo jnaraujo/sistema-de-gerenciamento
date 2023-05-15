@@ -9,8 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class UpdateCustomerController {
-    private User loggedUser;
+public class UpdateCustomerController extends Controller {
 
     private Customer updatedCustomer;
 
@@ -29,10 +28,6 @@ public class UpdateCustomerController {
     @FXML
     private Label infoLabel;
 
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
-    }
-
     public void setUpdatedCustomer(Customer updatedCustomer) {
         this.updatedCustomer = updatedCustomer;
 
@@ -49,8 +44,7 @@ public class UpdateCustomerController {
 
     @FXML
     private void onBackButtonClick() {
-        ManageCustomersController controller = (ManageCustomersController) PageLoader.openPage("manage_customers.fxml");
-        controller.setLoggedUser(loggedUser);
+        backPage();
     }
 
     @FXML

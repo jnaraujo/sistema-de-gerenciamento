@@ -9,9 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class CreateCustomerController {
-    private User loggedUser;
-
+public class CreateCustomerController extends Controller {
     @FXML
     private TextField nameField;
 
@@ -27,10 +25,6 @@ public class CreateCustomerController {
     @FXML
     private Label infoLabel;
 
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
-    }
-
     @FXML
     private void initialize() {
         HelloApplication.stage.setTitle("Criar Cliente");
@@ -38,7 +32,7 @@ public class CreateCustomerController {
 
     @FXML
     private void onBackButtonClick() {
-        PageLoader.goHome(loggedUser);
+        backPage();
     }
 
     @FXML

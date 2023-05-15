@@ -22,8 +22,7 @@ import javafx.scene.layout.VBox;
 import java.util.Comparator;
 import java.util.List;
 
-public class ManageCustomersController {
-    private User loggedUser;
+public class ManageCustomersController extends Controller {
     private ObservableList<Customer> customers;
     private final int COMPONENT_HEIGHT = 95 + 16;
     @FXML
@@ -32,8 +31,9 @@ public class ManageCustomersController {
     @FXML
     private AnchorPane customerListAnchorPane;
 
+    @Override
     public void setLoggedUser(User user) {
-        this.loggedUser = user;
+        super.setLoggedUser(user);
         customers.addAll(fetchCustomers());
     }
     @FXML
@@ -88,13 +88,14 @@ public class ManageCustomersController {
     }
 
     private void onUpdateCustomerButtonClick(Customer updatedCustomer) {
-        UpdateCustomerController updateCustomerController = PageLoader.openPage("update_customer.fxml");
-        updateCustomerController.setLoggedUser(loggedUser);
-        updateCustomerController.setUpdatedCustomer(updatedCustomer);
+        UpdateCustomerController controller = PageLoader.openPage("update_customer.fxml");
+        controller.setLoggedUser(getLoggedUser());
+        controller.setUpdatedCustomer(updatedCustomer);
+        controller.setPreviousPage("manage_customers.fxml");
     }
 
     private void onDeleteCustomerButtonClick(Customer deletedCustomer) {
-        if(loggedUser.getUserType() != UserType.ADMINISTRATOR) {
+        if(getLoggedUser().getUserType() != UserType.ADMINISTRATOR) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("Você não tem permissão para deletar usuários");
@@ -151,6 +152,6 @@ public class ManageCustomersController {
 
     @FXML
     private void onBackButtonClick() {
-        PageLoader.goHome(loggedUser);
+        backPage();
     }
 }

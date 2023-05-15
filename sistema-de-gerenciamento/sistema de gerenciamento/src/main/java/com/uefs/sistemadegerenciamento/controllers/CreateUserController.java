@@ -15,8 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class CreateUserController {
-    private User loggedUser;
+public class CreateUserController extends Controller {
     @FXML
     private TextField nameField;
     @FXML
@@ -27,10 +26,6 @@ public class CreateUserController {
     private ChoiceBox<UserType> userTypeChoiceBox;
     @FXML
     private Label infoLabel;
-
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
-    }
 
     @FXML
     private void initialize() {
@@ -43,7 +38,7 @@ public class CreateUserController {
 
     @FXML
     private void onBackButtonClick() {
-        PageLoader.goHome(loggedUser);
+        backPage();
     }
 
     @FXML

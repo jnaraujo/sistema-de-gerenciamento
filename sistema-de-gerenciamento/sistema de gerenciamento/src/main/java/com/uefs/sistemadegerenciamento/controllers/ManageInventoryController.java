@@ -16,12 +16,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-
 import java.util.Comparator;
 import java.util.List;
 
-public class ManageInventoryController {
-    private User loggedUser;
+public class ManageInventoryController extends Controller {
     private ObservableList<ComputerComponent> components;
     private final int COMPONENT_HEIGHT = 95 + 16;
     @FXML
@@ -30,8 +28,9 @@ public class ManageInventoryController {
     @FXML
     private AnchorPane componentListAnchorPane;
 
+    @Override
     public void setLoggedUser(User user) {
-        this.loggedUser = user;
+        super.setLoggedUser(user);
         components.addAll(fetchInventory());
     }
 
@@ -88,12 +87,13 @@ public class ManageInventoryController {
 
     private void onUpdateComponentButtonClick(ComputerComponent updatedComponent) {
         UpdateComponentController controller = PageLoader.openPage("update_component.fxml");
-        controller.setLoggedUser(loggedUser);
+        controller.setLoggedUser(getLoggedUser());
         controller.setComputerComponent(updatedComponent);
+        controller.setPreviousPage("manage_inventory.fxml");
     }
 
     private void onDeleteComponentButtonClick(ComputerComponent deletedComponent) {
-        if(loggedUser.getUserType() != UserType.ADMINISTRATOR) {
+        if(getLoggedUser().getUserType() != UserType.ADMINISTRATOR) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("Você não tem permissão para deletar componentes");
@@ -140,6 +140,6 @@ public class ManageInventoryController {
 
     @FXML
     private void onBackButtonClick() {
-        PageLoader.goHome(loggedUser);
+        backPage();
     }
 }

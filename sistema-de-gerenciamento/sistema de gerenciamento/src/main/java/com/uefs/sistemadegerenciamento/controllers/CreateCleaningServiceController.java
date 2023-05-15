@@ -12,8 +12,7 @@ import javafx.scene.control.TextField;
 
 import java.util.List;
 
-public class CreateCleaningServiceController {
-    private User loggedUser;
+public class CreateCleaningServiceController extends Controller {
 
     @FXML
     private TextArea componentListField;
@@ -27,10 +26,6 @@ public class CreateCleaningServiceController {
     @FXML
     private Label infoLabel;
 
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
-    }
-
     @FXML
     private void initialize() {
         HelloApplication.stage.setTitle("Adicionar novo Serviço de Limpeza");
@@ -38,7 +33,7 @@ public class CreateCleaningServiceController {
 
     @FXML
     private void onBackButtonClick() {
-        PageLoader.goHome(loggedUser);
+        backPage();
     }
 
     @FXML
