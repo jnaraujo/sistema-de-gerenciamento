@@ -21,7 +21,13 @@ public class ComputerComponentComponent {
         hBox.setPadding(new javafx.geometry.Insets(8, 8, 8, 8));
         hBox.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #d4d4d4; -fx-border-width: 1px; -fx-border-radius: 8px;");
 
-        int LEFT_WIDTH = 500;
+        final boolean DOES_UPDATE_BUTTON_EXISTS = onUpdateButtonClick != null;
+
+        int LEFT_WIDTH = 625;
+
+        if(DOES_UPDATE_BUTTON_EXISTS) {
+            LEFT_WIDTH = 500;
+        }
 
         VBox vBox = new VBox();
         vBox.prefWidth(LEFT_WIDTH);
@@ -64,7 +70,10 @@ public class ComputerComponentComponent {
         deleteButton.setAlignment(Pos.CENTER);
         deleteButton.setOnAction(onDeleteButtonClick);
 
-        buttonHBox.getChildren().addAll(updateButton, deleteButton);
+        if(DOES_UPDATE_BUTTON_EXISTS){
+            buttonHBox.getChildren().add(updateButton);
+        }
+        buttonHBox.getChildren().add(deleteButton);
 
         hBox.getChildren().addAll(vBox, buttonHBox);
 
