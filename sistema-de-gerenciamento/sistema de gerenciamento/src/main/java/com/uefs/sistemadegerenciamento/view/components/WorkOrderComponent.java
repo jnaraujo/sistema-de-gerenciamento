@@ -58,14 +58,14 @@ public class WorkOrderComponent {
         button.setTextAlignment(TextAlignment.CENTER);
         button.setAlignment(Pos.CENTER);
 
-        button.setOnAction(onButtonClick);
-
         boolean isTechnicianWorkOrder = workOrder.getTechnicianId() != null && workOrder.getTechnicianId().equals(user.getId());
 
         if (isTechnicianWorkOrder) {
             button.setText("Abrir ordem");
             button.setStyle("-fx-background-color: rgba(54,140,243,0.53); -fx-text-fill: #000000; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-font-size: 16px;");
         }
+
+        button.setOnAction(onButtonClick);
 
         hBox.getChildren().addAll(vBox, button);
         return hBox;
