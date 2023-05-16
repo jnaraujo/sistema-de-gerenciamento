@@ -17,12 +17,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Popup;
-
 import java.util.Comparator;
 import java.util.List;
 
@@ -54,7 +51,7 @@ public class WorkOrderListController extends Controller {
         technicianCurrentWorkOrderVBox.getChildren().clear();
 
         if(loggedUserWorkOrder != null) {
-            technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserWorkOrder, (Technician) loggedUser, false));
+            technicianCurrentWorkOrderVBox.getChildren().add(createLoggedUserCurrentWorkOrderComponent(loggedUserWorkOrder));
         }else{
             technicianCurrentWorkOrderVBox.getChildren().add(EmptyComponent.create("Não há ordens de serviço disponíveis"));
         }
@@ -79,7 +76,7 @@ public class WorkOrderListController extends Controller {
                 technicianCurrentWorkOrderVBox.getChildren().clear();
 
                 if(doesLoggedUserHaveWorkOrder) {
-                    technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserWorkOrder, (Technician) getLoggedUser(), false));
+                    technicianCurrentWorkOrderVBox.getChildren().add(createLoggedUserCurrentWorkOrderComponent(loggedUserWorkOrder));
                 }else{
                     technicianCurrentWorkOrderVBox.getChildren().add(EmptyComponent.create("Não há ordens de serviço disponíveis"));
                 }
@@ -157,22 +154,35 @@ public class WorkOrderListController extends Controller {
         return WorkOrderComponent.create(workOrder, technician, customer, getLoggedUser(), isButtonDisabled, (event) -> {
             if(isButtonDisabled){
                 System.out.println("Tecnico ja possui uma ordem de serviço");
-            }else{
-                if(getLoggedUser().getUserType() != UserType.TECHNICIAN){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Você não tem permissão para aceitar ordens de serviço.");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Apenas técnicos podem aceitar ordens de serviço.");
-                    alert.showAndWait();
-
-                    return;
-                }
-                workOrder.setTechnicianId(getLoggedUser().getId());
-                DAOManager.getWorkOrderDao().update(workOrder);
-
-                openWorkOrders.removeAll(openWorkOrders);
-                openWorkOrders.addAll(fetchOpenWorkOrders());
+                return;
             }
+
+            if(getLoggedUser().getUserType() != UserType.TECHNICIAN){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Você não tem permissão para aceitar ordens de serviço.");
+                alert.setHeaderText(null);
+                alert.setContentText("Apenas técnicos podem aceitar ordens de serviço.");
+                alert.showAndWait();
+                return;
+            }
+
+            workOrder.setTechnicianId(getLoggedUser().getId());
+            DAOManager.getWorkOrderDao().update(workOrder);
+
+            openWorkOrders.removeAll(openWorkOrders);
+            openWorkOrders.addAll(fetchOpenWorkOrders());
+
+        });
+    }
+
+    private HBox createLoggedUserCurrentWorkOrderComponent(WorkOrder workOrder) {
+        Customer customer = DAOManager.getCustomerDao().findById(workOrder.getCustomerId());
+
+        return WorkOrderComponent.create(workOrder, (Technician) getLoggedUser(), customer, getLoggedUser(), false, (event) -> {
+            UpdateWorkOrderController controller = PageLoader.openPage("update_order.fxml");
+            controller.setWorkOrder(workOrder);
+            controller.setLoggedUser(getLoggedUser());
+            controller.setPreviousPage("work_order_list.fxml");
         });
     }
 
