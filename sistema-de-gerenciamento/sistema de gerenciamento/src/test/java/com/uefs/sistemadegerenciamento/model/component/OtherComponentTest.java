@@ -18,7 +18,7 @@ class OtherComponentTest {
     @Test
     void testOtherComponentCreation() {
         assertNotNull(this.otherComponent);
-        assertEquals("other component", this.otherComponent.getDescription());
+        assertEquals("other component", this.otherComponent.getName());
         assertEquals(100.0, this.otherComponent.getPricePerUnit());
         assertEquals(50.0, this.otherComponent.getCostPerUnit());
         assertEquals(1, this.otherComponent.getQuantity());
@@ -26,7 +26,7 @@ class OtherComponentTest {
 
     @Test
     void testToString(){
-        String expected = "OtherComponent [costPerUnit=50.0, description=other component, pricePerUnit=100.0, quantity=1]";
+        String expected = "OtherComponent [costPerUnit=50.0, name=other component, pricePerUnit=100.0, quantity=1]";
         assertEquals(expected, this.otherComponent.toString());
     }
 
