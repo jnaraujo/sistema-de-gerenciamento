@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.UpdateUserController">
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.UpdateUserController">
     <padding>
         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
     </padding>
@@ -80,14 +80,14 @@
             </children>
          </VBox>
 
-         <Label fx:id="infoLabel" alignment="CENTER" prefHeight="30.0" prefWidth="784.0" text="" textAlignment="CENTER">
+         <Label fx:id="infoLabel" alignment="CENTER" prefHeight="30.0" prefWidth="1263.0" text="" textAlignment="CENTER">
             <font>
                <Font size="16.0" />
             </font>
          </Label>
       </children>
    </VBox>
-   <Button mnemonicParsing="false" onAction="#onUpdateUserButtonClick" prefHeight="48.0" prefWidth="828.0" text="Atualizar Usuário">
+   <Button mnemonicParsing="false" onAction="#onUpdateUserButtonClick" prefHeight="50.0" prefWidth="1269.0" text="Atualizar Usuário">
       <font>
          <Font size="16.0" />
       </font></Button>

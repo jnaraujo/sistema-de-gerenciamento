@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.UpdateCustomerController">
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.UpdateCustomerController">
    <padding>
       <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
    </padding>
@@ -31,7 +31,7 @@
                      <Font size="16.0" />
                   </font>
                </Label>
-               <TextField prefHeight="25.0" prefWidth="340.0" promptText="Ex: João da Silva" fx:id="nameField">
+               <TextField fx:id="nameField" prefHeight="25.0" prefWidth="340.0" promptText="Ex: João da Silva">
                   <font>
                      <Font size="14.0" />
                   </font></TextField>
@@ -46,7 +46,7 @@
                            <Font size="16.0" />
                         </font>
                      </Label>
-                     <TextField prefHeight="25.0" prefWidth="132.0" promptText="Ex: joaodasilva@exemplo.com" fx:id="emailField">
+                     <TextField fx:id="emailField" prefHeight="25.0" prefWidth="132.0" promptText="Ex: joaodasilva@exemplo.com">
                         <font>
                            <Font size="14.0" />
                         </font>
@@ -60,7 +60,7 @@
                            <Font size="16.0" />
                         </font>
                      </Label>
-                     <TextField prefHeight="25.0" prefWidth="132.0" promptText="Ex: (999) 9 999-9999" fx:id="phoneField">
+                     <TextField fx:id="phoneField" prefHeight="25.0" prefWidth="132.0" promptText="Ex: (999) 9 999-9999">
                         <font>
                            <Font size="14.0" />
                         </font>
@@ -76,19 +76,19 @@
                      <Font size="16.0" />
                   </font>
                </Label>
-               <TextField prefHeight="25.0" prefWidth="132.0" promptText="Ex: Rua do Pé de Mangua, número 12" fx:id="addressField">
+               <TextField fx:id="addressField" prefHeight="25.0" prefWidth="132.0" promptText="Ex: Rua do Pé de Mangua, número 12">
                   <font>
                      <Font size="14.0" />
                   </font></TextField>
             </children>
          </VBox>
-
-         <Label fx:id="infoLabel" alignment="CENTER" prefHeight="30.0" prefWidth="784.0" text="" textAlignment="CENTER">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </Label>
       </children>
    </VBox>
-   <Button mnemonicParsing="false" onAction="#onUpdateCustomerButtonClick" prefHeight="25.0" prefWidth="196.0" text="Atualizar Cliente" />
+
+   <Label fx:id="infoLabel" alignment="CENTER" prefHeight="30.0" prefWidth="1275.0" text="" textAlignment="CENTER">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
+   <Button mnemonicParsing="false" onAction="#onUpdateCustomerButtonClick" prefHeight="50.0" prefWidth="1275.0" text="Atualizar Cliente" />
 </VBox>

@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fx:id="loginBox" alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="800.0" prefWidth="800.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.LoginController">
+<VBox fx:id="loginBox" alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="720.0" prefWidth="1280.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.LoginController">
     <padding>
-            <Insets bottom="20.0" left="80.0" right="80.0" top="20.0" />
+            <Insets bottom="20.0" left="360.0" right="360.0" top="20.0" />
     </padding>
 
         <Label fx:id="titleText" text="Sistema de Gerenciamento">
@@ -18,5 +18,5 @@
     <TextField fx:id="emailField" promptText="Login" text="admin" />
     <PasswordField fx:id="passwordField" promptText="Senha" text="admin" />
 
-    <Button onAction="#onLoginClick" prefHeight="25.0" prefWidth="208.0" text="Login" />
+    <Button onAction="#onLoginClick" prefHeight="25.0" prefWidth="339.0" text="Login" />
 </VBox>
