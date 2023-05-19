@@ -133,7 +133,7 @@ public class ManageInventoryController extends Controller {
     }
 
     private List<ComputerComponent> fetchInventory() {
-        List<ComputerComponent> components = DAOManager.getInventoryDao().findAvailableComponents();
+        List<ComputerComponent> components = DAOManager.getInventoryDao().getAll();
         components.sort(Comparator.comparing(ComputerComponent::getName));
         return components;
     }
