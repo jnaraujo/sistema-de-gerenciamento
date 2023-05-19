@@ -23,10 +23,10 @@ public class ComputerComponentComponent {
 
         final boolean DOES_UPDATE_BUTTON_EXISTS = onUpdateButtonClick != null;
 
-        int LEFT_WIDTH = 625;
+        int LEFT_WIDTH = 1200;
 
         if(DOES_UPDATE_BUTTON_EXISTS) {
-            LEFT_WIDTH = 500;
+            LEFT_WIDTH -= 125;
         }
 
         VBox vBox = new VBox();

@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -18,16 +19,15 @@ public class InstallationServiceComponent {
         hBox.setId("component-"+service.getId());
         hBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setPrefHeight(80);
-        hBox.setPrefWidth(750);
         hBox.setPadding(new javafx.geometry.Insets(8, 8, 8, 8));
         hBox.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #d4d4d4; -fx-border-width: 1px; -fx-border-radius: 8px;");
 
         final boolean DOES_UPDATE_BUTTON_EXISTS = onUpdateButtonClick != null;
 
-        int LEFT_WIDTH = 625;
+        int LEFT_WIDTH = 1100;
 
         if(DOES_UPDATE_BUTTON_EXISTS) {
-            LEFT_WIDTH = 500;
+            LEFT_WIDTH -= 125;
         }
 
         VBox vBox = new VBox();

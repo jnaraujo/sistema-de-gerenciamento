@@ -18,11 +18,10 @@ public class UpdateUserComponent {
         hBox.setId("user-"+user.getId());
         hBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setPrefHeight(80);
-        hBox.setPrefWidth(750);
         hBox.setPadding(new javafx.geometry.Insets(8, 8, 8, 8));
         hBox.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #d4d4d4; -fx-border-width: 1px; -fx-border-radius: 8px;");
 
-        int LEFT_WIDTH = 500;
+        int LEFT_WIDTH = 1200;
 
         VBox vBox = new VBox();
         vBox.prefWidth(LEFT_WIDTH);

@@ -19,29 +19,30 @@ public class WorkOrderComponent {
         HBox hBox = new HBox();
         hBox.setId("work-order-"+workOrder.getId());
         hBox.setAlignment(Pos.CENTER_LEFT);
-        hBox.setPrefWidth(750);
         hBox.setPadding(new javafx.geometry.Insets(8, 8, 8, 8));
         hBox.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #d4d4d4; -fx-border-width: 1px; -fx-border-radius: 8px;");
 
+        final int LEFT_WIDTH = 1100;
+
         VBox vBox = new VBox();
-        vBox.prefWidth(600);
+        vBox.prefWidth(LEFT_WIDTH);
         vBox.setPadding(new javafx.geometry.Insets(0, 8, 0, 0));
 
         Label descriptionLabel = new Label(workOrder.getDescription());
         descriptionLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 16));
-        descriptionLabel.setPrefWidth(600);
+        descriptionLabel.setPrefWidth(LEFT_WIDTH);
 
         Label clientText = new Label("Cliente: " + customer.getName() + " - Phone: " + customer.getPhone() + " - Email: " + customer.getEmail());
-        clientText.setPrefWidth(600);
+        clientText.setPrefWidth(LEFT_WIDTH);
         clientText.setFont(new Font(14));
 
         String technicianName = technician != null ? technician.getName() : "Nenhum";
         Label technicianText = new Label("Técnico Associado: " + technicianName);
-        technicianText.setPrefWidth(600);
+        technicianText.setPrefWidth(LEFT_WIDTH);
         technicianText.setFont(new Font(14));
 
         Label otherDataText = new Label("Status: " + workOrder.getStatus() + " - Data de abertura: " + workOrder.getCreatedAt());
-        clientText.setMaxWidth(600);
+        clientText.setMaxWidth(LEFT_WIDTH);
         otherDataText.setFont(new Font(14));
 
         vBox.getChildren().addAll(descriptionLabel, clientText, otherDataText, technicianText);
