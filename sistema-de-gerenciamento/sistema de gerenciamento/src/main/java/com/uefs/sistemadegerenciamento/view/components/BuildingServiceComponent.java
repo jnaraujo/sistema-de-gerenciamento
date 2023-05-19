@@ -35,7 +35,7 @@ public class BuildingServiceComponent {
         pricePerUnitLabel.setPrefWidth(LEFT_WIDTH);
         pricePerUnitLabel.setFont(new Font(16));
 
-        String components = service.getUsedComponents().stream().reduce("", (acc, component) -> acc + component.getName() + ", ", (acc, component) -> acc + component);
+        String components = service.getUsedComponents().stream().reduce("", (acc, component) -> acc + component.getName() + " (" + component.getQuantity() + "), ", (acc, component) -> acc + component);
         components = components.substring(0, components.length() - 2);
 
         Label componentsLabel = new Label(components);

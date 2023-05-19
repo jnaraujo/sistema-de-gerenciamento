@@ -5,6 +5,8 @@ import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
+import com.uefs.sistemadegerenciamento.model.component.Component;
+import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import com.uefs.sistemadegerenciamento.model.service.BuildingService;
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;
 import com.uefs.sistemadegerenciamento.model.service.InstallationService;
@@ -17,12 +19,18 @@ import com.uefs.sistemadegerenciamento.view.components.EmptyComponent;
 import com.uefs.sistemadegerenciamento.view.components.InstallationServiceComponent;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -120,20 +128,176 @@ public class UpdateWorkOrderController extends Controller {
             }
         }
 
-        final int COMPONENT_HEIGHT = 105;
+        final int COMPONENT_HEIGHT = 110;
 
         anchorPane.setPrefHeight(COMPONENT_HEIGHT * services.size() + 16);
     }
 
     private void deleteService(WorkOrder order, Service service){
-        order.getServices().remove(service);
-        setServicesToScrollPane(order.getServices());
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Remover serviço");
+        alert.setHeaderText("Remover serviço");
+        alert.setContentText("Deseja realmente remover o serviço?");
+        alert.showAndWait();
+
+        if(alert.getResult().getText().equals("OK")){
+            order.getServices().remove(service);
+            setServicesToScrollPane(order.getServices());
+            DAOManager.getWorkOrderDao().update(order);
+            success("Serviço removido com sucesso!");
+            return;
+        }
+
+        alert.close();
     }
 
     private List<Customer> fetchCustomers() {
         List<Customer> customers = DAOManager.getCustomerDao().getAll();
         customers.sort(Comparator.comparing(Customer::getName));
         return customers;
+    }
+
+    @FXML
+    private void onAddBuildingService(){
+        List<ComputerComponent> components = DAOManager.getInventoryDao().findAvailableComponents();
+
+        ModalController controller = openModal("Adicionar nova peça para a Serviço de Montagem");
+        controller.setServices(components.stream().map(component -> component.getName()).toList());
+        controller.enableQuantityField();
+
+        controller.setCallback((choice, quantity) -> {
+            ComputerComponent inventoryComponent = components.stream()
+                    .filter(component1 -> component1.getName().equals(choice))
+                    .findFirst()
+                    .orElse(null);
+
+            if (inventoryComponent == null) {
+                controller.info("Peça não encontrada.");
+                return;
+            }
+
+            if (inventoryComponent.getQuantity() < quantity) {
+                controller.info("Quantidade indisponível.");
+                return;
+            }
+
+            System.out.println(quantity);
+
+            BuildingService buildingService = new BuildingService();
+
+            ComputerComponent serviceComponent = new ComputerComponent(
+                    inventoryComponent.getName(),
+                    inventoryComponent.getManufacturer(),
+                    inventoryComponent.getPricePerUnit(),
+                    inventoryComponent.getCostPerUnit(),
+                    quantity
+            );
+            serviceComponent.setId(inventoryComponent.getId());
+
+            buildingService.addComponent(serviceComponent);
+            workOrder.getServices().add(buildingService);
+
+            Integer newQuantity = inventoryComponent.getQuantity() - quantity;
+            inventoryComponent.setQuantity(newQuantity);
+
+            DAOManager.getInventoryDao().update(inventoryComponent);
+            DAOManager.getWorkOrderDao().update(workOrder);
+
+            setServicesToScrollPane(workOrder.getServices());
+
+            success("Peça adicionada com sucesso!");
+            controller.close();
+        }
+        );
+    }
+
+    @FXML
+    private void onAddInstallationService(){
+        List<InstallationService> installationServices = DAOManager.getInstallationServiceDao().getAll();
+
+        ModalController controller = openModal("Adicionar serviço de instalação");
+        controller.setServices(installationServices.stream().map(service -> service.getDescription()).toList());
+
+        controller.setCallback((service, quantity) -> {
+            InstallationService installationService = installationServices.stream()
+                    .filter(installationService1 -> installationService1.getDescription().equals(service))
+                    .findFirst()
+                    .orElse(null);
+
+            if(installationService == null) {
+                controller.info("Serviço não encontrado.");
+                return;
+            }
+
+            workOrder.getServices().add(installationService);
+            setServicesToScrollPane(workOrder.getServices());
+            DAOManager.getWorkOrderDao().update(workOrder);
+            success("Serviço adicionado com sucesso!");
+
+            controller.close();
+        });
+    }
+
+    @FXML
+    private void onAddCleaningService(){
+        List<CleaningService> cleaningServices = DAOManager.getCleaningServiceDao().getAll();
+
+        ModalController controller = openModal("Adicionar serviço de limpeza");
+
+        List<String> services = cleaningServices.stream().map(service -> cleaningComponentsToString(service.getComponents())).toList();
+        controller.setServices(services);
+        controller.setCallback((serviceName, quantity) -> {
+
+            CleaningService cleaningService = cleaningServices.stream()
+                    .filter(service -> cleaningComponentsToString(service.getComponents()).equals(serviceName))
+                    .findFirst()
+                    .orElse(null);
+
+            if(cleaningService == null) {
+                controller.info("Serviço não encontrado.");
+                return;
+            }
+
+            workOrder.getServices().add(cleaningService);
+            setServicesToScrollPane(workOrder.getServices());
+            DAOManager.getWorkOrderDao().update(workOrder);
+
+            success("Serviço adicionado com sucesso!");
+
+            controller.close();
+        });
+    }
+
+    private String cleaningComponentsToString(List<String> components){
+        String componentsString = components.stream().reduce("", (acc, component) -> {
+            return acc + component + ", ";
+        });
+
+        return componentsString.substring(0, componentsString.length() - 2);
+    }
+
+    private ModalController openModal(String title){
+        try{
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("modal.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            ModalController controller = loader.getController();
+
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setTitle(title);
+            stage.setWidth(400);
+            stage.setHeight(300);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.show();
+
+            return controller;
+
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @FXML
