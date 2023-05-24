@@ -29,19 +29,72 @@
       <VBox.margin>
          <Insets />
       </VBox.margin>
-      <padding>
-         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-      </padding>
    </GridPane>
-   <FlowPane fx:id="flowPane" hgap="16.0" prefHeight="413.0" prefWidth="1264.0" prefWrapLength="150.0" vgap="16.0">
-      <opaqueInsets>
-         <Insets />
-      </opaqueInsets>
-      <VBox.margin>
-         <Insets bottom="16.0" top="16.0" />
-      </VBox.margin>
-   </FlowPane>
+   <VBox fx:id="mainVBox" prefHeight="638.0" prefWidth="1264.0" spacing="16.0" VBox.vgrow="NEVER">
+      <children>
+          <VBox fx:id="workOrderVBox" maxHeight="200.0" prefHeight="200.0" prefWidth="1248.0" spacing="8.0" VBox.vgrow="NEVER">
+              <Label text="Ordens de Serviço:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+              <FlowPane fx:id="workOrderFlowPane" hgap="16.0" prefHeight="413.0" prefWidth="1248.0" prefWrapLength="150.0" vgap="16.0">
+                  <opaqueInsets>
+                      <Insets />
+                  </opaqueInsets>
+                  <VBox.margin>
+                      <Insets />
+                  </VBox.margin>
+              </FlowPane>
+          </VBox>
+          <VBox fx:id="customerVBox" maxHeight="200.0" prefHeight="200.0" spacing="8.0" VBox.vgrow="NEVER">
+              <Label text="Cliente:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+              <FlowPane fx:id="customerFlowPane" hgap="16.0" prefHeight="413.0" prefWidth="1264.0" prefWrapLength="150.0" vgap="16.0">
+                  <opaqueInsets>
+                      <Insets />
+                  </opaqueInsets>
+                  <VBox.margin>
+                      <Insets />
+                  </VBox.margin>
+              </FlowPane>
+          </VBox>
+          <VBox fx:id="userVBox" maxHeight="200.0" prefHeight="200.0" spacing="8.0" VBox.vgrow="NEVER">
+              <Label text="Usuários:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+              <FlowPane fx:id="userFlowPane" hgap="16.0" prefHeight="413.0" prefWidth="1264.0" prefWrapLength="150.0" vgap="16.0">
+                  <opaqueInsets>
+                      <Insets />
+                  </opaqueInsets>
+                  <VBox.margin>
+                      <Insets />
+                  </VBox.margin>
+              </FlowPane>
+          </VBox>
+          <VBox fx:id="serviceVBox" maxHeight="200.0" prefHeight="200.0" spacing="8.0" VBox.vgrow="NEVER">
+              <Label text="Serviços:">
+                  <font>
+                      <Font size="16.0" />
+                  </font>
+              </Label>
+              <FlowPane fx:id="serviceFlowPane" hgap="16.0" prefHeight="413.0" prefWidth="1264.0" prefWrapLength="150.0" vgap="16.0">
+                  <opaqueInsets>
+                      <Insets />
+                  </opaqueInsets>
+                  <VBox.margin>
+                      <Insets />
+                  </VBox.margin>
+              </FlowPane>
+          </VBox>
+      </children>
+   </VBox>
    <padding>
-      <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+      <Insets bottom="16.0" left="16.0" right="16.0" />
    </padding>
 </VBox>
