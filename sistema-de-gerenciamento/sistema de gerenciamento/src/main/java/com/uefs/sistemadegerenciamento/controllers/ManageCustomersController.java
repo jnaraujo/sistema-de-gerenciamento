@@ -1,7 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.HelloApplication;
-import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
@@ -107,6 +106,19 @@ public class ManageCustomersController extends Controller {
             return;
         }
 
+        List<WorkOrder> customerWorkOrders = DAOManager.getWorkOrderDao().findAllWorkOrdersByCustomer(deletedCustomer.getId());
+        if(customerWorkOrders.size() > 0){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Não é possível deletar o cliente " + deletedCustomer.getName());
+            alert.setContentText("Existem ordens de serviço associadas a esse cliente.");
+            alert.getDialogPane().getScene().getWindow().setOnCloseRequest((event) -> {
+                alert.close();
+            });
+            alert.showAndWait();
+            return;
+        }
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Deletar Cliente.");
         alert.setHeaderText("Você tem certeza que deseja deletar o cliente " + deletedCustomer.getName() + "?");
@@ -130,16 +142,6 @@ public class ManageCustomersController extends Controller {
     }
 
     private void deleteCustomer(Customer customer){
-        List<WorkOrder> customerWorkOrders = DAOManager.getWorkOrderDao().findAllWorkOrdersByCustomer(customer.getId());
-
-        List<WorkOrder> openCustomerWorkOrders = customerWorkOrders.stream().filter(
-                workOrder -> workOrder.getStatus().equals(OrderStatus.OPEN)
-        ).toList();
-
-        for(WorkOrder workOrder : openCustomerWorkOrders) {
-            DAOManager.getWorkOrderDao().delete(workOrder.getId());
-        }
-
         customers.remove(customer);
         DAOManager.getCustomerDao().delete(customer.getId());
     }
