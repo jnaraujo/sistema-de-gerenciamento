@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.HomeController">
-   <GridPane prefHeight="62.0" prefWidth="800.0">
+   <GridPane prefHeight="62.0" prefWidth="800.0" styleClass="header" VBox.vgrow="NEVER">
      <columnConstraints>
        <ColumnConstraints hgrow="SOMETIMES" maxWidth="645.0" minWidth="10.0" prefWidth="607.0" />
        <ColumnConstraints hgrow="SOMETIMES" maxWidth="757.0" minWidth="10.0" prefWidth="510.0" />
@@ -16,14 +16,15 @@
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-          <Label fx:id="titleLabel" prefHeight="25.0" prefWidth="219.0" text="Bem vindo Usuário!">
+          <Label fx:id="titleLabel" prefHeight="25.0" prefWidth="219.0" styleClass="subTitle" text="Bem vindo Usuário!">
             <font>
                <Font size="16.0" />
             </font></Label>
-          <Text fx:id="userRoleText" strokeType="OUTSIDE" strokeWidth="0.0" text="Seu cargo atual:" wrappingWidth="253.6796875" GridPane.columnIndex="1">
+          <Text fx:id="userRoleText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subTitle" text="Seu cargo atual:" wrappingWidth="485.6796875" GridPane.columnIndex="1">
             <font>
                <Font size="16.0" />
-            </font></Text>
+            </font>
+          </Text>
          <Button mnemonicParsing="false" onAction="#onLogOutClick" prefHeight="25.0" prefWidth="108.0" text="Sair" GridPane.columnIndex="2" />
       </children>
       <VBox.margin>
@@ -33,7 +34,7 @@
    <VBox fx:id="mainVBox" prefHeight="638.0" prefWidth="1264.0" spacing="16.0" VBox.vgrow="NEVER">
       <children>
           <VBox fx:id="workOrderVBox" maxHeight="200.0" prefHeight="200.0" prefWidth="1248.0" spacing="8.0" VBox.vgrow="NEVER">
-              <Label text="Ordens de Serviço:">
+              <Label styleClass="label" text="Ordens de Serviço:">
                <font>
                   <Font size="16.0" />
                </font>
@@ -48,7 +49,7 @@
               </FlowPane>
           </VBox>
           <VBox fx:id="customerVBox" maxHeight="200.0" prefHeight="200.0" spacing="8.0" VBox.vgrow="NEVER">
-              <Label text="Cliente:">
+              <Label styleClass="label" text="Cliente:">
                <font>
                   <Font size="16.0" />
                </font>
@@ -63,7 +64,7 @@
               </FlowPane>
           </VBox>
           <VBox fx:id="userVBox" maxHeight="200.0" prefHeight="200.0" spacing="8.0" VBox.vgrow="NEVER">
-              <Label text="Usuários:">
+              <Label styleClass="label" text="Usuários:">
                <font>
                   <Font size="16.0" />
                </font>
@@ -78,7 +79,7 @@
               </FlowPane>
           </VBox>
           <VBox fx:id="serviceVBox" maxHeight="200.0" prefHeight="200.0" spacing="8.0" VBox.vgrow="NEVER">
-              <Label text="Serviços:">
+              <Label styleClass="label" text="Serviços:">
                   <font>
                       <Font size="16.0" />
                   </font>

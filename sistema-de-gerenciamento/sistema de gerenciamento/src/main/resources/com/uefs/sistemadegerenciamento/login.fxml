@@ -10,7 +10,7 @@
             <Insets bottom="20.0" left="360.0" right="360.0" top="20.0" />
     </padding>
 
-        <Label fx:id="titleText" text="Sistema de Gerenciamento">
+    <Label fx:id="titleText" text="Sistema de Gerenciamento" styleClass="title">
       <font>
          <Font name="System Bold" size="25.0" />
       </font></Label>

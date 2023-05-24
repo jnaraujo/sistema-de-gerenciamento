@@ -1,0 +1,40 @@
+* {
+    -fx-accent:  #3373F1;
+    -fx-focus-color: -fx-accent;
+}
+
+#root{
+    -fx-background-color:  #ffffff;
+}
+
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #343a40;
+}
+
+.title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #212529;
+}
+
+.subTitle {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #495057;
+}
+
+.button {
+    -fx-background-color: #212529;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 8;
+    -fx-font-size: 14px;
+}
+
+.text-field {
+    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+    -fx-border-color: #cccccc;
+    -fx-text-fill: #000000;
+    -fx-border-radius: 8;
+}
