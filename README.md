@@ -75,6 +75,7 @@ O sistema é capaz de gerar relatórios sobre tempo médio de espera, preço e c
 - [Maven](https://maven.apache.org/)
 - [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/)
 - [Git](https://git-scm.com/)
+- [Scene Builder](https://gluonhq.com/products/scene-builder/)
 
 ### 💻 Rodando o projeto
 

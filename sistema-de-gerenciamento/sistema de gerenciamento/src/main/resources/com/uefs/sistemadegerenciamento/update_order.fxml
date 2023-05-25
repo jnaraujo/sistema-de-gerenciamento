@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.UpdateWorkOrderController">
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+    </padding>
+    <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="784.0" spacing="16.0">
+        <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="111.0" text="Voltar" />
+            <Label fx:id="titleText" prefHeight="36.0" prefWidth="356.0" text="Atualizar Ordem de Serviço">
+                <font>
+                    <Font name="System Bold" size="25.0" />
+                </font>
+            </Label>
+        </children>
+    </HBox>
+   <VBox prefHeight="669.0" prefWidth="784.0" spacing="16.0">
+      <VBox.margin>
+         <Insets top="16.0" />
+      </VBox.margin>
+      <children>
+         <HBox prefHeight="41.0" prefWidth="1264.0">
+            <children>
+               <VBox prefHeight="100.0" prefWidth="642.0" spacing="8.0">
+                   <Label layoutX="10.0" layoutY="10.0" text="Cliente:">
+                       <font>
+                           <Font size="16.0" />
+                       </font>
+                   </Label>
+                  <HBox alignment="CENTER_LEFT" prefWidth="642.0" spacing="16.0">
+                     <children>
+                         <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="310.0" style="-fx-font-size: 14px;" />
+                        <Button mnemonicParsing="false" onAction="#onCreateCustomerButtonClick" prefHeight="30.0" prefWidth="143.0" text="Criar novo Cliente &gt;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </VBox>
+                <VBox prefHeight="100.0" prefWidth="592.0" spacing="8.0">
+                    <children>
+                        <Label layoutX="10.0" layoutY="10.0" text="Status:">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                          <ComboBox fx:id="statusComboBox" prefHeight="30.0" prefWidth="393.0" style="-fx-font-size: 14px;" />
+                    </children>
+                </VBox>
+            </children>
+         </HBox>
+
+          <VBox prefHeight="162.0" prefWidth="1264.0" spacing="8.0">
+              <Label text="Descrição da Ordem de Serviço:">
+                  <font>
+                      <Font size="16.0" />
+                  </font></Label>
+              <TextArea fx:id="descriptionTextArea" prefHeight="130.0" prefWidth="1291.0" wrapText="true">
+                  <font>
+                      <Font size="14.0" />
+                  </font>
+              </TextArea>
+          </VBox>
+         <VBox layoutX="10.0" layoutY="89.0" prefHeight="265.0" prefWidth="784.0" spacing="8.0">
+            <children>
+               <Label text="Serviços:">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <ScrollPane prefHeight="181.0" prefWidth="784.0">
+                 <content>
+                   <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="1247.0">
+                     <VBox fx:id="servicesListVBox" layoutY="-5.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="805.0" prefWidth="1264.0" spacing="16.0" style="-fx-background-insets: 0;" />
+                   </AnchorPane>
+                 </content>
+               </ScrollPane>
+               <HBox prefHeight="40.0" prefWidth="784.0" spacing="64.0">
+                  <children>
+                     <Button onAction="#onAddBuildingService" mnemonicParsing="false" prefHeight="55.0" prefWidth="220.0" text="Adicionar Serviço de Montagem" />
+                     <Button onAction="#onAddInstallationService" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="220.0" text="Adicionar Serviço de Instalação" />
+                     <Button onAction="#onAddCleaningService" layoutX="230.0" layoutY="10.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="220.0" text="Adicionar Serviço de Limpza" />
+                  </children>
+               </HBox>
+            </children>
+         </VBox>
+      </children>
+   </VBox>
+
+
+
+    <Label fx:id="infoLabel" alignment="CENTER" prefHeight="30.0" prefWidth="1288.0" text="" textAlignment="CENTER">
+        <font>
+            <Font size="16.0" />
+        </font>
+    </Label>
+   <HBox prefHeight="146.0" prefWidth="1264.0" spacing="32.0">
+      <children>
+          <Button mnemonicParsing="false" onAction="#onUpdateButtonClick" prefHeight="50.0" prefWidth="1305.0" text="Atualizar Ordem de Serviço" />
+      </children>
+   </HBox>
+</VBox>

@@ -11,6 +11,13 @@ import java.io.Serializable;
  * @author Jônatas Araújo
  */
 public interface Component extends Serializable {
+
+    /**
+     * Retorna o nome do componente.
+     * @return o nome do componente
+     */
+    String getName();
+
     /**
      * Retorna o nome do componente.
      * @return o preço do componente

@@ -91,12 +91,34 @@ class WorkOrderDaoTest {
     void testFindOrderByTechnicianId(){
         workOrder.setTechnicianId(IdGenerator.generate());
         workOrder = workOrderDao.save(workOrder);
-        assertEquals(workOrder, workOrderDao.findOrderByTechnicianId(workOrder.getTechnicianId()));
+        assertEquals(workOrder, workOrderDao.findOpenOrderByTechnicianId(workOrder.getTechnicianId()));
     }
 
     @Test
     void testFindOrderByTechnicianIdNull(){
-        assertNull(workOrderDao.findOrderByTechnicianId(workOrder.getTechnicianId()));
+        assertNull(workOrderDao.findOpenOrderByTechnicianId(workOrder.getTechnicianId()));
+    }
+
+    @Test
+    void testFindAllWorkOrdersByCustomer(){
+        String customerID = IdGenerator.generate();
+
+        workOrder.setCustomerId(customerID);
+        workOrderDao.save(workOrder);
+
+        WorkOrder workOrder2 = new WorkOrder(
+                "another work order",
+                customerID
+        );
+        workOrderDao.save(workOrder2);
+
+        WorkOrder workOrder3 = new WorkOrder(
+                "another work order",
+                IdGenerator.generate()
+        );
+        workOrderDao.save(workOrder3);
+
+        assertEquals(2, workOrderDao.findAllWorkOrdersByCustomer(customerID).size());
     }
 
     @Test

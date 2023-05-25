@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.ManageUserController">
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+    </padding>
+    <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="784.0" spacing="16.0">
+        <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="111.0" text="Voltar" />
+            <Label fx:id="titleText" prefHeight="36.0" prefWidth="356.0" text="Gerenciar usuários">
+                <font>
+                    <Font name="System Bold" size="25.0" />
+                </font>
+            <HBox.margin>
+               <Insets bottom="6.0" />
+            </HBox.margin>
+            </Label>
+        </children>
+      <VBox.margin>
+         <Insets bottom="16.0" />
+      </VBox.margin>
+    </HBox>
+   <ScrollPane prefHeight="733.0" prefWidth="784.0">
+      <content>
+         <AnchorPane fx:id="userListAnchorPane" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="679.0" prefWidth="1249.0">
+            <children>
+                <VBox fx:id="userListVBox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1253.0" spacing="16.0" style="-fx-background-insets: 0;" />
+            </children>
+            </AnchorPane>
+      </content>
+   </ScrollPane>
+</VBox>

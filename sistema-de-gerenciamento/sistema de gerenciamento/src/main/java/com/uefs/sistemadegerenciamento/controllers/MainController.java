@@ -6,14 +6,15 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class MainController {
+public class MainController extends Controller {
     @FXML
-    public VBox root;
+    private VBox root;
 
+    @FXML
     public static VBox staticRoot;
 
     @FXML
-    public void initialize() throws IOException {
+    private void initialize() throws IOException {
         this.openPage("login.fxml");
         staticRoot = root;
     }

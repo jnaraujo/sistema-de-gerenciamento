@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.CreateWorkOrderController">
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+    </padding>
+    <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="784.0" spacing="16.0">
+        <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="111.0" text="Voltar" />
+            <Label fx:id="titleText" prefHeight="36.0" prefWidth="356.0" text="Criar nova ordem de serviço">
+                <font>
+                    <Font name="System Bold" size="25.0" />
+                </font>
+            </Label>
+        </children>
+    </HBox>
+   <VBox prefHeight="476.0" prefWidth="784.0" spacing="16.0">
+      <VBox.margin>
+         <Insets top="16.0" />
+      </VBox.margin>
+      <children>
+         <VBox prefHeight="31.0" prefWidth="784.0" spacing="8.0">
+             <Label layoutX="10.0" layoutY="10.0" text="Cliente:">
+                 <font>
+                     <Font size="16.0" />
+                 </font>
+             </Label>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="16.0">
+               <children>
+                   <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="310.0" style="-fx-font-size: 14px;" />
+                  <Button mnemonicParsing="false" onAction="#onCreateCustomerButtonClick" prefHeight="30.0" prefWidth="143.0" text="Criar novo Cliente &gt;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </VBox>
+
+          <VBox prefHeight="254.0" prefWidth="784.0" spacing="8.0">
+              <Label text="Descrição da Ordem de Serviço:">
+                  <font>
+                      <Font size="16.0" />
+                  </font></Label>
+              <TextArea fx:id="descriptionTextArea" prefHeight="248.0" prefWidth="784.0" wrapText="true">
+                  <font>
+                      <Font size="14.0" />
+                  </font>
+              </TextArea>
+          </VBox>
+      </children>
+   </VBox>
+
+   <Label fx:id="infoLabel" alignment="CENTER" prefHeight="30.0" prefWidth="1276.0" text="" textAlignment="CENTER">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
+   <Button mnemonicParsing="false" onAction="#onCreateOrderButtonClick" prefHeight="50.0" prefWidth="1264.0" text="Criar nova Ordem de Serviço" />
+</VBox>

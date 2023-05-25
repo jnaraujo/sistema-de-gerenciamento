@@ -96,6 +96,8 @@ public class DiskWorkOrderDao implements WorkOrderDao{
         fileManager.save(workOrders);
     }
 
+
+
     /**
      * <p>
      *     Busca todas as ordens de serviço abertas.
@@ -109,7 +111,7 @@ public class DiskWorkOrderDao implements WorkOrderDao{
     public List<WorkOrder> findOpenWorkOrders() {
         List<WorkOrder> openWorkOrders = new ArrayList<>();
         for (WorkOrder workOrder : workOrders.values()) {
-            if (workOrder.getStatus().equals(OrderStatus.OPEN)) {
+            if (workOrder.getStatus().equals(OrderStatus.OPEN) && workOrder.getTechnicianId() == null) {
                 openWorkOrders.add(workOrder);
             }
         }
@@ -133,18 +135,36 @@ public class DiskWorkOrderDao implements WorkOrderDao{
     }
 
     /**
-     * Busca a ordem de serviço do técnico com o ID informado.
+     * Busca a ordem de serviço aberta de um técnico.
      * @param technicianId ID do técnico.
      * @return A ordem de serviço do técnico com o ID informado.
      */
     @Override
-    public WorkOrder findOrderByTechnicianId(String technicianId) {
+    public WorkOrder findOpenOrderByTechnicianId(String technicianId) {
         for (WorkOrder workOrder : workOrders.values()) {
-            if (workOrder.getTechnicianId().equals(technicianId)) {
-                return workOrder;
+            if(workOrder.getTechnicianId() == null){
+                continue;
             }
+            if(!workOrder.getTechnicianId().equals(technicianId)){
+                continue;
+            }
+            if(!workOrder.getStatus().equals(OrderStatus.OPEN)){
+                continue;
+            }
+
+            return workOrder;
         }
         return null;
+    }
+
+    /**
+     * Busca todas as ordens de serviço de um cliente.
+     * @param customerId ID do cliente
+     * @return Todas as ordens de serviço de um cliente.
+     */
+    @Override
+    public List<WorkOrder> findAllWorkOrdersByCustomer(String customerId) {
+        return workOrders.values().stream().filter(workOrder -> workOrder.getCustomerId().equals(customerId)).toList();
     }
 
     /**

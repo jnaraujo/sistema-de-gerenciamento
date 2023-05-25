@@ -18,6 +18,7 @@ module com.uefs.sistemadegerenciamento {
     opens com.uefs.sistemadegerenciamento.model.service;
 
     opens com.uefs.sistemadegerenciamento to javafx.fxml;
+    opens com.uefs.sistemadegerenciamento.controllers to javafx.fxml;
     exports com.uefs.sistemadegerenciamento;
     exports com.uefs.sistemadegerenciamento.controllers;
 }

@@ -16,12 +16,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserDaoTest {
     private UserDao userDao;
-    private User user;
+    private User loggedUser;
 
     @BeforeEach
     void setUp(){
         userDao = DAOManager.getUserDao();
-        user = new Technician(
+        loggedUser = new Technician(
                 "João da Silva",
                 "joao@test.com",
                 "123456"
@@ -35,35 +35,35 @@ class UserDaoTest {
 
     @Test
     void testFindById(){
-        user = userDao.save(user);
-        assertEquals(user, userDao.findById(user.getId()));
-        assertEquals(Technician.class, userDao.findById(user.getId()).getClass());
+        loggedUser = userDao.save(loggedUser);
+        assertEquals(loggedUser, userDao.findById(loggedUser.getId()));
+        assertEquals(Technician.class, userDao.findById(loggedUser.getId()).getClass());
     }
 
     @Test
     void testSave() {
-        user = userDao.save(user);
-        assertEquals(user, userDao.findById(user.getId()));
+        loggedUser = userDao.save(loggedUser);
+        assertEquals(loggedUser, userDao.findById(loggedUser.getId()));
     }
 
     @Test
     void testDelete(){
-        user = userDao.save(user);
+        loggedUser = userDao.save(loggedUser);
 
-        assertNotNull(userDao.findById(user.getId()));
-        userDao.delete(user.getId());
-        assertNull(userDao.findById(user.getId()));
+        assertNotNull(userDao.findById(loggedUser.getId()));
+        userDao.delete(loggedUser.getId());
+        assertNull(userDao.findById(loggedUser.getId()));
     }
 
     @Test
     void testUpdate(){
-        user = userDao.save(user);
-        assertEquals("João da Silva", userDao.findById(user.getId()).getName());
+        loggedUser = userDao.save(loggedUser);
+        assertEquals("João da Silva", userDao.findById(loggedUser.getId()).getName());
 
-        user.setName("José Marcio");
+        loggedUser.setName("José Marcio");
 
-        userDao.update(user);
-        assertEquals("José Marcio", userDao.findById(user.getId()).getName());
+        userDao.update(loggedUser);
+        assertEquals("José Marcio", userDao.findById(loggedUser.getId()).getName());
     }
 
     @Test
@@ -76,9 +76,9 @@ class UserDaoTest {
         technician.setId(IdGenerator.generate());
 
         technician = userDao.save(technician);
-        user = userDao.save(user);
+        loggedUser = userDao.save(loggedUser);
 
-        assertTrue(userDao.getAll().contains(user));
+        assertTrue(userDao.getAll().contains(loggedUser));
 
         User expected = new Technician(
                 "test",
@@ -97,9 +97,9 @@ class UserDaoTest {
                 ""
         ));
 
-        user = userDao.save(user);
+        loggedUser = userDao.save(loggedUser);
 
-        assertTrue(userDao.findAllTechnicians().contains((Technician) user));
+        assertTrue(userDao.findAllTechnicians().contains((Technician) loggedUser));
     }
 
     @Test
@@ -129,7 +129,7 @@ class UserDaoTest {
 
     @Test
     void testFindByEmail(){
-        user = userDao.save(user);
-        assertEquals(user, userDao.findByEmail(user.getEmail()));
+        loggedUser = userDao.save(loggedUser);
+        assertEquals(loggedUser, userDao.findByEmail(loggedUser.getEmail()));
     }
 }

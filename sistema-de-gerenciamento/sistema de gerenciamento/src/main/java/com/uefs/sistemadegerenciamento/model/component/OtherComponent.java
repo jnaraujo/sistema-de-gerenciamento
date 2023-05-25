@@ -8,39 +8,40 @@ import com.uefs.sistemadegerenciamento.model.component.Component;
  * @author Jônatas Araújo
  */
 public class OtherComponent implements Component {
-    private String description;
+    private String name;
     private Double pricePerUnit;
     private Double costPerUnit;
     private Integer quantity;
 
     /**
      * Cria uma nova instância de OtherComponent com os parâmetros especificados.
-     * @param description Descrição do componente
+     * @param name Descrição do componente
      * @param pricePerUnit Preço do componente
      * @param costPerUnit Custo do componente
      * @param quantity Quantidade do componente
      */
-    public OtherComponent(String description, Double pricePerUnit, Double costPerUnit, Integer quantity) {
-        this.description = description;
+    public OtherComponent(String name, Double pricePerUnit, Double costPerUnit, Integer quantity) {
+        this.name = name;
         this.pricePerUnit = pricePerUnit;
         this.costPerUnit = costPerUnit;
         this.quantity = quantity;
     }
 
     /**
-     * Retorna a descrição do componente
-     * @return a descrição do componente
+     * Retorna o nome do componente
+     * @return o nome do componente
      */
-    public String getDescription() {
-        return description;
+    @Override
+    public String getName() {
+        return name;
     }
 
     /**
-     * Define a descrição do componente
-     * @param description Descrição do componente
+     * Define o nome do componente
+     * @param name Nome do componente
      */
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -86,7 +87,7 @@ public class OtherComponent implements Component {
 
     @Override
     public String toString() {
-        return "OtherComponent [costPerUnit=" + costPerUnit + ", description=" + description + ", pricePerUnit="
+        return "OtherComponent [costPerUnit=" + costPerUnit + ", name=" + name + ", pricePerUnit="
                 + pricePerUnit + ", quantity=" + quantity + "]";
     }
 }

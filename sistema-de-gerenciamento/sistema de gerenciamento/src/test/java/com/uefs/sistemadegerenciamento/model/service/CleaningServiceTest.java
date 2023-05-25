@@ -29,6 +29,21 @@ class CleaningServiceTest {
     }
 
     @Test
+    void testId(){
+        String id = IdGenerator.generate();
+
+        CleaningService service = new CleaningService(50, 75);
+        service.setId(id);
+
+        assertEquals(id, service.getId());
+
+        String newId = IdGenerator.generate();
+        service.setId(newId);
+
+        assertEquals(newId, service.getId());
+    }
+
+    @Test
     void testEquals(){
         String id = IdGenerator.generate();
 

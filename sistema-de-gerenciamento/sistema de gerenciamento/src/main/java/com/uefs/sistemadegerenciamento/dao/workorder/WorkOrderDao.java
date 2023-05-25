@@ -24,11 +24,19 @@ public interface WorkOrderDao extends Dao<WorkOrder> {
     WorkOrder findFirstOpenWorkOrder();
 
     /**
-     * Retorna uma lista de ordens de serviço fechadas por ordem de criação (mais antiga primeiro)
+     * Busca a ordem de serviço aberta de um técnico
      * @param technicianId ID do técnico
      * @return ordem de serviço do técnico
      */
-    WorkOrder findOrderByTechnicianId(String technicianId);
+    WorkOrder findOpenOrderByTechnicianId(String technicianId);
+
+
+    /**
+     * Retorna uma lista de ordens de serviço abertas por ordem de criação (mais antiga primeiro) de um técnico
+     * @param customerId ID do cliente
+     * @return lista de ordens de serviço do cliente
+     */
+    List<WorkOrder> findAllWorkOrdersByCustomer(String customerId);
 
     /**
      * Retorna o tempo médio de espera para reparo de uma ordem de serviço

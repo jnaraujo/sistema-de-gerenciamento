@@ -5,31 +5,27 @@ import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
-import java.io.IOException;
-
-public class LoginController {
+public class LoginController extends Controller {
     @FXML
-    public Label titleText;
+    private Label titleText;
 
     @FXML
-    public TextField emailField;
+    private TextField emailField;
 
     @FXML
-    public PasswordField passwordField;
-
-    private User user;
+    private PasswordField passwordField;
 
     @FXML
-    public void onLoginClick()  {
+    private void initialize() {
+        HelloApplication.stage.setTitle("Login - Sistema de Gerenciamento");
+    }
+
+    @FXML
+    private void onLoginClick()  {
         emailField.styleProperty().setValue("");
         passwordField.styleProperty().setValue("");
 
@@ -55,26 +51,11 @@ public class LoginController {
             return;
         }
 
-        this.user = user;
-        this.openPage("home.fxml");
+        this.openPage("home.fxml", user);
     }
 
-    private void openPage(String url) {
-        try{
-            FXMLLoader fxmlLoader = PageLoader.load(url);
-            Parent root = fxmlLoader.load();
-
-            HelloApplication.stage.setTitle("Home - Sistema de Gerenciamento");
-
-            HomeController homeController = fxmlLoader.getController();
-            homeController.setUser(user);
-
-            MainController.staticRoot.getChildren().clear();
-            MainController.staticRoot.getChildren().add(root);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
+    private void openPage(String url, User user) {
+        HomeController homeController = PageLoader.openPage(url);
+        homeController.setLoggedUser(user);
     }
 }

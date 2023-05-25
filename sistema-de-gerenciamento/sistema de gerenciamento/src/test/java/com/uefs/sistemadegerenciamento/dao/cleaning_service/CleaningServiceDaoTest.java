@@ -35,6 +35,21 @@ class CleaningServiceDaoTest {
     }
 
     @Test
+    void testSaveWithSameId(){
+        cleaningService = cleaningServiceDao.save(cleaningService);
+        CleaningService cleaningService2 = new CleaningService(
+                50.0,
+                12.0
+        );
+        cleaningService2.setId(cleaningService.getId());
+        cleaningServiceDao.save(cleaningService2);
+
+        assertEquals(2, cleaningServiceDao.getAll().size());
+        assertEquals(cleaningService, cleaningServiceDao.findById(cleaningService.getId()));
+        assertEquals(cleaningService2, cleaningServiceDao.findById(cleaningService2.getId()));
+    }
+
+    @Test
     void testDelete(){
         cleaningService = cleaningServiceDao.save(cleaningService);
         assertEquals(cleaningService, cleaningServiceDao.findById(cleaningService.getId()));
