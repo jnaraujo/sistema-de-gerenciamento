@@ -2,9 +2,9 @@ name: Java Build and Test
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -40,3 +40,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: "./sistema-de-gerenciamento/sistema de gerenciamento/target/site/apidocs"
+          cname: "sistema-de-gerenciamento.jnaraujo.com"
