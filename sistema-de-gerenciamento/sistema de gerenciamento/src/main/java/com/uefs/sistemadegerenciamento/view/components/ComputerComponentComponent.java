@@ -34,6 +34,7 @@ public class ComputerComponentComponent {
         vBox.setPadding(new javafx.geometry.Insets(0, 8, 0, 0));
 
         Label nameLabel = new Label(component.getName() + " ("+component.getManufacturer()+")" + " - "+component.getQuantity()+" unidade(s)");
+        nameLabel.getStyleClass().add("subTitle");
         nameLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 18));
         nameLabel.setPrefWidth(LEFT_WIDTH);
 

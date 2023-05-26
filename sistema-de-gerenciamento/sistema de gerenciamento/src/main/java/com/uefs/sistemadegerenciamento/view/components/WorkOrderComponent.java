@@ -29,6 +29,7 @@ public class WorkOrderComponent {
         vBox.setPadding(new javafx.geometry.Insets(0, 8, 0, 0));
 
         Label descriptionLabel = new Label(workOrder.getDescription());
+        descriptionLabel.getStyleClass().add("subTitle");
         descriptionLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 16));
         descriptionLabel.setPrefWidth(LEFT_WIDTH);
 

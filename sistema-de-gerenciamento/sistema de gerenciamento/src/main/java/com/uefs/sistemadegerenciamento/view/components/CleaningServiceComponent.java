@@ -39,6 +39,7 @@ public class CleaningServiceComponent {
         name = name.substring(0, name.length() - 2); // remove last comma
 
         Label nameLabel = new Label(name);
+        nameLabel.getStyleClass().add("subTitle");
         nameLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 18));
         nameLabel.setPrefWidth(LEFT_WIDTH);
 

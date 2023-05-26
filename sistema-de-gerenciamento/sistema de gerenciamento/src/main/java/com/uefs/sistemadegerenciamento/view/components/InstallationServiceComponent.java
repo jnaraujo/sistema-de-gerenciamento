@@ -35,6 +35,7 @@ public class InstallationServiceComponent {
         vBox.setPadding(new javafx.geometry.Insets(0, 8, 0, 0));
 
         Label nameLabel = new Label(service.getDescription());
+        nameLabel.getStyleClass().add("subTitle");
         nameLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 18));
         nameLabel.setPrefWidth(LEFT_WIDTH);
 
