@@ -19,6 +19,7 @@ public class HelloApplication extends Application {
 
         FXMLLoader mainFxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main.fxml"));
         Scene scene = new Scene(mainFxmlLoader.load(), 1280, 720);
+        scene.getStylesheets().add(getClass().getResource("stylesheets/global.css").toExternalForm());
         stage.setTitle("Sistema de Gerenciamento");
         stage.setScene(scene);
         stage.setResizable(false);
