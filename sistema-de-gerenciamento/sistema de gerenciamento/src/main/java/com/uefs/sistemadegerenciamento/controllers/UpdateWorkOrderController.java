@@ -145,11 +145,26 @@ public class UpdateWorkOrderController extends Controller {
             order.getServices().remove(service);
             setServicesToScrollPane(order.getServices());
             DAOManager.getWorkOrderDao().update(order);
+
+            if(service instanceof BuildingService){
+                addDeletedComponentsToInventory((BuildingService) service);
+            }
+
             success("Serviço removido com sucesso!");
             return;
         }
 
         alert.close();
+    }
+
+    private void addDeletedComponentsToInventory(BuildingService service){
+        service.getUsedComponents().forEach(component -> {
+            if(component instanceof ComputerComponent){
+                ComputerComponent inventoryComponent = DAOManager.getInventoryDao().findById(((ComputerComponent) component).getId());
+                inventoryComponent.setQuantity(inventoryComponent.getQuantity() + component.getQuantity());
+                DAOManager.getInventoryDao().update(inventoryComponent);
+            }
+        });
     }
 
     private List<Customer> fetchCustomers() {
