@@ -32,6 +32,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 public class UpdateWorkOrderController extends Controller {
@@ -162,7 +163,9 @@ public class UpdateWorkOrderController extends Controller {
         List<ComputerComponent> components = DAOManager.getInventoryDao().findAvailableComponents();
 
         ModalController controller = openModal("Adicionar nova peça para a Serviço de Montagem");
-        controller.setServices(components.stream().map(component -> component.getName()).toList());
+        HashMap<String, Integer> services = new HashMap<>();
+        components.forEach(component -> services.put(component.getName(), component.getQuantity()));
+        controller.setServices(services);
         controller.enableQuantityField();
 
         controller.setCallback((choice, quantity) -> {
@@ -180,8 +183,6 @@ public class UpdateWorkOrderController extends Controller {
                 controller.info("Quantidade indisponível.");
                 return;
             }
-
-            System.out.println(quantity);
 
             BuildingService buildingService = new BuildingService();
 
@@ -216,7 +217,9 @@ public class UpdateWorkOrderController extends Controller {
         List<InstallationService> installationServices = DAOManager.getInstallationServiceDao().getAll();
 
         ModalController controller = openModal("Adicionar serviço de instalação");
-        controller.setServices(installationServices.stream().map(service -> service.getDescription()).toList());
+        HashMap<String, Integer> services = new HashMap<>();
+        installationServices.forEach(service -> services.put(service.getDescription(), 0));
+        controller.setServices(services);
 
         controller.setCallback((service, quantity) -> {
             InstallationService installationService = installationServices.stream()
@@ -244,7 +247,8 @@ public class UpdateWorkOrderController extends Controller {
 
         ModalController controller = openModal("Adicionar serviço de limpeza");
 
-        List<String> services = cleaningServices.stream().map(service -> cleaningComponentsToString(service.getComponents())).toList();
+        HashMap<String, Integer> services = new HashMap<>();
+        cleaningServices.forEach(service -> services.put(cleaningComponentsToString(service.getComponents()), 0));
         controller.setServices(services);
         controller.setCallback((serviceName, quantity) -> {
 

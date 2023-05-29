@@ -6,10 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.util.List;
+import java.util.HashMap;
 
 public class ModalController {
     private ModalCallback callback;
@@ -40,9 +38,17 @@ public class ModalController {
         this.callback = callback;
     }
 
-    public void setServices(List<String> services) {
-        serviceListComboBox.getItems().addAll(services);
-        serviceListComboBox.setValue(services.get(0));
+    public void setServices(HashMap<String, Integer> services) {
+        serviceListComboBox.getItems().addAll(services.keySet());
+
+        String firstService = services.keySet().toArray()[0].toString();
+        serviceListComboBox.setValue(firstService);
+        quantityLabel.setText("Quantidade (máx. " + services.get(firstService) + ")");
+
+        serviceListComboBox.setOnAction(e -> {
+            String service = serviceListComboBox.getValue().toString();
+            quantityLabel.setText("Quantidade (máx. " + services.get(service) + ")");
+        });
     }
 
     public void enableQuantityField() {
