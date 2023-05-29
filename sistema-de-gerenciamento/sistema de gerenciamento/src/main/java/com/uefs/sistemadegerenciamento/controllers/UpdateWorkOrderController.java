@@ -164,13 +164,13 @@ public class UpdateWorkOrderController extends Controller {
 
         ModalController controller = openModal("Adicionar nova peça para a Serviço de Montagem");
         HashMap<String, Integer> services = new HashMap<>();
-        components.forEach(component -> services.put(component.getName(), component.getQuantity()));
+        components.forEach(component -> services.put(componentToString(component), component.getQuantity()));
         controller.setServices(services);
         controller.enableQuantityField();
 
         controller.setCallback((choice, quantity) -> {
             ComputerComponent inventoryComponent = components.stream()
-                    .filter(component1 -> component1.getName().equals(choice))
+                    .filter(component1 -> componentToString(component1).equals(choice))
                     .findFirst()
                     .orElse(null);
 
@@ -212,18 +212,22 @@ public class UpdateWorkOrderController extends Controller {
         );
     }
 
+    private String componentToString(ComputerComponent component){
+        return component.getName() + " (R$ " + component.getPricePerUnit() + " / und.)";
+    }
+
     @FXML
     private void onAddInstallationService(){
         List<InstallationService> installationServices = DAOManager.getInstallationServiceDao().getAll();
 
         ModalController controller = openModal("Adicionar serviço de instalação");
         HashMap<String, Integer> services = new HashMap<>();
-        installationServices.forEach(service -> services.put(service.getDescription(), 0));
+        installationServices.forEach(service -> services.put(installationServiceToString(service), 0));
         controller.setServices(services);
 
         controller.setCallback((service, quantity) -> {
             InstallationService installationService = installationServices.stream()
-                    .filter(installationService1 -> installationService1.getDescription().equals(service))
+                    .filter(installationService1 -> installationServiceToString(installationService1).equals(service))
                     .findFirst()
                     .orElse(null);
 
@@ -241,6 +245,10 @@ public class UpdateWorkOrderController extends Controller {
         });
     }
 
+    private String installationServiceToString(InstallationService installationService){
+        return installationService.getDescription() + " (R$ " + installationService.getPrice() + ")";
+    }
+
     @FXML
     private void onAddCleaningService(){
         List<CleaningService> cleaningServices = DAOManager.getCleaningServiceDao().getAll();
@@ -248,12 +256,12 @@ public class UpdateWorkOrderController extends Controller {
         ModalController controller = openModal("Adicionar serviço de limpeza");
 
         HashMap<String, Integer> services = new HashMap<>();
-        cleaningServices.forEach(service -> services.put(cleaningComponentsToString(service.getComponents()), 0));
+        cleaningServices.forEach(service -> services.put(cleaningComponentsToString(service), 0));
         controller.setServices(services);
         controller.setCallback((serviceName, quantity) -> {
 
             CleaningService cleaningService = cleaningServices.stream()
-                    .filter(service -> cleaningComponentsToString(service.getComponents()).equals(serviceName))
+                    .filter(service -> cleaningComponentsToString(service).equals(serviceName))
                     .findFirst()
                     .orElse(null);
 
@@ -272,12 +280,13 @@ public class UpdateWorkOrderController extends Controller {
         });
     }
 
-    private String cleaningComponentsToString(List<String> components){
+    private String cleaningComponentsToString(CleaningService service){
+        List<String> components = service.getComponents();
         String componentsString = components.stream().reduce("", (acc, component) -> {
             return acc + component + ", ";
         });
 
-        return componentsString.substring(0, componentsString.length() - 2);
+        return componentsString.substring(0, componentsString.length() - 2) + " (R$ " + service.getPrice() + ")";
     }
 
     private ModalController openModal(String title){
