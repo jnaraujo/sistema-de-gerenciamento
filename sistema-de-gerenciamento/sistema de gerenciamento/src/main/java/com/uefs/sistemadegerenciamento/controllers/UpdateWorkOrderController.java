@@ -308,6 +308,7 @@ public class UpdateWorkOrderController extends Controller {
     @FXML
     private void onCreateCustomerButtonClick() {
         CreateCustomerController controller = PageLoader.openPage("create_customer.fxml");
+        controller.setPreviousPage("work_order_list.fxml");
         controller.setLoggedUser(getLoggedUser());
     }
 
