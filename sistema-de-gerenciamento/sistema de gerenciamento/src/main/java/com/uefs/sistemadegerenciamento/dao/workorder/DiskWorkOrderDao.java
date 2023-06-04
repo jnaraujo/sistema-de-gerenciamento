@@ -174,15 +174,24 @@ public class DiskWorkOrderDao implements WorkOrderDao{
     @Override
     public Double getAverageTimeInHoursToRepair() {
         double sum = 0;
+        int count = 0;
 
         for(WorkOrder order : workOrders.values()){
+            if(order.getFinishedAt() == null){
+                continue;
+            }
+            if(order.getCreatedAt() == null){
+                continue;
+            }
+
             long diff = order.getFinishedAt().getTime() - order.getCreatedAt().getTime();
             sum += diff;
+            count++;
         }
 
-        double hours = sum / (60 * 60 * 1000);
-
-        return hours / workOrders.size();
+        int HOURS_IN_MILLIS = 60 * 60 * 1000;
+        double hours = sum / HOURS_IN_MILLIS;
+        return hours / count;
     }
 
     /**
