@@ -9,8 +9,12 @@ import javafx.geometry.Side;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 
-import java.util.Comparator;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ReportController extends Controller {
     @FXML
@@ -52,8 +56,12 @@ public class ReportController extends Controller {
     private void showRevenueChart(List<WorkOrder> workOrders) {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
 
-        for (WorkOrder workOrder : workOrders) {
-            series.getData().add(new XYChart.Data<>(workOrder.getCreatedAt().toString(), workOrder.getPrice()));
+        Map<String, Double> revenueByMonthYear = workOrders.stream()
+                .collect(Collectors.groupingBy(workOrder -> formatDate(workOrder.getCreatedAt()),
+                        Collectors.summingDouble(WorkOrder::getPrice)));
+
+        for (Map.Entry<String, Double> entry : revenueByMonthYear.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
         }
 
         revenueChart.getYAxis().setLabel("Receita (R$)");
@@ -64,14 +72,18 @@ public class ReportController extends Controller {
     private void showProfitChart(List<WorkOrder> workOrders) {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
 
-        for (WorkOrder workOrder : workOrders) {
-            Double profit = workOrder.getPrice() - workOrder.getCost();
-            series.getData().add(new XYChart.Data<>(workOrder.getCreatedAt().toString(), profit));
+        Map<String, Double> profitByMonthYear = workOrders.stream()
+                .collect(Collectors.groupingBy(workOrder -> formatDate(workOrder.getCreatedAt()),
+                        Collectors.summingDouble(workOrder -> workOrder.getPrice() - workOrder.getCost())));
+
+        for (Map.Entry<String, Double> entry : profitByMonthYear.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
         }
 
         profileChart.getYAxis().setLabel("Lucro (R$)");
         profileChart.getData().add(series);
         profileChart.setLegendVisible(false);
+        profileChart.setAnimated(false);
     }
 
     private void showSatisfactionChart(List<WorkOrder> workOrders) {
@@ -97,14 +109,23 @@ public class ReportController extends Controller {
         XYChart.Series<String, Number> openSeries = new XYChart.Series<>();
         XYChart.Series<String, Number> closedSeries = new XYChart.Series<>();
 
-        for (WorkOrder workOrder : workOrders) {
-            if (workOrder.getFinishedAt() != null) {
-                closedSeries.getData().add(new XYChart.Data<>(workOrder.getCreatedAt().toString(), 1));
-                openSeries.getData().add(new XYChart.Data<>(workOrder.getCreatedAt().toString(), 0));
-            } else {
-                openSeries.getData().add(new XYChart.Data<>(workOrder.getCreatedAt().toString(), 1));
-                closedSeries.getData().add(new XYChart.Data<>(workOrder.getCreatedAt().toString(), 0));
+        Map<String, List<WorkOrder>> workOrdersByMonthYear = workOrders.stream()
+                .collect(Collectors.groupingBy(workOrder -> formatDate(workOrder.getCreatedAt())));
+
+        for (Map.Entry<String, List<WorkOrder>> entry : workOrdersByMonthYear.entrySet()) {
+            int openCount = 0;
+            int closedCount = 0;
+
+            for (WorkOrder workOrder : entry.getValue()) {
+                if (workOrder.isFinished()) {
+                    closedCount++;
+                } else {
+                    openCount++;
+                }
             }
+
+            openSeries.getData().add(new XYChart.Data<>(entry.getKey(), openCount));
+            closedSeries.getData().add(new XYChart.Data<>(entry.getKey(), closedCount));
         }
 
         openSeries.setName("Abertas");
@@ -129,6 +150,11 @@ public class ReportController extends Controller {
 
     private String formatDouble(double value) {
         return String.format("%.2f", value);
+    }
+
+    private String formatDate(Date date) {
+        String newDate = new SimpleDateFormat("MM/yyyy").format(date);
+        return newDate;
     }
 
     @FXML
