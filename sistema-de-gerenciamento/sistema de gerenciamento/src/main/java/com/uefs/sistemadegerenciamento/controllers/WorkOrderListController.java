@@ -2,7 +2,6 @@ package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.HelloApplication;
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
-import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
@@ -15,7 +14,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -38,7 +36,7 @@ public class WorkOrderListController extends Controller {
     @FXML
     private ComboBox filterComboBox;
 
-    private final int COMPONENT_HEIGHT = 105 + 16;
+    private final int COMPONENT_HEIGHT = 120 + 16;
 
     @Override
     public void setLoggedUser(User loggedUser) {

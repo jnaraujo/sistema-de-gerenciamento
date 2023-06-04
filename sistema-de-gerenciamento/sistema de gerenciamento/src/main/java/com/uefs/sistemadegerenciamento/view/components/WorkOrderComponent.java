@@ -42,7 +42,7 @@ public class WorkOrderComponent {
         technicianText.setPrefWidth(LEFT_WIDTH);
         technicianText.setFont(new Font(14));
 
-        Label otherDataText = new Label("Status: " + workOrder.getStatus() + " - Data de abertura: " + workOrder.getCreatedAt());
+        Label otherDataText = new Label("Status: " + workOrder.getStatus() + " - Data de abertura: " + workOrder.getCreatedAt() + " - Data de fechamento: " + workOrder.getFinishedAt());
         clientText.setMaxWidth(LEFT_WIDTH);
         otherDataText.setFont(new Font(14));
 
