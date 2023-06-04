@@ -3,6 +3,7 @@ package com.uefs.sistemadegerenciamento.controllers;
 import com.uefs.sistemadegerenciamento.HelloApplication;
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
+import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.component.Component;
@@ -341,7 +342,7 @@ public class UpdateWorkOrderController extends Controller {
     }
 
     @FXML
-    private void onUpdateButtonClick() {
+    private void onUpdateButtonClick() throws ServiceOrderWithoutTechnicianException {
         if(!workOrder.getTechnicianId().equals(getLoggedUser().getId())){
             error("Você não tem permissão para atualizar esta ordem de serviço.");
             return;
@@ -351,6 +352,18 @@ public class UpdateWorkOrderController extends Controller {
 
         workOrder.setCustomerId(customer.getId());
         workOrder.setDescription(descriptionTextArea.getText());
+
+        String status = statusComboBox.getValue().toString();
+
+        if(status.equals(OrderStatus.OPEN)){
+            workOrder.setStatus(OrderStatus.OPEN);
+            workOrder.setFinishedAt(null);
+        } else if(status.equals(OrderStatus.CLOSED)){
+            workOrder.finish();
+        } else if(status.equals(OrderStatus.CANCELED)){
+            workOrder.cancel();
+        }
+
         workOrder.setStatus(statusComboBox.getValue().toString());
 
         DAOManager.getWorkOrderDao().update(workOrder);
