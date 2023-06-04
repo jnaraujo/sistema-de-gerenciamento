@@ -2,18 +2,21 @@ package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.HelloApplication;
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
+import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.errors.ServiceOrderWithoutTechnicianException;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
-import com.uefs.sistemadegerenciamento.model.component.Component;
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import com.uefs.sistemadegerenciamento.model.service.BuildingService;
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;
 import com.uefs.sistemadegerenciamento.model.service.InstallationService;
 import com.uefs.sistemadegerenciamento.model.service.Service;
+import com.uefs.sistemadegerenciamento.model.user.Technician;
+import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import com.uefs.sistemadegerenciamento.utils.converter.CustomerConverter;
+import com.uefs.sistemadegerenciamento.utils.converter.TechnicianConverter;
 import com.uefs.sistemadegerenciamento.view.components.BuildingServiceComponent;
 import com.uefs.sistemadegerenciamento.view.components.CleaningServiceComponent;
 import com.uefs.sistemadegerenciamento.view.components.EmptyComponent;
@@ -31,7 +34,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -39,16 +41,21 @@ import java.util.List;
 public class UpdateWorkOrderController extends Controller {
     private WorkOrder workOrder;
     private List<Customer> customers;
+
+    private List<Technician> technicians;
     private Customer customer;
 
     @FXML
-    private ComboBox customersComboBox;
+    private ComboBox<Customer> customersComboBox;
+
+    @FXML
+    private ComboBox<Technician> technicianComboBox;
 
     @FXML
     private TextArea descriptionTextArea;
 
     @FXML
-    private ComboBox statusComboBox;
+    private ComboBox<String> statusComboBox;
 
     @FXML
     private Label infoLabel;
@@ -65,6 +72,7 @@ public class UpdateWorkOrderController extends Controller {
 
         this.customer = DAOManager.getCustomerDao().findById(workOrder.getCustomerId());
 
+        technicianComboBox.setValue((Technician) DAOManager.getUserDao().findById(workOrder.getTechnicianId()));
         customersComboBox.setValue(customer);
         descriptionTextArea.setText(workOrder.getDescription());
         statusComboBox.setValue(workOrder.getStatus());
@@ -76,11 +84,17 @@ public class UpdateWorkOrderController extends Controller {
         HelloApplication.stage.setTitle("Atualizar Ordem de Serviço");
 
         customers = fetchCustomers();
+        technicians = fetchTechnicians();
 
         customersComboBox.setEditable(true);
         customersComboBox.getItems().addAll(customers);
         customersComboBox.setPromptText("Selecione um cliente");
         customersComboBox.setConverter(new CustomerConverter(customers));
+
+        technicianComboBox.setEditable(true);
+        technicianComboBox.getItems().addAll(technicians);
+        technicianComboBox.setPromptText("Selecione um técnico");
+        technicianComboBox.setConverter(new TechnicianConverter(technicians));
 
         statusComboBox.getItems().addAll(OrderStatus.OPEN, OrderStatus.CLOSED, OrderStatus.CANCELED);
 
@@ -95,8 +109,24 @@ public class UpdateWorkOrderController extends Controller {
                        .toList();
 
                 if (filteredCustomers.size() > 0) {
-                    customersComboBox.getItems().setAll(filteredCustomers.toArray());
+                    customersComboBox.getItems().setAll(filteredCustomers);
                     customersComboBox.show();
+                }
+           });
+        });
+
+        technicianComboBox.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
+           Platform.runLater(() -> {
+               List<Technician> filteredTechnicians = technicians.stream()
+                       .filter(technician ->
+                               technician.getName().toLowerCase().contains(newValue.toLowerCase()) || technician.getEmail().toLowerCase().contains(newValue.toLowerCase())
+                       )
+                       .sorted(Comparator.comparing(Technician::getName))
+                       .toList();
+
+                if (filteredTechnicians.size() > 0) {
+                    technicianComboBox.getItems().setAll(filteredTechnicians);
+                    technicianComboBox.show();
                 }
            });
         });
@@ -174,8 +204,19 @@ public class UpdateWorkOrderController extends Controller {
         return customers;
     }
 
+    private List<Technician> fetchTechnicians() {
+        List<Technician> technicians = DAOManager.getUserDao().findAllTechnicians();
+        technicians.sort(Comparator.comparing(Technician::getName));
+        return technicians;
+    }
+
     @FXML
     private void onAddBuildingService(){
+        if(!canUserUpdateOrder(getLoggedUser())){
+            error("Você não tem permissão para adicionar serviços a esta ordem de serviço.");
+            return;
+        }
+
         List<ComputerComponent> components = DAOManager.getInventoryDao().findAvailableComponents();
 
         ModalController controller = openModal("Adicionar nova peça para a Serviço de Montagem");
@@ -234,6 +275,11 @@ public class UpdateWorkOrderController extends Controller {
 
     @FXML
     private void onAddInstallationService(){
+        if(!canUserUpdateOrder(getLoggedUser())){
+            error("Você não tem permissão para adicionar serviços a esta ordem de serviço.");
+            return;
+        }
+
         List<InstallationService> installationServices = DAOManager.getInstallationServiceDao().getAll();
 
         ModalController controller = openModal("Adicionar serviço de instalação");
@@ -267,6 +313,11 @@ public class UpdateWorkOrderController extends Controller {
 
     @FXML
     private void onAddCleaningService(){
+        if(!canUserUpdateOrder(getLoggedUser())){
+            error("Você não tem permissão para adicionar serviços a esta ordem de serviço.");
+            return;
+        }
+
         List<CleaningService> cleaningServices = DAOManager.getCleaningServiceDao().getAll();
 
         ModalController controller = openModal("Adicionar serviço de limpeza");
@@ -343,7 +394,7 @@ public class UpdateWorkOrderController extends Controller {
 
     @FXML
     private void onUpdateButtonClick() throws ServiceOrderWithoutTechnicianException {
-        if(!workOrder.getTechnicianId().equals(getLoggedUser().getId())){
+        if(!canUserUpdateOrder(getLoggedUser())){
             error("Você não tem permissão para atualizar esta ordem de serviço.");
             return;
         }
@@ -352,6 +403,7 @@ public class UpdateWorkOrderController extends Controller {
 
         workOrder.setCustomerId(customer.getId());
         workOrder.setDescription(descriptionTextArea.getText());
+        workOrder.setTechnicianId(technicianComboBox.getValue().getId());
 
         String status = statusComboBox.getValue().toString();
 
@@ -370,14 +422,33 @@ public class UpdateWorkOrderController extends Controller {
         success("Ordem de serviço atualizada com sucesso.");
     }
 
+    private boolean canUserUpdateOrder(User user){
+        boolean hasTechnician = workOrder.getTechnicianId() != null;
+        boolean isFromLoggedUser = hasTechnician && workOrder.getTechnicianId().equals(getLoggedUser().getId());
+        boolean isLoggedUserTechnician = getLoggedUser().getUserType().equals(UserType.TECHNICIAN);
+
+        if(isLoggedUserTechnician && isFromLoggedUser) return true;
+        if(isLoggedUserTechnician && !isFromLoggedUser && !hasTechnician) return true;
+        if(user.getUserType().equals(UserType.ADMINISTRATOR)) return true;
+
+        return false;
+    }
+
     private boolean checkInputs(){
-        customersComboBox.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        descriptionTextArea.setStyle("-fx-border-color: none; -fx-font-size: 14px");
+        customersComboBox.setStyle("-fx-border-color: inherit; -fx-font-size: 14px");
+        descriptionTextArea.setStyle("-fx-border-color: inherit; -fx-font-size: 14px");
+        technicianComboBox.setStyle("-fx-border-color: inherit; -fx-font-size: 14px");
         info("");
 
         if(customer == null) {
             customersComboBox.setStyle("-fx-border-color: red; -fx-font-size: 14px");
             error("Selecione um cliente.");
+            return false;
+        }
+
+        if(technicianComboBox.getValue() == null) {
+            technicianComboBox.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            error("Selecione um técnico.");
             return false;
         }
 
