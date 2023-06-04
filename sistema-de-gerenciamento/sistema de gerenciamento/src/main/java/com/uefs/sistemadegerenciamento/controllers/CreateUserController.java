@@ -74,6 +74,14 @@ public class CreateUserController extends Controller {
         }
         User user = userFactory(nameField.getText(), emailField.getText(), passwordField.getText(), userTypeChoiceBox.getValue());
 
+        boolean doesEmailAlreadyExists = DAOManager.getUserDao().findByEmail(user.getEmail()) != null;
+
+        if(doesEmailAlreadyExists) {
+            emailField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            error("Email já cadastrado.");
+            return;
+        }
+
         DAOManager.getUserDao().save(user);
 
         success("Usuário criado com sucesso!");
