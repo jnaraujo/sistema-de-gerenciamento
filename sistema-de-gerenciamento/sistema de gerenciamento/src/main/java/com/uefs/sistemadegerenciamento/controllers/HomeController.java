@@ -193,8 +193,8 @@ public class HomeController extends Controller {
 
         Button button = BigButtonComponent.create("\uD83D\uDCCA Gerar relatório");
         button.setOnAction(event -> {
-//            CreateOrderController controller = (CreateOrderController) PageLoader.openPage("create_order.fxml");
-//            controller.setUser(user);
+            ReportController controller = PageLoader.openPage("report.fxml");
+            controller.setLoggedUser(loggedUser);
         });
         buttons.get("serviceButtons").add(button);
 
