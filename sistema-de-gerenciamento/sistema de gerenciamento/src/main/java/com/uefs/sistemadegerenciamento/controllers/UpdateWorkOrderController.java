@@ -407,13 +407,16 @@ public class UpdateWorkOrderController extends Controller {
 
         String status = statusComboBox.getValue().toString();
 
-        if(status.equals(OrderStatus.OPEN)){
-            workOrder.setStatus(OrderStatus.OPEN);
-            workOrder.setFinishedAt(null);
-        } else if(status.equals(OrderStatus.CLOSED)){
-            workOrder.finish();
-        } else if(status.equals(OrderStatus.CANCELED)){
-            workOrder.cancel();
+        boolean isStatusChanged = !status.equals(workOrder.getStatus());
+        if(isStatusChanged){ // status changed
+            if(status.equals(OrderStatus.OPEN)){
+                workOrder.setStatus(OrderStatus.OPEN);
+                workOrder.setFinishedAt(null);
+            } else if(status.equals(OrderStatus.CLOSED)){
+                workOrder.finish();
+            } else if(status.equals(OrderStatus.CANCELED)){
+                workOrder.cancel();
+            }
         }
 
         workOrder.setStatus(statusComboBox.getValue().toString());
