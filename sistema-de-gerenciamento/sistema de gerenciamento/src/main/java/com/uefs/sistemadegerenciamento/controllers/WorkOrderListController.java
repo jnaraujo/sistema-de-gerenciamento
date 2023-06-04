@@ -45,16 +45,9 @@ public class WorkOrderListController extends Controller {
         super.setLoggedUser(loggedUser);
 
         openWorkOrders.addAll(fetchOpenWorkOrders());
-
-        WorkOrder loggedUserWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(loggedUser.getId());
-
         technicianCurrentWorkOrderVBox.getChildren().clear();
 
-        if(loggedUserWorkOrder != null) {
-            technicianCurrentWorkOrderVBox.getChildren().add(createLoggedUserCurrentWorkOrderComponent(loggedUserWorkOrder));
-        }else{
-            technicianCurrentWorkOrderVBox.getChildren().add(EmptyComponent.create("Não há ordens de serviço disponíveis"));
-        }
+        addLoggedUserWorkOrder();
     }
 
     @FXML
@@ -70,16 +63,9 @@ public class WorkOrderListController extends Controller {
         openWorkOrders.addListener(new ListChangeListener<WorkOrder>() {
             @Override
             public void onChanged(Change<? extends WorkOrder> change) {
-                WorkOrder loggedUserWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(getLoggedUser().getId());
-                boolean doesLoggedUserHaveWorkOrder = loggedUserWorkOrder != null;
-
                 technicianCurrentWorkOrderVBox.getChildren().clear();
 
-                if(doesLoggedUserHaveWorkOrder) {
-                    technicianCurrentWorkOrderVBox.getChildren().add(createLoggedUserCurrentWorkOrderComponent(loggedUserWorkOrder));
-                }else{
-                    technicianCurrentWorkOrderVBox.getChildren().add(EmptyComponent.create("Não há ordens de serviço disponíveis"));
-                }
+                addLoggedUserWorkOrder();
 
                 workOrderListVBox.getChildren().removeIf(node -> {
                     return node.getId().equals("empty-component");
@@ -89,15 +75,12 @@ public class WorkOrderListController extends Controller {
                     if (change.wasAdded()) {
                         for (WorkOrder workOrder : change.getAddedSubList()) {
                             boolean doesWorkOrderHaveTechnician = workOrder.getTechnicianId() != null;
-                            boolean isWorkOrderClosed = workOrder.getStatus() == OrderStatus.CLOSED;
-
-                            boolean isButtonDisabled = doesLoggedUserHaveWorkOrder || isWorkOrderClosed || doesWorkOrderHaveTechnician;
 
                             if(!doesWorkOrderHaveTechnician){
-                                addWorkOrderToLayout(workOrder, null, isButtonDisabled);
+                                addWorkOrderToLayout(workOrder, null);
                             }else{
                                 Technician technician = (Technician) DAOManager.getUserDao().findById(workOrder.getTechnicianId());
-                                addWorkOrderToLayout(workOrder, technician, true);
+                                addWorkOrderToLayout(workOrder, technician);
                             }
                         }
                     }
@@ -118,8 +101,20 @@ public class WorkOrderListController extends Controller {
         });
     }
 
-    private void addWorkOrderToLayout(WorkOrder workOrder, Technician technician, boolean isButtonDisabled) {
-        workOrderListVBox.getChildren().add(createWorkOrderComponent(workOrder, technician, isButtonDisabled));
+
+    private void addLoggedUserWorkOrder(){
+        WorkOrder loggedUserWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(getLoggedUser().getId());
+        boolean doesLoggedUserHaveWorkOrder = loggedUserWorkOrder != null;
+
+        if(doesLoggedUserHaveWorkOrder) {
+            technicianCurrentWorkOrderVBox.getChildren().add(createWorkOrderComponent(loggedUserWorkOrder, (Technician) getLoggedUser()));
+        }else{
+            technicianCurrentWorkOrderVBox.getChildren().add(EmptyComponent.create("Não há ordens de serviço disponíveis"));
+        }
+    }
+
+    private void addWorkOrderToLayout(WorkOrder workOrder, Technician technician) {
+        workOrderListVBox.getChildren().add(createWorkOrderComponent(workOrder, technician));
     }
 
     private void removeWorkOrderFromLayout(WorkOrder workOrder) {
@@ -148,44 +143,16 @@ public class WorkOrderListController extends Controller {
         backPage();
     }
 
-    private HBox createWorkOrderComponent(WorkOrder workOrder, Technician technician, boolean isButtonDisabled) {
+    private HBox createWorkOrderComponent(WorkOrder workOrder, Technician technician) {
         Customer customer = DAOManager.getCustomerDao().findById(workOrder.getCustomerId());
 
-        return WorkOrderComponent.create(workOrder, technician, customer, getLoggedUser(), isButtonDisabled, (event) -> {
-            if(isButtonDisabled){
-                System.out.println("Tecnico ja possui uma ordem de serviço");
-                return;
-            }
-
-            if(getLoggedUser().getUserType() != UserType.TECHNICIAN){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Você não tem permissão para aceitar ordens de serviço.");
-                alert.setHeaderText(null);
-                alert.setContentText("Apenas técnicos podem aceitar ordens de serviço.");
-                alert.showAndWait();
-                return;
-            }
-
-            workOrder.setTechnicianId(getLoggedUser().getId());
-            DAOManager.getWorkOrderDao().update(workOrder);
-
-            openWorkOrders.removeAll(openWorkOrders);
-            openWorkOrders.addAll(fetchOpenWorkOrders());
-
-        });
-    }
-
-    private HBox createLoggedUserCurrentWorkOrderComponent(WorkOrder workOrder) {
-        Customer customer = DAOManager.getCustomerDao().findById(workOrder.getCustomerId());
-
-        return WorkOrderComponent.create(workOrder, (Technician) getLoggedUser(), customer, getLoggedUser(), false, (event) -> {
+        return WorkOrderComponent.create(workOrder, technician, customer, (event) -> {
             UpdateWorkOrderController controller = PageLoader.openPage("update_order.fxml");
             controller.setWorkOrder(workOrder);
             controller.setLoggedUser(getLoggedUser());
             controller.setPreviousPage("work_order_list.fxml");
         });
     }
-
     private List<WorkOrder> fetchOpenWorkOrders() {
         return DAOManager.getWorkOrderDao().findOpenWorkOrders();
     }
