@@ -168,6 +168,14 @@ public class HomeController extends Controller {
         });
         buttons.get("workOrderButtons").add(button);
 
+        button = BigButtonComponent.create("\uD83D\uDCCB Listar ordens de serviço");
+        button.setOnAction(event -> {
+            WorkOrderListController controller = PageLoader.openPage("work_order_list.fxml");
+            controller.setLoggedUser(loggedUser);
+
+        });
+        buttons.get("workOrderButtons").add(button);
+
         button = BigButtonComponent.create("\uD83E\uDDD1\u200D\uD83D\uDCBC Criar novo Cliente");
         button.setOnAction(event -> {
             CreateCustomerController controller = PageLoader.openPage("create_customer.fxml");

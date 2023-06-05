@@ -2,6 +2,7 @@ package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.HelloApplication;
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
+import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
@@ -145,6 +146,14 @@ public class WorkOrderListController extends Controller {
         Customer customer = DAOManager.getCustomerDao().findById(workOrder.getCustomerId());
 
         return WorkOrderComponent.create(workOrder, technician, customer, (event) -> {
+            if(getLoggedUser().getUserType().equals(UserType.RECEPTIONIST)){
+                UpdateWorkOrderSalesController controller = PageLoader.openPage("update_order_sales.fxml");
+                controller.setWorkOrder(workOrder);
+                controller.setLoggedUser(getLoggedUser());
+                controller.setPreviousPage("work_order_list.fxml");
+                return;
+            }
+
             UpdateWorkOrderController controller = PageLoader.openPage("update_order.fxml");
             controller.setWorkOrder(workOrder);
             controller.setLoggedUser(getLoggedUser());

@@ -33,3 +33,15 @@
     -fx-text-fill: #000000;
     -fx-border-radius: 8;
 }
+
+.error {
+    -fx-border-color: #dc3545;
+}
+
+.text-area {
+    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+    -fx-border-color: #cccccc;
+    -fx-text-fill: #000000;
+    -fx-border-radius: 8;
+}
