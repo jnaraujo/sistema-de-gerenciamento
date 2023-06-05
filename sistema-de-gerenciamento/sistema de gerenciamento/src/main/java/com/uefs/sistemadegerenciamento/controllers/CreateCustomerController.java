@@ -37,32 +37,32 @@ public class CreateCustomerController extends Controller {
 
     @FXML
     private void onCreateCustomerButtonClick() {
-        nameField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        emailField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        phoneField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        addressField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
+        nameField.getStyleClass().remove("error");;
+        emailField.getStyleClass().remove("error");;
+        phoneField.getStyleClass().remove("error");;
+        addressField.getStyleClass().remove("error");;
         info("");
 
         if(nameField.getText().isEmpty()) {
-            nameField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            nameField.getStyleClass().add("error");
             error("Digite um nome.");
             return;
         }
 
         if(emailField.getText().isEmpty()) {
-            emailField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            emailField.getStyleClass().add("error");
             error("Digite um email.");
             return;
         }
 
         if(phoneField.getText().isEmpty()) {
-            phoneField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            phoneField.getStyleClass().add("error");
             error("Digite um telefone.");
             return;
         }
 
         if(addressField.getText().isEmpty()) {
-            addressField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            addressField.getStyleClass().add("error");
             error("Digite um endereço.");
             return;
         }

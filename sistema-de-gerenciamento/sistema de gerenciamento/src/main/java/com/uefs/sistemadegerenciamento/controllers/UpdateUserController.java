@@ -52,32 +52,32 @@ public class UpdateUserController extends Controller {
 
     @FXML
     private void onUpdateUserButtonClick() {
-        nameField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        emailField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        passwordField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        userTypeChoiceBox.setStyle("-fx-border-color: none; -fx-font-size: 14px");
+        nameField.getStyleClass().remove("error");;
+        emailField.getStyleClass().remove("error");;
+        passwordField.getStyleClass().remove("error");;
+        userTypeChoiceBox.getStyleClass().remove("error");;
         info("");
 
         if(nameField.getText().isEmpty()) {
-            nameField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            nameField.getStyleClass().add("error");
             error("Digite um nome.");
             return;
         }
 
         if(emailField.getText().isEmpty()) {
-            emailField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            emailField.getStyleClass().add("error");
             error("Digite um email.");
             return;
         }
 
         if(passwordField.getText().isEmpty()) {
-            passwordField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            passwordField.getStyleClass().add("error");
             error("Digite um telefone.");
             return;
         }
 
         if(userTypeChoiceBox.getValue() == null) {
-            userTypeChoiceBox.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            userTypeChoiceBox.getStyleClass().add("error");
             error("Digite um endereço.");
             return;
         }

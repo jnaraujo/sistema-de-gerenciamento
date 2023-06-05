@@ -80,18 +80,18 @@ public class CreateWorkOrderController extends Controller {
     private void onCreateOrderButtonClick() {
         Customer customer = (Customer) customersComboBox.getValue();
 
-        customersComboBox.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        descriptionTextArea.setStyle("-fx-border-color: none; -fx-font-size: 14px");
+        customersComboBox.getStyleClass().remove("error");;
+        descriptionTextArea.getStyleClass().remove("error");;
         info("");
 
         if(customer == null) {
-            customersComboBox.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            customersComboBox.getStyleClass().add("error");
             error("Selecione um cliente.");
             return;
         }
 
         if(descriptionTextArea.getText().isEmpty()) {
-            descriptionTextArea.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            descriptionTextArea.getStyleClass().add("error");
             error("Digite uma descrição.");
             return;
         }

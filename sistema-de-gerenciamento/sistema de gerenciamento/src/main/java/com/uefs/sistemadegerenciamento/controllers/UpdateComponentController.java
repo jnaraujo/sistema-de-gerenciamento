@@ -52,57 +52,57 @@ public class UpdateComponentController extends Controller {
 
     @FXML
     private void onUpdateComponentButtonClick() {
-        nameField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        pricePerUnitField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        costPerUnitField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        quantityField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        manufacturerField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
+        nameField.getStyleClass().remove("error");;
+        pricePerUnitField.getStyleClass().remove("error");;
+        costPerUnitField.getStyleClass().remove("error");;
+        quantityField.getStyleClass().remove("error");;
+        manufacturerField.getStyleClass().remove("error");;
         info("");
 
         if(nameField.getText().isEmpty()) {
-            nameField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            nameField.getStyleClass().add("error");
             error("Digite um nome.");
             return;
         }
 
         if(manufacturerField.getText().isEmpty()) {
-            manufacturerField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            manufacturerField.getStyleClass().add("error");
             error("Digite um fabricante.");
             return;
         }
 
         if(pricePerUnitField.getText().isEmpty()) {
-            pricePerUnitField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            pricePerUnitField.getStyleClass().add("error");
             error("Digite um preço por unidade.");
             return;
         }
 
         if(costPerUnitField.getText().isEmpty()) {
-            costPerUnitField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            costPerUnitField.getStyleClass().add("error");
             error("Digite um custo por unidade.");
             return;
         }
 
         if(quantityField.getText().isEmpty()) {
-            quantityField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            quantityField.getStyleClass().add("error");
             error("Digite uma quantidade.");
             return;
         }
 
         if(!pricePerUnitField.getText().matches("[0-9]+(\\,[0-9]+)?")) { // 9,99
-            pricePerUnitField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            pricePerUnitField.getStyleClass().add("error");
             error("Digite um preço válido. (Ex: 9,99)");
             return;
         }
 
         if(!costPerUnitField.getText().matches("[0-9]+(\\,[0-9]+)?")) { // 9,99
-            costPerUnitField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            costPerUnitField.getStyleClass().add("error");
             error("Digite um custo válido. (Ex: 9,99)");
             return;
         }
 
         if(!quantityField.getText().matches("[0-9]+")) {
-            quantityField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            quantityField.getStyleClass().add("error");
             error("Digite uma quantidade válida. (Ex: 9)");
             return;
         }

@@ -38,37 +38,37 @@ public class CreateCleaningServiceController extends Controller {
 
     @FXML
     private void onCreateButtonClick() {
-        componentListField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        priceField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        costField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
+        componentListField.getStyleClass().remove("error");
+        priceField.getStyleClass().remove("error");
+        costField.getStyleClass().remove("error");
         info("");
 
         if(componentListField.getText().isEmpty()) {
-            componentListField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            componentListField.getStyleClass().add("error");
             error("Digite uma descrição.");
             return;
         }
 
         if(priceField.getText().isEmpty()) {
-            priceField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            priceField.getStyleClass().add("error");
             error("Digite um preço por unidade.");
             return;
         }
 
         if(costField.getText().isEmpty()) {
-            costField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            costField.getStyleClass().add("error");
             error("Digite um custo por unidade.");
             return;
         }
 
         if(!priceField.getText().matches("[0-9]+(\\,[0-9]+)?")) { // 9,99
-            priceField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            priceField.getStyleClass().add("error");
             error("Digite um preço válido. (Ex: 9,99)");
             return;
         }
 
         if(!costField.getText().matches("[0-9]+(\\,[0-9]+)?")) { // 9,99
-            costField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            costField.getStyleClass().add("error");
             error("Digite um custo válido. (Ex: 9,99)");
             return;
         }

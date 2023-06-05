@@ -444,19 +444,19 @@ public class UpdateWorkOrderController extends Controller {
         info("");
 
         if(customer == null) {
-            customersComboBox.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            customersComboBox.getStyleClass().add("error");
             error("Selecione um cliente.");
             return false;
         }
 
         if(technicianComboBox.getValue() == null) {
-            technicianComboBox.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            technicianComboBox.getStyleClass().add("error");
             error("Selecione um técnico.");
             return false;
         }
 
         if(descriptionTextArea.getText().isEmpty()) {
-            descriptionTextArea.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            descriptionTextArea.getStyleClass().add("error");
             error("Digite uma descrição.");
             return false;
         }
