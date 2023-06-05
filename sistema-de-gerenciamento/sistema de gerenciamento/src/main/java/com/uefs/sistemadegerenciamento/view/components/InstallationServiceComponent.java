@@ -2,6 +2,7 @@ package com.uefs.sistemadegerenciamento.view.components;
 
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
 import com.uefs.sistemadegerenciamento.model.service.InstallationService;
+import com.uefs.sistemadegerenciamento.utils.Formatter;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -39,11 +40,11 @@ public class InstallationServiceComponent {
         nameLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 18));
         nameLabel.setPrefWidth(LEFT_WIDTH);
 
-        Label pricePerUnitLabel = new Label("Preço por unidade: R$ "+ service.getPrice());
+        Label pricePerUnitLabel = new Label("Preço por unidade: " + Formatter.currency(service.getPrice()));
         pricePerUnitLabel.setPrefWidth(LEFT_WIDTH);
         pricePerUnitLabel.setFont(new Font(16));
 
-        Label costPerUnitLabel = new Label("Custo por unidade: R$ "+ service.getCost());
+        Label costPerUnitLabel = new Label("Custo por unidade: "+ Formatter.currency(service.getCost()));
         costPerUnitLabel.setPrefWidth(LEFT_WIDTH);
         costPerUnitLabel.setFont(new Font(16));
 

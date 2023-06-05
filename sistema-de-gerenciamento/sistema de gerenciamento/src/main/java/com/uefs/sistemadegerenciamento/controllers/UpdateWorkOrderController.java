@@ -14,6 +14,7 @@ import com.uefs.sistemadegerenciamento.model.service.InstallationService;
 import com.uefs.sistemadegerenciamento.model.service.Service;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;
+import com.uefs.sistemadegerenciamento.utils.Formatter;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import com.uefs.sistemadegerenciamento.utils.converter.CustomerConverter;
 import com.uefs.sistemadegerenciamento.utils.converter.TechnicianConverter;
@@ -270,7 +271,7 @@ public class UpdateWorkOrderController extends Controller {
     }
 
     private String componentToString(ComputerComponent component){
-        return component.getName() + " (R$ " + component.getPricePerUnit() + " / und.)";
+        return component.getName() + " (" + Formatter.currency(component.getPricePerUnit()) + " / und.)";
     }
 
     @FXML
@@ -308,7 +309,7 @@ public class UpdateWorkOrderController extends Controller {
     }
 
     private String installationServiceToString(InstallationService installationService){
-        return installationService.getDescription() + " (R$ " + installationService.getPrice() + ")";
+        return installationService.getDescription() + " (" + Formatter.currency(installationService.getPrice()) + ")";
     }
 
     @FXML
@@ -353,7 +354,7 @@ public class UpdateWorkOrderController extends Controller {
             return acc + component + ", ";
         });
 
-        return componentsString.substring(0, componentsString.length() - 2) + " (R$ " + service.getPrice() + ")";
+        return componentsString.substring(0, componentsString.length() - 2) + " (" + Formatter.currency(service.getPrice()) + ")";
     }
 
     private ModalController openModal(String title){

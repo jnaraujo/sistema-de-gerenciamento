@@ -2,6 +2,7 @@ package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
+import com.uefs.sistemadegerenciamento.utils.Formatter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -143,8 +144,8 @@ public class ReportController extends Controller {
         double averageSatisfaction = DAOManager.getWorkOrderDao().getAverageCustomerSatisfaction();
 
         averageRepairTimeLabel.setText(formatDouble(averageRepairTime) + " horas");
-        averagePriceLabel.setText("R$ " + formatDouble(averagePrice));
-        averageCostLabel.setText("R$ " + formatDouble(averageCost));
+        averagePriceLabel.setText(Formatter.currency(averagePrice));
+        averageCostLabel.setText(Formatter.currency(averageCost));
         averageSatisfactionLabel.setText(formatDouble(averageSatisfaction) + " estrelas");
     }
 

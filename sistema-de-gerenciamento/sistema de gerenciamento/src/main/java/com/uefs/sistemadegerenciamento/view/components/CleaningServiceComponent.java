@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.view.components;
 
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;
+import com.uefs.sistemadegerenciamento.utils.Formatter;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -43,11 +44,11 @@ public class CleaningServiceComponent {
         nameLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 18));
         nameLabel.setPrefWidth(LEFT_WIDTH);
 
-        Label pricePerUnitLabel = new Label("Preço: R$ "+ service.getPrice());
+        Label pricePerUnitLabel = new Label("Preço: "+ Formatter.currency(service.getPrice()));
         pricePerUnitLabel.setPrefWidth(LEFT_WIDTH);
         pricePerUnitLabel.setFont(new Font(16));
 
-        Label costPerUnitLabel = new Label("Custo: R$ "+ service.getCost());
+        Label costPerUnitLabel = new Label("Custo: "+ Formatter.currency(service.getCost()));
         costPerUnitLabel.setPrefWidth(LEFT_WIDTH);
         costPerUnitLabel.setFont(new Font(16));
 

@@ -1,7 +1,7 @@
 package com.uefs.sistemadegerenciamento.view.components;
 
 import com.uefs.sistemadegerenciamento.model.service.BuildingService;
-import com.uefs.sistemadegerenciamento.model.service.InstallationService;
+import com.uefs.sistemadegerenciamento.utils.Formatter;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -32,7 +32,7 @@ public class BuildingServiceComponent {
         nameLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 18));
         nameLabel.setPrefWidth(LEFT_WIDTH);
 
-        Label pricePerUnitLabel = new Label("Preço: R$ "+ service.getPrice() + " | Custo: R$ " + service.getCost());
+        Label pricePerUnitLabel = new Label("Preço: "+ Formatter.currency(service.getPrice()) + " | Custo: " + Formatter.currency(service.getCost()));
         pricePerUnitLabel.setPrefWidth(LEFT_WIDTH);
         pricePerUnitLabel.setFont(new Font(16));
 

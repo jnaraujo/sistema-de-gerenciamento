@@ -4,6 +4,7 @@ import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;
+import com.uefs.sistemadegerenciamento.utils.Formatter;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -42,7 +43,7 @@ public class WorkOrderComponent {
         technicianText.setPrefWidth(LEFT_WIDTH);
         technicianText.setFont(new Font(14));
 
-        Label otherDataText = new Label("Status: " + workOrder.getStatus() + " - Data de abertura: " + workOrder.getCreatedAt() + " - Data de fechamento: " + workOrder.getFinishedAt());
+        Label otherDataText = new Label("Status: " + workOrder.getStatus() + " - Data de abertura: " + Formatter.date(workOrder.getCreatedAt()) + " - Data de fechamento: " + Formatter.date(workOrder.getFinishedAt()));
         clientText.setMaxWidth(LEFT_WIDTH);
         otherDataText.setFont(new Font(14));
 
