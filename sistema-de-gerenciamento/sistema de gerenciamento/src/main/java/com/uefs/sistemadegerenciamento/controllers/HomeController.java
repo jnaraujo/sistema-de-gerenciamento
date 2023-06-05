@@ -198,6 +198,7 @@ public class HomeController extends Controller {
         buttons.put("serviceButtons", new ArrayList<>());
         buttons.put("customerButtons", new ArrayList<>());
         buttons.put("userButtons", new ArrayList<>());
+        buttons.put("workOrderButtons", new ArrayList<>());
 
         Button button = BigButtonComponent.create("\uD83D\uDCCA Gerar relatório");
         button.setOnAction(event -> {
@@ -225,7 +226,7 @@ public class HomeController extends Controller {
             CreateComponentController controller = PageLoader.openPage("create_component.fxml");
             controller.setLoggedUser(loggedUser);
         });
-        buttons.get("serviceButtons").add(button);
+        buttons.get("workOrderButtons").add(button);
 
         button = BigButtonComponent.create("Criar novo Serviço de Instalação");
         button.setOnAction(event -> {
