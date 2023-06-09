@@ -19,8 +19,8 @@ public class BigButtonComponent {
         button.setTextOverrun(javafx.scene.control.OverrunStyle.CLIP);
         button.wrapTextProperty().setValue(true);
 
-        button.setPrefWidth(250);
-        button.setPrefHeight(75);
+        button.setPrefWidth(200);
+        button.setPrefHeight(60);
         button.setStyle("-fx-background-color: #343a40; -fx-background-radius: 8px;");
 
         return button;
