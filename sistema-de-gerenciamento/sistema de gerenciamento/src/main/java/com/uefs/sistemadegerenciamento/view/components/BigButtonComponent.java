@@ -21,7 +21,7 @@ public class BigButtonComponent {
 
         button.setPrefWidth(250);
         button.setPrefHeight(75);
-        button.setStyle("-fx-background-color: #5c677d; -fx-background-radius: 8px;");
+        button.setStyle("-fx-background-color: #343a40; -fx-background-radius: 8px;");
 
         return button;
     }
