@@ -139,14 +139,14 @@ public class HomeController extends Controller {
         });
         buttons.get("workOrderButtons").add(button);
 
-        button = BigButtonComponent.create("Gerenciar Serviços de Instalação");
+        button = BigButtonComponent.create("\uD83D\uDEE0 Gerenciar Serviços de Instalação");
         button.setOnAction(event -> {
             ManageInstallationServiceController controller = PageLoader.openPage("manage_installation_service.fxml");
             controller.setLoggedUser(loggedUser);
         });
         buttons.get("serviceButtons").add(button);
 
-        button = BigButtonComponent.create("Gerenciar Serviços de Limpeza");
+        button = BigButtonComponent.create("\uD83E\uDDF9 Gerenciar Serviços de Limpeza");
         button.setOnAction(event -> {
             ManageCleaningServiceController controller = PageLoader.openPage("manage_cleaning_service.fxml");
             controller.setLoggedUser(loggedUser);
@@ -228,14 +228,14 @@ public class HomeController extends Controller {
         });
         buttons.get("workOrderButtons").add(button);
 
-        button = BigButtonComponent.create("Criar novo Serviço de Instalação");
+        button = BigButtonComponent.create("\uD83E\uDE9B Criar novo Serviço de Instalação");
         button.setOnAction(event -> {
             CreateInstallationServiceController controller = PageLoader.openPage("create_installation_service.fxml");
             controller.setLoggedUser(loggedUser);
         });
         buttons.get("serviceButtons").add(button);
 
-        button = BigButtonComponent.create("Criar novo Serviço de Limpeza");
+        button = BigButtonComponent.create("\uD83E\uDDF9 Criar novo Serviço de Limpeza");
         button.setOnAction(event -> {
             CreateCleaningServiceController controller = PageLoader.openPage("create_cleaning_service.fxml");
             controller.setLoggedUser(loggedUser);
