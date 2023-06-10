@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
+import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.service.InstallationService;
 import javafx.fxml.FXML;
@@ -33,6 +34,11 @@ public class CreateInstallationServiceController extends Controller {
 
     @FXML
     private void onCreateButtonClick() {
+        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR)){
+            error("Você não tem permissão para realizar esta ação.");
+            return;
+        }
+
         descriptionField.getStyleClass().remove("error");;
         pricePerUnitField.getStyleClass().remove("error");;
         costPerUnitField.getStyleClass().remove("error");;
