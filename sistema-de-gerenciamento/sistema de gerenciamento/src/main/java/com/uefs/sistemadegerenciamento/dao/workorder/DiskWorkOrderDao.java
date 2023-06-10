@@ -250,9 +250,15 @@ public class DiskWorkOrderDao implements WorkOrderDao{
     @Override
     public Double getAverageCustomerSatisfaction() {
         double sum = 0;
+        int count = 0;
+
         for(WorkOrder order : workOrders.values()){
+            if(!order.getStatus().equals(OrderStatus.CLOSED)){
+                continue;
+            }
             sum += order.getSatisfactionScore();
+            count++;
         }
-        return sum / workOrders.size();
+        return sum / count;
     }
 }

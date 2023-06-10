@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
+import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.utils.Formatter;
@@ -98,6 +99,10 @@ public class ReportController extends Controller {
         );
 
         for (WorkOrder workOrder : workOrders) {
+            if(!workOrder.getStatus().equals(OrderStatus.CLOSED)){
+                continue;
+            }
+
             int score = workOrder.getSatisfactionScore();
             pieChartData.get(score).setPieValue(pieChartData.get(score).getPieValue() + 1);
         }
