@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
@@ -53,6 +54,11 @@ public class HomeController extends Controller {
 
     @FXML
     private VBox mainVBox;
+
+    @FXML
+    private void initialize() {
+        WorkOrderManagerApplication.stage.setTitle("Sistema de Gerenciamento - Home");
+    }
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
@@ -139,14 +145,14 @@ public class HomeController extends Controller {
         });
         buttons.get("workOrderButtons").add(button);
 
-        button = BigButtonComponent.create("Gerenciar Serviços de Instalação");
+        button = BigButtonComponent.create("\uD83D\uDEE0 Gerenciar Serviços de Instalação");
         button.setOnAction(event -> {
             ManageInstallationServiceController controller = PageLoader.openPage("manage_installation_service.fxml");
             controller.setLoggedUser(loggedUser);
         });
         buttons.get("serviceButtons").add(button);
 
-        button = BigButtonComponent.create("Gerenciar Serviços de Limpeza");
+        button = BigButtonComponent.create("\uD83E\uDDF9 Gerenciar Serviços de Limpeza");
         button.setOnAction(event -> {
             ManageCleaningServiceController controller = PageLoader.openPage("manage_cleaning_service.fxml");
             controller.setLoggedUser(loggedUser);
@@ -168,12 +174,13 @@ public class HomeController extends Controller {
         });
         buttons.get("workOrderButtons").add(button);
 
-        button = BigButtonComponent.create("\uD83E\uDDD1\u200D\uD83D\uDCBC Criar novo Cliente");
+        button = BigButtonComponent.create("\uD83D\uDCCB Listar ordens de serviço");
         button.setOnAction(event -> {
-            CreateCustomerController controller = PageLoader.openPage("create_customer.fxml");
+            WorkOrderListController controller = PageLoader.openPage("work_order_list.fxml");
             controller.setLoggedUser(loggedUser);
+
         });
-        buttons.get("customerButtons").add(button);
+        buttons.get("workOrderButtons").add(button);
 
         button = BigButtonComponent.create("\uD83D\uDC65 Gerenciar clientes");
         button.setOnAction(event -> {
@@ -190,20 +197,14 @@ public class HomeController extends Controller {
         buttons.put("serviceButtons", new ArrayList<>());
         buttons.put("customerButtons", new ArrayList<>());
         buttons.put("userButtons", new ArrayList<>());
+        buttons.put("workOrderButtons", new ArrayList<>());
 
         Button button = BigButtonComponent.create("\uD83D\uDCCA Gerar relatório");
         button.setOnAction(event -> {
-//            CreateOrderController controller = (CreateOrderController) PageLoader.openPage("create_order.fxml");
-//            controller.setUser(user);
-        });
-        buttons.get("serviceButtons").add(button);
-
-        button = BigButtonComponent.create("➕ Criar novo usuário");
-        button.setOnAction(event -> {
-            CreateUserController controller = PageLoader.openPage("create_user.fxml");
+            ReportController controller = PageLoader.openPage("report.fxml");
             controller.setLoggedUser(loggedUser);
         });
-        buttons.get("userButtons").add(button);
+        buttons.get("serviceButtons").add(button);
 
         button = BigButtonComponent.create("\uD83D\uDC65 Gerenciar usuários");
         button.setOnAction(event -> {
@@ -211,27 +212,6 @@ public class HomeController extends Controller {
             controller.setLoggedUser(loggedUser);
         });
         buttons.get("userButtons").add(button);
-
-        button = BigButtonComponent.create("\uD83D\uDD0C Adicionar novo componente");
-        button.setOnAction(event -> {
-            CreateComponentController controller = PageLoader.openPage("create_component.fxml");
-            controller.setLoggedUser(loggedUser);
-        });
-        buttons.get("serviceButtons").add(button);
-
-        button = BigButtonComponent.create("Criar novo Serviço de Instalação");
-        button.setOnAction(event -> {
-            CreateInstallationServiceController controller = PageLoader.openPage("create_installation_service.fxml");
-            controller.setLoggedUser(loggedUser);
-        });
-        buttons.get("serviceButtons").add(button);
-
-        button = BigButtonComponent.create("Criar novo Serviço de Limpeza");
-        button.setOnAction(event -> {
-            CreateCleaningServiceController controller = PageLoader.openPage("create_cleaning_service.fxml");
-            controller.setLoggedUser(loggedUser);
-        });
-        buttons.get("serviceButtons").add(button);
 
         return buttons;
     }

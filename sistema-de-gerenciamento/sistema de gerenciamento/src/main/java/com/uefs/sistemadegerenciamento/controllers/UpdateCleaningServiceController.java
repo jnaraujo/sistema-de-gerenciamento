@@ -1,10 +1,9 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
+import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;
-import com.uefs.sistemadegerenciamento.model.user.User;
-import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -42,7 +41,7 @@ public class UpdateCleaningServiceController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Atualizar Serviço de Limpeza");
+        WorkOrderManagerApplication.stage.setTitle("Atualizar Serviço de Limpeza");
     }
 
     @FXML
@@ -52,37 +51,42 @@ public class UpdateCleaningServiceController extends Controller {
 
     @FXML
     private void onUpdateButtonClick() {
-        componentListField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        priceField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        costField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
+        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR) && !getLoggedUser().getUserType().equals(UserType.TECHNICIAN)){
+            error("Você não tem permissão para realizar esta ação.");
+            return;
+        }
+
+        componentListField.getStyleClass().remove("error");;
+        priceField.getStyleClass().remove("error");;
+        costField.getStyleClass().remove("error");;
         info("");
 
         if(componentListField.getText().isEmpty()) {
-            componentListField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            componentListField.getStyleClass().add("error");
             error("Digite uma descrição.");
             return;
         }
 
         if(priceField.getText().isEmpty()) {
-            priceField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            priceField.getStyleClass().add("error");
             error("Digite um preço por unidade.");
             return;
         }
 
         if(costField.getText().isEmpty()) {
-            costField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            costField.getStyleClass().add("error");
             error("Digite um custo por unidade.");
             return;
         }
 
         if(!priceField.getText().matches("[0-9]+(\\,[0-9]+)?")) { // 9,99
-            priceField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            priceField.getStyleClass().add("error");
             error("Digite um preço válido. (Ex: 9,99)");
             return;
         }
 
         if(!costField.getText().matches("[0-9]+(\\,[0-9]+)?")) { // 9,99
-            costField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            costField.getStyleClass().add("error");
             error("Digite um custo válido. (Ex: 9,99)");
             return;
         }

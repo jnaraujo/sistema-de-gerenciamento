@@ -11,15 +11,20 @@
     </padding>
     <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="784.0" spacing="16.0">
         <children>
-            <Button mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="111.0" text="Voltar" />
-            <Label prefHeight="36.0" prefWidth="356.0" text="Gerenciar estoque">
-                <font>
-                    <Font name="System Bold" size="25.0" />
-                </font>
-            <HBox.margin>
-               <Insets bottom="6.0" />
-            </HBox.margin>
-            </Label>
+         <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="1020.0" spacing="16.0">
+            <children>
+                  <Button mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="111.0" text="Voltar" />
+                  <Label prefHeight="36.0" prefWidth="356.0" text="Gerenciar estoque">
+                      <font>
+                          <Font name="System Bold" size="25.0" />
+                      </font>
+                  <HBox.margin>
+                     <Insets bottom="6.0" />
+                  </HBox.margin>
+                  </Label>
+            </children>
+         </HBox>
+         <Button mnemonicParsing="false" onAction="#onAddNewComponentButtonClick" prefHeight="25.0" prefWidth="206.0" text="Adicionar nova peça" />
         </children>
       <VBox.margin>
          <Insets bottom="16.0" />

@@ -290,13 +290,18 @@ class WorkOrderDaoTest {
     }
 
     @Test
-    void testGetAverageCustomerSatisfaction() throws InvalidSatisfactionScoreException {
+    void testGetAverageCustomerSatisfaction() throws InvalidSatisfactionScoreException, ServiceOrderWithoutTechnicianException {
         workOrder.setSatisfactionScore(3);
+        workOrder.setTechnicianId(IdGenerator.generate());
+        workOrder.finish();
+
         WorkOrder workOrder2 = new WorkOrder(
                 "another work order",
                 IdGenerator.generate()
         );
+        workOrder2.setTechnicianId(IdGenerator.generate());
         workOrder2.setSatisfactionScore(5);
+        workOrder2.finish();
 
         workOrder = workOrderDao.save(workOrder);
         workOrder2 = workOrderDao.save(workOrder2);

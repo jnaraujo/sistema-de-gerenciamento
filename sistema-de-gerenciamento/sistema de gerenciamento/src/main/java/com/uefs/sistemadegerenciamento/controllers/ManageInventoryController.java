@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
@@ -36,7 +36,7 @@ public class ManageInventoryController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Gerenciar estoque");
+        WorkOrderManagerApplication.stage.setTitle("Gerenciar estoque");
 
         components = FXCollections.observableArrayList();
 
@@ -141,5 +141,12 @@ public class ManageInventoryController extends Controller {
     @FXML
     private void onBackButtonClick() {
         backPage();
+    }
+
+    @FXML
+    private void onAddNewComponentButtonClick() {
+        CreateComponentController controller = PageLoader.openPage("create_component.fxml");
+        controller.setLoggedUser(getLoggedUser());
+        controller.setPreviousPage("manage_inventory.fxml");
     }
 }

@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
@@ -37,7 +37,7 @@ public class ManageCustomersController extends Controller {
     }
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Gerenciar Clientes");
+        WorkOrderManagerApplication.stage.setTitle("Gerenciar Clientes");
 
         customers = FXCollections.observableArrayList();
 
@@ -155,5 +155,12 @@ public class ManageCustomersController extends Controller {
     @FXML
     private void onBackButtonClick() {
         backPage();
+    }
+
+    @FXML
+    private void onAddCustomerButtonClick(){
+        CreateCustomerController controller = PageLoader.openPage("create_customer.fxml");
+        controller.setPreviousPage("manage_customers.fxml");
+        controller.setLoggedUser(getLoggedUser());
     }
 }

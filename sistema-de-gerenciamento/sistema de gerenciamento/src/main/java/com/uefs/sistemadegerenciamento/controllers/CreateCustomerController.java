@@ -1,10 +1,9 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
+import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
-import com.uefs.sistemadegerenciamento.model.user.User;
-import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -27,7 +26,7 @@ public class CreateCustomerController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Criar Cliente");
+        WorkOrderManagerApplication.stage.setTitle("Criar Cliente");
     }
 
     @FXML
@@ -37,32 +36,36 @@ public class CreateCustomerController extends Controller {
 
     @FXML
     private void onCreateCustomerButtonClick() {
-        nameField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        emailField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        phoneField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        addressField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
+        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR) && !getLoggedUser().getUserType().equals(UserType.RECEPTIONIST)) {
+            error("Você não tem permissão para realizar esta ação.");
+            return;
+        }
+        nameField.getStyleClass().remove("error");;
+        emailField.getStyleClass().remove("error");;
+        phoneField.getStyleClass().remove("error");;
+        addressField.getStyleClass().remove("error");;
         info("");
 
         if(nameField.getText().isEmpty()) {
-            nameField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            nameField.getStyleClass().add("error");
             error("Digite um nome.");
             return;
         }
 
         if(emailField.getText().isEmpty()) {
-            emailField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            emailField.getStyleClass().add("error");
             error("Digite um email.");
             return;
         }
 
         if(phoneField.getText().isEmpty()) {
-            phoneField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            phoneField.getStyleClass().add("error");
             error("Digite um telefone.");
             return;
         }
 
         if(addressField.getText().isEmpty()) {
-            addressField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            addressField.getStyleClass().add("error");
             error("Digite um endereço.");
             return;
         }

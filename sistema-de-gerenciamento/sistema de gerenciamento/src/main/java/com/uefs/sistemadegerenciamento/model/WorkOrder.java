@@ -297,14 +297,14 @@ public class WorkOrder implements Serializable {
      * Retorna o método de pagamento da ordem de serviço
      * @return o método de pagamento da ordem de serviço
      */
-    String getPaymentMethod() {
+    public String getPaymentMethod() {
         return paymentMethod;
     }
 
     /**
      * Define o método de pagamento da ordem de serviço
      */
-    void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 

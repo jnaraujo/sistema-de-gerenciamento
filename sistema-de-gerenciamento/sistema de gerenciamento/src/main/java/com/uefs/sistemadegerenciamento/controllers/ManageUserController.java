@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
@@ -37,7 +37,7 @@ public class ManageUserController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Gerenciar Usuários");
+        WorkOrderManagerApplication.stage.setTitle("Gerenciar Usuários");
 
         users = FXCollections.observableArrayList();
 
@@ -138,5 +138,12 @@ public class ManageUserController extends Controller {
     @FXML
     private void onBackButtonClick() {
         backPage();
+    }
+
+    @FXML
+    private void onAddUserButtonClick(){
+        CreateUserController controller = PageLoader.openPage("create_user.fxml");
+        controller.setPreviousPage("manage_user.fxml");
+        controller.setLoggedUser(getLoggedUser());
     }
 }

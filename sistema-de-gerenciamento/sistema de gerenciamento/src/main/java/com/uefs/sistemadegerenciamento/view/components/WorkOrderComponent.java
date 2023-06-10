@@ -4,6 +4,7 @@ import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;
+import com.uefs.sistemadegerenciamento.utils.Formatter;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -15,7 +16,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
 public class WorkOrderComponent {
-    public static HBox create(WorkOrder workOrder, Technician technician, Customer customer, User user, boolean isButtonDisabled, EventHandler onButtonClick) {
+    public static HBox create(WorkOrder workOrder, Technician technician, Customer customer, EventHandler onButtonClick) {
         HBox hBox = new HBox();
         hBox.setId("work-order-"+workOrder.getId());
         hBox.setAlignment(Pos.CENTER_LEFT);
@@ -29,6 +30,7 @@ public class WorkOrderComponent {
         vBox.setPadding(new javafx.geometry.Insets(0, 8, 0, 0));
 
         Label descriptionLabel = new Label(workOrder.getDescription());
+        descriptionLabel.getStyleClass().add("subTitle");
         descriptionLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 16));
         descriptionLabel.setPrefWidth(LEFT_WIDTH);
 
@@ -41,31 +43,19 @@ public class WorkOrderComponent {
         technicianText.setPrefWidth(LEFT_WIDTH);
         technicianText.setFont(new Font(14));
 
-        Label otherDataText = new Label("Status: " + workOrder.getStatus() + " - Data de abertura: " + workOrder.getCreatedAt());
+        Label otherDataText = new Label("Status: " + workOrder.getStatus() + " - Data de abertura: " + Formatter.date(workOrder.getCreatedAt()) + " - Data de fechamento: " + Formatter.date(workOrder.getFinishedAt()));
         clientText.setMaxWidth(LEFT_WIDTH);
         otherDataText.setFont(new Font(14));
 
         vBox.getChildren().addAll(descriptionLabel, clientText, otherDataText, technicianText);
 
-        Button button = new Button("Pegar ordem");
+        Button button = new Button("Abrir ordem");
         button.setMnemonicParsing(false);
         button.setPrefHeight(60);
         button.setPrefWidth(150);
         button.setStyle("-fx-background-color: #2ecc71; -fx-text-fill: #fff; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-font-size: 16px;");
-        if(isButtonDisabled){
-            button.setDisable(true);
-            button.setStyle("-fx-background-color: #d4d4d4; -fx-text-fill: #626262; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-font-size: 16px;");
-        }
         button.setTextAlignment(TextAlignment.CENTER);
         button.setAlignment(Pos.CENTER);
-
-        boolean isTechnicianWorkOrder = workOrder.getTechnicianId() != null && workOrder.getTechnicianId().equals(user.getId());
-
-        if (isTechnicianWorkOrder) {
-            button.setText("Abrir ordem");
-            button.setStyle("-fx-background-color: rgba(54,140,243,0.53); -fx-text-fill: #000000; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-font-size: 16px;");
-        }
-
         button.setOnAction(onButtonClick);
 
         hBox.getChildren().addAll(vBox, button);

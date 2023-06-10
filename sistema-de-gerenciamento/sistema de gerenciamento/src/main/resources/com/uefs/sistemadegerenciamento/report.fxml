@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.ReportController">
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+    </padding>
+    <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="784.0" spacing="16.0">
+        <children>
+            <Button mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="111.0" text="Voltar" />
+            <Label prefHeight="36.0" prefWidth="656.0" text="Relatório">
+                <font>
+                    <Font name="System Bold" size="25.0" />
+                </font>
+            <HBox.margin>
+               <Insets bottom="6.0" />
+            </HBox.margin>
+            </Label>
+        </children>
+      <VBox.margin>
+         <Insets bottom="16.0" />
+      </VBox.margin>
+    </HBox>
+   <GridPane prefHeight="663.0" prefWidth="1264.0">
+     <columnConstraints>
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+     </columnConstraints>
+     <rowConstraints>
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+         <VBox prefHeight="200.0" prefWidth="100.0">
+            <children>
+               <AreaChart fx:id="revenueChart" title="Receita bruta nos ultimos 12 meses">
+                 <xAxis>
+                   <CategoryAxis side="BOTTOM" />
+                 </xAxis>
+                 <yAxis>
+                   <NumberAxis side="LEFT" />
+                 </yAxis>
+               </AreaChart>
+            </children>
+         </VBox>
+         <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+            <children>
+                <AreaChart fx:id="profileChart" title="Lucro nos ultimos 12 meses">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </AreaChart>
+            </children>
+         </VBox>
+          <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+            <children>
+               <PieChart fx:id="satisfactionChart" title="Satisfação dos clientes" />
+            </children>
+          </VBox>
+         <VBox layoutX="642.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <children>
+               <LineChart fx:id="ordersChart" title="Orders abertas e fechadas nos ultimos 12 meses">
+                 <xAxis>
+                   <CategoryAxis side="BOTTOM" />
+                 </xAxis>
+                 <yAxis>
+                   <NumberAxis side="LEFT" />
+                 </yAxis>
+               </LineChart>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+            <children>
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                      <Label text="Tempo médio de reparo: ">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </Label>
+                      <Label fx:id="averageRepairTimeLabel" text="0" textFill="#0f0f0f">
+                          <font>
+                              <Font size="16.0" />
+                          </font>
+                      </Label>
+                  </children>
+                </HBox>
+
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Média de custo por ordem de serviço: ">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="averageCostLabel" text="0" textFill="#0f0f0f">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Média de preço por ordem de serviço: ">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="averagePriceLabel" text="0" textFill="#0f0f0f">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Média de satisfacao dos clientes: ">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="averageSatisfactionLabel" text="0" textFill="#0f0f0f">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+               <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+            </padding>
+         </VBox>
+      </children>
+   </GridPane>
+</VBox>

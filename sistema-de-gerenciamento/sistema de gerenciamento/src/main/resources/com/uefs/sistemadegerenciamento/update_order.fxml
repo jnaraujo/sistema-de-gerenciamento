@@ -24,15 +24,15 @@
          <Insets top="16.0" />
       </VBox.margin>
       <children>
-         <HBox prefHeight="41.0" prefWidth="1264.0">
+         <HBox prefHeight="41.0" prefWidth="1264.0" spacing="64.0">
             <children>
-               <VBox prefHeight="100.0" prefWidth="642.0" spacing="8.0">
+               <VBox prefHeight="63.0" prefWidth="560.0" spacing="8.0">
                    <Label layoutX="10.0" layoutY="10.0" text="Cliente:">
                        <font>
                            <Font size="16.0" />
                        </font>
                    </Label>
-                  <HBox alignment="CENTER_LEFT" prefWidth="642.0" spacing="16.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="448.0" spacing="16.0">
                      <children>
                          <ComboBox fx:id="customersComboBox" prefHeight="25.0" prefWidth="310.0" style="-fx-font-size: 14px;" />
                         <Button mnemonicParsing="false" onAction="#onCreateCustomerButtonClick" prefHeight="30.0" prefWidth="143.0" text="Criar novo Cliente &gt;">
@@ -43,7 +43,21 @@
                      </children>
                   </HBox>
                </VBox>
-                <VBox prefHeight="100.0" prefWidth="592.0" spacing="8.0">
+               <VBox layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="406.0" spacing="8.0">
+                  <children>
+                     <Label layoutX="10.0" layoutY="10.0" text="Técnico:">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <HBox alignment="CENTER_LEFT" prefWidth="642.0" spacing="16.0">
+                        <children>
+                           <ComboBox fx:id="technicianComboBox" prefHeight="30.0" prefWidth="497.0" style="-fx-font-size: 14px;" />
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+                <VBox prefHeight="63.0" prefWidth="365.0" spacing="8.0">
                     <children>
                         <Label layoutX="10.0" layoutY="10.0" text="Status:">
                             <font>
@@ -83,9 +97,9 @@
                </ScrollPane>
                <HBox prefHeight="40.0" prefWidth="784.0" spacing="64.0">
                   <children>
-                     <Button onAction="#onAddBuildingService" mnemonicParsing="false" prefHeight="55.0" prefWidth="220.0" text="Adicionar Serviço de Montagem" />
-                     <Button onAction="#onAddInstallationService" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="220.0" text="Adicionar Serviço de Instalação" />
-                     <Button onAction="#onAddCleaningService" layoutX="230.0" layoutY="10.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="220.0" text="Adicionar Serviço de Limpza" />
+                     <Button mnemonicParsing="false" onAction="#onAddBuildingService" prefHeight="55.0" prefWidth="220.0" text="Adicionar Serviço de Montagem" />
+                     <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onAddInstallationService" prefHeight="55.0" prefWidth="220.0" text="Adicionar Serviço de Instalação" />
+                     <Button layoutX="230.0" layoutY="10.0" mnemonicParsing="false" onAction="#onAddCleaningService" prefHeight="55.0" prefWidth="220.0" text="Adicionar Serviço de Limpza" />
                   </children>
                </HBox>
             </children>

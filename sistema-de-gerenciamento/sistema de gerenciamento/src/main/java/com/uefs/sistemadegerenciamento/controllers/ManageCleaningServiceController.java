@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;
@@ -17,7 +17,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class ManageCleaningServiceController extends Controller {
@@ -37,7 +36,7 @@ public class ManageCleaningServiceController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Gerenciar Serviços de Limpeza");
+        WorkOrderManagerApplication.stage.setTitle("Gerenciar Serviços de Limpeza");
 
         services = FXCollections.observableArrayList();
 
@@ -141,5 +140,12 @@ public class ManageCleaningServiceController extends Controller {
     @FXML
     private void onBackButtonClick() {
         PageLoader.goHome(getLoggedUser());
+    }
+
+    @FXML
+    private void onAddCleaningService(){
+        CreateCleaningServiceController controller = PageLoader.openPage("create_cleaning_service.fxml");
+        controller.setPreviousPage("manage_cleaning_service.fxml");
+        controller.setLoggedUser(getLoggedUser());
     }
 }

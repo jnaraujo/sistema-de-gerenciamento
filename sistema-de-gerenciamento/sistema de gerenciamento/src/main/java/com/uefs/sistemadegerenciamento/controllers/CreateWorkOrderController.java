@@ -1,10 +1,10 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
+import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import com.uefs.sistemadegerenciamento.model.WorkOrder;
-import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import com.uefs.sistemadegerenciamento.utils.converter.CustomerConverter;
 import javafx.application.Platform;
@@ -12,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.util.StringConverter;
+
 import java.util.Comparator;
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class CreateWorkOrderController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Criar Ordem de Serviço");
+        WorkOrderManagerApplication.stage.setTitle("Criar Ordem de Serviço");
 
         customers = fetchCustomers();
 
@@ -78,20 +78,25 @@ public class CreateWorkOrderController extends Controller {
 
     @FXML
     private void onCreateOrderButtonClick() {
+        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR) && !getLoggedUser().getUserType().equals(UserType.RECEPTIONIST)) {
+            error("Você não tem permissão para realizar esta ação.");
+            return;
+        }
+
         Customer customer = (Customer) customersComboBox.getValue();
 
-        customersComboBox.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        descriptionTextArea.setStyle("-fx-border-color: none; -fx-font-size: 14px");
+        customersComboBox.getStyleClass().remove("error");;
+        descriptionTextArea.getStyleClass().remove("error");;
         info("");
 
         if(customer == null) {
-            customersComboBox.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            customersComboBox.getStyleClass().add("error");
             error("Selecione um cliente.");
             return;
         }
 
         if(descriptionTextArea.getText().isEmpty()) {
-            descriptionTextArea.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            descriptionTextArea.getStyleClass().add("error");
             error("Digite uma descrição.");
             return;
         }

@@ -1,13 +1,12 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.user.Administrator;
 import com.uefs.sistemadegerenciamento.model.user.Receptionist;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;
-import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import com.uefs.sistemadegerenciamento.utils.converter.UserTypeConverter;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -38,7 +37,7 @@ public class UpdateUserController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Atualizar Usuário");
+        WorkOrderManagerApplication.stage.setTitle("Atualizar Usuário");
 
         userTypeChoiceBox.getItems().addAll(UserType.values());
         userTypeChoiceBox.setConverter(new UserTypeConverter());
@@ -52,32 +51,37 @@ public class UpdateUserController extends Controller {
 
     @FXML
     private void onUpdateUserButtonClick() {
-        nameField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        emailField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        passwordField.setStyle("-fx-border-color: none; -fx-font-size: 14px");
-        userTypeChoiceBox.setStyle("-fx-border-color: none; -fx-font-size: 14px");
+        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR)) {
+            error("Você não tem permissão para realizar esta ação.");
+            return;
+        }
+
+        nameField.getStyleClass().remove("error");;
+        emailField.getStyleClass().remove("error");;
+        passwordField.getStyleClass().remove("error");;
+        userTypeChoiceBox.getStyleClass().remove("error");;
         info("");
 
         if(nameField.getText().isEmpty()) {
-            nameField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            nameField.getStyleClass().add("error");
             error("Digite um nome.");
             return;
         }
 
         if(emailField.getText().isEmpty()) {
-            emailField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            emailField.getStyleClass().add("error");
             error("Digite um email.");
             return;
         }
 
         if(passwordField.getText().isEmpty()) {
-            passwordField.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            passwordField.getStyleClass().add("error");
             error("Digite um telefone.");
             return;
         }
 
         if(userTypeChoiceBox.getValue() == null) {
-            userTypeChoiceBox.setStyle("-fx-border-color: red; -fx-font-size: 14px");
+            userTypeChoiceBox.getStyleClass().add("error");
             error("Digite um endereço.");
             return;
         }

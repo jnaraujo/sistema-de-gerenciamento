@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.view.components;
 
 import com.uefs.sistemadegerenciamento.model.component.ComputerComponent;
+import com.uefs.sistemadegerenciamento.utils.Formatter;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -34,14 +35,15 @@ public class ComputerComponentComponent {
         vBox.setPadding(new javafx.geometry.Insets(0, 8, 0, 0));
 
         Label nameLabel = new Label(component.getName() + " ("+component.getManufacturer()+")" + " - "+component.getQuantity()+" unidade(s)");
+        nameLabel.getStyleClass().add("subTitle");
         nameLabel.setFont(Font.font(Font.getDefault().getFamily(), FontWeight.BOLD, 18));
         nameLabel.setPrefWidth(LEFT_WIDTH);
 
-        Label pricePerUnitLabel = new Label("Preço por unidade: R$ "+ component.getPricePerUnit());
+        Label pricePerUnitLabel = new Label("Preço por unidade: "+ Formatter.currency(component.getPricePerUnit()));
         pricePerUnitLabel.setPrefWidth(LEFT_WIDTH);
         pricePerUnitLabel.setFont(new Font(16));
 
-        Label costPerUnitLabel = new Label("Custo por unidade: R$ "+ component.getCostPerUnit());
+        Label costPerUnitLabel = new Label("Custo por unidade: "+ Formatter.currency(component.getCostPerUnit()));
         costPerUnitLabel.setPrefWidth(LEFT_WIDTH);
         costPerUnitLabel.setFont(new Font(16));
 

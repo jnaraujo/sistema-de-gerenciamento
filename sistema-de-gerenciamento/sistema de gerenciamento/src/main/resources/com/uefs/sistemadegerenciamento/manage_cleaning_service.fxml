@@ -9,22 +9,30 @@
     <padding>
         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
     </padding>
+
     <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="784.0" spacing="16.0">
         <children>
-            <Button mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="111.0" text="Voltar" />
-            <Label prefHeight="36.0" prefWidth="656.0" text="Gerenciar Serviços de Limpeza">
-                <font>
-                    <Font name="System Bold" size="25.0" />
-                </font>
-            <HBox.margin>
-               <Insets bottom="6.0" />
-            </HBox.margin>
-            </Label>
+            <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="967.0" spacing="16.0">
+                <children>
+                    <Button mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="111.0" text="Voltar" />
+                    <Label prefHeight="36.0" prefWidth="356.0" text="Gerenciar Serviços de Limpeza">
+                        <font>
+                            <Font name="System Bold" size="25.0" />
+                        </font>
+                        <HBox.margin>
+                            <Insets bottom="6.0" />
+                        </HBox.margin>
+                    </Label>
+                </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#onAddCleaningService" prefHeight="25.0" prefWidth="290.0" text="Adicionar novo Serviço de Limpeza" />
         </children>
-      <VBox.margin>
-         <Insets bottom="16.0" />
-      </VBox.margin>
+        <VBox.margin>
+            <Insets bottom="16.0" />
+        </VBox.margin>
     </HBox>
+
+
    <ScrollPane prefHeight="733.0" prefWidth="784.0">
       <content>
          <AnchorPane fx:id="listAnchorPane" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="665.0" prefWidth="1248.0">

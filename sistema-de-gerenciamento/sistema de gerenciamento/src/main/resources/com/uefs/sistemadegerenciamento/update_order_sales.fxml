@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.UpdateWorkOrderSalesController">
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+    </padding>
+    <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="784.0" spacing="16.0">
+        <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="111.0" text="Voltar" />
+            <Label fx:id="titleText" prefHeight="36.0" prefWidth="356.0" text="Atualizar Ordem de Serviço">
+                <font>
+                    <Font name="System Bold" size="25.0" />
+                </font>
+            </Label>
+        </children>
+    </HBox>
+   <VBox prefHeight="670.0" prefWidth="1264.0" spacing="16.0">
+      <children>
+         <HBox prefHeight="100.0" prefWidth="200.0" spacing="8.0">
+            <children>
+               <VBox prefHeight="189.0" prefWidth="675.0" spacing="16.0">
+                  <children>
+                     <Label fx:id="customerLabel" text="Cliente: ">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="technicianLabel" layoutX="10.0" layoutY="10.0" text="Técnico:">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="statusLabel" layoutX="10.0" layoutY="51.0" text="Status:">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="createdDateLabel" layoutX="10.0" layoutY="51.0" text="Criado em:">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="finishedDateLabel" layoutX="10.0" layoutY="92.0" text="Finalizado em:">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </VBox>
+               <VBox prefHeight="189.0" prefWidth="675.0" spacing="16.0">
+                  <children>
+                     <Label fx:id="priceLabel" text="Preço:">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="costLabel" layoutX="10.0" layoutY="10.0" text="Custo:">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </VBox>
+            </children>
+            <padding>
+               <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+            </padding>
+         </HBox>
+         <VBox prefHeight="63.0" prefWidth="1264.0">
+            <children>
+               <Label text="Método de Pagamento:">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <TextField prefHeight="35.0" prefWidth="1264.0" fx:id="paymentMethodTextField" />
+            </children>
+         </VBox>
+         <VBox prefHeight="65.0" prefWidth="1264.0">
+            <children>
+               <Label text="Satistação do Cliente (min 0, max 5)">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <TextField prefHeight="35.0" prefWidth="1264.0" fx:id="customerSatisfactionTextField" />
+            </children>
+         </VBox>
+      </children>
+   </VBox>
+
+
+
+    <Label fx:id="infoLabel" alignment="CENTER" prefHeight="30.0" prefWidth="1288.0" text="" textAlignment="CENTER">
+        <font>
+            <Font size="16.0" />
+        </font>
+    </Label>
+   <HBox prefHeight="146.0" prefWidth="1264.0" spacing="32.0">
+      <children>
+          <Button mnemonicParsing="false" onAction="#onUpdateButtonClick" prefHeight="50.0" prefWidth="1305.0" text="Atualizar Ordem de Serviço" />
+      </children>
+   </HBox>
+</VBox>

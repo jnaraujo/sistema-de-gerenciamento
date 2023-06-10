@@ -85,7 +85,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.uefs.sistemadegerenciamento/com.uefs.sistemadegerenciamento.HelloApplication
+                                com.uefs.sistemadegerenciamento/com.uefs.sistemadegerenciamento.WorkOrderManagerApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

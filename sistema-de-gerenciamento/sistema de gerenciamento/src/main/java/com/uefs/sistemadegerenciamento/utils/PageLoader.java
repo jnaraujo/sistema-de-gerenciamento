@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.utils;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.controllers.HomeController;
 import com.uefs.sistemadegerenciamento.controllers.MainController;
 import com.uefs.sistemadegerenciamento.model.user.User;
@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class PageLoader {
     public static FXMLLoader load(String url){
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(url));
+        FXMLLoader fxmlLoader = new FXMLLoader(WorkOrderManagerApplication.class.getResource(url));
 
         return fxmlLoader;
     }
