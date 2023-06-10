@@ -142,4 +142,11 @@ public class ManageCleaningServiceController extends Controller {
     private void onBackButtonClick() {
         PageLoader.goHome(getLoggedUser());
     }
+
+    @FXML
+    private void onAddCleaningService(){
+        CreateCleaningServiceController controller = PageLoader.openPage("create_cleaning_service.fxml");
+        controller.setPreviousPage("manage_cleaning_service.fxml");
+        controller.setLoggedUser(getLoggedUser());
+    }
 }
