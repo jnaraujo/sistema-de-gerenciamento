@@ -20,7 +20,7 @@ public class BigButtonComponent {
         button.wrapTextProperty().setValue(true);
 
         button.setPrefWidth(200);
-        button.setPrefHeight(60);
+        button.setPrefHeight(75);
         button.setStyle("-fx-background-color: #343a40; -fx-background-radius: 8px;");
 
         return button;
