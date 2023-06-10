@@ -207,13 +207,6 @@ public class HomeController extends Controller {
         });
         buttons.get("userButtons").add(button);
 
-        button = BigButtonComponent.create("\uD83E\uDE9B Criar novo Serviço de Instalação");
-        button.setOnAction(event -> {
-            CreateInstallationServiceController controller = PageLoader.openPage("create_installation_service.fxml");
-            controller.setLoggedUser(loggedUser);
-        });
-        buttons.get("serviceButtons").add(button);
-
         return buttons;
     }
 

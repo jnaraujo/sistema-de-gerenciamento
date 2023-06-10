@@ -142,4 +142,11 @@ public class ManageInstallationServiceController extends Controller {
     private void onBackButtonClick() {
         backPage();
     }
+
+    @FXML
+    private void onAddServiceButtonClick(){
+        CreateInstallationServiceController controller = PageLoader.openPage("create_installation_service.fxml");
+        controller.setPreviousPage("manage_installation_service.fxml");
+        controller.setLoggedUser(getLoggedUser());
+    }
 }
