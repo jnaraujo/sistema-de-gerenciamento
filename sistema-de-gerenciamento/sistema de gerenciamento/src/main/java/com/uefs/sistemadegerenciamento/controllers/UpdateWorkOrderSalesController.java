@@ -78,6 +78,7 @@ public class UpdateWorkOrderSalesController extends Controller {
         }
 
         if(!checkInputs()) return;
+
         DAOManager.getWorkOrderDao().update(workOrder);
         success("Ordem de serviço atualizada com sucesso.");
     }
@@ -133,10 +134,6 @@ public class UpdateWorkOrderSalesController extends Controller {
             error("O campo 'Satisfação do cliente' deve conter um valor entre 0 e 5.");
             return false;
         }
-
-        DAOManager.getWorkOrderDao().update(workOrder);
-
-        success("Ordem de serviço atualizada com sucesso.");
 
         return true;
     }
