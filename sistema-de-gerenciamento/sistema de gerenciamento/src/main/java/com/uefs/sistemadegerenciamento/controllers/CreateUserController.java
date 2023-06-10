@@ -42,6 +42,11 @@ public class CreateUserController extends Controller {
 
     @FXML
     private void onCreateUserButtonClick() {
+        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR) || !getLoggedUser().getUserType().equals(UserType.RECEPTIONIST)) {
+            error("Você não tem permissão para realizar esta ação.");
+            return;
+        }
+
         nameField.getStyleClass().remove("error");;
         emailField.getStyleClass().remove("error");;
         passwordField.getStyleClass().remove("error");;

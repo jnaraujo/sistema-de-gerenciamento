@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
+import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.service.InstallationService;
 import javafx.fxml.FXML;
@@ -41,6 +42,11 @@ public class UpdateInstallationServiceController extends Controller{
 
     @FXML
     private void onUpdateButtonClick() {
+        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR) && !getLoggedUser().getUserType().equals(UserType.TECHNICIAN)){
+            error("Você não tem permissão para realizar esta ação.");
+            return;
+        }
+
         descriptionField.getStyleClass().remove("error");;
         pricePerUnitField.getStyleClass().remove("error");;
         costPerUnitField.getStyleClass().remove("error");;

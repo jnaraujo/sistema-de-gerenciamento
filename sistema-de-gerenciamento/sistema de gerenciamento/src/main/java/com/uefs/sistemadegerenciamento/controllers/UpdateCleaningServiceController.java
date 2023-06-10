@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
+import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;
 import javafx.fxml.FXML;
@@ -50,6 +51,11 @@ public class UpdateCleaningServiceController extends Controller {
 
     @FXML
     private void onUpdateButtonClick() {
+        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR) && !getLoggedUser().getUserType().equals(UserType.TECHNICIAN)){
+            error("Você não tem permissão para realizar esta ação.");
+            return;
+        }
+
         componentListField.getStyleClass().remove("error");;
         priceField.getStyleClass().remove("error");;
         costField.getStyleClass().remove("error");;

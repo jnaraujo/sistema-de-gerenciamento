@@ -51,6 +51,11 @@ public class UpdateUserController extends Controller {
 
     @FXML
     private void onUpdateUserButtonClick() {
+        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR)) {
+            error("Você não tem permissão para realizar esta ação.");
+            return;
+        }
+
         nameField.getStyleClass().remove("error");;
         emailField.getStyleClass().remove("error");;
         passwordField.getStyleClass().remove("error");;

@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
+import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
 import javafx.fxml.FXML;
@@ -35,6 +36,10 @@ public class CreateCustomerController extends Controller {
 
     @FXML
     private void onCreateCustomerButtonClick() {
+        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR) || !getLoggedUser().getUserType().equals(UserType.RECEPTIONIST)) {
+            error("Você não tem permissão para realizar esta ação.");
+            return;
+        }
         nameField.getStyleClass().remove("error");;
         emailField.getStyleClass().remove("error");;
         phoneField.getStyleClass().remove("error");;
