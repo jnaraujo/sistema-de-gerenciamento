@@ -48,7 +48,7 @@ public class UpdateCustomerController extends Controller {
 
     @FXML
     private void onUpdateCustomerButtonClick() {
-        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR) || !getLoggedUser().getUserType().equals(UserType.RECEPTIONIST)) {
+        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR) && !getLoggedUser().getUserType().equals(UserType.RECEPTIONIST)) {
             error("Você não tem permissão para realizar esta ação.");
             return;
         }

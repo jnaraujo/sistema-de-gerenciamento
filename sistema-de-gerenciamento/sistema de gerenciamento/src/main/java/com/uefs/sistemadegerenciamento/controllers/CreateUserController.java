@@ -42,7 +42,7 @@ public class CreateUserController extends Controller {
 
     @FXML
     private void onCreateUserButtonClick() {
-        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR) || !getLoggedUser().getUserType().equals(UserType.RECEPTIONIST)) {
+        if(!getLoggedUser().getUserType().equals(UserType.ADMINISTRATOR)  && !getLoggedUser().getUserType().equals(UserType.RECEPTIONIST)) {
             error("Você não tem permissão para realizar esta ação.");
             return;
         }
