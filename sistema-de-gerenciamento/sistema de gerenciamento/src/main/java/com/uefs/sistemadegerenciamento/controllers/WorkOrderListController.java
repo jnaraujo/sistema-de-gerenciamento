@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
@@ -51,7 +51,7 @@ public class WorkOrderListController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Lista de ordens de serviço");
+        WorkOrderManagerApplication.stage.setTitle("Lista de ordens de serviço");
 
         openWorkOrders = FXCollections.observableArrayList();
 

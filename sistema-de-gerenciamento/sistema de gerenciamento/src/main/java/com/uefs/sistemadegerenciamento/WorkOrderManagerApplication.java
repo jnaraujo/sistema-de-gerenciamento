@@ -8,16 +8,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class WorkOrderManagerApplication extends Application {
 
     public static Stage stage;
 
 
     @Override
     public void start(Stage stage) throws IOException {
-        HelloApplication.stage = stage;
+        WorkOrderManagerApplication.stage = stage;
 
-        FXMLLoader mainFxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main.fxml"));
+        FXMLLoader mainFxmlLoader = new FXMLLoader(WorkOrderManagerApplication.class.getResource("main.fxml"));
         Scene scene = new Scene(mainFxmlLoader.load(), 1280, 720);
         scene.getStylesheets().add(getClass().getResource("stylesheets/global.css").toExternalForm());
         stage.setTitle("Sistema de Gerenciamento");

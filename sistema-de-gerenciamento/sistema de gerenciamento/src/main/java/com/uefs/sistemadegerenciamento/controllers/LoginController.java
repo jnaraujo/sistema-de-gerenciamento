@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
@@ -21,7 +21,7 @@ public class LoginController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Login - Sistema de Gerenciamento");
+        WorkOrderManagerApplication.stage.setTitle("Login - Sistema de Gerenciamento");
     }
 
     @FXML

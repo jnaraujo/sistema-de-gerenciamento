@@ -1,13 +1,12 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.user.Administrator;
 import com.uefs.sistemadegerenciamento.model.user.Receptionist;
 import com.uefs.sistemadegerenciamento.model.user.Technician;
 import com.uefs.sistemadegerenciamento.model.user.User;
-import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import com.uefs.sistemadegerenciamento.utils.converter.UserTypeConverter;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -38,7 +37,7 @@ public class UpdateUserController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Atualizar Usuário");
+        WorkOrderManagerApplication.stage.setTitle("Atualizar Usuário");
 
         userTypeChoiceBox.getItems().addAll(UserType.values());
         userTypeChoiceBox.setConverter(new UserTypeConverter());

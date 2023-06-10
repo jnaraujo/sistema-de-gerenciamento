@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.service.InstallationService;
@@ -36,7 +36,7 @@ public class ManageInstallationServiceController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Gerenciar Serviços de Instalação");
+        WorkOrderManagerApplication.stage.setTitle("Gerenciar Serviços de Instalação");
 
         services = FXCollections.observableArrayList();
 

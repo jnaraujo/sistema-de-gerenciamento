@@ -1,10 +1,8 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.Customer;
-import com.uefs.sistemadegerenciamento.model.user.User;
-import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -39,7 +37,7 @@ public class UpdateCustomerController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Atualizar Cliente");
+        WorkOrderManagerApplication.stage.setTitle("Atualizar Cliente");
     }
 
     @FXML

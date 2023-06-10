@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.errors.InvalidSatisfactionScoreException;
@@ -63,7 +63,7 @@ public class UpdateWorkOrderSalesController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Finalização da Venda");
+        WorkOrderManagerApplication.stage.setTitle("Finalização da Venda");
     }
 
     @FXML

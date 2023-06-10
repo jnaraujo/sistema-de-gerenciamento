@@ -1,6 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.constants.OrderStatus;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
@@ -82,7 +82,7 @@ public class UpdateWorkOrderController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Atualizar Ordem de Serviço");
+        WorkOrderManagerApplication.stage.setTitle("Atualizar Ordem de Serviço");
 
         customers = fetchCustomers();
         technicians = fetchTechnicians();
@@ -359,7 +359,7 @@ public class UpdateWorkOrderController extends Controller {
 
     private ModalController openModal(String title){
         try{
-            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("modal.fxml"));
+            FXMLLoader loader = new FXMLLoader(WorkOrderManagerApplication.class.getResource("modal.fxml"));
             Scene scene = new Scene(loader.load());
 
             ModalController controller = loader.getController();

@@ -1,10 +1,8 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
-import com.uefs.sistemadegerenciamento.HelloApplication;
+import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.service.CleaningService;
-import com.uefs.sistemadegerenciamento.model.user.User;
-import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -42,7 +40,7 @@ public class UpdateCleaningServiceController extends Controller {
 
     @FXML
     private void initialize() {
-        HelloApplication.stage.setTitle("Atualizar Serviço de Limpeza");
+        WorkOrderManagerApplication.stage.setTitle("Atualizar Serviço de Limpeza");
     }
 
     @FXML
