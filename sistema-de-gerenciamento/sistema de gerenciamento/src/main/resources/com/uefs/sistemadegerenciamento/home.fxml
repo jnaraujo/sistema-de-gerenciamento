@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uefs.sistemadegerenciamento.controllers.HomeController">
-   <GridPane prefHeight="72.0" prefWidth="1280.0" style="-fx-background-color: #adb5bd;" styleClass="header" VBox.vgrow="NEVER">
+   <GridPane prefHeight="72.0" prefWidth="1280.0" style="-fx-background-color: #e9ecef;" styleClass="header" VBox.vgrow="NEVER">
      <columnConstraints>
        <ColumnConstraints hgrow="SOMETIMES" maxWidth="645.0" minWidth="10.0" prefWidth="607.0" />
        <ColumnConstraints hgrow="SOMETIMES" maxWidth="757.0" minWidth="10.0" prefWidth="510.0" />
