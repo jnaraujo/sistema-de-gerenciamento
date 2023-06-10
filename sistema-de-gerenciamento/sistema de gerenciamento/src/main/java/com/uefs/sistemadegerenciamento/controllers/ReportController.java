@@ -62,7 +62,7 @@ public class ReportController extends Controller {
                 .collect(Collectors.groupingBy(workOrder -> formatDate(workOrder.getCreatedAt()),
                         Collectors.summingDouble(WorkOrder::getPrice)));
 
-        for (Map.Entry<String, Double> entry : revenueByMonthYear.entrySet()) {
+        for (Map.Entry<String, Double> entry : revenueByMonthYear.entrySet().stream().sorted(Map.Entry.comparingByKey()).toList()) {
             series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
         }
 
@@ -78,7 +78,7 @@ public class ReportController extends Controller {
                 .collect(Collectors.groupingBy(workOrder -> formatDate(workOrder.getCreatedAt()),
                         Collectors.summingDouble(workOrder -> workOrder.getPrice() - workOrder.getCost())));
 
-        for (Map.Entry<String, Double> entry : profitByMonthYear.entrySet()) {
+        for (Map.Entry<String, Double> entry : profitByMonthYear.entrySet().stream().sorted(Map.Entry.comparingByKey()).toList()) {
             series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
         }
 
@@ -118,7 +118,7 @@ public class ReportController extends Controller {
         Map<String, List<WorkOrder>> workOrdersByMonthYear = workOrders.stream()
                 .collect(Collectors.groupingBy(workOrder -> formatDate(workOrder.getCreatedAt())));
 
-        for (Map.Entry<String, List<WorkOrder>> entry : workOrdersByMonthYear.entrySet()) {
+        for (Map.Entry<String, List<WorkOrder>> entry : workOrdersByMonthYear.entrySet().stream().sorted(Map.Entry.comparingByKey()).toList()) {
             int openCount = 0;
             int closedCount = 0;
 
