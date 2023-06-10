@@ -156,4 +156,11 @@ public class ManageCustomersController extends Controller {
     private void onBackButtonClick() {
         backPage();
     }
+
+    @FXML
+    private void onAddCustomerButtonClick(){
+        CreateCustomerController controller = PageLoader.openPage("create_customer.fxml");
+        controller.setPreviousPage("manage_customers.fxml");
+        controller.setLoggedUser(getLoggedUser());
+    }
 }
