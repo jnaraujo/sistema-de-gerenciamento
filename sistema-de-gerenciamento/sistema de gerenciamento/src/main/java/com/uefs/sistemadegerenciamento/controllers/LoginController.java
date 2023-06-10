@@ -3,8 +3,10 @@ package com.uefs.sistemadegerenciamento.controllers;
 import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.user.User;
+import com.uefs.sistemadegerenciamento.utils.DaoMock;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -57,5 +59,17 @@ public class LoginController extends Controller {
     private void openPage(String url, User user) {
         HomeController homeController = PageLoader.openPage(url);
         homeController.setLoggedUser(user);
+    }
+
+    @FXML
+    private void onMockClick() {
+        DaoMock daoMock = new DaoMock();
+        daoMock.mock();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Dados de Exemplo");
+        alert.setHeaderText("Dados de exemplo inseridos com sucesso!");
+
+        alert.showAndWait();
     }
 }

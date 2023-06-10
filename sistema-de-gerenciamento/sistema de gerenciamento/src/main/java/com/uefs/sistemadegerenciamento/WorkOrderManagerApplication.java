@@ -2,6 +2,7 @@ package com.uefs.sistemadegerenciamento;
 
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
 import com.uefs.sistemadegerenciamento.model.user.Administrator;
+import com.uefs.sistemadegerenciamento.utils.DaoMock;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
