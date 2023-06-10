@@ -1,5 +1,6 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
+import com.uefs.sistemadegerenciamento.HelloApplication;
 import com.uefs.sistemadegerenciamento.constants.UserType;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
@@ -53,6 +54,11 @@ public class HomeController extends Controller {
 
     @FXML
     private VBox mainVBox;
+
+    @FXML
+    private void initialize() {
+        HelloApplication.stage.setTitle("Sistema de Gerenciamento - Home");
+    }
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
