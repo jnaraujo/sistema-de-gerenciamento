@@ -142,4 +142,11 @@ public class ManageInventoryController extends Controller {
     private void onBackButtonClick() {
         backPage();
     }
+
+    @FXML
+    private void onAddNewComponentButtonClick() {
+        CreateComponentController controller = PageLoader.openPage("create_component.fxml");
+        controller.setLoggedUser(getLoggedUser());
+        controller.setPreviousPage("manage_inventory.fxml");
+    }
 }
