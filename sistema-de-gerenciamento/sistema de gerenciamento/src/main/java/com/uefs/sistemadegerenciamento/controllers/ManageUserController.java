@@ -139,4 +139,11 @@ public class ManageUserController extends Controller {
     private void onBackButtonClick() {
         backPage();
     }
+
+    @FXML
+    private void onAddUserButtonClick(){
+        CreateUserController controller = PageLoader.openPage("create_user.fxml");
+        controller.setPreviousPage("manage_user.fxml");
+        controller.setLoggedUser(getLoggedUser());
+    }
 }

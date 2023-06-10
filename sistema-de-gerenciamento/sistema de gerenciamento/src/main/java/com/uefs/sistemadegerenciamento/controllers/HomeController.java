@@ -207,13 +207,6 @@ public class HomeController extends Controller {
         });
         buttons.get("serviceButtons").add(button);
 
-        button = BigButtonComponent.create("➕ Criar novo usuário");
-        button.setOnAction(event -> {
-            CreateUserController controller = PageLoader.openPage("create_user.fxml");
-            controller.setLoggedUser(loggedUser);
-        });
-        buttons.get("userButtons").add(button);
-
         button = BigButtonComponent.create("\uD83D\uDC65 Gerenciar usuários");
         button.setOnAction(event -> {
             ManageUserController controller = PageLoader.openPage("manage_user.fxml");
