@@ -406,9 +406,11 @@ public class UpdateWorkOrderController extends Controller {
         workOrder.setDescription(descriptionTextArea.getText());
 
         Technician technician = technicianComboBox.getValue();
+
+        boolean didTechnicianChange = !technician.getId().equals(workOrder.getTechnicianId());
         boolean doesTechnicianHaveWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(technician.getId()) != null;
 
-        if(doesTechnicianHaveWorkOrder){
+        if(didTechnicianChange && doesTechnicianHaveWorkOrder){
             error("Este técnico já possui uma ordem de serviço em aberto.");
             return;
         }
