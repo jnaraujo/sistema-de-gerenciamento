@@ -19,9 +19,22 @@
     -fx-text-fill: #495057;
 }
 
+.subTitleSecondary {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #f8f9fa;
+}
+
 .button {
     -fx-background-color: #212529;
     -fx-text-fill: #ffffff;
+    -fx-border-radius: 8;
+    -fx-font-size: 14px;
+}
+
+.buttonSecondary {
+    -fx-background-color: #f8f9fa;
+    -fx-text-fill: #212529;
     -fx-border-radius: 8;
     -fx-font-size: 14px;
 }

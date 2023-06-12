@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +22,7 @@ public class HomeController extends Controller {
     private Label titleLabel;
 
     @FXML
-    private Text userRoleText;
+    private Label userRoleText;
 
     @FXML
     private FlowPane workOrderFlowPane;
@@ -62,8 +61,8 @@ public class HomeController extends Controller {
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
-        titleLabel.setText("Bem vindo, " + loggedUser.getName()+ "!");
-        userRoleText.setText("Seu cargo atual: " + UserTypeParser.toString(loggedUser.getUserType()));
+        titleLabel.setText("Bem vindo, " + loggedUser.getName()+ "! \uD83D\uDC4B");
+        userRoleText.setText("\uD83D\uDC77\u200D♂\uFE0F Seu cargo atual: " + UserTypeParser.toString(loggedUser.getUserType()));
 
         setUpListOfUserViewsButtons();
     }
