@@ -436,6 +436,14 @@ public class UpdateWorkOrderController extends Controller {
             error("Este técnico já possui uma ordem de serviço em aberto.");
             return;
         }
+
+        boolean isLoggedUserTechnician = getLoggedUser().getUserType().equals(UserType.TECHNICIAN);
+        boolean isTechnicianEqualsToLoggedUser = technician.getId().equals(getLoggedUser().getId());
+        if(didTechnicianChange && isLoggedUserTechnician && !isTechnicianEqualsToLoggedUser){
+            error("Você não pode atribuir esta ordem de serviço a outro técnico.");
+            return;
+        }
+
         workOrder.setTechnicianId(technician.getId());
 
         String status = statusComboBox.getValue().toString();
