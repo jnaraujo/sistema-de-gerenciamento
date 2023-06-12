@@ -24,7 +24,7 @@
             <Button onAction="#onLoginClick" prefHeight="25.0" prefWidth="339.0" text="Login" />
         </children>
     </VBox>
-    <Button contentDisplay="CENTER" layoutX="1017.0" layoutY="652.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="238.0" text="Gerar dados de Exemplo (mock)" onAction="#onMockClick" />
+    <Button contentDisplay="CENTER" layoutX="1017.0" layoutY="652.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="238.0" text="Gerar dados de exemplo" onAction="#onMockClick" />
    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="572.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@img/cat.png" />
