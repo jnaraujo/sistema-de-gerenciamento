@@ -7,6 +7,7 @@ public class BigButtonComponent {
     public static Button create(String text){
         Font font = new Font("System", 14);
         Button button = new Button(text);
+        button.getStyleClass().add("bigButton");
 
         button.setFont(font);
 
@@ -21,7 +22,6 @@ public class BigButtonComponent {
 
         button.setPrefWidth(200);
         button.setPrefHeight(75);
-        button.setStyle("-fx-background-color: #343a40; -fx-background-radius: 8px;");
 
         return button;
     }

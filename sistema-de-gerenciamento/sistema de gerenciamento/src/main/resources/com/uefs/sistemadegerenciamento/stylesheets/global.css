@@ -28,7 +28,8 @@
 .button {
     -fx-background-color: #212529;
     -fx-text-fill: #ffffff;
-    -fx-border-radius: 8;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
     -fx-font-size: 14px;
 }
 
@@ -67,6 +68,10 @@
     -fx-border-color: #cccccc;
     -fx-text-fill: #000000;
     -fx-border-radius: 8;
+}
+
+.bigButton {
+    -fx-background-radius: 8;
 }
 
 .error {
