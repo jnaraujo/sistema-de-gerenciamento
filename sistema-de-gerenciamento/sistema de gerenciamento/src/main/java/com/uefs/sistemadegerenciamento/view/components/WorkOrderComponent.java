@@ -53,7 +53,6 @@ public class WorkOrderComponent {
         button.setMnemonicParsing(false);
         button.setPrefHeight(60);
         button.setPrefWidth(150);
-        button.setStyle("-fx-background-color: #2ecc71; -fx-text-fill: #fff; -fx-border-radius: 8px; -fx-background-radius: 8px; -fx-font-size: 16px;");
         button.setTextAlignment(TextAlignment.CENTER);
         button.setAlignment(Pos.CENTER);
         button.setOnAction(onButtonClick);
