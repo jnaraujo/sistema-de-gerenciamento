@@ -32,6 +32,11 @@
     -fx-font-size: 14px;
 }
 
+.button:hover {
+    -fx-background-color: #343a40;
+    -fx-cursor: hand;
+}
+
 .buttonDanger {
     -fx-background-color: #dc3545;
     -fx-text-fill: #ffffff;
@@ -39,11 +44,21 @@
     -fx-font-size: 14px;
 }
 
+.buttonDanger:hover {
+    -fx-background-color: #c82333;
+    -fx-cursor: hand;
+}
+
 .buttonSecondary {
     -fx-background-color: #f8f9fa;
     -fx-text-fill: #212529;
     -fx-border-radius: 8;
     -fx-font-size: 14px;
+}
+
+.buttonSecondary:hover {
+    -fx-background-color: #e2e6ea;
+    -fx-cursor: hand;
 }
 
 .text-field {
