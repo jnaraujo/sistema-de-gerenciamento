@@ -142,7 +142,7 @@ public class HomeController extends Controller {
             ManageInventoryController controller = PageLoader.openPage("manage_inventory.fxml");
             controller.setLoggedUser(loggedUser);
         });
-        buttons.get("workOrderButtons").add(button);
+        buttons.get("serviceButtons").add(button);
 
         button = BigButtonComponent.create("\uD83D\uDEE0 Gerenciar Serviços de Instalação");
         button.setOnAction(event -> {
