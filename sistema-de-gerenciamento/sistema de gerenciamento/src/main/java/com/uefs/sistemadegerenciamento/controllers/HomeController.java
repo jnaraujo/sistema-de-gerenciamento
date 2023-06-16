@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +22,7 @@ public class HomeController extends Controller {
     private Label titleLabel;
 
     @FXML
-    private Text userRoleText;
+    private Label userRoleText;
 
     @FXML
     private FlowPane workOrderFlowPane;
@@ -62,8 +61,8 @@ public class HomeController extends Controller {
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
-        titleLabel.setText("Bem vindo, " + loggedUser.getName()+ "!");
-        userRoleText.setText("Seu cargo atual: " + UserTypeParser.toString(loggedUser.getUserType()));
+        titleLabel.setText("Bem vindo, " + loggedUser.getName()+ "! \uD83D\uDC4B");
+        userRoleText.setText("\uD83D\uDC77\u200D♂\uFE0F Seu cargo atual: " + UserTypeParser.toString(loggedUser.getUserType()));
 
         setUpListOfUserViewsButtons();
     }
@@ -143,7 +142,7 @@ public class HomeController extends Controller {
             ManageInventoryController controller = PageLoader.openPage("manage_inventory.fxml");
             controller.setLoggedUser(loggedUser);
         });
-        buttons.get("workOrderButtons").add(button);
+        buttons.get("serviceButtons").add(button);
 
         button = BigButtonComponent.create("\uD83D\uDEE0 Gerenciar Serviços de Instalação");
         button.setOnAction(event -> {
@@ -152,7 +151,7 @@ public class HomeController extends Controller {
         });
         buttons.get("serviceButtons").add(button);
 
-        button = BigButtonComponent.create("\uD83E\uDDF9 Gerenciar Serviços de Limpeza");
+        button = BigButtonComponent.create("\uD83D\uDEBF Gerenciar Serviços de Limpeza");
         button.setOnAction(event -> {
             ManageCleaningServiceController controller = PageLoader.openPage("manage_cleaning_service.fxml");
             controller.setLoggedUser(loggedUser);

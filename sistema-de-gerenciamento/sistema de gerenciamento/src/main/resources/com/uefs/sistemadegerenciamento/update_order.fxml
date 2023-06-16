@@ -81,21 +81,21 @@
                   </font>
               </TextArea>
           </VBox>
-         <VBox layoutX="10.0" layoutY="89.0" prefHeight="265.0" prefWidth="784.0" spacing="8.0">
+         <VBox layoutX="10.0" layoutY="89.0" prefHeight="323.0" prefWidth="1264.0" spacing="8.0">
             <children>
                <Label text="Serviços:">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <ScrollPane prefHeight="181.0" prefWidth="784.0">
+               <ScrollPane prefHeight="248.0" prefWidth="1264.0">
                  <content>
                    <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="1247.0">
-                     <VBox fx:id="servicesListVBox" layoutY="-5.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="805.0" prefWidth="1264.0" spacing="16.0" style="-fx-background-insets: 0;" />
+                     <VBox fx:id="servicesListVBox" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="796.0" prefWidth="1264.0" spacing="16.0" style="-fx-background-insets: 0;" />
                    </AnchorPane>
                  </content>
                </ScrollPane>
-               <HBox prefHeight="40.0" prefWidth="784.0" spacing="64.0">
+               <HBox prefHeight="37.0" prefWidth="1264.0" spacing="300.0">
                   <children>
                      <Button mnemonicParsing="false" onAction="#onAddBuildingService" prefHeight="55.0" prefWidth="220.0" text="Adicionar Serviço de Montagem" />
                      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onAddInstallationService" prefHeight="55.0" prefWidth="220.0" text="Adicionar Serviço de Instalação" />

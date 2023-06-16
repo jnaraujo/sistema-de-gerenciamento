@@ -32,7 +32,7 @@
          <Insets top="16.0" />
       </VBox.margin>
    </HBox>
-   <VBox fx:id="technicianCurrentWorkOrderVBox" prefHeight="100.0" prefWidth="784.0">
+   <VBox fx:id="technicianCurrentWorkOrderVBox" prefHeight="145.0" prefWidth="1264.0">
       <padding>
          <Insets bottom="8.0" />
       </padding>
@@ -40,9 +40,9 @@
          <Insets bottom="8.0" top="8.0" />
       </VBox.margin>
    </VBox>
-   <HBox alignment="CENTER_LEFT" layoutX="18.0" layoutY="72.0" prefHeight="38.0" prefWidth="784.0" spacing="32.0">
+   <HBox alignment="CENTER_LEFT" layoutX="18.0" layoutY="72.0" prefHeight="72.0" prefWidth="1264.0" spacing="32.0">
       <children>
-         <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="452.0">
+         <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="927.0">
             <children>
                <Text text="Ordens em Serviço:">
                   <font>
@@ -50,6 +50,9 @@
                   </font>
                </Text>
             </children>
+            <opaqueInsets>
+               <Insets bottom="8.0" top="8.0" />
+            </opaqueInsets>
          </HBox>
          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="306.0" spacing="16.0">
             <children>
@@ -70,7 +73,7 @@
      <content>
        <AnchorPane fx:id="anchorPane" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="512.0" prefWidth="1248.0">
             <children>
-               <VBox fx:id="workOrderListVBox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1250.0" spacing="16.0" style="-fx-background-insets: 0;" />
+               <VBox fx:id="workOrderListVBox" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1250.0" spacing="16.0" style="-fx-background-insets: 0;" />
             </children>
          </AnchorPane>
      </content>

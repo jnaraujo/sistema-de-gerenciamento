@@ -47,6 +47,18 @@ public class WorkOrderListController extends Controller {
         technicianCurrentWorkOrderVBox.getChildren().clear();
 
         addLoggedUserWorkOrder();
+
+        filterComboBox.getSelectionModel().select(0);
+
+        if(getLoggedUser().getUserType().equals(UserType.RECEPTIONIST)){
+            filterComboBox.getSelectionModel().select(2); // Select "Fechadas" option
+        }
+
+        if(getLoggedUser().getUserType().equals(UserType.TECHNICIAN)){
+            filterComboBox.getSelectionModel().select(1); // Select "Disponíveis" option
+        }
+
+        onFilterComboBoxAction();
     }
 
     @FXML
@@ -56,7 +68,6 @@ public class WorkOrderListController extends Controller {
         openWorkOrders = FXCollections.observableArrayList();
 
         filterComboBox.getItems().addAll("Todas", "Disponíveis", "Fechadas");
-        filterComboBox.getSelectionModel().select(1);
 
         workOrderListVBox.getChildren().add(EmptyComponent.create("Não há ordens de serviço disponíveis"));
         openWorkOrders.addListener(new ListChangeListener<WorkOrder>() {
@@ -125,6 +136,7 @@ public class WorkOrderListController extends Controller {
     @FXML
     private void onFilterComboBoxAction() {
         String filter = filterComboBox.getSelectionModel().getSelectedItem().toString();
+
         if(filter.equals("Todas")) {
             openWorkOrders.removeAll(openWorkOrders);
             openWorkOrders.addAll(fetchAllWorkOrders());

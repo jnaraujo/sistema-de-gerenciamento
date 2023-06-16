@@ -148,14 +148,26 @@ public class UpdateWorkOrderController extends Controller {
         for(Service service : services){
             if(service instanceof CleaningService){
                 servicesListVBox.getChildren().add(CleaningServiceComponent.create((CleaningService) service, null, event -> {
+                    if(!canUserUpdateOrder(getLoggedUser())){
+                        cantUpdateWorkOrderError();
+                        return;
+                    }
                     deleteService(workOrder, service);
                 }));
             } else if (service instanceof InstallationService){
                 servicesListVBox.getChildren().add(InstallationServiceComponent.create((InstallationService) service, null, event -> {
+                    if(!canUserUpdateOrder(getLoggedUser())){
+                        cantUpdateWorkOrderError();
+                        return;
+                    }
                     deleteService(workOrder, service);
                 }));
             } else if (service instanceof BuildingService){
                 servicesListVBox.getChildren().add(BuildingServiceComponent.create((BuildingService) service, event -> {
+                    if(!canUserUpdateOrder(getLoggedUser())){
+                        cantUpdateWorkOrderError();
+                        return;
+                    }
                     deleteService(workOrder, service);
                 }));
             }
@@ -164,6 +176,16 @@ public class UpdateWorkOrderController extends Controller {
         final int COMPONENT_HEIGHT = 110;
 
         anchorPane.setPrefHeight(COMPONENT_HEIGHT * services.size() + 16);
+    }
+
+    private void cantUpdateWorkOrderError(){
+        error("Você não tem permissão para adicionar serviços a esta ordem de serviço.");
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erro");
+        alert.setHeaderText("Erro");
+        alert.setContentText("Você não tem permissão para atualizar esta ordem de serviço.");
+        alert.showAndWait();
     }
 
     private void deleteService(WorkOrder order, Service service){
@@ -214,7 +236,7 @@ public class UpdateWorkOrderController extends Controller {
     @FXML
     private void onAddBuildingService(){
         if(!canUserUpdateOrder(getLoggedUser())){
-            error("Você não tem permissão para adicionar serviços a esta ordem de serviço.");
+            cantUpdateWorkOrderError();
             return;
         }
 
@@ -277,7 +299,7 @@ public class UpdateWorkOrderController extends Controller {
     @FXML
     private void onAddInstallationService(){
         if(!canUserUpdateOrder(getLoggedUser())){
-            error("Você não tem permissão para adicionar serviços a esta ordem de serviço.");
+            cantUpdateWorkOrderError();
             return;
         }
 
@@ -315,7 +337,7 @@ public class UpdateWorkOrderController extends Controller {
     @FXML
     private void onAddCleaningService(){
         if(!canUserUpdateOrder(getLoggedUser())){
-            error("Você não tem permissão para adicionar serviços a esta ordem de serviço.");
+            cantUpdateWorkOrderError();
             return;
         }
 
@@ -406,12 +428,22 @@ public class UpdateWorkOrderController extends Controller {
         workOrder.setDescription(descriptionTextArea.getText());
 
         Technician technician = technicianComboBox.getValue();
+
+        boolean didTechnicianChange = !technician.getId().equals(workOrder.getTechnicianId());
         boolean doesTechnicianHaveWorkOrder = DAOManager.getWorkOrderDao().findOpenOrderByTechnicianId(technician.getId()) != null;
 
-        if(doesTechnicianHaveWorkOrder){
+        if(didTechnicianChange && doesTechnicianHaveWorkOrder){
             error("Este técnico já possui uma ordem de serviço em aberto.");
             return;
         }
+
+        boolean isLoggedUserTechnician = getLoggedUser().getUserType().equals(UserType.TECHNICIAN);
+        boolean isTechnicianEqualsToLoggedUser = technician.getId().equals(getLoggedUser().getId());
+        if(didTechnicianChange && isLoggedUserTechnician && !isTechnicianEqualsToLoggedUser){
+            error("Você não pode atribuir esta ordem de serviço a outro técnico.");
+            return;
+        }
+
         workOrder.setTechnicianId(technician.getId());
 
         String status = statusComboBox.getValue().toString();

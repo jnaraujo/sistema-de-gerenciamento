@@ -24,10 +24,11 @@
             <Button onAction="#onLoginClick" prefHeight="25.0" prefWidth="339.0" text="Login" />
         </children>
     </VBox>
-    <Button contentDisplay="CENTER" layoutX="1017.0" layoutY="652.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="238.0" text="Gerar dados de Exemplo (mock)" onAction="#onMockClick" />
+    <Button contentDisplay="CENTER" layoutX="797.0" layoutY="652.0" mnemonicParsing="false" onAction="#onMockClick" prefHeight="36.0" prefWidth="238.0" text="Gerar dados de exemplo" />
    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="572.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@img/cat.png" />
       </image>
    </ImageView>
+   <Button contentDisplay="CENTER" layoutX="1055.0" layoutY="652.0" mnemonicParsing="false" onAction="#deleteAllData" prefHeight="36.0" prefWidth="200.0" text="Apagar todos os dados" styleClass="buttonDanger" />
 </Pane>

@@ -2,14 +2,12 @@ package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.WorkOrderManagerApplication;
 import com.uefs.sistemadegerenciamento.dao.DAOManager;
+import com.uefs.sistemadegerenciamento.model.user.Administrator;
 import com.uefs.sistemadegerenciamento.model.user.User;
 import com.uefs.sistemadegerenciamento.utils.DaoMock;
 import com.uefs.sistemadegerenciamento.utils.PageLoader;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class LoginController extends Controller {
     @FXML
@@ -71,5 +69,32 @@ public class LoginController extends Controller {
         alert.setHeaderText("Dados de exemplo inseridos com sucesso!");
 
         alert.showAndWait();
+    }
+
+    @FXML
+    private void deleteAllData(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Deletar todos os dados");
+        alert.setHeaderText("Tem certeza que deseja deletar todos os dados?");
+        alert.setContentText("Essa ação não pode ser desfeita.");
+
+        if(alert.showAndWait().get() == ButtonType.OK){
+            DAOManager.getWorkOrderDao().deleteAll();
+            DAOManager.getUserDao().deleteAll();
+            DAOManager.getInventoryDao().deleteAll();
+            DAOManager.getCleaningServiceDao().deleteAll();
+            DAOManager.getInstallationServiceDao().deleteAll();
+            DAOManager.getCustomerDao().deleteAll();
+
+            if(DAOManager.getUserDao().findByEmail("admin") == null) {
+                DAOManager.getUserDao().save(
+                        new Administrator(
+                                "ADMIN",
+                                "admin",
+                                "admin"
+                        )
+                );
+            }
+        }
     }
 }
