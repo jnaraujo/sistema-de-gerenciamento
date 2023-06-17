@@ -35,7 +35,10 @@ public class DaoMock {
         installationServices.forEach(DAOManager.getInstallationServiceDao()::save);
 
         // Salvando usuários e clientes
+        users = users.stream().filter((user) -> DAOManager.getUserDao().findByEmail(user.getEmail()) == null).toList();
         users.forEach(DAOManager.getUserDao()::save);
+
+        customers = customers.stream().filter((customer) -> DAOManager.getCustomerDao().getAll().stream().noneMatch((c) -> c.getName().equals(customer.getName()))).toList();
         customers.forEach(DAOManager.getCustomerDao()::save);
 
         // Buscando tecnicos
@@ -45,12 +48,14 @@ public class DaoMock {
         List<WorkOrder> workOrders = generateWorkOrders(customers, technicians);
 
         // Adicionando serviços às ordens de serviço
-        workOrders.get(0).addService(installationServices.get(0));
-        workOrders.get(0).addService(cleaningServices.get(0));
-        workOrders.get(1).addService(installationServices.get(1));
-        workOrders.get(1).addService(cleaningServices.get(1));
-        workOrders.get(2).addService(installationServices.get(2));
-        workOrders.get(2).addService(cleaningServices.get(2));
+        if(workOrders.size() >= 3){
+            workOrders.get(0).addService(installationServices.get(0));
+            workOrders.get(0).addService(cleaningServices.get(0));
+            workOrders.get(1).addService(installationServices.get(1));
+            workOrders.get(1).addService(cleaningServices.get(1));
+            workOrders.get(2).addService(installationServices.get(2));
+            workOrders.get(2).addService(cleaningServices.get(2));
+        }
 
         // Salvando ordens de serviço
         workOrders.forEach(DAOManager.getWorkOrderDao()::save);
@@ -118,6 +123,10 @@ public class DaoMock {
 
     private List<WorkOrder> generateWorkOrders(List<Customer> customers, List<Technician> technicians){
         List<WorkOrder> workOrders = new ArrayList<>();
+
+        if(customers.size() < 2 || technicians.size() < 2){
+            return List.of();
+        }
 
         for (int i = 0; i < customers.size(); i++){
             Customer customer = customers.get(i);
