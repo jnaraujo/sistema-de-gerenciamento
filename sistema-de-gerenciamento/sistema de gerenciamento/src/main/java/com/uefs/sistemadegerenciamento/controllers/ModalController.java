@@ -1,6 +1,7 @@
 package com.uefs.sistemadegerenciamento.controllers;
 
 import com.uefs.sistemadegerenciamento.interfaces.ModalCallback;
+import com.uefs.sistemadegerenciamento.model.service.Service;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -8,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.util.HashMap;
+import java.util.List;
 
 public class ModalController {
     private ModalCallback callback;
@@ -41,8 +43,12 @@ public class ModalController {
     public void setServices(HashMap<String, Integer> services) {
         serviceListComboBox.getItems().addAll(services.keySet());
 
-        String firstService = services.keySet().toArray()[0].toString();
+        Object[] serviceList = services.keySet().toArray();
+
+        String firstService = serviceList.length > 0 ? serviceList[0].toString() : "";
+
         serviceListComboBox.setValue(firstService);
+
         quantityLabel.setText("Quantidade (máx. " + services.get(firstService) + ")");
 
         serviceListComboBox.setOnAction(e -> {
